@@ -1,0 +1,3 @@
+# this is a list of relevant articles about MATBG
+short_name , doi , title , year , coauthor1 , coauthor2 , coauthor3 , read_by_me
+macdonald , https://doi.org/10.1073/pnas.1108174108 , Moiré bands in twisted double-layer graphene , 2011 , Bistritzer , MacDonald , - , False
