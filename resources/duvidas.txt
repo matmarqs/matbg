@@ -1,0 +1,2 @@
+. moiré pattern
+. Dirac-Hamiltonian, Dirac-velocity, Dirac model, Dirac-points DOS

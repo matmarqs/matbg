@@ -1,3 +1,5 @@
 # this is a list of relevant articles about MATBG
 short_name , doi , title , year , coauthor1 , coauthor2 , coauthor3 , read_by_me
 macdonald , https://doi.org/10.1073/pnas.1108174108 , Moiré bands in twisted double-layer graphene , 2011 , Bistritzer , MacDonald , - , False
+graphene , https://doi.org/10.1103/RevModPhys.81.109 , The eletronic properties of graphene , 2009 , Neto , Novoselov , Geim , False
+topo_heavy_fermion , https://doi.org/10.1103/PhysRevLett.129.047601 , Magic-Angle Twisted Bilayer Graphene as a Topological Heavy Fermion Problem , 2021, Da Song , Bernevig , - , False
