@@ -5,3 +5,4 @@ graphene , https://doi.org/10.1103/RevModPhys.81.109 , The eletronic properties 
 topo_heavy_fermion , https://doi.org/10.1103/PhysRevLett.129.047601 , Magic-Angle Twisted Bilayer Graphene as a Topological Heavy Fermion Problem , 2021 , Da Song , Bernevig , - , False
 catarina2019 , https://doi.org/10.1002/9781119468455.ch44 , Twisted Bilayer Graphene: Low-Energy Physics, Electronic and Optical Properties , 2019, Catarina, Amorim , Peres , False
 tbg_geometry, https://doi.org/10.1017/9781108617567.016 , The Physics of Graphene , 2020 , Katsnelson , - , - , False
+koshino2012, https://doi.org/10.1103/PhysRevB.85.195458 , Energy spectrum and quantum Hall effect in twisted bilayer graphene , 2012 , Koshino , Moon , - , False
