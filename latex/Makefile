@@ -1,4 +1,4 @@
-f=commensurate_angles
+f=monolayer
 
 #latex:
 #	pdflatex $(f).tex pdflatex $(f).tex && latexmk $(f).tex && pdflatex $(f).tex pdflatex $(f).tex

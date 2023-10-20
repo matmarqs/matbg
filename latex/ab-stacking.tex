@@ -1,0 +1,67 @@
+\documentclass[a4paper,10pt]{article}
+\input{preamble}
+
+%\documentclass[../main.tex]{subfiles}
+%\graphicspath{{\subfix{../fig/}}}
+
+%\usepackage{breqn}
+
+\begin{document}
+
+\section{AB stacking}
+
+The so-called Bernal or AB stacking of two layers of graphene is such that the atoms of sublattice $A$ from one layer are placed above the atoms of sublattice $B$ from the other layer.
+To model the bilayer system in this configuration, we use the monolayer tight-binding hamiltonian (with only the first
+nearest neighbors) as a basis and include an interlayer hopping. Indexing the layers with $\ell = 1, 2$, we write
+\begin{equation} \label{eq:ab-hamil}
+H = H_1 + H_2 + H_{\perp},
+\end{equation}
+\begin{equation} \label{eq:ab-slg-hamil}
+\begin{split}
+H_\ell &= -t \sum_{\R} c_{\ell,A}^\d(\R) [c_{\ell,B}(\R) + c_{\ell,B}(\R-\a_1) + c_{\ell,B}(\R-\a_2)] + \hc, \\
+H_\perp &= t_{\perp} \sum_{\R} c_{1,A}^\d(\R) c_{2,B}(\R) + \hc,
+\end{split}
+%\begin{split}
+%H_1 &= -t \sum_{\R} c_{1,A}^\d(\R) [c_{1,B}(\R) + c_{1,B}(\R-\a_1) + c_{1,B}(\R-\a_2)] + \hc, \\
+%H_2 &= -t \sum_{\R} c_{2,A}^\d(\R) [c_{2,B}(\R) + c_{2,B}(\R-\a_1) + c_{2,B}(\R-\a_2)] + \hc,
+%\end{split}
+\end{equation}
+where $c_{\ell,\alpha}(\R)^\d$ is the creation operator for an electron in a state $\ket{\ell,\R,\alpha}$. Using the discrete Fourier Transform of the creation operators
+\begin{equation} \label{eq:ft-creatio}
+c_{\ell,\alpha}^\d(\R) = \frac{1}{\sqrt{N}} \sum_{\k\in\text{1BZ}} e^{-i\k\vdot(\R+\bm{\tau}_{\ell,\alpha})} c_{\ell,\alpha}^\d(\k),
+\end{equation}
+we can rewrite $H = \sum_{\k} \Psi^\d(\k) H(\k) \Psi(\k)$, where $\Psi^\d(\k) = (c_{1,A}^\d(\k) \; c_{1,B}^\d(\k) \; c_{2,A}^\d(\k) \; c_{2,B}^\d(\k))$ and
+\begin{equation} \label{eq:ab-momentum_space}
+H(\k) =
+\begin{pmatrix}
+0 & -t f(\k) & 0 & t_\perp \\
+-t f^*(\k) & 0 & 0 & 0 \\
+0 & 0 & 0 & -t f(\k) \\
+t_\perp & 0 & -t f^*(\k) & 0 \\
+\end{pmatrix}.
+\end{equation}
+
+Diagonalizing $H(\k)$ we obtain the four bands for the AB-stacked bilayer graphene
+\begin{equation} \label{eq:ab-four_bands}
+E_{\pm,\pm} = \pm t
+\sqrt{
+\qty(\frac{t_\perp}{2t})^2 +
+4 \cos(\frac{\sqrt{3}}{2} d \, k_x) \cos(\frac{3}{2} d \, k_y) + 2 \cos(\sqrt{3} d \, k_x) + 3
+}
+\; \pm \; \frac{t_\perp}{2}.
+\end{equation}
+
+\section{Twisted Bilayer Graphene}
+
+<++>
+
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+
+
+\end{document}
