@@ -8,3 +8,4 @@
 *.out
 *.toc
 *.fdb_latexmk
+/resources
