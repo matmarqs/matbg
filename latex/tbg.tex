@@ -127,11 +127,11 @@ Our starting point will be a tight-binding model
 $$
 H = H_1 + H_2 + H_{\perp},
 $$
-where $H_\ell$ is the hamiltonian of the layer $\ell$, and $H_\perp$ describes the interlayer hybridization. Working with a tight-binding model, it is natural to write this hamiltonian in terms of Bloch waves (\textcolor{red}{mencionar $\bm{\tau}_{\ell,\alpha}$ antes})
+where $H_\ell$ is the hamiltonian of the layer $\ell$, and $H_\perp = V_{12} + V_{12}^\d$ describes the interlayer hybridization. Working with a tight-binding model, it is natural to write this hamiltonian in terms of Bloch waves (\textcolor{red}{mencionar $\vtau_{\ell,\alpha}$ antes})
 $$
-\ket{\psi_{\ell, \k, \alpha}} = \frac{1}{\sqrt{N_\ell}} \sum_{\R_\ell} e^{i \k \vdot (\R_\ell + \bm{\tau}_{\ell,\alpha})} \ket{\ell, R_\ell, \alpha},
+\ket{\psi_{\ell, \k, \alpha}} = \frac{1}{\sqrt{N_\ell}} \sum_{\R_\ell} e^{i \k \vdot (\R_\ell + \vtau_{\ell,\alpha})} \ket{\ell, R_\ell, \alpha},
 $$
-where $\ell$ labels the layer, $N_\ell$ is the number of unit cells of layer $\ell$, $\R_\ell$ are the positions of lattice sites, $\bm{\tau}_{\ell,\alpha}$ are the orbital centers in the unit cell of each layer, and $\ket{\ell,\R_\ell,\alpha}$ are localized Wannier states. In this basis, considering only nearest-neighbor intralayer hopping, the hamiltonian of each layer is given by
+where $\ell$ labels the layer, $N_\ell$ is the number of unit cells of layer $\ell$, $\R_\ell$ are the positions of lattice sites, $\vtau_{\ell,\alpha}$ are the orbital centers in the unit cell of each layer, and $\ket{\ell,\R_\ell,\alpha}$ are localized Wannier states. In this basis, considering only nearest-neighbor intralayer hopping, the hamiltonian of each layer is given by
 $$
 H_\ell(\k) =
 \begin{pmatrix}
@@ -139,13 +139,105 @@ H_\ell(\k) =
 -t f_\ell(\k) & 0
 \end{pmatrix},
 $$
-with $f_\ell(\k) = \sum_{i=1}^{3} e^{i\k \vdot \bm{\delta}_\ell}$.
+with $f_\ell(\k) = \sum_{i=1}^{3} e^{i\k \vdot \vdelta_\ell}$.
 
-Planning to describe the low energy states, we write $\k = \pm \K_\ell + \q$, where $\pm \K_\ell$ are the Dirac points of each layer.
+Planning to describe the low energy states, we write $\k = \pm \K_\ell + \q$, where $\pm \K_\ell$ are the Dirac points of each layer. Expanding to first-order in $\q$, the low-energy hamiltonian is
+$$
+H^{\pm \K}(\q) = \hbar v_F \abs{\q}
+\begin{pmatrix}
+0 & e^{\mp i (\theta_\q - \theta_\ell)} \\
+e^{\pm i (\theta_\q - \theta_\ell)} & 0
+\end{pmatrix}
+$$
+<++>
 
 \subsection{Interlayer hamiltonian}
 
+The tight-binding interlayer Hamiltonian in second quantization reads
+$$
+V_{12} = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d t_{12}^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2),
+$$
+where
+$$
+t_{12}^{\alpha\beta}(\R_1,\R_2) =
+\mel{1,\R_1,\alpha}{V_{12}}{2,\R_2,\beta}
+$$
+is the interlayer hopping. Performing the Fourier transformation,
+$$
+c_{\ell,\alpha}^\d(\R_\ell) = \frac{1}{\sqrt{N_\ell}} \sum_{\k_\ell}
+e^{-i\k_\ell \vdot (\R_\ell + \vtau_{\ell,\alpha})} c_{\ell,\alpha}^\d(\k_\ell),
+$$
+with the sum of $\k_\ell$ over the BZ of layer $\ell$, we have
+$$
+V_{12} = \sum_{\k_1,\alpha,\k_2,\beta} c_{1,\alpha}^\d(\k_1) T_{12}^{\alpha\beta}(\k_1,\k_2) c_{2,\beta}(\k_2),
+$$
+where we define
+$$
+T_{12}^{\alpha\beta}(\k_1,\k_2) =
+\frac{1}{\sqrt{N_1 N_2}} \sum_{\R_1,\R_2} e^{-i\k_1\vdot(\R_1+\vtau_{1,\alpha})}
+t_{12}^{\alpha\beta}(\R_1,\R_2) e^{i\k_2\vdot(\R_2+\vtau_{2,\beta})}.
+$$
+
+Now we assume that the interlayer hopping $t_{12}^{\alpha\beta}(\R_1,\R_2)$ is only a function of the separation between the centers of the two orbitals:
+$$
+t_{12}^{\alpha\beta}(\R_1,\R_2) = t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}).
+$$
+
+We can then write the Fourier transform,
+$$
+t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}) =
+\int \frac{\dd[2]{\p}}{(2\pi)^2} e^{i \p \vdot (\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta})} t_{12}^{\alpha\beta}(\p).
+$$
+
+We have
+$$
+T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{N_1 N_2}} \int \frac{\dd[2]{\p}}{(2\pi)^2}
+\sum_{\R_1} e^{-i(\k_1-\p)\vdot(\R_1+\vtau_{1,\alpha})} t_{12}^{\alpha\beta}(\p)
+\sum_{\R_2} e^{i(\k_2-\p)\vdot(\R_2+\vtau_{2,\beta})} =
+$$
+$$
+= \sqrt{N_1 N_2} \int \frac{\dd[2]{\p}}{(2\pi)^2}
+\sum_{\G_1, \G_2} e^{-i\G_1\vdot\vtau_{1,\alpha}} t_{12}^{\alpha\beta}(\p)
+e^{i\G_2\vdot\vtau_{2,\beta}} \delta_{\k_1-\p,\G_1} \delta_{\k_2-\p,\G_2},
+$$
+where we have used the relation $\sum_{\R_\ell} e^{i\k\vdot\R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell}$. By elementary Dirac delta properties and \textcolor{red}{substituting $\G_\ell \to -\G_\ell$}, we obtain
+$$
+T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{\sqrt{N_1 N_2}}{A}
+\sum_{\G_1, \G_2} \textcolor{red}{e^{i\G_1\vdot\vtau_{1,\alpha}}} t_{12}^{\alpha\beta}(\p)
+\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2}.
+$$
+
+Remembering that $A = A_{u.c.1} N_1 = A_{u.c.2} N_2$, we get
+$$
+T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{A_{u.c.1} A_{u.c.2}}}
+\sum_{\G_1, \G_2} \textcolor{red}{e^{i\G_1\vdot\vtau_{1,\alpha}}} t_{12}^{\alpha\beta}(\p)
+\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2}.
+$$
+
+The conservation
+$$
+\k_1 + \G_1 = \k_2 + \G_2
+$$
+is known as generalized umklapp condition.
+
+\n
+
+Now we try to guess the behavior of $t_{12}(\r)$. We often see in the literature the estimate in terms of Slater-Koster parameters $V_{pp\s}$ and $V_{pp\pi}$, where they are assumed to exponentially decay. Making some rought estimates, they conclude that $t_\perp(\p)$ is only a function of $\abs{\p}$ and decays very rapidly as $\abs{\p}$ increases.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{fig/tperp.png}
+\caption{Fourier transform for the interlayer hopping in tBLG. The vertical dashed line marks the position
+of the Dirac point. Taken from \cite{handbook2019}.}
+\label{fig:tperp}
+\end{figure}
+
+\subsection{Small rotation limit}
+
 <++>
+
+
+
 
 
 
