@@ -149,7 +149,7 @@ H^{\pm \K}(\q) = \hbar v_F \abs{\q}
 e^{\pm i (\theta_\q - \theta_\ell)} & 0
 \end{pmatrix}
 $$
-<++>
+
 
 \subsection{Interlayer hamiltonian}
 
@@ -234,7 +234,58 @@ of the Dirac point. Taken from \cite{handbook2019}.}
 
 \subsection{Small rotation limit}
 
-<++>
+For the low-energy physics, we can expand
+$$
+\k_\ell = \K_\ell + \q_\ell.
+$$
+
+The interlayer coupling becomes
+$$
+T_{12}^{\alpha\beta}(\q_1,\q_2) = \frac{1}{A_{\text{u.c.}}} \sum_{\G_1,\G_2} e^{i\G_1\vdot\vtau_{1,\alpha}}
+t_{12}^{\alpha\beta}(\K_1+\q_1+\G_1) e^{-i\G_2\vdot\vtau_{2,\beta}}
+\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2}.
+$$
+
+Close to the Dirac points, we have $\abs{\q_\ell} \ll \abs{\K}$ and $t_\perp(\K_1+\q_1+\G_1) \approx t_\perp(\K_1+\G_1)$. As $t_\perp(\p)$ decays rapidly with $\abs{\p}$, we truncate $t_\perp(\p) \approx 0$ for $\abs{\p} > \abs{\K}$. This leaves us only three options for $\G_1$, being $\g_{11} = \0$, $\g_{12} = \b_{12}$, $\g_{13} = -\b_{11}$. These three vectors correspond to the three $\K$ equivalent points on the monolayer BZ. Because of the indiference between layer 1 and 2, the same goes for $\G_2$. Notice that $\abs{\K_1+\g_{1n}} = \abs{\K}$, because they are equivalent $\K$ points. Thus, the only quantity that matters is $t_\perp(\abs{\K})$. We have the term
+$$
+\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2} = \delta_{\q_1-\q_1,\K_2-\K_1+\G_2-\G_1}.
+$$
+We call $\Delta\K = \K_1-\K_2$. Due to $\abs{\q_\ell} \ll \abs{\K}$, we only have that $\q_1-\q_2 = \K_2-\K_1+\G_2-\G_1$, if $\G_1 = \g_{1n}$ and $\G_2 = \g_{2n}$ have the same index $n$. Therefore, we have three possibilities
+$$
+\q_\text{b} = \K_2 - \K_1,
+$$
+$$
+\q_\text{tr} = (\K_2 - \K_1) + (\b_{22} - \b_{12}),
+$$
+$$
+\q_\text{tl} = (\K_2 - \K_1) + (\b_{21} - \b_{11}).
+$$
+
+\n
+
+An unrotated monolayer graphene is described by
+$$
+\r = m \a_1 + n \a_2 + \{ \vtau_A = (0,0), \vtau_B = (0,d) \}.
+$$
+
+The rotation matrix is
+$$
+R_\theta =
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}.
+$$
+
+We shall consider AB-stacking. We rotate the layer 1 by $+\theta/2$. The layer 2 shall be translated by $\vtau_B$ and then rotated by $-\theta/2$, which gives us
+$$
+\r_1 = R_{\theta/2} \r,
+$$
+$$
+\r_2 = R_{-\theta/2} (\r - \vtau_B) + \vtau_0,
+$$
+
+where $\vtau_0$ is an additional arbitrary translation vector.
 
 
 
