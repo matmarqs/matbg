@@ -53,6 +53,14 @@ Summing the two equations above gives us
 \boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + n^2 + 4mn}{m^2 + n^2 + mn}.}
 \end{equation}
 
+If $d = \gcd(m, n) > 1$, we can take the integers $m^* = m/d$, $n^* = n/d$, and $\vb{L}_1 = m^*\vb{a}_1^{(1)} + n^*\vb{a}_2^{(1)} = n^*\vb{a}_1^{(2)} + m^*\vb{a}_2^{(2)}$, such that $\gcd(m^*, n^*) = 1$. Therefore, the shortest translation vector has coprime integers. Now, substituting $n = m + r$ we get
+\begin{equation} \label{eq:costheta-r}
+\boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + (m^2 + 2mr + r^2) + 4m^2 + 4mr}{m^2 + (m^2 + 2mr + r^2) + m^2 + mr} =
+\frac{3 m^2 + 3mr + r^2/2}{3m^2 + 3mr + r^2}. }
+\end{equation}
+
+Because $\gcd(m, n) = \gcd(m, n-m) = \gcd(m, r)$, we also get that $m$ and $r$ are coprime integers.
+
 
 \pagebreak
 
