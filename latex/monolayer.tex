@@ -53,36 +53,34 @@ $$
 
 We write a tight-binding hamiltonian with only nearest-neighbor hopping
 $$
-H = -t \sum_{i,\nu} \qty(a^\d_{\r_i} b_{\r_i + \bm{\delta}_\nu} + h.c. ),
+H = -t \sum_{\R} c^\d_B(\R) \qty(c_A(\R) + c_A(\R-\a_1) + c_A(\R-\a_2)) + \hc,
 $$
-where $\r_i$ runs through all sublattice $A$ sites, and $\nu = 1, 2, 3$. Applying the Fourier transforms
+where the $\R$ sum runs through all the associated Bravais triangular lattice. Applying the Fourier transforms
 $$
-a_{\r_i}^\d = \frac{1}{\sqrt{N}} \sum_{\k \in \text{BZ}} e^{-i \k \vdot \r_i} a_{\k}^\d,
-$$
-$$
-b_{\r_i} = \frac{1}{\sqrt{N}} \sum_{\k \in \text{BZ}} e^{i \k \vdot \r_i} b_{\k},
+c_{\alpha}^\d(\R) = \frac{1}{\sqrt{N}} \sum_{\k \in \text{BZ}} e^{-i \k \vdot \r_i} c_A^\d(\k),
 $$
 we get
 $$
 H = \sum_{\k}
 \begin{pmatrix}
-a_{\k}^\d & b_{\k}^\d
+c_A^\d(\k) & c_B^\d(\k)
 \end{pmatrix}
 \begin{pmatrix}
 0 & -t f(\k) \\
 -t f^*(\k) & 0
 \end{pmatrix}
 \begin{pmatrix}
-a_{\k} \\ b_{\k}
+c_A^\d(\k) \\ c_B^\d(\k)
 \end{pmatrix},
 $$
 with
 $$
 f(\k) = \sum_{\nu} e^{i \k \vdot \bm{\delta}_\nu} =
-e^{-i k_x a} \qty[ 1 + 2 e^{-3ik_x a / 2} \cos(\sqrt{3} k_y a / 2) ].
+e^{-i k_x a} \qty[ 1 + 2 e^{-3ik_x a / 2} \cos(\sqrt{3} k_y a / 2) ],
 $$
+where $\bm{\delta}_1 = (\a_1 + \a_2)/3 = d (0, 1)$, $\bm{\delta}_2 = (-2\a_1 + \a_2)/3 = d(-\frac{\sqrt{3}}{2}, -\frac{1}{2})$, $\bm{\delta}_3 = (\a_1 - 2\a_2)/3 = d (\frac{\sqrt{3}}{2}, -\frac{1}{2})$ are the vectors that connect to the three nearest neighboring sites, and $d = a/\sqrt{3}$.
 
-The eigenenergies of $h_{\k}$ (UNDEFINED yet) are $E_\pm(\k) = \pm t \abs{f(\k)}$.
+The eigenenergies are $E_\pm(\k) = \pm t \abs{f(\k)}$.
 
 The roots of $f(\k)$ are given by solving $f(\k) = 0$, which gives us
 $$
@@ -103,6 +101,7 @@ $$
 \K' = \frac{2\pi}{3a} \qty(1, -\frac{\sqrt{3}}{3})
 $$
 which are the so-called Dirac points, around which the dispersion relation are approximately linear $E(\K + \q) = v_F \abs{\q} + O\qty[(\frac{q}{K})^2]$.
+
 
 %%-----
 %% Referências bibliográficas

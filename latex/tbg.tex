@@ -53,7 +53,7 @@ Summing the two equations above gives us
 \boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + n^2 + 4mn}{m^2 + n^2 + mn}.}
 \end{equation}
 
-If $d = \gcd(m, n) > 1$, we can take the integers $m^* = m/d$, $n^* = n/d$, and $\vb{L}_1 = m^*\vb{a}_1^{(1)} + n^*\vb{a}_2^{(1)} = n^*\vb{a}_1^{(2)} + m^*\vb{a}_2^{(2)}$, such that $\gcd(m^*, n^*) = 1$. Therefore, the shortest translation vector has coprime integers. Now, substituting $n = m + r$ we get
+If $d = \gcd(m, n) > 1$, we can take the new integers $M = m/d$, $N = n/d$, and $\vb{L}_1 = M\vb{a}_1^{(1)} + N\vb{a}_2^{(1)} = N\vb{a}_1^{(2)} + M\vb{a}_2^{(2)}$, such that $\gcd(M, N) = 1$. Therefore, the shortest translation vector has coprime integers. Now, substituting $n = m + r$ we get
 \begin{equation} \label{eq:costheta-r}
 \boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + (m^2 + 2mr + r^2) + 4m^2 + 4mr}{m^2 + (m^2 + 2mr + r^2) + m^2 + mr} =
 \frac{3 m^2 + 3mr + r^2/2}{3m^2 + 3mr + r^2}. }
@@ -260,14 +260,15 @@ $$
 $$
 We call $\Delta\K = \K_1-\K_2$. Due to $\abs{\q_\ell} \ll \abs{\K}$, we only have that $\q_1-\q_2 = \K_2-\K_1+\G_2-\G_1$, if $\G_1 = \g_{1n}$ and $\G_2 = \g_{2n}$ have the same index $n$. Therefore, we have three possibilities
 $$
-\q_\text{b} = \K_2 - \K_1,
+\q_\text{b} = \K_1 - \K_2 = \abs{\Delta \K} \qty(0, -1),
 $$
 $$
-\q_\text{tr} = (\K_2 - \K_1) + (\b_{22} - \b_{12}),
+\q_\text{tr} = (\K_1 - \K_2) + (\g_{12} - \g_{22}) = \abs{\Delta \K} \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}),
 $$
 $$
-\q_\text{tl} = (\K_2 - \K_1) + (\b_{21} - \b_{11}).
+\q_\text{tl} = (\K_1 - \K_2) + (\g_{13} - \g_{23}) = \abs{\Delta \K} \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}),
 $$
+where $\abs{\Delta \K} = 2 \sin(\theta/2) \abs{\K}$.
 
 \n
 
@@ -285,7 +286,7 @@ R_\theta =
 \end{pmatrix}.
 $$
 
-We shall consider AB-stacking. We rotate the layer 1 by $+\theta/2$. The layer 2 shall be translated by $\vtau_B$ and then rotated by $-\theta/2$, which gives us
+We shall consider AB-stacking. We rotate the layer 1 by $-\theta/2$. The layer 2 shall be translated by $\vtau_B$ and then rotated by $\theta/2$, which gives us
 $$
 \r_1 = R_{\theta/2} \r,
 $$
