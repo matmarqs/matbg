@@ -23,7 +23,7 @@ Our convention is zig-zag in horizontal direction and arm-chair in vertical dire
 \caption{Graphene lattice vectors. Taken from \cite{handbook2019}}
 \end{figure}
 
-The lattice vectors are $\vb{a}_1 = a \qty(\frac{1}{2}, \frac{\sqrt{3}}{2})$, $\vb{a}_2 = a \qty(-\frac{1}{2}, \frac{\sqrt{3}}{2})$ and the three nearest-neighbor vectors are \textcolor{red}{$\bm{\delta}_1 = \frac{a}{2} (1, \sqrt{3})$, $\bm{\delta}_2 = \frac{a}{2} (1, -\sqrt{3})$, and $\bm{\delta}_3 = a (-1, 0)$}. The unit cell area is
+The lattice vectors are $\vb{a}_1 = a \qty(\frac{1}{2}, \frac{\sqrt{3}}{2})$, $\vb{a}_2 = a \qty(-\frac{1}{2}, \frac{\sqrt{3}}{2})$. The unit cell area is
 $$
 A = \abs{\a_1 \times \a_2} = \frac{\sqrt{3}}{2} a^2.
 $$
@@ -44,7 +44,7 @@ $$
 \b_2 = \frac{2\pi}{A} \a_3 \times \a_1 = \frac{4\pi}{\sqrt{3} a } \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
 $$
 
-The Dirac points are
+The Dirac points are defined as
 $$
 \K = \frac{4\pi}{3a} (1, 0) , \quad \K' = -\K.
 $$
@@ -76,31 +76,18 @@ $$
 with
 $$
 f(\k) = \sum_{\nu} e^{i \k \vdot \bm{\delta}_\nu} =
-e^{-i k_x a} \qty[ 1 + 2 e^{-3ik_x a / 2} \cos(\sqrt{3} k_y a / 2) ],
+e^{idk_y} + 2 e^{-\frac{idk_y}{2}} \cos(\frac{\sqrt{3}}{2} dk_x),
 $$
 where $\bm{\delta}_1 = (\a_1 + \a_2)/3 = d (0, 1)$, $\bm{\delta}_2 = (-2\a_1 + \a_2)/3 = d(-\frac{\sqrt{3}}{2}, -\frac{1}{2})$, $\bm{\delta}_3 = (\a_1 - 2\a_2)/3 = d (\frac{\sqrt{3}}{2}, -\frac{1}{2})$ are the vectors that connect to the three nearest neighboring sites, and $d = a/\sqrt{3}$.
 
 The eigenenergies are $E_\pm(\k) = \pm t \abs{f(\k)}$.
 
-The roots of $f(\k)$ are given by solving $f(\k) = 0$, which gives us
-$$
-2 e^{-3ik_x a / 2} \cos(\sqrt{3} k_y a / 2) = -1 \implies
-\begin{cases}
-\; e^{-3i k_x a/2} = - 1, \\
-\; \cos(\sqrt{3} k_y a / 2) = \frac{1}{2}.
-\end{cases}
-\implies
-\begin{cases}
-\; k_x = \frac{2\pi}{3a}, \\
-\; k_y = \pm \frac{2\pi}{3 \sqrt{3} a},
-\end{cases}
-$$
-Therefore we define
-$$
-\K = \frac{2\pi}{3a} \qty(1, \frac{\sqrt{3}}{3}) \; \text{ and } \;
-\K' = \frac{2\pi}{3a} \qty(1, -\frac{\sqrt{3}}{3})
-$$
-which are the so-called Dirac points, around which the dispersion relation are approximately linear $E(\K + \q) = v_F \abs{\q} + O\qty[(\frac{q}{K})^2]$.
+\n
+
+If we define $\K = \frac{4\pi}{3a} (1, 0)$, notice that the points $\K$ and $\K'=-\K$ are roots of $f$, i.e., $f(\pm\K) = 0$.
+
+
+These are the so-called Dirac points, around which the dispersion relation are approximately linear $E(\K + \q) = v_F \abs{\q} + O\qty[\qty(\frac{\abs{\q}}{\abs{\K}})^2]$.
 
 
 %%-----
