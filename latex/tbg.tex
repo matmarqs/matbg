@@ -256,9 +256,9 @@ $$
 
 Close to the Dirac points, we have $\abs{\q_\ell} \ll \abs{\K}$ and $t_\perp(\K_1+\q_1+\G_1) \approx t_\perp(\K_1+\G_1)$. As $t_\perp(\p)$ decays rapidly with $\abs{\p}$, we truncate $t_\perp(\p) \approx 0$ for $\abs{\p} > \abs{\K}$. This leaves us only three options for $\G_1$, being $\g_{11} = \0$, $\g_{12} = \b_{12}$, $\g_{13} = -\b_{11}$. These three vectors correspond to the three $\K$ equivalent points on the monolayer BZ. Because of the indiference between layer 1 and 2, the same goes for $\G_2$. Notice that $\abs{\K_1+\g_{1n}} = \abs{\K}$, because they are equivalent $\K$ points. Thus, the only quantity that matters is $t_\perp(\abs{\K})$. We have the term
 $$
-\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2} = \delta_{\q_1-\q_1,\K_2-\K_1+\G_2-\G_1}.
+\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2} = \delta_{\q_2-\q_1,\K_1-\K_2+\G_1-\G_2}.
 $$
-We call $\Delta\K = \K_1-\K_2$. Due to $\abs{\q_\ell} \ll \abs{\K}$, we only have that $\q_1-\q_2 = \K_2-\K_1+\G_2-\G_1$, if $\G_1 = \g_{1n}$ and $\G_2 = \g_{2n}$ have the same index $n$. Therefore, we have three possibilities
+We call $\Delta\K = \K_1-\K_2$. Due to $\abs{\q_\ell} \ll \abs{\K}$, we only have that $\q_2-\q_1 = \K_1-\K_2+\G_1-\G_2$ if $\G_1 = \g_{1n}$ and $\G_2 = \g_{2n}$ have the same index $n$. Therefore, we have three possibilities
 $$
 \q_\text{b} = \K_1 - \K_2 = \abs{\Delta \K} \qty(0, -1),
 $$
@@ -270,12 +270,35 @@ $$
 $$
 where $\abs{\Delta \K} = 2 \sin(\theta/2) \abs{\K}$.
 
+The interlayer coupling has only three terms
+$$
+T_{12}^{\alpha\beta}(\q_1,\q_2) =
+T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_1-\q_2, \q_\text{b}} +
+T^{\alpha\beta}_{-\q_\text{tr}} \delta_{\q_1-\q_2, -\q_\text{tr}} +
+T^{\alpha\beta}_{-\q_\text{tl}} \delta_{\q_1-\q_2, \q_\text{tl}},
+$$
+where $T^{\alpha\beta}_{\q_n} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \g_{1n} \vdot \bm{\tau}_{1\alpha}}
+e^{-i \g_{2n} \vdot \bm{\tau}_{2\beta}}$. Writing it in the A, B basis we get
+$$
+T_{\q_\text{b}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
+\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}
+$$
+<++>
+
 \n
 
-An unrotated monolayer graphene is described by
+\textbf{OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO}
+
+\n
+
+The atoms positions of the each layer are given by
 $$
-\r = m \a_1 + n \a_2 + \{ \vtau_A = (0,0), \vtau_B = (0,d) \}.
+\r = n_1 \a_{\ell,1} + n_2 \a_{\ell,2} + \vtau_{\ell,\alpha},
 $$
+where $\alpha = A,B$ indexes the type of the site. The basis vectors of each layer are given by $\a_{\ell,j} = R_{\theta_\ell} \a_{j}$, i. e., the rotation of lattice vectors by an angle $\theta_\ell$. We use the reference frame where $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$.
 
 The rotation matrix is
 $$
@@ -288,13 +311,21 @@ $$
 
 We shall consider AB-stacking. We rotate the layer 1 by $-\theta/2$. The layer 2 shall be translated by $\vtau_B$ and then rotated by $\theta/2$, which gives us
 $$
-\r_1 = R_{\theta/2} \r,
+\r_1 = R_{-\theta/2} \r,
 $$
 $$
-\r_2 = R_{-\theta/2} (\r - \vtau_B) + \vtau_0,
+\r_2 = R_{\theta/2} (\r - \vtau_B) + \vtau_0,
 $$
 
 where $\vtau_0$ is an additional arbitrary translation vector.
+
+\n
+
+In momentum space, we have $\K_2 = R_{\theta/2} \K$ and $\K_1 = R_{-\theta/2} \K$, which gives us that
+
+\n
+
+\textbf{OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO}
 
 
 
