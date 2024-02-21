@@ -1,13 +1,4 @@
-\documentclass[a4paper,10pt]{article}
-\input{preamble}
-
-%\documentclass[../main.tex]{subfiles}
-%\graphicspath{{\subfix{../fig/}}}
-
-\begin{document}
-
 \section{Commensurate Angles}
-
 
 \begin{figure}[H]
 \centering
@@ -18,12 +9,14 @@
 
 As drawn in Figure \ref{fig:latvec}, we have
 \begin{align}
+\label{eq:scalarprods0}
+\abs{\a_i^{(j)}} &= a, \\
 \label{eq:scalarprods1}
-\vb{a}_1^{(1)} \vdot \vb{a}_2^{(1)} &= a^2 \cos(60^\circ) = a^2/2; \\
+\vb{a}_1^{(j)} \vdot \vb{a}_2^{(j)} &= a^2 \cos(60^\circ) = a^2/2, \\
 \label{eq:scalarprods2}
-\vb{a}_1^{(1)} \vdot \vb{a}_1^{(2)} &= a^2 \cos\theta; \\
+\vb{a}_1^{(1)} \vdot \vb{a}_1^{(2)} &= a^2 \cos\theta, \\
 \label{eq:scalarprods3}
-\vb{a}_1^{(1)} \vdot \vb{a}_2^{(2)} &= a^2 \cos(60^\circ + \theta); \\
+\vb{a}_1^{(1)} \vdot \vb{a}_2^{(2)} &= a^2 \cos(60^\circ + \theta), \\
 \label{eq:scalarprods4}
 \vb{a}_1^{(2)} \vdot \vb{a}_2^{(1)} &= a^2 \cos(60^\circ - \theta).
 \end{align}
@@ -33,7 +26,7 @@ The superlattice vectors $\vb{L}_1$, $\vb{L}_2$ (when the angle is commensurate)
 \vb{L}_1 = m\vb{a}_1^{(1)} + n\vb{a}_2^{(1)} = m'\vb{a}_1^{(2)} + n'\vb{a}_2^{(2)}.
 \end{equation}
 
-Koshino \cite{koshino2012} argues that there is an appropriate choice of lattice vectors $\vb{a}_1^{(1)}, \vb{a}_2^{(1)}, \vb{a}_1^{(2)}, \vb{a}_2^{(2)}$ (satisfying equations \ref{eq:scalarprods1} to \ref{eq:scalarprods4}) such that the indices $(m',n')$ can be made equal to $(n,m)$. If this is true, then by taking the scalar products of equation \ref{eq:L1} with $\vb{a}_1^{(1)}$ and $\vb{a}_1^{(2)}$, we get
+Koshino \cite{koshino2012} argues that there is an appropriate choice of lattice vectors $\vb{a}_1^{(1)}, \vb{a}_2^{(1)}, \vb{a}_1^{(2)}, \vb{a}_2^{(2)}$ (satisfying equations \ref{eq:scalarprods0} to \ref{eq:scalarprods4}) such that the indices $(m',n')$ can be made equal to $(n,m)$. By taking the scalar products of equation \ref{eq:L1} with $\vb{a}_1^{(1)}$ and $\vb{a}_1^{(2)}$, we get
 $$
 \begin{cases}
 \; m + n/2 = n \cos\theta + m \cos(60^\circ + \theta); \\
@@ -53,13 +46,17 @@ Summing the two equations above gives us
 \boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + n^2 + 4mn}{m^2 + n^2 + mn}.}
 \end{equation}
 
-If $d = \gcd(m, n) > 1$, we can take the new integers $M = m/d$, $N = n/d$, and $\vb{L}_1 = M\vb{a}_1^{(1)} + N\vb{a}_2^{(1)} = N\vb{a}_1^{(2)} + M\vb{a}_2^{(2)}$, such that $\gcd(M, N) = 1$. Therefore, the shortest translation vector has coprime integers. Now, substituting $n = m + r$ we get
+If $d = \gcd(m, n) > 1$, we can take new integers $M = m/d$, $N = n/d$, and $\vb{L}_1' = M\vb{a}_1^{(1)} + N\vb{a}_2^{(1)} = N\vb{a}_1^{(2)} + M\vb{a}_2^{(2)}$, such that $\gcd(M, N) = 1$. Therefore, the shortest translation vector of equation \ref{eq:L1} is obtained by coprime integers $m, n$. Now, substituting $n = m + r$ we get
 \begin{equation} \label{eq:costheta-r}
 \boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + (m^2 + 2mr + r^2) + 4m^2 + 4mr}{m^2 + (m^2 + 2mr + r^2) + m^2 + mr} =
 \frac{3 m^2 + 3mr + r^2/2}{3m^2 + 3mr + r^2}. }
 \end{equation}
 
 Because $\gcd(m, n) = \gcd(m, n-m) = \gcd(m, r)$, we also get that $m$ and $r$ are coprime integers.
+
+\n
+
+\boxed{\textbf{CHECAR SE HÁ DIFERENÇA NA DEDUÇÃO PARA TIPO I E TIPO II.}}
 
 
 \pagebreak
@@ -78,7 +75,7 @@ L = a\sqrt{m^2 + n^2 + mn} = \frac{\abs{m-n}}{2 \sin(\theta/2)} \, a.
 \n
 
 
-The area of an unit cell of the superlattice é $A = \frac{\sqrt{3}}{2} L^2 = (m^2 + n^2 + mn) \, A_1$, where $A_1 = \frac{\sqrt{3}}{2} \, a^2$ is the area of unit cell of monolayer graphene. If we consider now the area of the Brillouin Zone, we get
+The area of an unit cell of the superlattice is $A = \frac{\sqrt{3}}{2} L^2 = (m^2 + n^2 + mn) \, A_1$, where $A_1 = \frac{\sqrt{3}}{2} \, a^2$ is the area of unit cell of monolayer graphene. If we consider now the area of the Brillouin Zone, we get
 \begin{equation} \label{eq:bz-volume}
 \Omega = \frac{\Omega_1}{m^2 + n^2 + mn},
 \end{equation}
@@ -105,18 +102,18 @@ For example, $(m,n) = (1,2)$ and $\theta = 21.8^\circ$ we have $m^2 + n^2 + mn =
 \subsection{Geometry}
 
 The atoms positions of the each layer are given by
-$$
+\begin{equation} \label{eq:position-atoms-tbg}
 \r = n_1 \a_{\ell,1} + n_2 \a_{\ell,2} + \vtau_{\ell,\alpha},
-$$
+\end{equation}
 where $\alpha = A,B$ indexes the type of the site, and $\tau_{\ell,\alpha}$ are basis vectors. The lattice vectors of each layer are the rotated $\a_{\ell,j} = R_{\theta_\ell} \a_{j}$, where
-$$
+\begin{equation} \label{eq:rotation-matrix}
 R_\theta =
 \begin{pmatrix}
 \cos\theta & -\sin\theta \\
 \sin\theta & \cos\theta
 \end{pmatrix},
-$$
-is the rotation matrix and we use the reference frame where $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$.
+\end{equation}
+is the rotation matrix by an angle $\theta$ and we use the reference frame where $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$.
 
 We shall consider AB-stacking. In this case, the translation vectors are given by
 \begin{align}
@@ -128,101 +125,89 @@ where $\vtau_0$ is an additional arbitrary translation considered in layer 2 for
 \subsection{Moiré pattern}
 
 Here we will review the Bistritzer-MacDonald (BM) model \cite{macdonald2011}. First of all, the moiré pattern can be interpreted by a beat effect. Define the functions $h_\ell(\r)$, for each layer $\ell = 1, 2$, that describe their periodicity
-$$
+\begin{equation} \label{eq:beat-functions}
 h_\ell(\r) = \sum_{k=1}^{3} \cos(\vb{G}_{\ell,k} \vdot \r),
-$$
+\end{equation}
 where the wave vectors $\vb{G}_{\ell,1} = \vb{b}_{\ell,1}$, $\vb{G}_{\ell,2} = \vb{b}_{\ell,2}$ and $\vb{G}_{\ell,3} = \vb{b}_{\ell,1} - \vb{b}_{\ell,2}$ give the directions for nearest neightbor hoppings in the hexagonal lattice. The moiré pattern will then be an interference between $h_1(\r)$ and $h_2(\r)$,
-$$
+\begin{equation} \label{eq:beat-effect}
 h_{\text{m}}(\r) = h_1(\r) + h_2(\r) =
 \sum_{k=1}^{3}
 \, 2 \cos(\frac{\vb{G}_{1,k}+\vb{G}_{2,k}}{2} \vdot \r) \cos(\frac{\vb{G}_{1,k}-\vb{G}_{2,k}}{2} \vdot \r).
-$$
+\end{equation}
 
 The moiré pattern oscillates with $\vb{b}_k^{\text{m}} = \vb{G}_{1,k} - \vb{G}_{2,k}$, \cite{handbook2019}.
 
 \n
 
 Working on a coordinate system where the layer 2 is rotated by $\theta/2$ and layer 1 by $-\theta/2$, we have
-$$
-\vb{b}_1^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty(\frac{1}{2}, -\frac{\sqrt{3}}{2}), \quad
-\textcolor{red}{\vb{b}_2^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty(\frac{1}{2}, -\frac{\sqrt{3}}{2}),}
-$$
-where $\abs{\Delta \K} = 2 \abs{\K} \sin(\theta/2)$ and $\abs{\K} = 4\pi/(3\sqrt{3} d)$.
+\begin{equation} \label{eq:moire-bvecs}
+\vb{b}_1^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty( \frac{1}{2}, -\frac{\sqrt{3}}{2}), \quad
+\vb{b}_2^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty( \frac{1}{2},  \frac{\sqrt{3}}{2}),
+\end{equation}
+where $\abs{\Delta \K} = 2 \abs{\K} \sin(\theta/2)$ and $\abs{\K} = 4\pi/(3a)$.
 
 The area of the moiré lattice unit cell is
-$$
-A_{\text{m.u.c.}} = \frac{(2\pi)^2}{\abs{\b_1^{\text{m}} \cross \b_2^{\text{m}}}} = \frac{3\sqrt{3} d^2}{8 \sin[2](\theta/2)}.
-$$
+\begin{equation} \label{eq:moire-unitcell}
+A_{\text{m.u.c.}} = \frac{(2\pi)^2}{\abs{\b_1^{\text{m}} \cross \b_2^{\text{m}}}} = \frac{\sqrt{3} a^2}{8 \sin[2](\theta/2)}.
+\end{equation}
 
 \subsection{Hamiltonian}
 
-Our starting point will be a tight-binding model
-$$
-H = H_1 + H_2 + H_{\perp},
-$$
-where $H_\ell$ is the hamiltonian of the layer $\ell$, and $H_\perp = V_{12} + V_{12}^\d$ describes the interlayer hybridization. Working with a tight-binding model, it is natural to write this hamiltonian in terms of Bloch waves
-$$
+Our starting point will be a tight-binding model $ H = H_1 + H_2 + H_{\perp} $, where $H_\ell$ is the hamiltonian of the layer $\ell$, and $H_\perp = V_{12} + V_{12}^\d$ describes the interlayer hybridization. Working with a tight-binding model, it is natural to write this hamiltonian in terms of Bloch waves
+\begin{equation} \label{eq:BM-blochwave}
 \ket{\psi_{\ell, \k, \alpha}} = \frac{1}{\sqrt{N_\ell}} \sum_{\R_\ell} e^{i \k \vdot (\R_\ell + \vtau_{\ell,\alpha})} \ket{\ell, R_\ell, \alpha},
-$$
-where $\ell$ labels the layer, $N_\ell$ is the number of unit cells of layer $\ell$, $\R_\ell$ are the positions of lattice sites, $\vtau_{\ell,\alpha}$ are the orbital centers in the unit cell of each layer, and $\ket{\ell,\R_\ell,\alpha}$ are localized Wannier states. In this basis, considering only nearest-neighbor intralayer hopping, the hamiltonian of each layer is given by
-$$
+\end{equation}
+where $\ell$ labels the layer, $N_\ell$ is the number of unit cells, $\R_\ell$ are the positions of the underlying Bravais lattice, $\vtau_{\ell,\alpha}$ are the orbital centers (of sublattice $\alpha = A,B$) in the unit cell, and $\ket{\ell,\R_\ell,\alpha}$ are localized Wannier states. In this basis, considering only nearest-neighbor intralayer hopping the hamiltonian of each layer is analogous to equation \ref{eq:monolayer-tight-binding2}, given by
+\begin{equation} \label{eq:blg-eachlayer-hamil}
 H_\ell(\k) =
 \begin{pmatrix}
 0 & -t f_\ell(\k) \\
 -t f_\ell(\k) & 0
 \end{pmatrix},
-$$
+\end{equation}
 with $f_\ell(\k) = \sum_{i=1}^{3} e^{i\k \vdot \vdelta_\ell}$.
 
-Planning to describe the low energy states, we write $\k = \pm \K_\ell + \q$, where $\pm \K_\ell$ are the Dirac points of each layer. Expanding to first-order in $\q$, the low-energy hamiltonian is
-$$
+In order to describe low energy states, we expand $\k = \pm \K_\ell + \q$, where $\pm \K_\ell$ are the Dirac points of each layer. To first-order in $\q$, the low-energy hamiltonian becomes
+\begin{equation} \label{eq:blg-eachlayer-hamil-lowenergy}
 H^{\pm \K}(\q) = \hbar v_F \abs{\q}
 \begin{pmatrix}
 0 & e^{\mp i (\theta_\q - \theta_\ell)} \\
 e^{\pm i (\theta_\q - \theta_\ell)} & 0
-\end{pmatrix}
-$$
+\end{pmatrix}.
+\end{equation}
 
 
 \subsection{Interlayer hamiltonian}
 
 The tight-binding interlayer Hamiltonian in second quantization reads
-$$
-V_{12} = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d t_{12}^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2),
-$$
-where
-$$
+\begin{equation} \label{eq:interlayer-hopping}
+V_{12} = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d t_{12}^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2), \quad
 t_{12}^{\alpha\beta}(\R_1,\R_2) =
-\mel{1,\R_1,\alpha}{V_{12}}{2,\R_2,\beta}
-$$
-is the interlayer hopping. Performing the Fourier transformation,
-$$
+\mel{1,\R_1,\alpha}{V_{12}}{2,\R_2,\beta}.
+\end{equation}
+Performing the Fourier transformation
+\begin{equation} \label{eq:blg-fourier}
 c_{\ell,\alpha}^\d(\R_\ell) = \frac{1}{\sqrt{N_\ell}} \sum_{\k_\ell}
 e^{-i\k_\ell \vdot (\R_\ell + \vtau_{\ell,\alpha})} c_{\ell,\alpha}^\d(\k_\ell),
-$$
+\end{equation}
 with the sum of $\k_\ell$ over the BZ of layer $\ell$, we have
-$$
+\begin{equation} \label{eq:interlayer-hopping-kspace}
 V_{12} = \sum_{\k_1,\alpha,\k_2,\beta} c_{1,\alpha}^\d(\k_1) T_{12}^{\alpha\beta}(\k_1,\k_2) c_{2,\beta}(\k_2),
-$$
+\end{equation}
 where we define
-$$
+\begin{equation} \label{eq:interlayer-hopping-Tkspace}
 T_{12}^{\alpha\beta}(\k_1,\k_2) =
 \frac{1}{\sqrt{N_1 N_2}} \sum_{\R_1,\R_2} e^{-i\k_1\vdot(\R_1+\vtau_{1,\alpha})}
 t_{12}^{\alpha\beta}(\R_1,\R_2) e^{i\k_2\vdot(\R_2+\vtau_{2,\beta})}.
-$$
+\end{equation}
 
-Now we assume that the interlayer hopping $t_{12}^{\alpha\beta}(\R_1,\R_2)$ is only a function of the separation between the centers of the two orbitals:
-$$
-t_{12}^{\alpha\beta}(\R_1,\R_2) = t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}).
-$$
-
-We can then write the Fourier transform,
-$$
-t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}) =
+Now we assume that the interlayer hopping $t_{12}^{\alpha\beta}(\R_1,\R_2)$ is only a function of the separation between the centers of the two orbitals, and we write its Fourier transform
+\begin{equation} \label{eq:interlayer-hopping-fourier}
+t_{12}^{\alpha\beta}(\R_1,\R_2) = t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}) =
 \int \frac{\dd[2]{\p}}{(2\pi)^2} e^{i \p \vdot (\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta})} t_{12}^{\alpha\beta}(\p).
-$$
+\end{equation}
 
-We have
+Plugging equation \ref{eq:interlayer-hopping-fourier} in equation \ref{eq:interlayer-hopping-Tkspace}, we have
 $$
 T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{N_1 N_2}} \int \frac{\dd[2]{\p}}{(2\pi)^2}
 \sum_{\R_1} e^{-i(\k_1-\p)\vdot(\R_1+\vtau_{1,\alpha})} t_{12}^{\alpha\beta}(\p)
@@ -233,29 +218,19 @@ $$
 \sum_{\G_1, \G_2} e^{-i\G_1\vdot\vtau_{1,\alpha}} t_{12}^{\alpha\beta}(\p)
 e^{i\G_2\vdot\vtau_{2,\beta}} \delta_{\k_1-\p,\G_1} \delta_{\k_2-\p,\G_2},
 $$
-where we have used the relation $\sum_{\R_\ell} e^{i\k\vdot\R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell}$. By elementary Dirac delta properties and \textcolor{red}{substituting $\G_\ell \to -\G_\ell$}, we obtain
-$$
-T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{\sqrt{N_1 N_2}}{A}
-\sum_{\G_1, \G_2} \textcolor{red}{e^{i\G_1\vdot\vtau_{1,\alpha}}} t_{12}^{\alpha\beta}(\p)
-\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2}.
-$$
-
-Remembering that $A = A_{u.c.1} N_1 = A_{u.c.2} N_2$, we get
-$$
+where we have used the relation $\sum_{\R_\ell} e^{i\k\vdot\R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell}$. By elementary Dirac delta properties, \textcolor{red}{substituting $\G_\ell \to -\G_\ell$}, and remembering that $A = A_{u.c.1} N_1 = A_{u.c.2} N_2$, we obtain
+\begin{equation} \label{eq:interlayer-hopping-simplified}
 T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{A_{u.c.1} A_{u.c.2}}}
 \sum_{\G_1, \G_2} \textcolor{red}{e^{i\G_1\vdot\vtau_{1,\alpha}}} t_{12}^{\alpha\beta}(\p)
-\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2}.
-$$
-
-The conservation
-$$
-\k_1 + \G_1 = \k_2 + \G_2
-$$
-is known as generalized umklapp condition.
+\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2},
+\end{equation}
+where the momentum conservation $ \k_1 + \G_1 = \k_2 + \G_2 $ is known as generalized umklapp condition.
 
 \n
 
-Now we try to guess the behavior of $t_{12}(\r)$. We often see in the literature the estimate in terms of Slater-Koster parameters $V_{pp\s}$ and $V_{pp\pi}$, where they are assumed to exponentially decay. Making some rought estimates, they conclude that $t_\perp(\p)$ is only a function of $\abs{\p}$ and decays very rapidly as $\abs{\p}$ increases.
+\textcolor{red}{
+Now we try to guess the behavior of $t_{12}(\r)$. We often see in the literature the estimate in terms of Slater-Koster parameters $V_{pp\s}$ and $V_{pp\pi}$, where they are assumed to exponentially decay. Making some rough estimates, they conclude that $t_\perp(\p)$ is only a function of $\abs{\p}$ and decays very rapidly as $\abs{\p}$ increases.
+}
 
 \begin{figure}[H]
 \centering
@@ -265,21 +240,16 @@ of the Dirac point. Taken from \cite{handbook2019}.}
 \label{fig:tperp}
 \end{figure}
 
-\subsection{Small rotation limit}
+\subsection{\textcolor{red}{Small rotation limit}}
 
-For the low-energy physics, we can expand
-$$
-\k_\ell = \K_\ell + \q_\ell.
-$$
-
-The interlayer coupling becomes
+When the rotation angle $\theta \lesssim 10^\circ$ is small enough, we can expand around the Dirac points of each layer $\k_\ell = \K_\ell + \q_\ell$ with $\abs{\q_\ell} \sim \abs{\Delta \K} \ll \abs{\K}$. Approximating $t_\perp(\K_1+\q_1+\G_1) \approx t_\perp(\K_1+\G_1)$, the interlayer coupling becomes
 $$
 T_{12}^{\alpha\beta}(\q_1,\q_2) = \frac{1}{A_{\text{u.c.}}} \sum_{\G_1,\G_2} e^{i\G_1\vdot\vtau_{1,\alpha}}
-t_{12}^{\alpha\beta}(\K_1+\q_1+\G_1) e^{-i\G_2\vdot\vtau_{2,\beta}}
+t_{12}^{\alpha\beta}(\K_1+\G_1) e^{-i\G_2\vdot\vtau_{2,\beta}}
 \delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2}.
 $$
 
-Close to the Dirac points, we have $\abs{\q_\ell} \ll \abs{\K}$ and $t_\perp(\K_1+\q_1+\G_1) \approx t_\perp(\K_1+\G_1)$. As $t_\perp(\p)$ decays rapidly with $\abs{\p}$, we truncate $t_\perp(\p) \approx 0$ for $\abs{\p} > \abs{\K}$. This leaves us only three options for $\G_1$, being $\g_{11} = \0$, $\g_{12} = \b_{12}$, $\g_{13} = -\b_{11}$. These three vectors correspond to the three $\K$ equivalent points on the monolayer BZ. Because of the indiference between layer 1 and 2, the same goes for $\G_2$. Notice that $\abs{\K_1+\g_{1n}} = \abs{\K}$, because they are equivalent $\K$ points. Thus, the only quantity that matters is $t_\perp(\abs{\K})$. We have the term
+As $t_\perp(\p)$ decays rapidly with $\abs{\p}$, we truncate $t_\perp(\p) \approx 0$ for $\abs{\p} > \abs{\K}$. This leaves us only three options for $\G_1$, being $\g_{11} = \0$, $\g_{12} = \b_{12}$, $\g_{13} = -\b_{11}$. These three vectors correspond to the three $\K$ equivalent points on the monolayer BZ. Because of the indifference between layer 1 and 2, the same goes for $\G_2$. Notice that $\abs{\K_1+\g_{1n}} = \abs{\K}$, because they are equivalent $\K$ points. Thus, the only quantity that matters is $t_\perp(\abs{\K})$. We have the term
 $$
 \delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2} = \delta_{\q_2-\q_1,\K_1-\K_2+\G_1-\G_2}.
 $$
@@ -299,8 +269,8 @@ The interlayer coupling has only three terms
 $$
 T_{12}^{\alpha\beta}(\q_1,\q_2) =
 T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_1-\q_2, \q_\text{b}} +
-T^{\alpha\beta}_{-\q_\text{tr}} \delta_{\q_1-\q_2, -\q_\text{tr}} +
-T^{\alpha\beta}_{-\q_\text{tl}} \delta_{\q_1-\q_2, \q_\text{tl}},
+T^{\alpha\beta}_{\q_\text{tr}} \delta_{\q_1-\q_2, -\q_\text{tr}} +
+T^{\alpha\beta}_{\q_\text{tl}} \delta_{\q_1-\q_2, -\q_\text{tl}},
 $$
 where $T^{\alpha\beta}_{\q_n} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \g_{1n} \vdot \bm{\tau}_{1\alpha}}
 e^{-i \g_{2n} \vdot \bm{\tau}_{2\beta}}$. Writing it in the $A, B$ basis we get
@@ -330,19 +300,3 @@ e^{i\phi} & e^{-i\phi}
 }
 $$
 with $\phi = 2\pi/3$.
-
-
-
-
-
-
-%%-----
-%% Referências bibliográficas
-%%-----
-\addcontentsline{toc}{chapter}{\bibname}
-%\bibliographystyle{abntex2-num}
-\bibliography{citations}
-\bibliographystyle{ieeetr}
-
-
-\end{document}
