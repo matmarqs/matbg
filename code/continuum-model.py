@@ -57,7 +57,7 @@ class TBGModel():
 		self.v4 = np.sqrt(3)*a*0.044/2
 		self.gamma1 = 0.4
 		self.Dp = 0.05
-		self.omega = np.exp(1j*2*np.pi/3)
+		self.omega = np.exp(1j*2*np.pi/3)   # e^{i \phi}, \phi = 2 \pi / 3
 		self.u = u
 		self.up = up
 
@@ -86,7 +86,7 @@ class TBGModel():
 
 		# generate the Q lattice
         # TESTAR ESSE list[.,.,.] @ array
-		Q = np.array([np.array(list([i,j,0]@b - l*q[0]) + [l]) for i in range(-100,100) for j in range(-100,100) for l in [0,1] if norm([i,j,0]@b - l*q[0]) <= np.sqrt(3)*k_theta*cut])
+		Q = np.array([np.array(list([i,j,0]@b - l*q[0]) + [l]) for i in range(-100,100) for j in range(-100,100) for l in [0,1] if norm([i,j,0]@b - l*q[0]) <= np.sqrt(3)*k_theta*cut]) ############ ENTENDER #############
 		self.Q = Q
 		Nq = len(Q)
 		self.Nq = Nq
@@ -95,7 +95,7 @@ class TBGModel():
 		self.Q_nn={}
 		for i in range(Nq):
             # TENTAR ENTENDER ESSA LINHA ABAIXO
-			self.Q_nn[i] = [[np.round(Q[:,:2],3).tolist().index(list(np.round(Q[i,:2]+q[j],3))),j] for j in range(len(q)) if list(np.round(Q[i,:2]+q[j],3)) in np.round(Q[:,:2],3).tolist()]
+			self.Q_nn[i] = [[np.round(Q[:,:2],3).tolist().index(list(np.round(Q[i,:2]+q[j],3))),j] for j in range(len(q)) if list(np.round(Q[i,:2]+q[j],3)) in np.round(Q[:,:2],3).tolist()] ############ ENTENDER #############
 
 
 	#A function to create the hamiltonian for a given point kx, ky
@@ -120,13 +120,14 @@ class TBGModel():
 		Generate Hamiltonian and solve for eigenstates at the K point of the moire Brillouin zone (kx=ky=0).
 		Eigenvalues and eigenvectors are stored in vals and vecs respectively.
 
-		>>> tbg = TTGModel(1.11, 15, 0.005)
+		>>> tbg = TTGModel(1.05)
 		>>> ham =  tbg.gen_ham(0,0)
 		>>> vals, vecs = eigh(ham)
 		'''
-		k = np.array([kx,ky]) #2d momentum vector
 
-		#Create moire hopping matrices for valley index xi
+		k = np.array([kx,ky]) # 2d momentum vector
+
+		# create moire hopping matrices for valley index xi
 		U1 = np.array((
 			[self.u,self.up],
 			[self.up,self.u]))
@@ -139,7 +140,7 @@ class TBGModel():
 			[self.u,self.up*self.omega**(xi)],
 			[self.up*self.omega**(-xi),self.u]))
 
-		#Create and populate Hamiltonian matrix
+		# create and populate Hamiltonian matrix
 		ham = np.matrix(np.zeros((2*self.Nq,2*self.Nq),dtype=complex))
 
 		for i in range(self.Nq):
@@ -159,9 +160,9 @@ class TBGModel():
 			#Populate diagonal blocks
 			ham[2*i,2*i+1] = -self.v*km
 
-			#Populate off-diagonal blocks
-			nn = self.Q_nn[i]
-			for neighbor in nn:
+			#Populate off-diagonal blocks                                               ###################################
+			nn = self.Q_nn[i]                                                           ############ ENTENDER #############
+			for neighbor in nn:                                                         ###################################
 				j = neighbor[0]
 				p = neighbor[1]
 				ham[2*i:2*i+2,2*j:2*j+2] = (p==0)*U1 + (p==1)*U2 + (p==2)*U3

@@ -1,0 +1,3 @@
+U1, U2, U3 são as matrizes T_qb, T_qtr, T_qtl
+
+o "Q" lattice é o lattice em espaço de momentos
