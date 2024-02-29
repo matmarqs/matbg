@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{article}
+\input{preamble}
+
+\begin{document}
+
+\section{Four bands}
+
+The interlayer coupling in the small angle limit ($\theta \lesssim 10^\circ$) is given by
+\begin{equation} \label{eq:interlayer-coupling}
+T_{12}^{\alpha\beta}(\q_1,\q_2) =
+w \, T_{\q_{\text{b}}}^{\alpha\beta} \delta_{\q_1-\q_2,\q_{\text{b}}} +
+w \, T_{\q_{\text{tr}}}^{\alpha\beta} \delta_{\q_1-\q_2,-\q_{\text{tr}}} +
+w \, T_{\q_{\text{tl}}}^{\alpha\beta} \delta_{\q_1-\q_2,-\q_{\text{tl}}},
+\end{equation}
+where the hopping matrices are
+$$
+T_{\q_\text{b}} =
+\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix},
+$$
+$$
+T_{\q_\text{tr}} = e^{-i \g_{12} \vdot \vtau_0}
+\begin{pmatrix}
+e^{i\phi} & 1 \\
+e^{-i\phi} & e^{i\phi}
+\end{pmatrix},
+$$
+$$
+T_{\q_\text{tl}} = e^{-i \g_{13} \vdot \vtau_0}
+\begin{pmatrix}
+e^{-i\phi} & 1 \\
+e^{i\phi} & e^{-i\phi}
+\end{pmatrix},
+$$
+where $w = t_{\kd}/\Omega$ is the hopping energy, being $t_\kd$ the interlayer coupling function at the Dirac point of a monolayer and $\Omega$ the monolayer unit cell area.
+
+\n
+
+We consider a momentum state close to the Dirac point of layer 1, with crystal-momentum $\K_1 + \q$, where $\abs{\q} \sim \abs{\Delta \K} = 2 \, \kd \sin\theta/2$. According to equation \ref{eq:interlayer-coupling}, this layer 1 state will couple to three layer 2 states with momenta $\q+\qb$, $\q+\qtr$, and $\q+\qtl$. Working with a truncated Hamiltonian matrix with only these 4 states, we have
+$$
+H_{4, \text{TBG}}^\tK(\q) =
+\begin{pmatrix}
+H_1^\tK(\q) & T_{\qb} & T_{\qtr} & T_{\qtl} \\
+T_{\qb}^\d & H_2^\tK(\q+\qb) & 0 & 0 \\
+T_{\qtr}^\d & 0 & H_2^\tK(\q+\qtr) & 0 \\
+T_{\qtl}^\d & 0 & 0 & H_2^\tK(\q+\qtl) \\
+\end{pmatrix}
+,
+$$
+in the basis $\ket{1,\K_1+\q,\alpha}, \ket{2,\K_2+\q+\qb,\alpha}, \ket{2,\K_2+\q+\qtr,\alpha}, \ket{2,\K_2+\q+\qtl,\alpha}$.
+
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+
+\end{document}
