@@ -1,2 +1,12 @@
 **/__pycache__
 articles/*.pdf
+**/*.pdf
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.dvi
+**/*.fls
+**/*.log
+**/*.out
+**/*.toc
+**/*.fdb_latexmk
