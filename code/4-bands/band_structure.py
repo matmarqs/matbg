@@ -13,65 +13,99 @@ rc('text.latex', preamble=r'\usepackage{physics} \usepackage{bm}')
 #######################################################################
 #from scipy.integrate import simpson
 
-hbar = 1
-m = 0.5
+# give the energy eigenvalues (bands) associated with the momentum point k
+def eigenval_func_graphene(k):
+    a = 2.46   # monolayer graphene lattice constant (in Angstrons)
+    a1 = a * np.array([ 1/2, np.sqrt(3)/2])  # unrotated 1st lattice vector a1
+    a2 = a * np.array([-1/2, np.sqrt(3)/2])  # unrotated 2nd lattice vector a2
+    # nearest neighbor vectors
+    delta1 = ((a1 + a2)/3)
+    delta2 = ((-2*a1 + a2)/3)
+    delta3 = ((a1 - 2*a2)/3)
+    f = lambda k: np.exp(1j*np.dot(k, delta1)) + np.exp(1j*np.dot(k, delta2)) + np.exp(1j*np.dot(k, delta3))
+    t = 1.0 # monolayer hopping t = 2.8 eV. See Castro Neto "https://doi.org/10.1103/RevModPhys.81.109"
+    return [-t * np.abs(f(k)), t * np.abs(f(k))]
 
-def energy_k(trace, dispersion, n_kpoints=600, E_f=0):
-    energies = []
-    n_trace = int(n_kpoints / (len(trace) - 1))
-    for path_num in range(len(trace) - 1):
-        for i in range(n_trace):
-            z = i / n_trace
-            k = trace[path_num] * (1-z) + z * trace[path_num + 1]
-            energies.append(dispersion(k))
-    energies = np.array(energies)
-    energies -= E_f
-    return energies
+# k point with its label and its coordinates
+class k_point:
+    def __init__(self, label, kx_ky):
+        self.label = label            # LaTeX label. Example: r'$\Gamma$' for the Gamma point
+        self.k = np.array(kx_ky)      # [kx, ky] numpy array
 
-def plot_band(trace, energy):
-    n_kpoints = len(energy)
-    plt.plot(range(n_kpoints), energy)
+# euclidian distance between two k points
+def dist(p1, p2):
+    return np.sqrt(sum((p1.k - p2.k)**2))
 
-def main():
-    n_kpoints = 600
-    dispersion = lambda k: hbar**2 * np.linalg.norm(k)**2 / (2 * m)
-    label_ticks = [r'$\Gamma$', r'$X$', r'$L$', r'$\Gamma$']
+# path is a list of momentum points with their labels. Example: 'Gamma', 'X', 'L', 'Gamma'
+# eigvals is a function that return the energy eigenvalues associated with momentum k
+# n_line is the number of k points for each line. Example: 100 points for the 'Gamma' -> 'X' line
+def gen_band(path, eigvals_func, n_line=100):
+    bands = []
+    for index in range(len(path)-1):     # Example: index refers to line 1 'Gamma' -> 'X', line 2 'X' -> 'L', line 3 'L' -> 'Gamma'
+        for i in range(n_line):
+            z = i / n_line
+            k = path[index].k * (1-z) + z * path[index+1].k
+            bands.append(eigvals_func(k))
+    bands = np.array(bands)
+    return bands    # bands is a M x N matrix, where M = ((len(path) - 1) * n_line) and N = len(eigvals)
 
+# return the array of x_ticks positions on a 0 to 1 scale
+def ticks_positions(path):
+    ticks_pos = [0] # position of the x_ticks at the 0 to 1 scale
+    s_dist = 0      # cumulative sum of distances at each step
+    total_dist = sum([dist(path[i], path[i+1]) for i in range(len(path)-1)])    # total path distance
+    for i in range(len(path)-1):
+        s_dist += dist(path[i], path[i+1]) / total_dist
+        ticks_pos.append(s_dist)
+    return ticks_pos
 
-    trace_1 = np.array([[0, 0],       # Gamma
-                        [1, 0],       # X
-                        [1, 1],       # L
-                        [0, 0]])      # Gamma
-    energy = energy_k(trace_1, dispersion, n_kpoints)
-    plot_band(trace_1, energy)
+# plot bands
+def plot_bands(bands, ticks_pos, n_line=100):
+    x = np.concatenate([np.linspace(ticks_pos[i], ticks_pos[i+1], n_line, endpoint=False) for i in range(len(ticks_pos)-1)], axis=None)
+    bands_t = np.transpose(bands)
+    for b in bands_t:
+        plt.plot(x, b)
 
-    trace_2 = np.array([[-2, 0],    # Gamma - b1
-                        [-1, 0],    # X - b1
-                        [-1, 1],    # L - b1
-                        [-2, 0]])   # Gamma - b1
-    energy = energy_k(trace_2, dispersion, n_kpoints)
-    plot_band(trace_2, energy)
-
-    trace_3 = np.array([[0, -2],     # Gamma - b2
-                        [1, -2],     # X - b2
-                        [1, -1],     # L - b2
-                        [0, -2]])    # Gamma - b2
-    energy = energy_k(trace_3, dispersion, n_kpoints)
-    plot_band(trace_3, energy)
-
-
-    n_trace = int(n_kpoints / (len(label_ticks)-1))
-    normal_ticks = [i*n_trace for i in range(len(label_ticks))]
-
+# plot the bandstructure along path
+def plot_bandstructure(path, eigenval_func, ticks_fontsize=20, n_line=100):
+    labels = [ kp.label for kp in path ]
+    ticks_pos = ticks_positions(path)
+    bands = gen_band(path, eigenval_func, n_line=n_line)
+    plot_bands(bands, ticks_pos, n_line=n_line)
     #plt.axhline(y=0, ls='--', color='k')
-    plt.xlim(normal_ticks[0], normal_ticks[-1])
-    plt.xticks(normal_ticks, label_ticks, fontsize=20)
+    plt.xlim(ticks_pos[0], ticks_pos[-1])
+    plt.xticks(ticks_pos, labels, fontsize=20)
     plt.grid(True, axis='x')
 
-    ymin = 0; ymax = 5.10
-    plt.ylim(ymin, ymax);
-    plt.ylabel(r'energy$/\mathcal{E}$', fontsize=20)
-    plt.savefig("band_struct_square_free.png", dpi=300, format='png', bbox_inches="tight")
+def test_1():
+    a = 2.46   # monolayer graphene lattice constant (in Angstrons)
+    path = [
+             k_point(r'$\Gamma$',   [0, 0]),                            # Gamma
+             k_point(r'$K$', [4*np.pi/(3*a), 0]),                       # K
+             k_point(r'$M$',        [np.pi/a, np.pi/(np.sqrt(3)*a)]),   # M
+             k_point(r'$\Gamma$',   [0, 0]),                            # Gamma
+           ]
+    plot_bandstructure(path, eigenval_func=eigenval_func_graphene, ticks_fontsize=20, n_line=100)
+    #ymin = 0; ymax = 4.10
+    #plt.ylim(ymin, ymax);
+    plt.ylabel(r'energy', fontsize=20)
+    plt.savefig("band_struct_test-graphene1.png", dpi=300, format='png', bbox_inches="tight")
+    plt.clf()
+
+def test_2():
+    a = 2.46   # monolayer graphene lattice constant (in Angstrons)
+    path = [
+             k_point(r'$K$',        [4*np.pi/(3*a), 0]),                        # K
+             k_point(r"$K'$",       [2*np.pi/(3*a), 2*np.pi/(np.sqrt(3)*a)]),   # K'
+             k_point(r'$\Gamma$',   [0, 0]),                                    # Gamma
+             k_point(r'$M$',        [np.pi/a, np.pi/(np.sqrt(3)*a)]),           # M
+             k_point(r'$K$',        [4*np.pi/(3*a), 0]),                        # K
+           ]
+    plot_bandstructure(path, eigenval_func=eigenval_func_graphene, ticks_fontsize=20, n_line=100)
+    plt.ylabel(r'energy', fontsize=20)
+    plt.savefig("band_struct_test-graphene2.png", dpi=300, format='png', bbox_inches="tight")
+    plt.clf()
 
 if __name__ == '__main__':
-    main()
+    test_1()
+    test_2()
