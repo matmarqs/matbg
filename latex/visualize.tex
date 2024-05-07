@@ -1,0 +1,42 @@
+\documentclass[a4paper,12pt]{report}
+\input{preamble}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+\begin{document}
+
+\chapter{Symmetries}
+%\input{symmetries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Elements of group theory}
+
+Given a subgroup $H$ (order $\abs{H}$) of a group $G$ (order $\abs{G}$), and an element $g \in G$, we define the left coset $gH$ by
+$$
+gH = \{gh \mid h \in H\} \subseteq G.
+$$
+
+We know from Laplace's theorem that every left coset has the same number of elements $\abs{G:H} = \abs{G} / \abs{H}$, which is called the \textit{index} of $H$, and $G$ is a disjoint union of its left cosets:
+$$
+G = \sum_{j=1}^{\abs{G:H}} g_i H,
+$$
+where $g_i \in G$ are representatives of the left cosets $g_i H$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+
+\end{document}

@@ -10,3 +10,4 @@ articles/*.pdf
 **/*.out
 **/*.toc
 **/*.fdb_latexmk
+**/**.swp
