@@ -15,6 +15,8 @@
 
 \section{Elements of group theory}
 
+\subsection{Cosets}
+
 Given a subgroup $H$ (order $\abs{H}$) of a group $G$ (order $\abs{G}$), and an element $g \in G$, we define the left coset $gH$ by
 $$
 gH = \{gh \mid h \in H\} \subseteq G.
@@ -25,6 +27,30 @@ $$
 G = \sum_{j=1}^{\abs{G:H}} g_i H,
 $$
 where $g_i \in G$ are representatives of the left cosets $g_i H$.
+
+\subsection{Conjugacy classes}
+
+An element $g' = a g a^{-1}$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. This forms a conjugacy relation, and
+$$
+[g] = \{a g a^{-1} \mid a \in G\}
+$$
+is called a conjugacy class. The group $G$ is a disjoint union of its conjugacy classes.
+
+\subsection{Induction and subduction of representations}
+
+Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
+
+Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
+\begin{align*}
+\Delta_{i'j'ij}(g) =
+\begin{cases}
+\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
+\; 0,  & g_{j'}^{-1} g g_j \notin H.
+\end{cases}
+\end{align*}
+<++>
+
+<++>
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
