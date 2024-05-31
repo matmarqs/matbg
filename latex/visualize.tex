@@ -6,6 +6,8 @@
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
 
+\newcommand{\sg}[2]{\{ #1 \mid #2 \}}
+
 \begin{document}
 
 \chapter{Symmetries}
@@ -36,6 +38,26 @@ $$
 $$
 is called a conjugacy class. The group $G$ is a disjoint union of its conjugacy classes.
 
+\subsection{Normal subgroup}
+
+If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
+
+One commom example of normal subgroup is
+$$
+G = \{ \text{invertible matrices} \},
+$$
+$$
+H = \{ \text{matrices of determinant 1} \}.
+$$
+
+\subsection{Homomorphism and Isomorphism}
+
+If $G$ and $H$ are groups, and $\vphi: G \to H$ is a function that satisfies
+$$
+\vphi(a)\vphi(b) = \vphi(ab), \quad \ptodo a,b \in G,
+$$
+then we say that $\vphi$ is a homomorphism between $G$ and $H$. If $\vphi$ is bijective, we say it is a isomorphism and that $G$ is isomorphic to $H$.
+
 \subsection{Induction and subduction of representations}
 
 Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
@@ -48,9 +70,99 @@ Thinking in the other direction, if we start with an irreducible representation 
 \; 0,  & g_{j'}^{-1} g g_j \notin H.
 \end{cases}
 \end{align*}
-<++>
 
-<++>
+\section{Space Groups}
+
+The point group and translation symmetry operations which carry the crystel into itself form a group called the \textit{space group}. The elements of it are commonly denoted by  $\{ R_\alpha \mid \tau \} $, where $R_\alpha$ is the point group operation and $\tau$ is the translation.
+
+Pure rotations and pure translations are special cases of space group operations:
+\begin{itemize}
+\item $\sg{\eps}{0} =$ identity.
+\item $\sg{R_\alpha}{0} =$ pure point group operation.
+\item $\sg{\eps}{\tau} =$ pure translation.
+\end{itemize}
+
+The result for the multiplication of two space group operations is
+$$
+\sg{R_\beta}{\tau_2} \sg{R_\alpha}{\tau_1} = \sg{R_\beta R_\alpha}{R_\beta\tau_1 + \tau_2}.
+$$
+
+Beyond pure operations, we may find compound operations that combine translations and point group operations. The two possible types are \textit{glide planes} and \textit{screw axes}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/glideplane-screwaxis.png}
+\caption{(a) The glide plane takes $A$ into $A'$. (b) Right- and left-hand screw axis.}
+\label{fig:glideplane-screwaxis}
+\end{figure}
+
+\subsection{Translation subgroup}
+
+All the elements $\sg{\eps}{\tau}$ of the the space group $G$ constitute the translation group $T$. It is a subgroup of $G$ and defines the Bravais lattice. More than that, $T$ is a normal subgroup of $G$, which means that $g T g^{-1} = T$ for every $g \in G$. Because of that, the cosets
+$$
+\{ \sg{R_\alpha}{\tau'} \sg{\eps}{\tau} \mid \sg{\eps}{\tau} \in T \} \in G/T
+$$
+form a factor group of the space group $G$.
+
+This factor group $G/T$ is actually isomorphic to the point group of $G$.
+
+\subsection{Symmorphic and Nonsymmorphic Space Groups}
+
+In a space group $G$, we can always rewrite its elements in the form
+$$
+\sg{R_\alpha}{\tau} = \sg{R_\alpha}{r_n + \tau} = \sg{\eps}{r_n} \sg{R_\alpha}{\tau_\alpha},
+$$
+where $r_n$ is a general vector of the Bravais lattice and $\tau_\alpha$ is either zero or a non-primitive Bravais lattice translation. Basically, we will have $\tau_\alpha = 0$ for simple group operations and $\tau_\alpha \neq 0$ for glide planes or screw axis.
+
+If, with a suitable choice of origin, all the elements of $G$ can be written in the form $\sg{R_\alpha}{\tau} = \sg{R_\alpha}{r_n} = \sg{\eps}{r_n} \sg{R_\alpha}{0}$ ($\tau_\alpha = 0$ for every symmetry operation), then call $G$ a \textit{symmorphic} space group.
+
+\subsection{Site-symmetry group and Wyckoff position}
+
+Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
+
+For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
+$$
+G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
+$$
+
+If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
+
+\section{Space groups in Reciprocal Space}
+
+\subsection{Group of the wave vector $G_{\k}$ and the Star of $\k$}
+
+If we have
+$$
+(\hat{P}_\alpha \R_n) \vdot \K_m = 2 \pi N,
+$$
+than
+$$
+\R_n \vdot (\hat{P}_\alpha^{-1} \K_m) = 2 \pi N.
+$$
+
+Thus, the effect of an operator $\hat{P}_\alpha$ on a direct lattice vector $\R_n$ is equivalent to the effect of the operator $\hat{P}_\alpha^{-1}$ on the corresponding reciprocal lattice vector $\K_m$.
+
+\n
+
+The group of the wave vector is formed by the set of space group operations which transform $\k$ into itself, or into an equivalent $\k = \k + \K_m$, where $\K_m$ is a vector of the reciprocal lattice.
+
+All the symmetry operation of the space group $G$ take the point $\k = 0$ into an equivalent point, so that the group of the wave vector at $\k = 0$ corresponds to $G$. Furthermore, the $G_\k$ for $\k \neq 0$ remains a subgroup of $G$.
+
+\n
+
+The set of wave vectors $\k'$ which are obtained by carrying out all the point group operations on $\k$ is called \textit{star of} $\k$.
+
+\n
+
+In summary
+$$
+\text{real space} \iff \text{reciprocal space}
+$$
+$$
+\text{site-symmetry group} \iff \text{group of wave vector }G_\k
+$$
+$$
+\text{Wyckoff position} \iff \text{star of }\k
+$$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
