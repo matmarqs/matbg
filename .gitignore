@@ -11,3 +11,4 @@ articles/*.pdf
 **/*.toc
 **/*.fdb_latexmk
 **/**.swp
+reading/
