@@ -1,11 +1,12 @@
 \usepackage[english]{babel}
 \usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=2.5cm]{geometry}
-\usepackage{mathtools}
-\usepackage{amsthm}
-\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsthm}
+%\usepackage{amsmath}
 %\usepackage{nccmath}
 \usepackage{amssymb}
-\usepackage{amsfonts}
+\usepackage{etoolbox}
+%\usepackage{amsfonts}
 \usepackage{physics}
 %\usepackage{dsfont}
 %\usepackage{mathrsfs}
@@ -65,6 +66,7 @@
 %\newcommand{\prodint}[2]{\left\langle #1 , #2 \right\rangle}
 \newcommand{\cc}[1]{\overline{#1}}
 \newcommand{\Eval}[3]{\eval{\left( #1 \right)}_{#2}^{#3}}
+\newcommand{\sg}[2]{\{ #1 \mid #2 \}}
 
 \newcommand{\unit}[1]{\; \mathrm{#1}}
 
@@ -78,40 +80,6 @@
 
 \setlength{\droptitle}{-7em}
 
-\theoremstyle{plain}
-\newtheorem{theorem}{Teorema}[section]
-%\newtheorem{defi}[theorem]{Definição}
-\newtheorem{lemma}[theorem]{Lema}
-%\newtheorem{corol}[theorem]{Corolário}
-%\newtheorem{prop}[theorem]{Proposição}
-%\newtheorem{example}{Exemplo}
-%
-%\newtheorem{inneraxiom}{Axioma}
-%\newenvironment{axioma}[1]
-%  {\renewcommand\theinneraxiom{#1}\inneraxiom}
-%  {\endinneraxiom}
-%
-%\newtheorem{innerpostulado}{Postulado}
-%\newenvironment{postulado}[1]
-%  {\renewcommand\theinnerpostulado{#1}\innerpostulado}
-%  {\endinnerpostulado}
-%
-%\newtheorem{innerexercise}{Exercício}
-%\newenvironment{exercise}[1]
-%  {\renewcommand\theinnerexercise{#1}\innerexercise}
-%  {\endinnerexercise}
-%
-%\newtheorem{innerthm}{Teorema}
-%\newenvironment{teorema}[1]
-%  {\renewcommand\theinnerthm{#1}\innerthm}
-%  {\endinnerthm}
-%
-\newtheorem{innerlema}{Lema}
-\newenvironment{lema}[1]
-  {\renewcommand\theinnerlema{#1}\innerlema}
-  {\endinnerlema}
-%
-%\theoremstyle{remark}
-%\newtheorem*{hint}{Dica}
-%\newtheorem*{notation}{Notação}
-%\newtheorem*{obs}{Observação}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother

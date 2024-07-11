@@ -4,7 +4,7 @@ f=monolayer
 #	pdflatex $(f).tex pdflatex $(f).tex && latexmk $(f).tex && pdflatex $(f).tex pdflatex $(f).tex
 
 clean:
-	rm -rf *.pdf
+	#rm -rf *.pdf
 	rm -rf *.aux
 	rm -rf *.bbl
 	rm -rf *.blg

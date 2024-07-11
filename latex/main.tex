@@ -1,26 +1,21 @@
 \documentclass[a4paper,12pt]{report}
 \input{preamble}
 
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
-\makeatother
-
 \begin{document}
 
-\chapter{Monolayer}
-
-\input{monolayer}
+\input{1-intro}
 \pagebreak
 
-\chapter{AB-stacking}
-
-\input{ab-stacking}
+\input{2-symm}
 \pagebreak
 
-\chapter{Bilayer}
+\input{3-wannier}
+\pagebreak
 
-\input{tbg}
+\input{4-topoheavyfermion}
+\pagebreak
+
+\input{5-conclusions}
 \pagebreak
 
 
