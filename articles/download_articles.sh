@@ -11,7 +11,7 @@ articles="$1"
 
 tempfile=$(mktemp "/tmp/articles-doi.XXXXXX")
 
-sed '1d;2d' < "$articles" | awk -F',' '{print $2}' | awk '{$1=$1};1' > "$tempfile"
+sed -i 's/^#.*$//;/^$/d' < "$articles" | awk -F',' '{print $2}' | awk '{$1=$1};1' > "$tempfile"
 scitopdf -D . -p -l "$tempfile"
 
 rm "$tempfile"
