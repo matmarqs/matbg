@@ -9,6 +9,81 @@
 \chapter{Emergent symmetries in Twisted Bilayer Graphene}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Space Groups}
+
+Here we are going to study the concept of \textit{space groups}. It is very important to classify the symmetry properties of the system in interest (Twisted Bilayer Graphene). In our examples, we are going to focus on the familiar honeycomb lattice example. The space group is loosely an semi-direct product of the point group and the translation group. Given a fixed lattice, all the linear transformations that carry the lattice into itself belong to the space group. A useful matrix representation for $G$ is:
+\begin{equation} \label{eq:spacegroup-rep}
+\sg{R_\alpha}{\vtau} =
+\begin{pmatrix}
+1 & 0 \\
+\vtau & R_\alpha
+\end{pmatrix},
+\end{equation}
+where $0$ is a row of three zeros, $\vtau$ is a column vector and $R_\alpha$ is $3\times 3$ rotation matrix.
+
+The inverse of an element is given by
+\begin{equation} \label{eq:inv-spacegroup}
+\sg{R_\alpha}{\vtau}^{-1} =
+\begin{pmatrix}
+1 & 0 \\
+-R_\alpha^{-1}\vtau & R_\alpha^{-1}
+\end{pmatrix} =
+\sg{R_\alpha^{-1}}{-R_\alpha^{-1}\vtau}.
+\end{equation}
+
+Let's take the honeycomb lattice as the example. The space group of interest $P622$ \cite{thesis_rennella} is symmorphic (Table 9.1 of \cite{dresselhaus}). Therefore it is impossible to find a screw axis or glide plane. We have to rely on pure translation + pure point group.
+
+\textbf{IT IS MUCH BETTER TO MAKE THE EXAMPLE 2x2}
+
+For example, let's take a translation of $d(\cos30^\circ, \sin30^\circ)$ with a rotation of $60^\circ$. The result is
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+\frac{a}{2} & \frac{1}{2} & \frac{\sqrt{3}}{2} & 0 \\
+\frac{a\sqrt{3}}{6} & -\frac{\sqrt{3}}{2} & \frac{1}{2} & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+$$
+
+Some arbitrary lattice vector is represented by (the basis is $(0, b)$, where $b = 0$ or $b = \frac{2a}{\sqrt{3}}$).
+$$
+\begin{pmatrix} 1 \\
+m\begin{pmatrix} \frac{a}{2} \\ \frac{a\sqrt{3}}{2} \\ 0 \end{pmatrix} + n \begin{pmatrix} -\frac{a}{2} \\ \frac{a\sqrt{3}}{2} \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ b \\ 0 \end{pmatrix}
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\ (m-n)\frac{a}{2} \\ (m+n)\frac{a\sqrt{3}}{2} + b \\ 0
+\end{pmatrix}
+$$
+
+\n
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+\frac{a}{2} & \frac{1}{2} & \frac{\sqrt{3}}{2} & 0 \\
+\frac{a\sqrt{3}}{6} & -\frac{\sqrt{3}}{2} & \frac{1}{2} & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ (m-n)\frac{a}{2} \\ (m+n)\frac{a\sqrt{3}}{2} + b \\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\ (2m-n+1)\frac{a}{2} + \qty(\frac{\sqrt{3}b}{2}) \\ n \frac{a\sqrt{3}}{2} + \qty(\frac{a\sqrt{3}}{6} + \frac{b}{2}) \\ 0
+\end{pmatrix}
+$$
+
+\n
+
+\textbf{Example of nonsymmorphic space group}: Tellurium screw axis $3_1$. Glide plane triangular lattice, translation $a/2$ and reflection.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++
+\section{ABAIXO DISSO É COISA ANTIGA}
++++++++++++++++++++++++++++++++++++++++++++++++
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Elements of group theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
