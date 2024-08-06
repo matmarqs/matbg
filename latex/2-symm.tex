@@ -9,7 +9,117 @@
 \chapter{Emergent symmetries in Twisted Bilayer Graphene}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elements of group theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Groups, cosets, and conjugacy classes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The concept of \textit{group} grasps the operations of symmetry in varios aspects of mathematics and physics. Take an hexagon as an example. We can think of various rotations and reflections that are symmetries of an hexagon. Here is the abstract definition of a group:
+
+A set $G$ with a binary operation ``$\vdot$'' is called a \textit{group} if it satisfies the following properties:
+\begin{itemize}
+\item (closure): $a \vdot b \in G$, for every $a, b \in G$.
+\item (associativity): $(a \vdot b) \vdot c =  a \vdot (b \vdot c)$, for every $a, b, c \in G$.
+\item (identity element): There is an element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
+\item (inverse element): For every $a \in G$, there is $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
+\end{itemize}
+
+We usually omit the operation symbol ``$\vdot$'', and simply write $ab = a \vdot b$.
+
+A subgroup $H$ of $G$ is simply a subset of $G$ that also forms a group by itself, in this case we write $H \leq G$.
+
+Essentially, when working with group theory in the context of solids, we are interested in subgroups of a particular group of matrices. These are called orthogonal matrices, and are defined by $R R^T = E$, where $E$ here is the identity matrix.
+
+\n\n\n
+
+Given a subgroup $H$ (order $\abs{H}$) of a group $G$ (order $\abs{G}$), and an element $g \in G$, we define the left coset $gH$ by
+$$
+gH = \{gh \mid h \in H\} \subseteq G.
+$$
+
+We know from Laplace's theorem that every left coset has the same number of elements $\abs{G:H} = \abs{G} / \abs{H}$, which is called the \textit{index} of $H$, and $G$ is a disjoint union of its left cosets:
+$$
+G = \sum_{j=1}^{\abs{G:H}} g_i H,
+$$
+where $g_i \in G$ are representatives of the left cosets $g_i H$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An element $g' = a g a^{-1}$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. This forms a conjugacy relation, and
+$$
+[g] = \{a g a^{-1} \mid a \in G\}
+$$
+is called a conjugacy class. The group $G$ is a disjoint union of its conjugacy classes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Normal subgroup, TALVEZ NÃO PRECISA FALAR}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
+
+One commom example of normal subgroup is
+$$
+G = \{ \text{invertible matrices} \},
+$$
+$$
+H = \{ \text{matrices of determinant 1} \}.
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Homomorphism and Isomorphism}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If $G$ and $H$ are groups, and $\vphi: G \to H$ is a function that satisfies
+$$
+\vphi(a)\vphi(b) = \vphi(ab), \quad \ptodo a,b \in G,
+$$
+then we say that $\vphi$ is a homomorphism between $G$ and $H$. If $\vphi$ is bijective, we say it is a isomorphism and that $G$ is isomorphic to $H$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Induction and subduction of representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
+
+Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
+\begin{align*}
+\Delta_{i'j'ij}(g) =
+\begin{cases}
+\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
+\; 0,  & g_{j'}^{-1} g g_j \notin H.
+\end{cases}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Space Groups}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The point group and translation symmetry operations which carry the crystal into itself form a group called the \textit{space group}. The elements of it are commonly denoted by  $\{ R_\alpha \mid \tau \} $, where $R_\alpha$ is the point group operation and $\tau$ is the translation.
+
+Pure rotations and pure translations are special cases of space group operations:
+\begin{itemize}
+\item $\sg{\eps}{0} =$ identity.
+\item $\sg{R_\alpha}{0} =$ pure point group operation.
+\item $\sg{\eps}{\tau} =$ pure translation.
+\end{itemize}
+
+The result for the multiplication of two space group operations is
+$$
+\sg{R_\beta}{\tau_2} \sg{R_\alpha}{\tau_1} = \sg{R_\beta R_\alpha}{R_\beta\tau_1 + \tau_2}.
+$$
+
+Beyond pure operations, we may find compound operations that combine translations and point group operations. The two possible types are \textit{glide planes} and \textit{screw axes}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/glideplane-screwaxis.png}
+\caption{(a) The glide plane takes $A$ into $A'$. (b) Right- and left-hand screw axis.}
+\label{fig:glideplane-screwaxis}
+\end{figure}
 
 Here we are going to study the concept of \textit{space groups}. It is very important to classify the symmetry properties of the system in interest (Twisted Bilayer Graphene). In our examples, we are going to focus on the familiar honeycomb lattice example. The space group is loosely an semi-direct product of the point group and the translation group. Given a fixed lattice, all the linear transformations that carry the lattice into itself belong to the space group. A useful matrix representation for $G$ is:
 \begin{equation} \label{eq:spacegroup-rep}
@@ -142,111 +252,18 @@ Therefore, the lattice is invariant by the space group operation $\{R_{\mathcal{
 
 \n
 
-\textbf{Example of nonsymmorphic space group}: Tellurium screw axis $3_1$ (achei figura na internet). Glide plane triangular lattice (gerar minha própria figura), translation $a/2$ and reflection. There is also this link \href{https://physics.stackexchange.com/questions/568476/example-of-a-space-group-which-does-not-contain-the-point-group-as-a-subgroup}{here} which explains the glide plane symmetry in Kagomé lattice.
+\textbf{Example of nonsymmorphic space group}: Tellurium screw axis $3_1$ (achei figura na internet). Glide plane triangular lattice (gerar minha própria figura), translation $a/2$ and reflection. There is also this link \href{https://physics.stackexchange.com/questions/568476/example-of-a-space-group-which-does-not-contain-the-point-group-as-a-subgroup}{here} which explains the glide plane symmetry in Kagomé lattice. \textbf{Maybe it is better to consider the H2O ice hexagonal.}
 
 \section{Site-symmetry group}
 
-<++>
+Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
 
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++
-\section{ABAIXO DISSO É COISA ANTIGA}
-+++++++++++++++++++++++++++++++++++++++++++++++
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Elements of group theory}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Cosets}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Given a subgroup $H$ (order $\abs{H}$) of a group $G$ (order $\abs{G}$), and an element $g \in G$, we define the left coset $gH$ by
+For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
 $$
-gH = \{gh \mid h \in H\} \subseteq G.
+G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
 $$
 
-We know from Laplace's theorem that every left coset has the same number of elements $\abs{G:H} = \abs{G} / \abs{H}$, which is called the \textit{index} of $H$, and $G$ is a disjoint union of its left cosets:
-$$
-G = \sum_{j=1}^{\abs{G:H}} g_i H,
-$$
-where $g_i \in G$ are representatives of the left cosets $g_i H$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conjugacy classes}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-An element $g' = a g a^{-1}$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. This forms a conjugacy relation, and
-$$
-[g] = \{a g a^{-1} \mid a \in G\}
-$$
-is called a conjugacy class. The group $G$ is a disjoint union of its conjugacy classes.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Normal subgroup}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
-
-One commom example of normal subgroup is
-$$
-G = \{ \text{invertible matrices} \},
-$$
-$$
-H = \{ \text{matrices of determinant 1} \}.
-$$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Homomorphism and Isomorphism}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-If $G$ and $H$ are groups, and $\vphi: G \to H$ is a function that satisfies
-$$
-\vphi(a)\vphi(b) = \vphi(ab), \quad \ptodo a,b \in G,
-$$
-then we say that $\vphi$ is a homomorphism between $G$ and $H$. If $\vphi$ is bijective, we say it is a isomorphism and that $G$ is isomorphic to $H$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Induction and subduction of representations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
-
-Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
-\begin{align*}
-\Delta_{i'j'ij}(g) =
-\begin{cases}
-\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
-\; 0,  & g_{j'}^{-1} g g_j \notin H.
-\end{cases}
-\end{align*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Space Groups}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The point group and translation symmetry operations which carry the crystel into itself form a group called the \textit{space group}. The elements of it are commonly denoted by  $\{ R_\alpha \mid \tau \} $, where $R_\alpha$ is the point group operation and $\tau$ is the translation.
-
-Pure rotations and pure translations are special cases of space group operations:
-\begin{itemize}
-\item $\sg{\eps}{0} =$ identity.
-\item $\sg{R_\alpha}{0} =$ pure point group operation.
-\item $\sg{\eps}{\tau} =$ pure translation.
-\end{itemize}
-
-The result for the multiplication of two space group operations is
-$$
-\sg{R_\beta}{\tau_2} \sg{R_\alpha}{\tau_1} = \sg{R_\beta R_\alpha}{R_\beta\tau_1 + \tau_2}.
-$$
-
-Beyond pure operations, we may find compound operations that combine translations and point group operations. The two possible types are \textit{glide planes} and \textit{screw axes}.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\linewidth]{fig/glideplane-screwaxis.png}
-\caption{(a) The glide plane takes $A$ into $A'$. (b) Right- and left-hand screw axis.}
-\label{fig:glideplane-screwaxis}
-\end{figure}
+If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Translation subgroup}
@@ -272,18 +289,6 @@ where $r_n$ is a general vector of the Bravais lattice and $\tau_\alpha$ is eith
 
 If, with a suitable choice of origin, all the elements of $G$ can be written in the form $\sg{R_\alpha}{\tau} = \sg{R_\alpha}{r_n} = \sg{\eps}{r_n} \sg{R_\alpha}{0}$ ($\tau_\alpha = 0$ for every symmetry operation), then call $G$ a \textit{symmorphic} space group.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Site-symmetry group and Wyckoff position}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
-
-For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
-$$
-G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
-$$
-
-If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Space groups in Reciprocal Space}
