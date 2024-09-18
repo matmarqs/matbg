@@ -9,7 +9,112 @@
 \chapter{Topological heavy fermion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%  \begin{table}[H]
+%  \caption{Character table of point group $D_6$.}
+%  \centering
+%  \begin{tabular} { c c c c c c c  }
+%  \specialrule{0.05em}{0em}{0.2em}
+%  $\P$ & $\P E$ & $\P C_2$ & $\P2C_3$ & $\P2C_6$ & $\P3C_2'$ & $\P3C_2''$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $A_1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $A_2$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $B_1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $B_2$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $E_1$ & $\P2$ & $ -2$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ \\
+%  \specialrule{0.01em}{0.2em}{0.2em}
+%  $E_1$ & $\P2$ & $\P2$ & $ -1$ & $ -1$ & $\P0$ & $\P0$ \\
+%  \specialrule{0.05em}{0.2em}{0em}
+%  \end{tabular}
+%  \label{tab:D6}
+%  \end{table}
 
+As proved in \cite{all_magic_angles}, when one includes the emergent particle-hole symmetry, the middle two flat bands in each valley must form the irreducible co-representations (dubbed as irreps) (\textbf{Lowest TBG Bands set by PH})
+\begin{equation} \label{eq:matbg-irreps}
+\Gamma_1 \oplus \Gamma_2; M_1 \oplus M_2; K_2 K_3
+\end{equation}
+of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{topological_quantum_chemistry}, we get the Table \cite{tab:matbg-irreps}:
+
+%\begin{table}[H]
+%\caption{Character table of point group $D_6$.}
+%\centering
+%\begin{tabular} { c | c c c  }
+%\hline
+%Wyckoff pos. & 1a (000) & 2c & 3f \\
+%\specialrule{0.05em}{0em}{0.2em}
+%\end{tabular}
+%\label{tab:matbg-irreps}
+%\end{table}
+%
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{|c|c|c|c|}
+%\hline
+%Wyckoff pos. & 1a & 2c & 3f \\
+%\hline
+%\end{tabular}
+%\begin{tabular}{ |c|@{}c@{}|@{}c@{}| }% <-- aded @{}
+%\hline
+%Wyckoff pos. & 1a & 2c \\
+%\hline
+%\hline
+%no test &
+%    \begin{tabular}{c|c} D1 & 1.23 \\ \hline D2 & 1.23 \\ \end{tabular} \\
+%\hline
+%\end{tabular}
+%\end{table}
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{ |@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}| }% <-- aded @{}
+%\hline
+%no test & no test & no test & no test \\
+%\hline
+%no test & no test & no test & no test \\
+%\hline
+%\begin{tabular}{c} D1 \\ \hline D2 \\ \end{tabular} &
+%\begin{tabular}{c|c|c} D1 & 1.23 & a \\ \hline D2 & 1.23 & a \\ \end{tabular} &
+%\begin{tabular}{c|c|c} D1 & 1.23 & a \\ \hline D2 & 1.23 & a \\ \end{tabular} &
+%\begin{tabular}{c|c|c} D1 & 1.23 & a \\ \hline D2 & 1.23 & a \\ \end{tabular} \\
+%\hline
+%\end{tabular}
+%\end{table}
+%
+%
+%\begin{table}[H]
+%\begin{tabulary}{\linewidth}{|c|l|l|L|L|}
+%    \hline
+%    ID Module & Module & ID Scenario & Scenario & Priorite \\
+%    \hline
+%    1 & Gestion de l'inscription & 1.1 & En tant que & Elevee \\
+%    \hline
+%    \multirow{2}{*}{2} & \multirow{2}{*}{Gestion de l'inscription} & 2.1 & En tant que & Elevee \\
+%    & & 2.2 & En tant que & Elevee \\
+%    \hline
+%\end{tabulary}
+%\end{table}
+
+
+\begin{table}[H]
+\caption{Character table of point group $D_6$.}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Wyckoff pos. & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
+\hline
+Site sym. & \multicolumn{3}{c|}{6'2'2, 32} & \multicolumn{3}{c|}{32, 32} & \multicolumn{2}{c|}{2'2'2,2} \\
+\hline
+EBR      & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$   & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ \\
+\hline
+$\Gamma$ & $\Gamma_1(1)$ &       &      &       &       &      &       &       \\
+\hline
+\end{tabular}
+\label{tab:matbg-irreps}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -21,3 +21,11 @@ Próximos passos:
     Cap. 5 - Conclusions.
 
     Reuniões: começamos na semana do dia 29/07 (dia da semana a confirmar)
+
+
+16/set/2024:
+To-do:
+    Escrita do Cap. 4, mostrando a construção da parte não-interagente do Topological Heavy-Fermion model
+    Estudar em um pouco mais de detalhe o modelo 4x4 do H^{c,k}(k) (Eq. (1) do PRL).
+    Diagonalizar esse modelo numericamente e mostrar que para M=0, o estado no ponto gama tem degenerescência 4, sendo que a representação é Gamma_2(2) + Gamma_1(1) + Gamma_2(1)
+    Para M\neq 0, a degenerescência é quebrada para Gamma_2(2) (E=0, degenerescência 2) e estados excitados com simetria  Gamma_1 [E=+M] e Gamma_2(1) [E=-M].
