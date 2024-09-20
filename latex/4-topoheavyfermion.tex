@@ -1,8 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper,12pt]{report}
-\input{preamble}
-\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{preamble}
+%\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,33 +99,59 @@ of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{
 
 
 \begin{table}[H]
-\caption{Character table of point group $D_6$.}
+\scriptsize
+\caption{Lowest TBG bands set by PH.}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \hline
-Wyckoff pos. & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
+Wyckoff & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} & \multirow{3}{*}{TBG} \\
+\cline{1-9}
+Site sym. & \multicolumn{3}{c|}{$6'2'2$, $32$} & \multicolumn{3}{c|}{$32$, $32$} & \multicolumn{2}{c|}{$2'2'2$, $2$} &  \\
+\cline{1-9}
+EBR      & $G_{A_1}^{1a}(1)$ & $G_{A_2}^{1a}(1)$ & $G_{E}^{1a}(2)$ & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$   & $G_{A}^{3f}(3)$ & $G_{B}^{3f}(3)$ &  \\
 \hline
-Site sym. & \multicolumn{3}{c|}{6'2'2, 32} & \multicolumn{3}{c|}{32, 32} & \multicolumn{2}{c|}{2'2'2,2} \\
+$\Gamma$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_2(1)$ \\
 \hline
-EBR      & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$   & $G_{A_1}^{1a}(1)$ & $G_{A_1}^{1a}(1)$ \\
+$K$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ & $K_2K_3(2)$ \\
 \hline
-$\Gamma$ & $\Gamma_1(1)$ &       &      &       &       &      &       &       \\
+$M$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ & $M_1(1) + M_2(1)$ \\
 \hline
 \end{tabular}
 \label{tab:matbg-irreps}
 \end{table}
 
+\begin{table}[H]
+\footnotesize
+\caption{Character table of point group $D_6$.}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+%Wyckoff pos. & \multicolumn{3}{c|}{$1a$ $(000)$} & \multicolumn{3}{c|}{$2c$ $(\frac{1}{3}\frac{2}{3}0),(\frac{2}{3}\frac{1}{3}0)$} & \multicolumn{2}{c|}{$3f$ $(\frac{1}{2}00),(0\frac{1}{2}0),(\frac{1}{2}\frac{1}{2}0)$} \\
+Wyckoff pos. & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
+\hline
+Site sym. & \multicolumn{3}{c|}{$6'2'2$, $32$} & \multicolumn{3}{c|}{$32$, $32$} & \multicolumn{2}{c|}{$2'2'2$, $2$} \\
+\hline
+EBR      & $G_{A_1}^{1a}(1)$ & $G_{A_2}^{1a}(1)$ & $G_{E}^{1a}(2)$ & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$   & $G_{A}^{3f}(3)$ & $G_{B}^{3f}(3)$ \\
+\hline
+$\Gamma$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ \\
+\hline
+\end{tabular}
+\label{tab:matbg-irreps}
+\end{table}
+
+oi
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%-----
-%% Referências bibliográficas
-%%-----
-\addcontentsline{toc}{chapter}{\bibname}
-%\bibliographystyle{abntex2-num}
-\bibliography{citations}
-\bibliographystyle{ieeetr}
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%-----
+%%% Referências bibliográficas
+%%%-----
+%\addcontentsline{toc}{chapter}{\bibname}
+%%\bibliographystyle{abntex2-num}
+%\bibliography{citations}
+%\bibliographystyle{ieeetr}
+%\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
