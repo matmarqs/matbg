@@ -1,0 +1,8 @@
+Equation S71
+H^(c,-)(k) = H^(c,+)*(-k)
+
+Symmetry operators S72
+
+band_structure.py is my library to plot with proportional ticks
+
+6-bands.py is the goal      # TopoHeavyFermion
