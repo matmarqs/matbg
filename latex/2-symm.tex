@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preamble}
-%\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -22,8 +22,8 @@ A set $G$ with a binary operation ``$\vdot$'' is called a \textit{group} if it s
 \begin{itemize}
 \item (closure): $a \vdot b \in G$, for every $a, b \in G$.
 \item (associativity): $(a \vdot b) \vdot c =  a \vdot (b \vdot c)$, for every $a, b, c \in G$.
-\item (identity element): There is an element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
-\item (inverse element): For every $a \in G$, there is $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
+\item (identity): There is an element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
+\item (inverse): For every $a \in G$, there is $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
 \end{itemize}
 
 We usually omit the operation symbol ``$\vdot$'', and simply write $ab = a \vdot b$.
@@ -331,18 +331,51 @@ $$
 \text{Wyckoff position} \iff \text{star of }\k
 $$
 
+\section{Magnetic Space Groups}
+
+Magnetic moments in a solid appears when there are unpaired electrons in electronic shells. A common example is the Hund's rule, which favours the ``ferromagnetic'' interaction so that an intrinsic magnetic moment appears. Below the ordering temperature, a magnetic structure is formed, and above the ordering temperature, the system is in the paramagnetic state.
+
+In this section, we are going to introduce the concept of magnetic space group (Shubnikov group), which is important to study magnetic structures. But our main interest is to apply its theory to analyze symmetries of the TBG system, which has negligible SOC and we can say ``it is spinless'', but we can use the same formalism on the sublattice degree of freedom.
+
+To study the symmetries of magnetic configurations, we introduce the time reversal operator, denoted by $T$ or $1'$. In the context of magnetic systems, this operator acts on magnetic moments that are ``classical axial vectors''. Its action consists of reverting the sense of the current loop, so that the orientation of the magnetic moment is reversed.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[height=0.4\linewidth]{fig/timerev.png}
+  \caption{}
+  \label{fig:timerev}
+\end{subfigure}%
+\begin{subfigure}{.6\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{fig/axialvec.png}
+  \caption{}
+  \label{fig:axialvec}
+\end{subfigure}
+\caption{.}
+\label{fig:geometry}
+\end{figure}
+
+We define the time reversal group formed by only two elements $R = \{1, 1'\}$. Any magnetic group $M$ can be obtained as a subgroup of the direct product of $R$ with another group $G$, such that $M \leq G \otimes R$. The group $G \otimes \{1\}$ is a magnetic group, called ``colourless''. The paramagnetic (``grey'') groups are of the form $P = G \cup G1'$. The other form to construct magnetic groups (``black-white'') is
+$$
+M = H + (G - H) 1',
+$$
+where $H \leq G$ is a subgroup of index 2.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%-----
-%%% Referências bibliográficas
-%%%-----
-%\addcontentsline{toc}{chapter}{\bibname}
-%%\bibliographystyle{abntex2-num}
-%\bibliography{citations}
-%\bibliographystyle{ieeetr}
-%\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

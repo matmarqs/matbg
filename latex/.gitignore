@@ -10,3 +10,5 @@
 *.fdb_latexmk
 /resources
 /code
+fig/axialvec.png
+fig/timerev.png

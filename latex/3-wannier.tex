@@ -1,27 +1,115 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preamble}
-%\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Wannier orbital construction and Wannier obstruction}
+\chapter{Topological Quantum Chemistry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-olhar a tese da Maria Vittoria Gurrieri (capítulo 5) e do Mattia Angeli (seção 3.2). Eles tem alguma coisa haver com Wannier obstruction.
+In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept very intrisicate associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct an interacting MATBG model that incorporates all the important symmetries.
 
+As this theory has a good amount of mathematical definitions and concepts, we are going to use and reuse the example of monolayer graphene, which has the wallpaper group \#17 and corresponding space group $P6mm$ (\#183).
+
+\section{Wyckoff positions}
+
+We are following the references \cite{lectures_tms2017, building_blocks2018}.
+
+\begin{definition}[Orbit of $\q$] \label{def:orbit_q}
+It is the set of all positions related to $\q$ by elements of the space group $G$, i.e. $\text{Orb}_\q = \{g \q \mid g \in G\}$, \textit{and} belong to the same unit cell.
+\end{definition}
+
+\begin{definition}[Site-symmetry group / Stabilizer group] \label{def:sitesym}
+The site-symmetry group of a position $\q$ is the subgroup of operations $g \in G$ that leave $\q$ fixed.
+$$
+G_\q = \{g \mid g \q = \q\} \leq G.
+$$
+\end{definition}
+
+\textit{Remarks:}
+\begin{itemize}
+\item $G_\q$ can include elements $\{R \mid \r\}$, with nonzero translations, $\r \neq \0$.
+\item Since any site-symmetry group leaves a point invariant, it is also isomorphic to one of the 32 crystallographic points groups (in 3D).
+\end{itemize}
+
+\begin{definition}[Wyckoff position] \label{def:wyckpos}
+A \textit{Wyckoff position} $\q$ is any position in the unit cell of the crystal. There are \textit{special} Wyckoff positions, which are those which are left invariant by some symmetry operations. The \textit{multiplicity} of a Wyckoff positions is the number of elements in its orbit (in the same unit cell).
+\end{definition}
+
+\begin{definition}[Coset representatives] \label{def:cosetrep}
+The \textit{coset representatives} of site-symmetry group are the elements that generate the orbit of Wyckoff position. The number of coset representatives is also equal to the multiplicity of the Wyckoff position.
+\end{definition}
+
+\begin{definition}[Coset decomposition] \label{def:cosetdecomp}
+Given a Wyckoff position $\q$, the \textit{coset decomposition} with respect to $\q$ is the full space group is defined by
+$$
+G = \bigcup_\alpha g_\alpha (G_{\q} \ltimes \Z^d).
+$$
+\end{definition}
+
+\begin{definition}[Maximal Wyckoff position]
+A site-symmetry group is \textbf{non-maximal} if there exists a finite group $H \neq G_\q$, such that $G_\q \subseteq H \subseteq G$. A site-symmetry group that is not non-maximal is \textbf{maximal}. A Wyckoff position containing $\q$ is maximal if the stabilizer group $G_\q$ is maximal.
+\end{definition}
+
+\section{Band Representations}
+
+Let a site $\q$ belong to a Wyckoff position of multiplicity $n$, and suppose that $n_q$ orbitals reside on it. The wavefunctions $W_{i1}(\r)$, $i = 1, \ldots, n_q$, of these orbitals transform under an $n_q$-dimensional representation $\rho$, of the site-symmetry group $G_\q$:
+$$
+g W_{i1}(\r) = W_{i1}(g^{-1} \r) = [\rho(g)]_{ij} W_{j1}(\r).
+$$
+
+Without loss of generality, choose the equivalent sites $\q_\alpha = g_{\alpha} \q$ to be in the same unit cell as $\q$. Their orbitals transform under the conjugate representation $\rho_\alpha(h) = \rho(g_\alpha^{-1} h g_\alpha)$, where $h \in G_{\q_\alpha}$ and $g_\alpha^{-1} h g_\alpha \in G_\q$. The wavefunctions localized on $\q_\alpha$ are then defined by
+$$
+W_{i\alpha}(\r) = g_\alpha W_{i1}(\r) = W_{i1}(g_\alpha^{-1} \r),
+$$
+where $\alpha = 1, \ldots, n$ indexes the equivalent sites that belong to the Wyckoff position of multiplicity $n$. Now, the wavefunctions on other unit cells are obtained by an applied translation
+$$
+\sg{E}{\t_\mu} W_{i\alpha}(\r) = W_{i\alpha}(\r-\t_\mu),
+$$
+where $\t_\mu$ is a Bravais lattice vector.
+
+Notice that we end up with $n \times n_\q \times N$ wavefunctions $W_{i\alpha}(\r-\t_\mu)$, where $N \to \infty$ is the number of unit cells in the system. Now we derive how they should transform under an arbitrary element $h = \sg{R}{\t} \in G$ of the space group. This will give us the band representation $\rho_G(h)$ induced from a representation $\rho$ of $G_\q$.
+$$
+\rho_G(h) W_{i\alpha}(\r-\t_\mu) =
+\underbrace{h \sg{E}{\t_\mu}}_{= \sg{E}{R\t_\mu} h} W_{i\alpha} (\r) =
+\sg{E}{R\t_\mu} h W_{i\alpha} (\r) =
+\sg{E}{R\t_\mu} \, h g_\alpha \, W_{i1} (\r).
+$$
+
+From the coset decomposition of Definition \ref{def:cosetdecomp}, we write $h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g$, for some $g \in G_\q$, coset representative $g_\beta$, and a Bravais lattice vector $\t_{\beta\alpha}$.
+
+We can obtain a relation for the lattice vector $\t_{\beta\alpha}$. Notice that
+$$
+h g_\alpha \q = h \q_\alpha =
+$$
+$$
+= \sg{E}{\t_{\beta\alpha}} g_\beta g \q = \sg{E}{\t_{\beta\alpha}} g_\beta \q = \sg{E}{\t_{\beta\alpha}} \q_\beta = \q_\beta + \t_{\beta\alpha}.
+$$
+This gives us that $\t_{\beta\alpha} = h \q_\alpha - \q_\beta$.
+
+Following the derivation:
+$$
+\rho_G(h) W_{i\alpha}(\r-\t_\mu) =
+\sg{E}{R\t_\mu} \sg{E}{\t_{\beta\alpha}} g_\beta g W_{i1}(\r) =
+\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j1}(\r) =
+$$
+$$
+\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j\beta}(\r) =
+[\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
+$$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%-----
-%%% Referências bibliográficas
-%%%-----
-%\addcontentsline{toc}{chapter}{\bibname}
-%%\bibliographystyle{abntex2-num}
-%\bibliography{citations}
-%\bibliographystyle{ieeetr}
-%\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

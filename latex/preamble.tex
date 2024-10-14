@@ -2,13 +2,13 @@
 \usepackage[english]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 %\usepackage{mathtools}
-%\usepackage{amsthm}
+\usepackage{amsthm}     % for definitions and theorems
 %\usepackage{amsmath}
 %\usepackage{nccmath}
-\usepackage{amssymb}
-\usepackage{etoolbox}
+\usepackage{amssymb}    % \ltimes
+\usepackage{etoolbox}   % for start of Chapter
 %\usepackage{amsfonts}
-\usepackage{physics}
+\usepackage{physics}    % for all Physics related
 %\usepackage{dsfont}
 %\usepackage{mathrsfs}
 
@@ -24,6 +24,7 @@
 
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{subcaption}
 %\usepackage{tikz}
 
 \usepackage{ctable}     % tabelas
@@ -70,6 +71,7 @@
 \newcommand{\p}{{\vb{p}}}
 \newcommand{\q}{{\vb{q}}}
 \newcommand{\F}{{\vb{F}}}
+\renewcommand{\t}{{\vb{t}}}
 \newcommand{\vtau}{{\bm{\tau}}}
 \newcommand{\vdelta}{{\bm{\delta}}}
 
@@ -94,3 +96,7 @@
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}  % start 'Chapter' at the same page. needs package etoolbox
 \makeatother
+
+%% Theorems, definitions, proofs
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]

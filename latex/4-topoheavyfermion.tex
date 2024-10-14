@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preamble}
-%\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,9 +33,13 @@
 
 As proved in \cite{all_magic_angles}, when one includes the emergent particle-hole symmetry, the middle two flat bands in each valley must form the irreducible co-representations (dubbed as irreps) (\textbf{Lowest TBG Bands set by PH})
 \begin{equation} \label{eq:matbg-irreps}
-\Gamma_1 \oplus \Gamma_2; M_1 \oplus M_2; K_2 K_3
+\Gamma_1 \oplus \Gamma_2; \; M_1 \oplus M_2; \; K_2 K_3
 \end{equation}
-of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{topological_quantum_chemistry}, we get the Table \cite{tab:matbg-irreps}:
+of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{topological_quantum_chemistry}, we get the Table \ref{tab:matbg-irreps}. We see that the irreps at Equation \ref{eq:matbg-irreps} do not correspond to any of the local orbitals at \ref{tab:matbg-irreps}. In order to resolve the Wannier obstruction, we add the closest higher energy bands, which have the $\Gamma_3$ irrep at the $\Gamma_m$ point. These higher energy bands hybridize with the two middle ones, and we extract the trivial bands that form the band representation
+\begin{equation} \label{eq:trivial-irreps}
+[E]_a \uparrow G: \quad \Gamma_3; \; M_1 \oplus M_2; \; K_2 K_3,
+\end{equation}
+where $[E]_a$ is forme by $p_x, p_y$-like orbitals at the $1a$ Wyckoff position.
 
 %\begin{table}[H]
 %\caption{Character table of point group $D_6$.}
@@ -145,13 +149,13 @@ oi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%-----
-%%% Referências bibliográficas
-%%%-----
-%\addcontentsline{toc}{chapter}{\bibname}
-%%\bibliographystyle{abntex2-num}
-%\bibliography{citations}
-%\bibliographystyle{ieeetr}
-%\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
