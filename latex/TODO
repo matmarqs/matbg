@@ -29,3 +29,19 @@ To-do:
     Estudar em um pouco mais de detalhe o modelo 4x4 do H^{c,k}(k) (Eq. (1) do PRL).
     Diagonalizar esse modelo numericamente e mostrar que para M=0, o estado no ponto gama tem degenerescência 4, sendo que a representação é Gamma_2(2) + Gamma_1(1) + Gamma_2(1)
     Para M\neq 0, a degenerescência é quebrada para Gamma_2(2) (E=0, degenerescência 2) e estados excitados com simetria  Gamma_1 [E=+M] e Gamma_2(1) [E=-M].
+
+21/out/2024:
+To-do:
+
+    Usando o exemplo do 4mm acima, fazer o caso do 622.
+    Mateus, faça uma figura parecida para o 6'2'2, usando bolinhas brancas e pretas.
+    Note que a notação "622" equivale a um C_6, e dois C_2 rotation axes in the Hermann–Mauguin notation:
+
+https://en.wikipedia.org/wiki/Hermann%E2%80%93Mauguin_notation
+https://en.wikipedia.org/wiki/Crystallographic_point_group
+
+    Explicar em detalhe a Tabela S2 do Supplementary Material do Bernevig: Elementary Band Representations (EBR) do magnetic space group P6'2'2
+    Notação: [A1]c :seta_para_cima: G_{k} onde o sub-índice c é a Wickoff position e k é a posição do high-symmetry point no espaço k.
+    Dissertação do Rennella (Table 2.5) faz para o D_6 que é o P622 para a Wickhoff position 2c.
+    Ou seja, a tarefa é expandir o que o Rennella fez para: (1) o grupo P6'2'2 e incluir a Wickohoff positon 1a.
+    No caso, seria interessante fazer um paralelo com o resultado do Renella.
