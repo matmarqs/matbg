@@ -30,7 +30,7 @@ To-do:
     Diagonalizar esse modelo numericamente e mostrar que para M=0, o estado no ponto gama tem degenerescência 4, sendo que a representação é Gamma_2(2) + Gamma_1(1) + Gamma_2(1)
     Para M\neq 0, a degenerescência é quebrada para Gamma_2(2) (E=0, degenerescência 2) e estados excitados com simetria  Gamma_1 [E=+M] e Gamma_2(1) [E=-M].
 
-21/out/2024:
+21/out/2024
 To-do:
 
     Usando o exemplo do 4mm acima, fazer o caso do 622.
