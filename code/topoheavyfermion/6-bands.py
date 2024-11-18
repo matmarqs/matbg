@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 from numpy.linalg import eigh
 import band_structure as bs
@@ -9,11 +11,11 @@ plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{physics}')
 v = -4.303 * 1e3 # meV . A (v_*)
 vp = 1.622 * 1e3 # meV . A (v_*')
 #vp = 0 # meV . A (v_*')
-#M = 3.697   # meV
-M = 0   # meV
-#g = -24.75  # meV (gamma)
-g = 0  # meV (gamma)
-eta = 1
+M = 3.697   # meV
+#M = 0   # meV
+g = -24.75  # meV (gamma)
+#g = 0  # meV (gamma)
+eta = -1
 
 s0 = np.array([[ 1, 0 ],        # Pauli 0 (identity matrix)
                [ 0, 1 ]])
@@ -72,7 +74,7 @@ def main():
     plt.title(r"$v_* = %s \,\text{eV}\cdot\mathrm{\AA},\; v_*' = %s \,\text{eV}\cdot\mathrm{\AA},\; M = %s \,\text{meV},\; \gamma = %s \,\text{meV}$" % tuple([latex_float(f) for f in [v*1e-3, vp*1e-3, M, g]]))
     plt.ylim(ymin, ymax);
     plt.ylabel(r'Energy (meV)', fontsize=20)
-    plt.savefig("figs/thf-no_M_no_gamma.png", dpi=300, format='png', bbox_inches="tight")
+    plt.savefig("compare/thf-valley-correct_params.png", dpi=300, format='png', bbox_inches="tight")
     plt.clf()
 
 

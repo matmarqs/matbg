@@ -8,29 +8,6 @@
 \chapter{Topological heavy fermion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%  \begin{table}[H]
-%  \caption{Character table of point group $D_6$.}
-%  \centering
-%  \begin{tabular} { c c c c c c c  }
-%  \specialrule{0.05em}{0em}{0.2em}
-%  $\P$ & $\P E$ & $\P C_2$ & $\P2C_3$ & $\P2C_6$ & $\P3C_2'$ & $\P3C_2''$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $A_1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $A_2$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $B_1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $B_2$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $E_1$ & $\P2$ & $ -2$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ \\
-%  \specialrule{0.01em}{0.2em}{0.2em}
-%  $E_1$ & $\P2$ & $\P2$ & $ -1$ & $ -1$ & $\P0$ & $\P0$ \\
-%  \specialrule{0.05em}{0.2em}{0em}
-%  \end{tabular}
-%  \label{tab:D6}
-%  \end{table}
-
 As proved in \cite{all_magic_angles}, when one includes the emergent particle-hole symmetry, the middle two flat bands in each valley must form the irreducible co-representations (dubbed as irreps) (\textbf{Lowest TBG Bands set by PH})
 \begin{equation} \label{eq:matbg-irreps}
 \Gamma_1 \oplus \Gamma_2; \; M_1 \oplus M_2; \; K_2 K_3
@@ -64,7 +41,7 @@ $M$ & $M_1(1)$ & $M_2(1)$ & $M_1(1)+M_2(1)$ & $2M_1(1)$ & $2M_2(1)$ & $2M_1(1)+2
 \end{table}
 
 \begin{table}[H]
-\caption{Character table of point group $D_6$.}
+\caption{Character table of irreps at high symmetry momenta in magnetic space group $P6'2'2$.}
 \centering
 \begin{tabular} { c c c c | c c c | c c c }
 \cline{1-10}
@@ -132,7 +109,7 @@ $$
 H_1(\K_1 + \q) \approx v_F \, \q \vdot \bm{\sigma}.
 $$
 $$
-\boxed{ H_2(\K_2 + \q) = H_2(R_\theta \K_1 + \q) = H_1(\K_1 + R_\theta^{-1}\q) \approx v_F \, (R_\theta^{-1}\q) \vdot \bm{\sigma}. }
+\boxed{ H_2(\K_2 + \q) = H_2(R_\theta \K_1 + \q) = H_1(\K_1 + R_\theta^{-1}\q) \approx v_F \, (R_\theta^{-1}\q) \vdot \bm{\sigma} \approx v_F \, (1 - i \theta \sigma_y ) \, \q \vdot \bm{\sigma}. }
 $$
 
 If we \textbf{neglect the $\theta$-dependence on $H_2$}, our BM model will be \textbf{particle-hole symmetric}, as defined by Bernevig.
@@ -169,7 +146,7 @@ $$
 
 \n
 
-This \textbf{BM model} is called \textbf{MBM-1V (Moiré Band Model - One Valley)} by Bernevig. We can rewrite on a momentum $\Q$-lattice, and the hamiltonian will be
+This \textbf{BM model} is called \textbf{MBM-1V (Moiré Band Model - One Valley)} by Bernevig. If we decompose $\q = \k - \Q$, $\q'=\k-\Q'$, where $\Q$ and $\Q'$ belong to the hexagonal lattice formed by adding $\q_{1,2,3}$ iteratively, we can rewrite the hamiltonian as
 $$
 \boxed{
 H_{\Q, \Q'}^{(\text{MBM-1V})}(\k) =
@@ -180,9 +157,46 @@ $$
 
 \begin{itemize}
 \item This model is \textbf{topological} and is what we have been discussing the whole time.
-\item The tables of Bernevig apply this model, where we consider the Wyckoff position 1a within the THF approach to solve the topological obstruction.
+\item The tables of Bernevig apply to this model, where we consider the Wyckoff position 1a within the THF approach to solve the topological obstruction.
 \item Its magnetic space group is $P6'2'2$. Generators: $C_{6z} T$, $C_{2y} T$, $C_{2x}$.
 \end{itemize}
+
+\begin{table}[H]
+\tiny
+\caption{Elementary band representations of the magnetic space group $P6'2'2$.}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Wyckoff & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
+\cline{1-9}
+Site sym. & \multicolumn{3}{c|}{$6'2'2$, $32$} & \multicolumn{3}{c|}{$32$, $32$} & \multicolumn{2}{c|}{$2'2'2$, $2$} \\
+\cline{1-9}
+EBR & $G_{A_1}^{1a}(1)$ & $G_{A_2}^{1a}(1)$ & $G_{E}^{1a}(2)$ & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$   & $G_{A}^{3f}(3)$ & $G_{B}^{3f}(3)$ \\
+\hline
+$\Gamma$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ \\
+\hline
+$K$ & $K_1(1)$ & $K_1(1)$ & $K_2 K_3(2)$ & $K_2 K_3(2)$ & $K_2 K_3(2)$ & $2K_1(1) + K_2 K_3(2)$ & $K_1(1)+K_2 K_3(2)$ & $K_1(1)+K_2 K_3(2)$ \\
+\hline
+$M$ & $M_1(1)$ & $M_2(1)$ & $M_1(1)+M_2(1)$ & $2M_1(1)$ & $2M_2(1)$ & $2M_1(1)+2M_2(1)$ & $2M_1(1)+M_2(1)$ & $M_1(1)+2M_2(2)$ \\
+\hline
+\end{tabular}
+\label{tab:ebr-P6'2'2}
+\end{table}
+
+\begin{table}[H]
+\caption{Character table of irreps at high symmetry momenta in magnetic space group $P6'2'2$.}
+\centering
+\begin{tabular} { c c c c | c c c | c c c }
+\cline{1-10}
+$\P$ & $\P \Gamma_1$ & $\P \Gamma_2$ & $\P \Gamma_3$ & $\P$ & $\P M_1$ & $\P M_2$ & $\P$ & $\P K_1$ & $\P K_2K_3$ \\
+\cline{1-10}
+$E$ & $\P1$ & $\P1$ & $\P2$ & $\P E$ & $\P1$ & $\P1$ & $\P E$ & $\P1$ & $\P2$ \\
+$2 C_3$ & $\P1$ & $\P1$ & $ -1$ & $\P C_2'$ & $\P1$ & $ -1$ & $\P C_3$ & $\P1$ & $ -1$ \\
+$3 C_2'$ & $\P1$ & $ -1$ & $\P0$ & $\P$ & $\P$ & $\P$ & $\P C_3^{-1}$ & $\P1$ & $-1$ \\
+\cline{1-10}
+\end{tabular}
+\label{tab:char-P6'2'2}
+\end{table}
 
 \section{There exists another model}
 
@@ -198,10 +212,56 @@ $$
 Here $\tau_z$ and $\tau_0$ are the Pauli and identity matrix representing the valley degree of freedom.
 
 \begin{itemize}
-\item This model is \textbf{apparently different} from the latter, and \textbf{is not topological}.
+\item This model is \textbf{apparently different} from the latter, and \textbf{is not topological}. You can decompose it in EBR's as $G_{A_1}^{2c} + G_{A_2}^{2c}$.
 \item The tables of Rennella apply to this model. There the authors (Vafek, Rennella, Angeli, Koshino, etc) consider Wyckoff position 2c, because these positions really correspond to symmetry-adapted exponentially localized Wannier functions.
 \item The magnetic space group is $P6221'$. Generators: $C_{6z}$, $C_{2y}$, $C_{2x}$, $T$.
 \end{itemize}
+
+\begin{table}[H]
+\caption{Elementary band representations generated from Wyckoff position $2c$ of the space group $P622$.}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Wyckoff & \multicolumn{3}{c|}{$2c$} \\
+\cline{1-4}
+Site sym. & \multicolumn{3}{c|}{$32$} \\
+\cline{1-4}
+EBR & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$  \\
+\hline
+$\Gamma$ & $\Gamma_1(1) + \Gamma_4(1)$ & $\Gamma_2(1) + \Gamma_3(1)$ & $\Gamma_5(2) + \Gamma_6(2)$ \\
+\hline
+$K$ & $K_3(2)$ & $K_3(2)$ & $K_1(1) + K_2(1) + K_3(2)$ \\
+\hline
+$M$ & $M_1(1) + M_4(1)$ & $M_2(1) + M_3(1)$ & $M_1(1) + M_2(1) + M_3(1) + M_4(1)$ \\
+\hline
+\end{tabular}
+\label{tab:ebr-P622}
+\end{table}
+
+\begin{table}[H]
+\caption{Character table of irreps at high symmetry momenta in space group $P622$.}
+\scriptsize
+\centering
+\begin{tabular} { c c c c c c c | c c c c c | c c c c }
+\cline{1-16}
+$\P$ & $\P \Gamma_1$ & $\P \Gamma_2$ & $\P \Gamma_3$ & $\P \Gamma_4$ & $\P \Gamma_5$ & $\P \Gamma_6$ & $\P$ & $\P M_1$ & $\P M_2$ & $\P M_3$ & $\P M_4$ & $\P$ & $\P K_1$ & $\P K_2$ & $\P K_3$\\
+\cline{1-16}
+$E$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P2$ & $\P2$ & $E$     & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $E$      & $\P1$ & $\P1$ & $\P2$ \\
+$2C_6$   & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $ -1$ & $\P1$ & $C_2$   & $\P1$ & $\P1$  & $ -1$ & $ -1$ & $C_3$    & $\P1$ & $\P1$ & $ -1$ \\
+$2C_3$   & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $C_2'$  & $\P1$ & $ -1$  & $ -1$ & $\P1$ & $3C_2''$ & $\P1$ & $ -1$ & $\P0$ \\
+$C_2$    & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P2$ & $ -2$ & $C_2''$ & $\P1$ & $ -1$  & $\P1$ & $ -1$ &          &       &       &       \\
+$3C_2'$  & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ &         &       &        &       &       &          &       &       &       \\
+$3C_2''$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P0$ & $\P0$ &         &       &        &       &       &          &       &       &       \\
+\cline{1-16}
+\end{tabular}
+\label{tab:char-P622}
+\end{table}
+
+Compare tables \ref{tab:ebr-P622} and \ref{tab:char-P622} with tables 2.5 and (2.1, 2.3) of Rennella \cite{thesis_rennella}, respectively.
+
+\pagebreak
+
+
 
 
 
