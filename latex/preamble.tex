@@ -3,6 +3,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 %\usepackage{mathtools}
 \usepackage{amsthm}     % for definitions and theorems
+\usepackage[many]{tcolorbox}    % boxes around definitions and theorems
 %\usepackage{amsmath}
 %\usepackage{nccmath}
 \usepackage{amssymb}    % \ltimes
@@ -100,4 +101,27 @@
 
 %% Theorems, definitions, proofs
 \theoremstyle{definition}
+
 \newtheorem{definition}{Definition}[section]
+\tcolorboxenvironment{definition}{
+  colback=blue!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=2pt,right=2pt,top=2pt,bottom=2pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\tcolorboxenvironment{theorem}{
+  colback=blue!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=2pt,right=2pt,top=2pt,bottom=2pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}

@@ -8,42 +8,119 @@
 \chapter{Emergent symmetries in Twisted Bilayer Graphene}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The concept of \textit{symmetry} reincidentally appears in physics, because various aspects of our reality exhibit symmetric objects.
+
+Our goal is to develop a fully symmetric model for TBG. To achieve this, it is essential to first understand the mathematical concepts of symmetry, specifically Group Theory and Representation Theory as applied to crystallographic solids. In this chapter we will provide the necessary definitions and theorems in order to develop our symmetry analysis.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Elements of group theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Groups, cosets, and conjugacy classes}
+%\subsection{Groups, cosets, and conjugacy classes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The concept of \textit{group} grasps the operations of symmetry in varios aspects of mathematics and physics. Take an hexagon as an example. We can think of various rotations and reflections that are symmetries of an hexagon. Here is the abstract definition of a group:
+In this thesis we are concerned with symmetries that relate to graphene. Because its carbon atoms form a honeycomb lattice, our basic object of study will be a 2D hexagon.
 
-A set $G$ with a binary operation ``$\vdot$'' is called a \textit{group} if it satisfies the following properties:
-\begin{itemize}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{fig/hexagon.png}
+\caption{2D spatial symmetries of a hexagon.}
+\label{fig:hexagon}
+\end{figure}
+
+In a certain sense, a basic hexagon has 12 symmetry elements. Looking at Figure \ref{fig:hexagon}, the hexagon has the reflections $\textcolor{RoyalBlue}{\sigma_d}$, $\textcolor{Orange}{\sigma_v}$, the $60^\circ$ rotation $\textcolor{ForestGreen}{C_6}$, and all the combinations of these. Combining all the possibilities, we say all that the symmetry elements of the hexagon form the \textit{group} $D_6 = \{E, \textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v} \}$. In this list, we did not include repeated elements, observe that $\textcolor{ForestGreen}{C_6^{\textcolor{black}{6}}} = \textcolor{RoyalBlue}{\sigma_d^{\textcolor{black}{2}}} = \textcolor{RoyalBlue}{\sigma_v^{\textcolor{black}{2}}} = E$ is the element the identity element, the one that ``does nothing''.
+
+\n
+
+The concept of \textit{group} $G$ grasps the set of elements $a \in G$ that represent the symmetry of an object, along with its symmetry operation ``$\vdot$''. The element $a \vdot b$ represents the ``composition'' of applying first the operation $a$, and then $b$.
+
+\begin{definition}[\textbf{Group}]
+Given a set $G$ and a binary operation ``$\vdot$''$:G\times G \to G$, \textbf{the pair} $(G, \vdot)$ is called a \textit{group} if it satisfies the following properties:
+\begin{enumerate}
 \item (closure): $a \vdot b \in G$, for every $a, b \in G$.
 \item (associativity): $(a \vdot b) \vdot c =  a \vdot (b \vdot c)$, for every $a, b, c \in G$.
-\item (identity): There is an element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
-\item (inverse): For every $a \in G$, there is $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
-\end{itemize}
+\item (identity): There exists an (identity) element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
+\item (inverse): For every $a \in G$, there is (an inverse) $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
+\end{enumerate}
+Normally in the literature, one speaks of the set $G$ as being ``the group'' instead of the pair $(G, \vdot)$ and omits the operation symbol ``$\vdot$'', simply writing $ab$ instead of $a \vdot b$. This is for convenience but, mathematically, the operation ``$\vdot$'' is crucial to define a group.
+\end{definition}
 
-We usually omit the operation symbol ``$\vdot$'', and simply write $ab = a \vdot b$.
+\begin{definition}[\textbf{Order}]
+The order of a group $G$ is defined as its number of elements $\abs{G}$.
+\end{definition}
 
-A subgroup $H$ of $G$ is simply a subset of $G$ that also forms a group by itself, in this case we write $H \leq G$.
+It happens frequently that an object $A$ has all the symmetries of another object $B$. For example, a hexagon has all the symmetries of a triangle, as we can see in Figure \ref{fig:hexagon_subgroup}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{fig/hexagon_subgroup.png}
+\caption{The \textcolor{ForestGreen}{hexagon} has all the symmetries of the \textcolor{Cyan}{triangle}, i.e., $D_3$ is a subgroup of $D_6$.}
+\label{fig:hexagon_subgroup}
+\end{figure}
+
+The symmetry elements of the triangle form the group $D_3 = \{E, \textcolor{Cyan}{C_3}, \textcolor{Cyan}{C_3^{\textcolor{black}{2}}}, \textcolor{Orange}{\sigma_v}, \textcolor{Cyan}{C_3} \textcolor{Orange}{\sigma_v}, \textcolor{Cyan}{C_3^{\textcolor{black}{2}}}\textcolor{Orange}{\sigma_v}\}$. Observing that $\textcolor{Cyan}{C_3} = \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}$ and $\textcolor{Cyan}{C_3^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v} = \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}$, we can rewrite $D_3 = \{E, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v} \}$. In this way, we see that $D_3$ is a subset of $D_6$. Moreover, $D_3$ forms a group by itself and we say it is a subgroup of $D_6$.
+
+
+\begin{definition}[\textbf{Subgroup}]
+If $(G, \vdot)$ is a group and $H$ is a subset of $G$, we say that $H$ is a subgroup of $G$ if the pair $(H, \vdot)$ is a group by itself.
+\end{definition}
+
+It is common that one defines a group by its \textit{generators}. We did that when defining the groups $D_6$ and $D_3$ associated to the hexagon and triangle, respectively at Figures \ref{fig:hexagon} and \ref{fig:hexagon_subgroup}. By generators, we mean:
+
+\begin{definition}[\textbf{Generators of a group}]
+If $S$ is a subset of a group $G$, we define $\ev{S}$ as the smallest subgroup of $G$ containing every element of $S$. The subgroup $\ev{S}$ is called the \textit{subgroup generated by $S$}. If $\ev{S} = G$, we say that the set $S$ \textit{generates} $G$.
+
+An intuitive way of thinking of $\ev{S}$ is by ``recursively multiplying'' all the elements of $S$, until all the possibilities are exhausted. For example, in general for two elements:
+$$
+\ev{\{a,b\}} = \{E, a, b, a^2, ab, ba, b^2, a^3, a^2b, aba, ba^2, ab^2, bab, b^2a, b^3, \ldots\}.
+$$
+\end{definition}
+
+For the hexagon at Figure \ref{fig:hexagon}, the set $\{\textcolor{ForestGreen}{C_6}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{Orange}{\sigma_v}\}$ generates the group $D_6$; and for the triangle at Figure \ref{fig:hexagon_subgroup}, the set $\{\textcolor{Cyan}{C_3}, \textcolor{Orange}{\sigma_v}\}$ generates the group $D_3$.
+
+\begin{definition}[\textbf{Cosets}]
+Let $G$ be a group and $H$ one of its subgroups. Given an element $g \in G$, we define the set $gH$ by
+$$
+gH = \{g h \mid h \in H\} \subseteq G.
+$$
+This set $gH$ is called a left coset of $G$ with respect to $H$, and $g$ is a representative of $gH$.
+
+It is always possible to decompose $G$ as a disjoint union of its left cosets:
+$$
+G = \sum_{j=1}^{\abs{G:H}} g_j H,
+$$
+where $g_j \in G$ is a representative of $g_j H$, and $\abs{G:H}$ is the number of different left cosets.
+\end{definition}
+
+An iconic theorem due to Laplace says that the order of a subgroup $H \subseteq G$ divides the order of the group $G$.
+
+\begin{theorem}[\textbf{Laplace}]
+The number of different left cosets is given by $\abs{G:H} = \abs{G} / \abs{H}$.
+\end{theorem}
+
+As an example, take $H = D_3$ and $G = D_6$. We have that $\abs{D_3}=6$ and $\abs{D_6} = 12$. Therefore, we only have two different left cosets. One of them has $E$ as its representative:
+$$
+E D_3 = D_3 = \{E, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v} \}.
+$$
+The other one is what is left of $D_6$, which has $\textcolor{ForestGreen}{C_6}$ as its representative:
+$$
+\textcolor{ForestGreen}{C_6} D_3 = \{\textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{ForestGreen}{C_6}\textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} (\textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}), \textcolor{ForestGreen}{C_6}(\textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}) \} = \{ \textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6} \textcolor{RoyalBlue}{\sigma_d} \},
+$$
+where $\textcolor{RoyalBlue}{\sigma_d} = \textcolor{ForestGreen}{C_6}\textcolor{Orange}{\sigma_v}$. The coset decomposition is the disjoint union of the two cosets
+$$
+D_6 = ED_3 \cup C_6 D_3.
+$$
+
+\section{Solids}
+
+<++>
+
+\n
 
 Essentially, when working with group theory in the context of solids, we are interested in subgroups of a particular group of matrices. These are called orthogonal matrices, and are defined by $R R^T = E$, where $E$ here is the identity matrix.
 
 \n\n\n
 
-Given a subgroup $H$ (order $\abs{H}$) of a group $G$ (order $\abs{G}$), and an element $g \in G$, we define the left coset $gH$ by
-$$
-gH = \{gh \mid h \in H\} \subseteq G.
-$$
-
-We know from Laplace's theorem that every left coset has the same number of elements $\abs{G:H} = \abs{G} / \abs{H}$, which is called the \textit{index} of $H$, and $G$ is a disjoint union of its left cosets:
-$$
-G = \sum_{j=1}^{\abs{G:H}} g_i H,
-$$
-where $g_i \in G$ are representatives of the left cosets $g_i H$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Representations}
