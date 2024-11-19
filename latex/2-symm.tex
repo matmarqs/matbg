@@ -111,6 +111,85 @@ $$
 D_6 = ED_3 \cup C_6 D_3.
 $$
 
+In analogy with the concept of similarity transformations in linear algebra, we define:
+\begin{definition}[\textbf{Conjugacy classes}]
+Let $G$ be a group and $a, g, g' \in G$. If $g' = a g a^{-1}$, we say that $g'$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. The set
+$$
+[g] = \{ g' \in G \mid g' \sim g \} = \{ a g a^{-1} \mid a \in G \} \subseteq G
+$$
+is called a conjugacy class of $G$. Every group is a disjoint union of its conjugacy classes.
+\end{definition}
+
+Going back to our example groups $D_3$ and $D_6$, one finds the conjugacy classes
+$$
+D_3 = [E] \cup [C_3] \cup [\sigma_v] = \{E\} \cup \{C_3, C_3^2\} \cup \{\sigma_v, C_3 \sigma_v, C_3^2 \sigma_v\},
+$$
+\begin{align*}
+D_6 &= [E] &&\cup&& [C_2] &&\cup&& [C_3] &&\cup&& [C_6] &&\cup&& [\sigma_v] &&\cup&& [\sigma_d] \\
+&= \{E\} &&\cup&& \{C_6^3\} &&\cup&& \{C_6^2, C_6^4\} &&\cup&& \{C_6, C_6^5\} &&\cup&& \{\sigma_v, C_6^2 \sigma_v, C_6^4 \sigma_v\} &&\cup&& \{\sigma_d, C_6^2 \sigma_d, C_6^4 \sigma_d\},
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Homomorphisms}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Going back to the example of graphene, let us say we want to identify which elements of $D_6$ exchange sublattice types $A$ and $B$, as in Figure \ref{fig:hexagon_AB}. We can accomplish this task by using a labelling function $\vphi: D_6 \to \{1, -1\}$, where
+\begin{align*}
+\vphi(g) =
+\begin{cases}
+\; \P1, \quad g \text{ changes sublattice type} \\
+\; -1, \quad g \text{ otherwise.}
+\end{cases}
+\end{align*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{fig/hexagon_AB.png}
+\caption{Symmetries $D_6$ with sublattice type $A$ or $B$.}
+\label{fig:hexagon_AB}
+\end{figure}
+
+For example, for our generators of $D_6$ we have $\vphi(C_6) = -1$, $\vphi(\sigma_v) = 1$ and $\vphi(\sigma_d) = -1$. Only these values are sufficient, because if we treat $\{1, -1\}$ as a group by itself, with standard multiplication as its operation, one may notice that $\vphi$ follows the rule
+$$
+\vphi(g_1 g_2) = \vphi(g_1) \vphi(g_2).
+$$
+
+The element $g_1 g_2$ changes sublattice only if exactly one of $g_1$ or $g_2$ do. Now, the elements $D_3$ do not exchange sublattice type, which translates to the property $\vphi(g) = 1$ for every $g \in D_3$.
+
+The labelling function $\vphi$ is generally known as a homomorphism, which is a way to identify subgroups. In this case, it serves to identify $D_3$.
+
+\begin{definition}[\textbf{Homomorphism}]
+Let $G$ and $H$ be groups. A function $\vphi: G \to H$ is called an \textit{homomorphism} if it satisfies
+$$
+\vphi(a b) = \vphi(a) \vphi(b), \quad \forall \, a,b \in G.
+$$
+Moreover, if $\vphi$ is bijective, we say that it is an \textit{isomorphism}.
+\end{definition}
+
+<++>
+
+
+
+
+In physics, it is very common to work with groups composed of matrices, where the group operation is the usual matrix multiplication. All of them are some subgroup of the invertible matrices.
+
+\begin{definition}[\textbf{Linear group}]
+Let $V$ be a vector space (over $\mathbb{R}$ or $\C$). We call the group of invertible linear operators in $V$ the \textit{general linear group}
+$$
+GL(V) = \qty{A: V \to V \mid A \text{ is linear and invertible}}
+$$
+The most usual case is when $V = \mathbb{R}^n$, where
+$$
+GL(\mathbb{R}^n) = \qty{\text{invertible } n\times n \text{ real matrices}}.
+$$
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+It is kind of difficult to work with a group that is defined abstractally, it is easier to have something algebraic to work. This is where Representation Theory comes in. A representation of a group $G$ is an association of each element of the group with a matrix, something we are used to operate algebraically.
+
 \section{Solids}
 
 <++>
@@ -122,29 +201,20 @@ Essentially, when working with group theory in the context of solids, we are int
 \n\n\n
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Representations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-An element $g' = a g a^{-1}$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. This forms a conjugacy relation, and
-$$
-[g] = \{a g a^{-1} \mid a \in G\}
-$$
-is called a conjugacy class. The group $G$ is a disjoint union of its conjugacy classes.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Normal subgroup, TALVEZ NÃO PRECISA FALAR}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
-
-One commom example of normal subgroup is
-$$
-G = \{ \text{invertible matrices} \},
-$$
-$$
-H = \{ \text{matrices of determinant 1} \}.
-$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Normal subgroup, TALVEZ NÃO PRECISA FALAR}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
+%
+%One commom example of normal subgroup is
+%$$
+%G = \{ \text{invertible matrices} \},
+%$$
+%$$
+%H = \{ \text{matrices of determinant 1} \}.
+%$$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Homomorphism and Isomorphism}
@@ -156,20 +226,6 @@ $$
 $$
 then we say that $\vphi$ is a homomorphism between $G$ and $H$. If $\vphi$ is bijective, we say it is a isomorphism and that $G$ is isomorphic to $H$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Induction and subduction of representations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
-
-Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
-\begin{align*}
-\Delta_{i'j'ij}(g) =
-\begin{cases}
-\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
-\; 0,  & g_{j'}^{-1} g g_j \notin H.
-\end{cases}
-\end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Space Groups}
@@ -451,6 +507,21 @@ The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin no
 \caption{Representation of the magnetic point group $6'2'2$.}
 \label{fig:622_magnetic}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Induction and subduction of representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
+
+Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
+\begin{align*}
+\Delta_{i'j'ij}(g) =
+\begin{cases}
+\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
+\; 0,  & g_{j'}^{-1} g g_j \notin H.
+\end{cases}
+\end{align*}
 
 
 
