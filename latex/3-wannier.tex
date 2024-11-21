@@ -88,6 +88,11 @@ $$
 $$
 This gives us that $\t_{\beta\alpha} = h \q_\alpha - \q_\beta$.
 
+Therefore, $g$ and $\t_{\beta\alpha}$ are determined by
+\begin{equation} \label{eq:g_and_tba}
+h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g, \quad \t_{\beta\alpha} = h \q_\alpha - \q_\beta.
+\end{equation}
+
 Following the derivation:
 $$
 \rho_G(h) W_{i\alpha}(\r-\t_\mu) =
@@ -95,9 +100,138 @@ $$
 \sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j1}(\r) =
 $$
 $$
-\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j\beta}(\r) =
-[\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
+\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j\beta}(\r) \implies
 $$
+\begin{equation} \label{eq:wannier_rep}
+\rho_G(h) W_{i\alpha}(\r-\t_\mu) = [\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
+\end{equation}
+
+\n
+
+Now define the Fourier transformed Wannier functions (Bloch functions):
+$$
+a_{i\alpha}(\k, \r) = \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu).
+$$
+
+Using Equation \ref{eq:wannier_rep}, the Bloch functions transform as
+$$
+\rho_G(h) a_{i\alpha}(\k,\r) =
+\rho_G(h) \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu) =
+\sum_{\mu} e^{i\k\vdot\t_\mu} [\rho(g)]_{ij} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) =
+$$
+$$
+= e^{i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \sum_{\mu} e^{i(R\k)\vdot(R\t_\mu+\t_{\beta\alpha})} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) \implies
+$$
+\begin{equation} \label{eq:bloch_rep}
+(\rho_G(h) a)_{i\alpha}(\k,\r) = e^{i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \, a_{j\beta}(R\k, \r),
+\end{equation}
+where $g$ and $\t_{\beta\alpha}$ are determined by Equation \ref{eq:g_and_tba}. The choice of representatives $g_\alpha$ must be kept fixed through the construction.
+
+Observe that $\rho_G(h)$ in its matrix form consists of infinitely many $(n\cdot n_q)\times (n\cdot n_q)$ block, where each one is labelled by a $(\k', \k)$ pair, that correspond to Bloch functions labelled by $\k', \k$. For a given $h = \sg{R}{\v} \in G$ and each set of columns corresponding to $\k$, there is exactly one non-zero block, identified by $\k' = R\k$. Denoting this block by $\rho_G^\k(h)$, its matrix elements are given by
+$$
+\rho_G^\k(h)_{j\beta,i\alpha} = e^{-i(R\k)\vdot\t_{\beta\alpha}}\rho_{ji}(g_\beta^{-1}\sg{E}{-\t_{\beta\alpha}}hg_\alpha).
+$$
+
+The full set of matrices $\rho_G^\k(h)$, for each $\k$ in the first BZ, contain all the non-zero elements of $\rho_G(h)$.
+
+\section{Momentum space}
+
+\begin{definition}[\textbf{Little group}]
+Two reciprocal space vectors $\k_1$ and $\k_2$ are said to be equivalent, $\k_1 \equiv \k_2$, if $\k_2 - \k_1$ is a reciprocal lattice vector. The \textit{little group} $G_\k$ of a vector $\k$ in reciprocal space is the set of elements $g \in G$ such that $g \k \equiv \k$. Remember that the action of space group elements on reciprocal space is defined by
+$$
+g\k = \sg{R}{\t}\k = R\k.
+$$
+For each $\k$, notice that $G_\k$ is infinite because if $h \in G_\k$, the operation of $h$ followed by any Bravais lattice translation also belongs to $G_\k$.
+\end{definition}
+
+\n
+
+The set $\{\rho_G^\k(h) \mid g \in G_\k\}$ furnishes an $(n\cdot n_q)\times(n\cdot n_q)$ representation of the little group $G_\k$, which we denote by $\rho_G \downarrow G_\k$; this is a subduction of $\rho_G$ onto $G_\k$, projected onto the Wannier functions at $\k$. Although $G_\k$ is infinite, the representaiton of two space group operations, $\sg{R}{\v}$ and $\sg{R}{\v+\t_1}$, where $\t_1$ is a Bravais lattice translation, will differ only by an overall phase $e^{-i(R\k)\vdot\t_1} = -e^{i\k\vdot\t_1}$ in $\rho_G \downarrow G_\k$.
+
+\n
+
+The characters of $\rho_G \downarrow G_\k$ are given by, for $h \in G_\k$,
+$$
+\rho_G^\k(h) =
+\sum_{\alpha} e^{-i(R\k)\vdot\t_{\alpha\alpha}}
+\tilde{\chi}[\rho(g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}h g_\alpha)],
+$$
+where
+\begin{align} \label{eq:tilde_chi}
+\tilde{\chi}[\rho(g)] =
+\begin{cases}
+\; \chi[\rho(g)], & \text{if } g \in G_\q \\
+\; 0, & \text{if } g \notin G_\q
+\end{cases}
+\end{align}
+and $\chi[\rho(g)]$ denotes the character of $g$ in the representation $\rho$.
+
+\n
+
+We would like to know how many times, $m_i^\k$, each irrep $\sigma_i^\k$ of $G_\k$ appears in $\rho_G \downarrow G_\k$:
+\begin{equation} \label{eq:induce_subduce}
+(\rho \uparrow G) \downarrow G_\k \equiv \bigoplus_i m_i^\k \sigma_i^\k,
+\end{equation}
+where the symbol $\equiv$ in Equation \ref{eq:induce_subduce} denotes the equivalence of representations.
+
+\section{Elementary Band Representations}
+
+We call two band representations equivalent if they are, in some sense, topologically equivalent. In the same sense as a homotopy.
+
+\begin{definition}[\textbf{Equivalence between band representations}] \label{def:equiv_bandrep}
+Two band representations $\rho_G$ and $\sigma_G$ are equivalent iff there exists a unitary matrix-valued function $S(\k,t,g)$ smooth in $\k$ and continuous in $t$ such that, for all $g \in G$
+\begin{enumerate}
+\item $S(\k, t, g)$ defines a band representation according to Equation \ref{eq:bloch_rep} for all $t \in [0,1]$;
+\item $S(\k, 0, g) = \rho_G^\k(g)$;
+\item $S(\k, 1, g) = \sigma_G^\k(g)$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[\textbf{Elementary band representation}]
+A band representation is called \textbf{composite} if it is equivalent to the direct sum of other band representations. A band representation that is not composite is called \textbf{elementary}.
+\end{definition}
+
+\begin{theorem}[\textbf{Properties of band representations}]
+Some properties of band representations are:
+\begin{enumerate}
+\item Because induction commutes with direct sums
+$$
+(\rho_1 \oplus \rho_2) \uparrow G = (\rho_1 \uparrow G) \oplus (\rho_2 \uparrow G),
+$$
+reducible representations of $G_\q$ induce composite band representations.
+
+\item Given subgroups $K \subset H \subset G$, and a representation $\rho$ of $K$, because induction is transitive it follows that
+$$
+(\rho \uparrow H) \uparrow G = \rho \uparrow G.
+$$
+From this we conclude that all EBRs can be induced from irreps of the maximal site symmetry groups.
+\end{enumerate}
+\end{theorem}
+
+\section{Exceptions}
+
+There are exceptions where an irrep of the site symmetry group of a maximal Wyckoff position induces a composite band representation.
+
+\section{Topological Systems}
+
+\begin{definition}[\textbf{Topological band}]
+A set of bands are in the \textbf{atomic limit} of a space group if they can be induced from localized Wannier functions consistent with the crystallice symmetry of that space group. Otherwise, they are \textbf{topological}.
+\end{definition}
+
+Band representations describe a system in the atomic limit. Topological band must be groups of bands that satisfy the crystal symmetry in momentum space, but nevertheless do not transform as a band representation. In other words, they cannot be induced from localized Wannier orbitals that obey the crystal symmetry.
+
+\begin{theorem} \label{th:topo_insul}
+Any isolated set of bands that is not equivalent to a band representation (composite or elementary) gives a strong, weak, or crystalline topological insulator.
+\end{theorem}
+
+
+\section{How to determine if a set of bands is topological}
+
+As said in \cite{building_blocks2018}: \textbf{ESSA SEÇÃO EU COPIEI}
+
+A practical route to determining whether a set of bands $\mathcal{B}$ is \textbf{not} a band representation is as follows: first, enumerate all EBRs for the particular space group and list the irreps that appear in each EBR at each high symmetry point. Next, compute the irreps at each high-symmetry point for the bands in $\mathcal{B}$. If the set of irreps that have been computed for the bands in $\mathcal{B}$ cannot be obtained from a linear combination of the EBRs in the space group, then the bands in $\mathcal{B}$ do not comprise a band representation and, by Theorem \ref{th:topo_insul}, are topological.
+
+If the irreps that appear in $\mathcal{B}$ can be obtained from a linear combination of the EBRs of the space group, then one must compute symmetric and localized Wannier functions for the bands in $\mathcal{B}$ to confirm that they are equivalent to the atomic limit defined by the linear combination of EBRs or compute a Berry phase that will distinguish the two. This is because, it is possible for two distinct groups of bands to have the exact same irreps at all high-symmetry points, but different Berry phases (recall, this is exactly why we require the homotopic notion of equivalence, as in Definition \ref{def:equiv_bandrep}.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

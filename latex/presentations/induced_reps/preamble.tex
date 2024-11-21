@@ -1,0 +1,89 @@
+%\usepackage[T1]{fontenc}
+%\usepackage[brazilian]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+%\usepackage{mathtools}
+%\usepackage{amsthm}
+%\usepackage{amsmath}
+%\usepackage{nccmath}
+%\usepackage{amssymb}
+%\usepackage{amsfonts}
+\usepackage{physics}
+%\usepackage{dsfont}
+%\usepackage{mathrsfs}
+
+%\usepackage{titling}
+\usepackage{indentfirst}
+
+\usepackage{bm}
+%\usepackage[dvipsnames]{xcolor}    % it crashes with beamer
+\usepackage{xcolor}
+\usepackage{cancel}
+
+\usepackage{xurl}
+%\usepackage[colorlinks=true]{hyperref}  % crashes with beamer
+
+%% code
+%\definecolor{bg}{rgb}{0.90,0.90,0.90}
+%\usepackage{minted}
+
+
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% circle numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\vphi}{\varphi}
+\newcommand{\cte}{\text{cte}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\vb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\S}{\vb{S}}
+%\renewcommand{\H}{\s{H}}
+
+\renewcommand{\a}{\vb{a}}
+\renewcommand{\d}{\dagger}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\hc}{\text{h.c.}}
+
+\newcommand{\0}{{\vb{0}}}
+%\newcommand{\1}{{\mathds{1}}}      % needs \usepackage{dsfont}
+\newcommand{\E}{{\vb{E}}}
+\newcommand{\B}{{\vb{B}}}
+\renewcommand{\v}{{\vb{v}}}
+\renewcommand{\r}{{\vb{r}}}
+\renewcommand{\k}{{\vb{k}}}
+\newcommand{\p}{{\vb{p}}}
+\newcommand{\q}{{\vb{q}}}
+\newcommand{\F}{{\vb{F}}}
+\newcommand{\A}{{\vb{A}}}
+\newcommand{\e}{{\vb{e}}}
+
+\newcommand{\sg}[2]{\{#1 \mid #2\}}
+
+\newcommand{\s}{\sigma}
+\newcommand{\nn}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\cc}[1]{\overline{#1}}
+\newcommand{\Eval}[3]{\eval{\left( #1 \right)}_{#2}^{#3}}
+
+\newcommand{\unit}[1]{\; \mathrm{#1}}
+
+\newcommand{\n}{\medskip}
+%\newcommand{\e}{\quad \mathrm{e} \quad}
+\newcommand{\ou}{\quad \mathrm{ou} \quad}
+\newcommand{\virg}{\, , \;}
+\newcommand{\ptodo}{\forall \,}
+\renewcommand{\implies}{\; \Rightarrow \;}
+%\newcommand{\eqname}[1]{\tag*{#1}} % Tag equation with name
