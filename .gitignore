@@ -10,5 +10,8 @@ articles/*.pdf
 **/*.out
 **/*.toc
 **/*.fdb_latexmk
-**/**.swp
+**/*.swp
+**/*.snm
+**/*.listing
+**/*.nav
 reading/

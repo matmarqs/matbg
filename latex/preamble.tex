@@ -10,7 +10,7 @@
 \usepackage{etoolbox}   % for start of Chapter
 %\usepackage{amsfonts}
 \usepackage{physics}    % for all Physics related
-%\usepackage{dsfont}
+\usepackage{dsfont}     % for the identity matrix symbol \1
 %\usepackage{mathrsfs}
 
 \usepackage{titling}
@@ -58,7 +58,7 @@
 \newcommand{\khat}{\bm{\hat{k}}}
 
 \newcommand{\0}{{\vb{0}}}
-%\newcommand{\1}{\mathds{1}}
+\newcommand{\1}{\mathds{1}}
 \newcommand{\E}{{\vb{E}}}
 \newcommand{\B}{{\vb{B}}}
 \renewcommand{\u}{{\vb{u}}}
@@ -76,6 +76,20 @@
 \renewcommand{\t}{{\vb{t}}}
 \newcommand{\vtau}{{\bm{\tau}}}
 \newcommand{\vdelta}{{\bm{\delta}}}
+
+% COLORED SYMMETRY ELEMENTS
+\newcommand{\Ct}{{\textcolor{Cyan}{C_3}}}
+\newcommand{\Ctn}[1]{{\textcolor{Cyan}{C_3^{\textcolor{black}{#1}}}}}
+\newcommand{\Cs}{{\textcolor{ForestGreen}{C_6}}}
+\newcommand{\Csn}[1]{{\textcolor{ForestGreen}{C_6^{\textcolor{black}{#1}}}}}
+\newcommand{\sd}{{\textcolor{RoyalBlue}{\sigma_d}}}
+\newcommand{\sdn}[1]{{\textcolor{RoyalBlue}{\sigma_d^{\textcolor{black}{#1}}}}}
+\newcommand{\sdp}{{\textcolor{RoyalBlue}{\sigma_d'}}}
+\newcommand{\sdpp}{{\textcolor{RoyalBlue}{\sigma_d''}}}
+\newcommand{\sv}{{\textcolor{Orange}{\sigma_v}}}
+\newcommand{\svn}[1]{{\textcolor{Orange}{\sigma_v^{\textcolor{black}{#1}}}}}
+\newcommand{\svp}{{\textcolor{Orange}{\sigma_v'}}}
+\newcommand{\svpp}{{\textcolor{Orange}{\sigma_v''}}}
 
 \newcommand{\s}{\sigma}
 %\newcommand{\prodint}[2]{\left\langle #1 , #2 \right\rangle}

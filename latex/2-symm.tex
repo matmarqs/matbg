@@ -5,7 +5,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Emergent symmetries in Twisted Bilayer Graphene}
+\chapter{Elements of Group Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The concept of \textit{symmetry} reincidentally appears in physics, because various aspects of our reality exhibit symmetric objects.
@@ -13,7 +13,7 @@ The concept of \textit{symmetry} reincidentally appears in physics, because vari
 Our goal is to develop a fully symmetric model for TBG. To achieve this, it is essential to first understand the mathematical concepts of symmetry, specifically Group Theory and Representation Theory as applied to crystallographic solids. In this chapter we will provide the necessary definitions and theorems in order to develop our symmetry analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Elements of group theory}
+\section{Group theoretic definitions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,7 +29,11 @@ In this thesis we are concerned with symmetries that relate to graphene. Because
 \label{fig:hexagon}
 \end{figure}
 
-In a certain sense, a basic hexagon has 12 symmetry elements. Looking at Figure \ref{fig:hexagon}, the hexagon has the reflections $\textcolor{RoyalBlue}{\sigma_d}$, $\textcolor{Orange}{\sigma_v}$, the $60^\circ$ rotation $\textcolor{ForestGreen}{C_6}$, and all the combinations of these. Combining all the possibilities, we say all that the symmetry elements of the hexagon form the \textit{group} $D_6 = \{E, \textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v} \}$. In this list, we did not include repeated elements, observe that $\textcolor{ForestGreen}{C_6^{\textcolor{black}{6}}} = \textcolor{RoyalBlue}{\sigma_d^{\textcolor{black}{2}}} = \textcolor{RoyalBlue}{\sigma_v^{\textcolor{black}{2}}} = E$ is the element the identity element, the one that ``does nothing''.
+In a certain sense, a basic hexagon has 12 symmetry elements. Looking at Figure \ref{fig:hexagon}, the hexagon has the reflections $\sd$, $\sv$, the $60^\circ$ rotation $\Cs$, and all the combinations of these. Combining all the possibilities, we say all that the symmetry elements of the hexagon form the \textit{group}
+$$
+D_6 = \{E, \Cs, \underbrace{\Ct}_{\Csn{2}}, \underbrace{C_2}_{\Csn{3}}, \underbrace{\Ctn{2}}_{\Csn{4}}, \Csn{5}, \sd, \underbrace{\sdp}_{\sdp \Ct}, \underbrace{\sdpp}_{\sdp \Ctn{2}}, \sv, \underbrace{\svp}_{\svp \Ct}, \underbrace{\svpp}_{\svp \Ctn{2}} \}.
+$$
+In this list, we did not include repeated elements, observe that $\Csn{6} = \sdn{2} = \svn{2} = E$ is the element the identity element, the one that ``does nothing''.
 
 \n
 
@@ -43,8 +47,8 @@ Given a set $G$ and a binary operation ``$\vdot$''$:G\times G \to G$, \textbf{th
 \item (identity): There exists an (identity) element $E \in G$ such that $E \vdot a = a \vdot E = a$, for every $a \in G$.
 \item (inverse): For every $a \in G$, there is (an inverse) $a^{-1} \in G$ such that $a \vdot a^{-1} = a^{-1} \vdot a = E$.
 \end{enumerate}
-Normally in the literature, one speaks of the set $G$ as being ``the group'' instead of the pair $(G, \vdot)$ and omits the operation symbol ``$\vdot$'', simply writing $ab$ instead of $a \vdot b$. This is for convenience but, mathematically, the operation ``$\vdot$'' is crucial to define a group.
 \end{definition}
+Normally in the literature, one speaks of the set $G$ as being ``the group'' instead of the pair $(G, \vdot)$ and omits the operation symbol ``$\vdot$'', simply writing $ab$ instead of $a \vdot b$. This is for convenience but, mathematically, the operation ``$\vdot$'' is crucial to define a group.
 
 \begin{definition}[\textbf{Order}]
 The order of a group $G$ is defined as its number of elements $\abs{G}$.
@@ -58,7 +62,7 @@ It happens frequently that an object $A$ has all the symmetries of another objec
 \label{fig:hexagon_subgroup}
 \end{figure}
 
-The symmetry elements of the triangle form the group $D_3 = \{E, \textcolor{Cyan}{C_3}, \textcolor{Cyan}{C_3^{\textcolor{black}{2}}}, \textcolor{Orange}{\sigma_v}, \textcolor{Cyan}{C_3} \textcolor{Orange}{\sigma_v}, \textcolor{Cyan}{C_3^{\textcolor{black}{2}}}\textcolor{Orange}{\sigma_v}\}$. Observing that $\textcolor{Cyan}{C_3} = \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}$ and $\textcolor{Cyan}{C_3^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v} = \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}$, we can rewrite $D_3 = \{E, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v} \}$. In this way, we see that $D_3$ is a subset of $D_6$. Moreover, $D_3$ forms a group by itself and we say it is a subgroup of $D_6$.
+The symmetry elements of the triangle form the group $D_3 = \{E, \Ct, \Ctn{2}, \sv, \svp, \svpp\}$. Because $D_3$ is a subset of $D_6$ and also forms a group by itself, we say that $D_3$ is a subgroup of $D_6$.
 
 
 \begin{definition}[\textbf{Subgroup}]
@@ -69,14 +73,14 @@ It is common that one defines a group by its \textit{generators}. We did that wh
 
 \begin{definition}[\textbf{Generators of a group}]
 If $S$ is a subset of a group $G$, we define $\ev{S}$ as the smallest subgroup of $G$ containing every element of $S$. The subgroup $\ev{S}$ is called the \textit{subgroup generated by $S$}. If $\ev{S} = G$, we say that the set $S$ \textit{generates} $G$.
+\end{definition}
 
 An intuitive way of thinking of $\ev{S}$ is by ``recursively multiplying'' all the elements of $S$, until all the possibilities are exhausted. For example, in general for two elements:
 $$
 \ev{\{a,b\}} = \{E, a, b, a^2, ab, ba, b^2, a^3, a^2b, aba, ba^2, ab^2, bab, b^2a, b^3, \ldots\}.
 $$
-\end{definition}
 
-For the hexagon at Figure \ref{fig:hexagon}, the set $\{\textcolor{ForestGreen}{C_6}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{Orange}{\sigma_v}\}$ generates the group $D_6$; and for the triangle at Figure \ref{fig:hexagon_subgroup}, the set $\{\textcolor{Cyan}{C_3}, \textcolor{Orange}{\sigma_v}\}$ generates the group $D_3$.
+For the hexagon at Figure \ref{fig:hexagon}, the set $\{\Cs, \sd, \sv\}$ generates the group $D_6$; and for the triangle at Figure \ref{fig:hexagon_subgroup}, the set $\{\Ct, \sv\}$ generates the group $D_3$.
 
 \begin{definition}[\textbf{Cosets}]
 Let $G$ be a group and $H$ one of its subgroups. Given an element $g \in G$, we define the set $gH$ by
@@ -100,45 +104,45 @@ The number of different left cosets is given by $\abs{G:H} = \abs{G} / \abs{H}$.
 
 As an example, take $H = D_3$ and $G = D_6$. We have that $\abs{D_3}=6$ and $\abs{D_6} = 12$. Therefore, we only have two different left cosets. One of them has $E$ as its representative:
 $$
-E D_3 = D_3 = \{E, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{4}}}, \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v} \}.
-$$
-The other one is what is left of $D_6$, which has $\textcolor{ForestGreen}{C_6}$ as its representative:
-$$
-\textcolor{ForestGreen}{C_6} D_3 = \{\textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{ForestGreen}{C_6}\textcolor{Orange}{\sigma_v}, \textcolor{ForestGreen}{C_6} (\textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{Orange}{\sigma_v}), \textcolor{ForestGreen}{C_6}(\textcolor{ForestGreen}{C_6} \textcolor{Orange}{\sigma_v}) \} = \{ \textcolor{ForestGreen}{C_6}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{3}}}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{5}}}, \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6^{\textcolor{black}{2}}} \textcolor{RoyalBlue}{\sigma_d}, \textcolor{ForestGreen}{C_6} \textcolor{RoyalBlue}{\sigma_d} \},
-$$
-where $\textcolor{RoyalBlue}{\sigma_d} = \textcolor{ForestGreen}{C_6}\textcolor{Orange}{\sigma_v}$. The coset decomposition is the disjoint union of the two cosets
-$$
-D_6 = ED_3 \cup C_6 D_3.
+E D_3 = D_3 = D_3 = \{E, \Ct, \Ctn{2}, \sv, \svp, \svpp\}.
 $$
 
-In analogy with the concept of similarity transformations in linear algebra, we define:
+The other one is what is left of $D_6$, which has $\sd$ as its representative:
+$$
+\sd D_3 = \{\sd E, \sd \Ct, \sd \Ctn{2}, \sd \sv, \sd \svp, \sd \svpp\}
+= \{ \sd, \sdp, \sdpp, C_2, \Csn{5}, \Cs \},
+$$
+
+The coset decomposition is the disjoint union of the two cosets
+$$
+D_6 = ED_3 \cup \sd D_3.
+$$
+
+One would probably notice that the elements $\sd, \sdp, \sdpp$ are in some way related, also as $\sv, \svp, \svpp$. Actually, they belong to the same conjugacy class, which is a concept analogous to the notion of matrix similarity in Linear Algebra.
+
 \begin{definition}[\textbf{Conjugacy classes}]
 Let $G$ be a group and $a, g, g' \in G$. If $g' = a g a^{-1}$, we say that $g'$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. The set
 $$
 [g] = \{ g' \in G \mid g' \sim g \} = \{ a g a^{-1} \mid a \in G \} \subseteq G
 $$
-is called a conjugacy class of $G$. Every group is a disjoint union of its conjugacy classes.
+is called a \textit{conjugacy class} of $G$. Every group is a disjoint union of its conjugacy classes.
 \end{definition}
 
 Going back to our example groups $D_3$ and $D_6$, one finds the conjugacy classes
 $$
-D_3 = [E] \cup [C_3] \cup [\sigma_v] = \{E\} \cup \{C_3, C_3^2\} \cup \{\sigma_v, C_3 \sigma_v, C_3^2 \sigma_v\},
+D_3 = [E] \cup [\Ct] \cup [\sv] = \{E\} \cup \{\Ct, \Ctn{2}\} \cup \{\sv, \svp, \svpp\},
 $$
 \begin{align*}
-D_6 &= [E] &&\cup&& [C_2] &&\cup&& [C_3] &&\cup&& [C_6] &&\cup&& [\sigma_v] &&\cup&& [\sigma_d] \\
-&= \{E\} &&\cup&& \{C_6^3\} &&\cup&& \{C_6^2, C_6^4\} &&\cup&& \{C_6, C_6^5\} &&\cup&& \{\sigma_v, C_6^2 \sigma_v, C_6^4 \sigma_v\} &&\cup&& \{\sigma_d, C_6^2 \sigma_d, C_6^4 \sigma_d\},
+D_6 &= [E] &&\cup&& [C_2] &&\cup&& [\Ct] &&\cup&& [\Cs] &&\cup&& [\sv] &&\cup&& [\sd] \\
+&= \{E\} &&\cup&& \{C_2\} &&\cup&& \{\Ct, \Ctn{2}\} &&\cup&& \{\Cs, \Csn{5}\} &&\cup&& \{\sv, \svp, \svpp\} &&\cup&& \{\sd, \sdp, \sdpp\},
 \end{align*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Homomorphisms}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Going back to the example of graphene, let us say we want to identify which elements of $D_6$ exchange sublattice types $A$ and $B$, as in Figure \ref{fig:hexagon_AB}. We can accomplish this task by using a labelling function $\vphi: D_6 \to \{1, -1\}$, where
 \begin{align*}
 \vphi(g) =
 \begin{cases}
-\; \P1, \quad g \text{ changes sublattice type} \\
-\; -1, \quad g \text{ otherwise.}
+\; \P1, \quad g \text{ changes sublattice type } A \leftrightarrow B \\
+\; -1, \quad \text{otherwise.}
 \end{cases}
 \end{align*}
 
@@ -156,37 +160,142 @@ $$
 
 The element $g_1 g_2$ changes sublattice only if exactly one of $g_1$ or $g_2$ do. Now, the elements $D_3$ do not exchange sublattice type, which translates to the property $\vphi(g) = 1$ for every $g \in D_3$.
 
-The labelling function $\vphi$ is generally known as a homomorphism, which is a way to identify subgroups. In this case, it serves to identify $D_3$.
+The function $\vphi$ is generally known as a homomorphism, which in the case above identifies the subgroup $D_3$ as its kernel.
 
 \begin{definition}[\textbf{Homomorphism}]
-Let $G$ and $H$ be groups. A function $\vphi: G \to H$ is called an \textit{homomorphism} if it satisfies
-$$
+Let $G$ and $H$ be groups. A function $\vphi: G \to H$ is called an \textit{homomorphism} if it preserves the group structure, i.e.,
+\begin{equation} \label{eq:homomorphism}
 \vphi(a b) = \vphi(a) \vphi(b), \quad \forall \, a,b \in G.
+\end{equation}
+If $\vphi$ is bijective, we also call it an \textit{isomorphism}. The kernel of $\vphi$ is defined as the set
 $$
-Moreover, if $\vphi$ is bijective, we say that it is an \textit{isomorphism}.
+\ker(\vphi) = \qty{g \in G \mid \vphi(g) = e_H},
+$$
+where $e_H$ is the identity element of $H$.
 \end{definition}
+
+In physics, specially in Quantum Mechanics, it is most common that one works with groups of matrices, where the theory of Linear Algebra holds. For example, a group of $2\times 2$ matrices isomorphic to $D_6$ can be found by defining the homomorphism $\Phi_2$ below
+\begin{equation} \label{eq:D6_generators_2x2matrices}
+\Phi_2(\Cs) =
+\begin{pmatrix}
+\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) \\
+-\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6})
+\end{pmatrix},
+\quad
+\Phi_2(\sd) =
+\begin{pmatrix}
+-1 & 0 \\
+0 & 1
+\end{pmatrix},
+\quad
+\Phi_2(\sv) =
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}.
+\end{equation}
+
+Imposing the homomorphism relation \ref{eq:homomorphism}, we can find all the representative $2\times 2$ matrices of $D_6$ only by multiplying the matrices of the three generators in Equation \ref{eq:D6_generators_2x2matrices}. Because homomorphisms to groups of matrices are so frequent and important, we define:
+
+\begin{definition}[\textbf{Groups of matrices}]
+The set of invertible linear operators of a vector space $V$ form a group and we call it the \textit{general linear group}
+$$
+GL(V) = \qty{A: V \to V \mid A \text{ is linear and invertible}}.
+$$
+If $V$ is finite dimensional with a scalar product, the set of unitary operators of $V$ is a subgroup of $GL(V)$, defined by
+$$
+U(V) = \qty{A \in GL(V) \mid A A^\dagger = \1}.
+$$
+When $V = \mathbb{R}^n$ or $\C^n$, we can choose a basis and explicitly say that
+$$
+GL(n, \mathbb{R}) = \qty{\text{invertible } n\times n \text{ real matrices}}, \;
+GL(n, \mathbb{C}) = \qty{\text{invertible } n\times n \text{ complex matrices}}.
+$$
+In this case, the subgroups of orthogonal and unitary matrices are, respectively,
+$$
+O(n) = \qty{A \in GL(n, \mathbb{R}) \mid A A^T = \1}, \quad SO(n) = \qty{A \in O(n) \mid \det A = 1};
+$$
+$$
+U(n) = \qty{A \in GL(n, \mathbb{C}) \mid A A^\dagger = \1}, \quad SU(n) = \qty{A \in U(n) \mid \det A = 1}.
+$$
+\end{definition}
+
+\begin{definition}[\textbf{Representation}]
+A \textit{representation} of a group $G$ on a vector space $V$ is a \textbf{homomorphism} $\Pi: G \to GL(V)$.
+\end{definition}
+
+As we learn in Quantum Mechanics (or Linear Algebra), conjugating an operator $H$ by means of $A$, as $H' = A H A^{-1}$, has the meaning of changing the reference frame (or basis). This motivates us to considering two conjugate representations as equivalent:
+\begin{definition}[\textbf{Equivalent representations}]
+Two representations $\Pi_1: G \to GL(V_1)$ and $\Pi_2: G \to GL(V_2)$ of a group $G$ are said to be \textit{equivalent} if there is an invertible linear operator $U: V_1 \to V_2$ such that
+\begin{equation} \label{eq:intertwiner}
+\Pi_2(g) = U \Pi_1(g) U^{-1}, \, \forall \, g \in G.
+\end{equation}
+In this case we write $\Pi_1 \equiv \Pi_2$.
+\end{definition}
+
+In Quantum Mechanics, one is usually accostumed to work with unitary matrices and, as we will discuss in the next chapter, there are important orthogonality theorems that hold when we restrict ourselves to unitary representations. This restriction is actually general, as the following theorem asserts \cite{dresselhaus}:
+\begin{theorem}[\textbf{Unitarity of representations}] \label{th:unitarity_rep}
+Let $V$ be a finite dimensional vector space with a scalar product. A representation $\Gamma: G \to GL(V)$ is called \textit{unitary} if $\Gamma(g) \in U(V)$, $\forall \, g \in G$. Every representation $\Pi: G \to GL(V)$ is equivalent to some unitary representation $\Gamma: G \to U(V)$.
+\end{theorem}
+
+Because of Theorem \ref{th:unitarity_rep}, most of our theory will be dedicated to unitary representations. If not otherwise stated, when we say the word ``representation'' we actually mean an \textbf{unitary representation}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Irreducible representations and characters}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Considering $G = D_6$, take $\Phi_2: G \to GL(V_2)$, $V_2 = \mathbb{R}^2$, as defined in Equation \ref{eq:D6_generators_2x2matrices}, and also consider the trivial representation $\Phi_1: G \to GL(V_1)$, $V_1 = \mathbb{R}$, $\Phi_1(g) = 1$, $\forall \, g \in G$. We can stack $\Phi_2$ and $\Phi_1$ to construct $\Phi_3: G \to GL(V_3)$, $V_3 = V_2 \oplus V_1$, given by
+$$
+\Phi_3(g) =
+\begin{pmatrix}
+\Phi_2(g) & 0 \\
+0 & \Phi_1(g)
+\end{pmatrix}, \quad \forall \, g \in G.
+$$
+\begin{equation} \label{eq:D6_generators_3x3matrices}
+\Phi_2(\Cs) =
+\begin{pmatrix}
+\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) & 0 \\
+-\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6}) & 0 \\
+0 & 0 & 1
+\end{pmatrix},
+\;
+\Phi_2(\sd) =
+\begin{pmatrix}
+-1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix},
+\;
+\Phi_2(\sv) =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}.
+\end{equation}
+
+We say that the representation $\Phi_3$ is a direct sum and we write $\Phi_3 \equiv \Phi_2 \oplus \Phi_1$. This is indeed a valid representation, but it kind of does not add much to our knowledge. Representations such as $\Phi_3$ are called \textit{reducible}. What distinguishes reducible representations are the existence of nontrivial invariant subspaces.
+\begin{definition}[\textbf{Invariant subspace}]
+A vector subspace $W \subseteq V$ is said to be \textit{invariant} under a representation $\Pi: G \to GL(V)$ if it satisfies $\Pi(g) W \subseteq W$ (the action of $\Pi(g)$ on $W$ is contained within $W$), for every $g \in G$.
+\end{definition}
+
+The nontrivial subspaces $V_1$ and $V_2$ are invariant under the action of $\Phi_3$. Because $\Phi_3(g)$ is block diagonal for every $g$, we have that $\Phi_3(g) V_2 \subseteq V_2$ and $\Phi_3(g) V_1 \subseteq V_1$.
+\begin{definition}[\textbf{Irreducible representation}]
+A representation $\Pi: G \to GL(V)$ always has the trivial invariant subspace $\{0\}$ and $V$. If there are not others, $\Pi$ is said to be \textit{irreducible}.
+\end{definition}
+
+Unlike $\Phi_3$, the representations $\Phi_1$ and $\Phi_2$ are \textit{irreducible} because they are not equivalent to any representation that is block diagonal. Irreducible representations are building blocks for all representations in finite dimensional vector spaces \cite{dresselhaus}:
+\begin{theorem}
+Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to U(V)$ be an unitary representation. Then, or $\Gamma$ is irreducible or $\Gamma$ is reducible and can be decomposed into a direct sum
+$$
+V = \bigoplus_j V_j, \quad \Gamma \equiv \bigoplus_j \pi_j,
+$$
+where each $V_j$ is a nontrivial invariant subspace under $\Gamma$ and $\pi_j: G \to U(V_j)$ is an irreducible representation of $G$.
+\end{theorem}
 
 <++>
 
-
-
-
-In physics, it is very common to work with groups composed of matrices, where the group operation is the usual matrix multiplication. All of them are some subgroup of the invertible matrices.
-
-\begin{definition}[\textbf{Linear group}]
-Let $V$ be a vector space (over $\mathbb{R}$ or $\C$). We call the group of invertible linear operators in $V$ the \textit{general linear group}
-$$
-GL(V) = \qty{A: V \to V \mid A \text{ is linear and invertible}}
-$$
-The most usual case is when $V = \mathbb{R}^n$, where
-$$
-GL(\mathbb{R}^n) = \qty{\text{invertible } n\times n \text{ real matrices}}.
-$$
-\end{definition}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Representations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 It is kind of difficult to work with a group that is defined abstractally, it is easier to have something algebraic to work. This is where Representation Theory comes in. A representation of a group $G$ is an association of each element of the group with a matrix, something we are used to operate algebraically.
 
@@ -200,31 +309,6 @@ Essentially, when working with group theory in the context of solids, we are int
 
 \n\n\n
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Normal subgroup, TALVEZ NÃO PRECISA FALAR}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%If $H \leq G$, we say that $H$ is a normal subgroup of $G$ if $g H g^{-1} = H$ for every $g \in G$.
-%
-%One commom example of normal subgroup is
-%$$
-%G = \{ \text{invertible matrices} \},
-%$$
-%$$
-%H = \{ \text{matrices of determinant 1} \}.
-%$$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Homomorphism and Isomorphism}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-If $G$ and $H$ are groups, and $\vphi: G \to H$ is a function that satisfies
-$$
-\vphi(a)\vphi(b) = \vphi(ab), \quad \ptodo a,b \in G,
-$$
-then we say that $\vphi$ is a homomorphism between $G$ and $H$. If $\vphi$ is bijective, we say it is a isomorphism and that $G$ is isomorphic to $H$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
