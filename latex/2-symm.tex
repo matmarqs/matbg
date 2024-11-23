@@ -5,7 +5,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Elements of Group Theory}
+\chapter{Sei lá}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The concept of \textit{symmetry} reincidentally appears in physics, because various aspects of our reality exhibit symmetric objects.
@@ -13,7 +13,7 @@ The concept of \textit{symmetry} reincidentally appears in physics, because vari
 Our goal is to develop a fully symmetric model for TBG. To achieve this, it is essential to first understand the mathematical concepts of symmetry, specifically Group Theory and Representation Theory as applied to crystallographic solids. In this chapter we will provide the necessary definitions and theorems in order to develop our symmetry analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Group theoretic definitions}
+\section{Elements of Group Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,6 +174,12 @@ $$
 where $e_H$ is the identity element of $H$.
 \end{definition}
 
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elements of Representation Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In physics, specially in Quantum Mechanics, it is most common that one works with groups of matrices, where the theory of Linear Algebra holds. For example, a group of $2\times 2$ matrices isomorphic to $D_6$ can be found by defining the homomorphism $\Phi_2$ below
 \begin{equation} \label{eq:D6_generators_2x2matrices}
 \Phi_2(\Cs) =
@@ -206,29 +212,29 @@ If $V$ is finite dimensional with a scalar product, the set of unitary operators
 $$
 U(V) = \qty{A \in GL(V) \mid A A^\dagger = \1}.
 $$
-When $V = \mathbb{R}^n$ or $\C^n$, we can choose a basis and explicitly say that
-$$
-GL(n, \mathbb{R}) = \qty{\text{invertible } n\times n \text{ real matrices}}, \;
-GL(n, \mathbb{C}) = \qty{\text{invertible } n\times n \text{ complex matrices}}.
-$$
-In this case, the subgroups of orthogonal and unitary matrices are, respectively,
-$$
-O(n) = \qty{A \in GL(n, \mathbb{R}) \mid A A^T = \1}, \quad SO(n) = \qty{A \in O(n) \mid \det A = 1};
-$$
-$$
-U(n) = \qty{A \in GL(n, \mathbb{C}) \mid A A^\dagger = \1}, \quad SU(n) = \qty{A \in U(n) \mid \det A = 1}.
-$$
+%When $V = \mathbb{R}^n$ or $\C^n$, we can choose a basis and explicitly say that
+%$$
+%GL(n, \mathbb{R}) = \qty{\text{invertible } n\times n \text{ real matrices}}, \;
+%GL(n, \mathbb{C}) = \qty{\text{invertible } n\times n \text{ complex matrices}}.
+%$$
+%In this case, the subgroups of orthogonal and unitary matrices are, respectively,
+%$$
+%O(n) = \qty{A \in GL(n, \mathbb{R}) \mid A A^T = \1}, \quad SO(n) = \qty{A \in O(n) \mid \det A = 1};
+%$$
+%$$
+%U(n) = \qty{A \in GL(n, \mathbb{C}) \mid A A^\dagger = \1}, \quad SU(n) = \qty{A \in U(n) \mid \det A = 1}.
+%$$
 \end{definition}
 
 \begin{definition}[\textbf{Representation}]
 A \textit{representation} of a group $G$ on a vector space $V$ is a \textbf{homomorphism} $\Pi: G \to GL(V)$.
 \end{definition}
 
-As we learn in Quantum Mechanics (or Linear Algebra), conjugating an operator $H$ by means of $A$, as $H' = A H A^{-1}$, has the meaning of changing the reference frame (or basis). This motivates us to considering two conjugate representations as equivalent:
+As we learn in Quantum Mechanics (or Linear Algebra), conjugating an operator $H$ by means of $A$, as in $H' = A H A^{-1}$, has the meaning of only changing the reference frame (or the basis). This motivates us to considering two conjugate representations as equivalent:
 \begin{definition}[\textbf{Equivalent representations}]
-Two representations $\Pi_1: G \to GL(V_1)$ and $\Pi_2: G \to GL(V_2)$ of a group $G$ are said to be \textit{equivalent} if there is an invertible linear operator $U: V_1 \to V_2$ such that
+Two representations $\Pi_1: G \to GL(V_1)$ and $\Pi_2: G \to GL(V_2)$ of a group $G$ are said to be \textit{equivalent} if there is an invertible linear operator $A: V_1 \to V_2$ such that
 \begin{equation} \label{eq:intertwiner}
-\Pi_2(g) = U \Pi_1(g) U^{-1}, \, \forall \, g \in G.
+\Pi_2(g) = A \Pi_1(g) A^{-1}, \, \forall \, g \in G.
 \end{equation}
 In this case we write $\Pi_1 \equiv \Pi_2$.
 \end{definition}
@@ -239,10 +245,6 @@ Let $V$ be a finite dimensional vector space with a scalar product. A representa
 \end{theorem}
 
 Because of Theorem \ref{th:unitarity_rep}, most of our theory will be dedicated to unitary representations. If not otherwise stated, when we say the word ``representation'' we actually mean an \textbf{unitary representation}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Irreducible representations and characters}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Considering $G = D_6$, take $\Phi_2: G \to GL(V_2)$, $V_2 = \mathbb{R}^2$, as defined in Equation \ref{eq:D6_generators_2x2matrices}, and also consider the trivial representation $\Phi_1: G \to GL(V_1)$, $V_1 = \mathbb{R}$, $\Phi_1(g) = 1$, $\forall \, g \in G$. We can stack $\Phi_2$ and $\Phi_1$ to construct $\Phi_3: G \to GL(V_3)$, $V_3 = V_2 \oplus V_1$, given by
 $$
@@ -286,34 +288,141 @@ A representation $\Pi: G \to GL(V)$ always has the trivial invariant subspace $\
 \end{definition}
 
 Unlike $\Phi_3$, the representations $\Phi_1$ and $\Phi_2$ are \textit{irreducible} because they are not equivalent to any representation that is block diagonal. Irreducible representations are building blocks for all representations in finite dimensional vector spaces \cite{dresselhaus}:
-\begin{theorem}
-Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to U(V)$ be an unitary representation. Then, or $\Gamma$ is irreducible or $\Gamma$ is reducible and can be decomposed into a direct sum
+\begin{theorem}[\textbf{Decomposition of unitary representations}] \label{th:irreps_decomp}
+Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to U(V)$ be an unitary representation. Then, $\Gamma$ is either irreducible or reducible and can be decomposed into a direct sum
 $$
-V = \bigoplus_j V_j, \quad \Gamma \equiv \bigoplus_j \pi_j,
+V = \bigoplus_{j=1}^N V_j, \quad
+\Gamma(g) =
+\begin{pmatrix}
+\pi_1(g) &  &  \\
+ & \ddots &  \\
+ &  & \pi_N(g) \\
+\end{pmatrix},
 $$
 where each $V_j$ is a nontrivial invariant subspace under $\Gamma$ and $\pi_j: G \to U(V_j)$ is an irreducible representation of $G$.
 \end{theorem}
 
-<++>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Characters}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The trace of a representation is such an important quantity that it deserves the name of its \textit{character}. The \textit{characters} of irreps from a group provides enough information to determine the decomposition of a reducible representation into irreducible ones, as in Theorem \ref{th:irreps_decomp}.
 
-It is kind of difficult to work with a group that is defined abstractally, it is easier to have something algebraic to work. This is where Representation Theory comes in. A representation of a group $G$ is an association of each element of the group with a matrix, something we are used to operate algebraically.
+\begin{definition}[\textbf{Character}]
+The \textit{character} of an element $g \in G$ in the representation $\Pi: G \to GL(V)$ is defined as
+\begin{equation} \label{eq:character}
+\chi(g) = \tr[\Pi(g)] = \sum_{j} \Pi_{jj}(g).
+\end{equation}
+\end{definition}
+Due to the cyclic property of the trace of a matrix, equivalent irreducible representations (irreps) have the same characters
+$$
+\chi'(g) = \tr[A^{-1} \Pi(g) A] =  \tr[AA^{-1} \Pi(g)] = \chi(g).
+$$
+Also, elements from the same conjugacy class $g$ and $g' = a g a^{-1}$ also have the same character
+$$
+\chi(g') = \chi(aga^{-1}) = \tr[\Pi(aga^{-1})] = \tr[\Pi(a)\Pi(g)\Pi(a^{-1})] = \tr[\Pi(a^{-1})\Pi(a)\Pi(g)] = \chi(g).
+$$
 
-\section{Solids}
+Due to this fact, one could also speak of the character of a conjugacy class $S = [g]$, where we denote it by $\chi_S = \chi(g) = \chi(g')$.
 
-<++>
+Now we are going to state some theorems about characters, which are known as ``Wonderful Orthogonality Theorems'' \cite{dresselhaus, hamermesh}.
 
-\n
+\begin{theorem}[\textbf{1st Wonderful Orthogonality Theorem}] \label{th:1st-wot}
+The characters $\chi^{(\Gamma_i)}$, $\chi^{(\Gamma_j)}$ of irreducible representations $\Gamma_i, \Gamma_j: G \to U(V)$ obey the orthogonality relation
+\begin{equation} \label{eq:1st-wot}
+\delta_{\Gamma_i, \Gamma_j} =
+\frac{1}{\abs{G}} \sum_{g \in G} \chi^{(\Gamma_i)}(g) \chi^{(\Gamma_j)}(g)^* =
+\frac{1}{\abs{G}} \sum_{S} \abs{S} \, \chi^{(\Gamma_i)}_S \qty[\chi^{(\Gamma_j)}_S]^*,
+\end{equation}
+where the sum in $S$ runs through the conjugacy classes of $G$, with $\abs{S}$ denoting the number of elements of the class $S$.
+\end{theorem}
 
-Essentially, when working with group theory in the context of solids, we are interested in subgroups of a particular group of matrices. These are called orthogonal matrices, and are defined by $R R^T = E$, where $E$ here is the identity matrix.
+If we consider a $n_{\text{classes}} -$dimensional vector space, with the vectors with a fixed irreps $\Gamma_i$
+$$
+\ket{\psi^{(\Gamma_i)}} =
+\qty(
+\sqrt{\frac{\abs{S_1}}{\abs{G}}} \chi^{(\Gamma_i)}_{S_1},
+\sqrt{\frac{\abs{S_2}}{\abs{G}}} \chi^{(\Gamma_i)}_{S_2},
+\ldots,
+\sqrt{\frac{\abs{S_m}}{\abs{G}}} \chi^{(\Gamma_i)}_{S_{n_{\text{classes}}}}
+),
+$$
+where $n_{\text{classes}}$ is the number of different classes of $G$, then Theorem \ref{th:1st-wot} can be in fact viewed as an orthogonality relation because we can rewrite Equation \ref{eq:1st-wot} as
+\begin{equation} \label{eq:orthog_irreps}
+\braket{\psi^{(\Gamma_i)}}{\psi^{(\Gamma_j)}} = \delta_{\Gamma_i, \Gamma_j}.
+\end{equation}
 
-\n\n\n
+A consequence of this orthogonality relation is that there are no more than $n_{\text{classes}}$ of such vectors. If there were more, they would be linearly dependent, contradicting Equation \ref{eq:orthog_irreps}. From this, the number of irreps satisfies $n_{\text{irreps}} \leq n_{\text{classes}}$.
 
+\begin{theorem}[\textbf{2nd Wonderful Orthogonality Theorem}] \label{th:2nd-wot}
+Let $\Gamma_j: G \to U(V)$ be the irreducible representations of $G$. The summation over all irreps
+\begin{equation} \label{eq:2nd-wot}
+\frac{1}{\abs{G}} \sum_{\Gamma_j} \abs{S} \, \chi^{(\Gamma_j)}_S \qty[\chi^{(\Gamma_j)}_{S'}]^* = \delta_{S, S'}
+\end{equation}
+also yields an orthogonality relation, where $S$ and $S'$ are conjugacy classes of $G$.
+\end{theorem}
+
+Now we can apply the same reasoning considering a $n_{\text{irreps}}-$dimensional vector space with the vectors for a fixed class $S$
+$$
+\ket{\phi_{S}} =
+\qty(
+\sqrt{\frac{\abs{S}}{\abs{G}}} \chi^{(\Gamma_1)}_{S},
+\sqrt{\frac{\abs{S}}{\abs{G}}} \chi^{(\Gamma_2)}_{S},
+\ldots,
+\sqrt{\frac{\abs{S}}{\abs{G}}} \chi^{\qty(\Gamma_{n_{\text{irreps}}})}_{S}
+),
+$$
+
+Analogously, Theorem \ref{th:2nd-wot} implies the orthogonality
+$$
+\braket{\phi_{S}}{\phi_{S'}} = \delta_{S, S'}.
+$$
+
+As such, we also conclude that $n_{\text{classes}} \leq n_{\text{irreps}}$. Now we can announce the theorem:
+
+\begin{theorem}[$\bm{n_{\textbf{irreps}} = n_{\textbf{classes}}}$] \label{th:num_irreps_classes}
+The number of irreducible representations of a group $G$ is equal to its number of conjugacy classes.
+\end{theorem}
+
+\begin{theorem}[\textbf{Reduction formula}] \label{th:reduction_formula}
+By Theorem \ref{th:irreps_decomp}, a representation $\Gamma: G \to U(V)$ is a direct sum of irreps
+$$
+\Gamma \equiv \bigoplus_j r_j \, \Gamma_j,
+$$
+where the coefficients $r_j \in \N_{>0}$ denote the number of times the irrep $\Gamma_j$ appears in the decomposition of $\Gamma$. The coefficients $r_j$ are given by the \textit{reduction formula}
+\begin{equation} \label{eq:reduction_formula}
+r_j =
+\frac{1}{\abs{G}} \sum_{g \in G} \chi^{(\Gamma)}(g) \chi^{(\Gamma_j)}(g)^* =
+\frac{1}{\abs{G}} \sum_{S} \abs{S} \, \chi^{(\Gamma)}_S \qty[\chi^{(\Gamma_j)}_S]^*.
+\end{equation}
+\end{theorem}
+
+With theorems \ref{th:1st-wot}, \ref{th:2nd-wot} and \ref{th:num_irreps_classes} we can construct the \textbf{TABLE OF CHARACTERS}, and utilize it with conjuction with the reduction formula \ref{th:reduction_formula} to determine the decomposition of whichever representation of a group.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Induction and subduction of representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
+
+Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
+\begin{align*}
+\Delta_{i'j'ij}(g) =
+\begin{cases}
+\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
+\; 0,  & g_{j'}^{-1} g g_j \notin H.
+\end{cases}
+\end{align*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Space Groups}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Essentially, when working with group theory in the context of solids, we are interested in subgroups of a particular group of matrices. These are called orthogonal matrices, and are defined by $R R^T = E$, where $E$ here is the identity matrix.
+
+\n
 
 The point group and translation symmetry operations which carry the crystal into itself form a group called the \textit{space group}. The elements of it are commonly denoted by  $\{ R_\alpha \mid \tau \} $, where $R_\alpha$ is the point group operation and $\tau$ is the translation.
 
@@ -470,16 +579,16 @@ Therefore, the lattice is invariant by the space group operation $\{R_{\mathcal{
 
 \textbf{Example of nonsymmorphic space group}: Tellurium screw axis $3_1$ (achei figura na internet). Glide plane triangular lattice (gerar minha própria figura), translation $a/2$ and reflection. There is also this link \href{https://physics.stackexchange.com/questions/568476/example-of-a-space-group-which-does-not-contain-the-point-group-as-a-subgroup}{here} which explains the glide plane symmetry in Kagomé lattice. \textbf{Maybe it is better to consider the H2O ice hexagonal.}
 
-\section{Site-symmetry group}
-
-Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
-
-For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
-$$
-G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
-$$
-
-If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
+%\section{Site-symmetry group}
+%
+%Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
+%
+%For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
+%$$
+%G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
+%$$
+%
+%If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Translation subgroup}
@@ -506,47 +615,47 @@ where $r_n$ is a general vector of the Bravais lattice and $\tau_\alpha$ is eith
 If, with a suitable choice of origin, all the elements of $G$ can be written in the form $\sg{R_\alpha}{\tau} = \sg{R_\alpha}{r_n} = \sg{\eps}{r_n} \sg{R_\alpha}{0}$ ($\tau_\alpha = 0$ for every symmetry operation), then call $G$ a \textit{symmorphic} space group.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Space groups in Reciprocal Space}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Group of the wave vector $G_{\k}$ and the Star of $\k$}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-If we have
-$$
-(\hat{P}_\alpha \R_n) \vdot \K_m = 2 \pi N,
-$$
-than
-$$
-\R_n \vdot (\hat{P}_\alpha^{-1} \K_m) = 2 \pi N.
-$$
-
-Thus, the effect of an operator $\hat{P}_\alpha$ on a direct lattice vector $\R_n$ is equivalent to the effect of the operator $\hat{P}_\alpha^{-1}$ on the corresponding reciprocal lattice vector $\K_m$.
-
-\n
-
-The group of the wave vector is formed by the set of space group operations which transform $\k$ into itself, or into an equivalent $\k = \k + \K_m$, where $\K_m$ is a vector of the reciprocal lattice.
-
-All the symmetry operation of the space group $G$ take the point $\k = 0$ into an equivalent point, so that the group of the wave vector at $\k = 0$ corresponds to $G$. Furthermore, the $G_\k$ for $\k \neq 0$ remains a subgroup of $G$.
-
-\n
-
-The set of wave vectors $\k'$ which are obtained by carrying out all the point group operations on $\k$ is called \textit{star of} $\k$.
-
-\n
-
-In summary
-$$
-\text{real space} \iff \text{reciprocal space}
-$$
-$$
-\text{site-symmetry group} \iff \text{group of wave vector }G_\k
-$$
-$$
-\text{Wyckoff position} \iff \text{star of }\k
-$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Space groups in Reciprocal Space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Group of the wave vector $G_{\k}$ and the Star of $\k$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%If we have
+%$$
+%(\hat{P}_\alpha \R_n) \vdot \K_m = 2 \pi N,
+%$$
+%than
+%$$
+%\R_n \vdot (\hat{P}_\alpha^{-1} \K_m) = 2 \pi N.
+%$$
+%
+%Thus, the effect of an operator $\hat{P}_\alpha$ on a direct lattice vector $\R_n$ is equivalent to the effect of the operator $\hat{P}_\alpha^{-1}$ on the corresponding reciprocal lattice vector $\K_m$.
+%
+%\n
+%
+%The group of the wave vector is formed by the set of space group operations which transform $\k$ into itself, or into an equivalent $\k = \k + \K_m$, where $\K_m$ is a vector of the reciprocal lattice.
+%
+%All the symmetry operation of the space group $G$ take the point $\k = 0$ into an equivalent point, so that the group of the wave vector at $\k = 0$ corresponds to $G$. Furthermore, the $G_\k$ for $\k \neq 0$ remains a subgroup of $G$.
+%
+%\n
+%
+%The set of wave vectors $\k'$ which are obtained by carrying out all the point group operations on $\k$ is called \textit{star of} $\k$.
+%
+%\n
+%
+%In summary
+%$$
+%\text{real space} \iff \text{reciprocal space}
+%$$
+%$$
+%\text{site-symmetry group} \iff \text{group of wave vector }G_\k
+%$$
+%$$
+%\text{Wyckoff position} \iff \text{star of }\k
+%$$
 
 \section{Magnetic Space Groups}
 
@@ -592,20 +701,6 @@ The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin no
 \label{fig:622_magnetic}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Induction and subduction of representations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let us consider an irreducible representation $\Gamma$ of a group $G$. Now, given a subgroup $H$ of $G$, we can construct the so-called \textit{subduced} representation of $H$, formed by the matrices of those elements of $G$ that also belong to $H$, that is $\Gamma(h)$ for $h \in H$. This representation is in general reducible, and it is denoted by $\Gamma \downarrow H$.
-
-Thinking in the other direction, if we start with an irreducible representation $D$ of $H \leq G$, we can construct the so-called \textit{induced} representation of $D \uparrow G = \Delta$ of $G$, as follows
-\begin{align*}
-\Delta_{i'j'ij}(g) =
-\begin{cases}
-\; D_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
-\; 0,  & g_{j'}^{-1} g g_j \notin H.
-\end{cases}
-\end{align*}
 
 
 
