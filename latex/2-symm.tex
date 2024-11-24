@@ -362,6 +362,14 @@ Let $\Gamma_j: G \to U(V)$ be the irreducible representations of $G$. The summat
 also yields an orthogonality relation, where $S$ and $S'$ are conjugacy classes of $G$.
 \end{theorem}
 
+\begin{corollary} \label{coro:chi_E}
+Applying Theorem \ref{th:2nd-wot} to the trivial class $S = S' = \{E\}$, we obtain
+\begin{equation} \label{eq:chi_E_coro}
+\abs{G} = \sum_{\Gamma_j} \abs{\chi^{(\Gamma_j)}(E)}^2 = \sum_{\Gamma_j} \ell_j^2,
+\end{equation}
+where $\ell_j = \chi^{(\Gamma_j)}(E)$ is the dimension of the irrep $\Gamma_j$.
+\end{corollary}
+
 Now we can apply the same reasoning considering a $n_{\text{irreps}}-$dimensional vector space with the vectors for a fixed class $S$
 $$
 \ket{\phi_{S}} =
@@ -420,6 +428,30 @@ $A_2$ & $\P1$ & $\P1$ & $ -1$ \\
 $E$   & $\P2$ & $ -1$ & $\P0$ \\
 \specialrule{0.05em}{0.2em}{0em}
 \end{tabular}
+\label{tab:D3}
+\end{table}
+
+The same procedure could be applied to construct the table for the group $D_3$, which we show in Table \ref{tab:D6}.
+\begin{table}[H]
+\caption{Character table of point group $D_6$.}
+\centering
+\begin{tabular} { c c c c c c c  }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P C_2$ & $\P2C_3$ & $\P2C_6$ & $\P3C_2'$ & $\P3C_2''$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$A_1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$A_2$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$B_1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$B_2$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$E_1$ & $\P2$ & $ -2$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$E_1$ & $\P2$ & $\P2$ & $ -1$ & $ -1$ & $\P0$ & $\P0$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
 \label{tab:D6}
 \end{table}
 
@@ -437,6 +469,12 @@ r_j =
 \end{theorem}
 
 Utilize it with conjuction with the reduction formula \ref{th:reduction_formula} to determine the decomposition of whichever representation of a group.
+
+\begin{example}
+teste
+\end{example}
+
+<++>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Induction and subduction of representations}
