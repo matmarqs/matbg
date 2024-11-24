@@ -129,9 +129,9 @@ is called a \textit{conjugacy class} of $G$. Every group is a disjoint union of 
 \end{definition}
 
 Going back to our example groups $D_3$ and $D_6$, one finds the conjugacy classes
-$$
+\begin{equation} \label{eq:D3_classes}
 D_3 = [E] \cup [\Ct] \cup [\sv] = \{E\} \cup \{\Ct, \Ctn{2}\} \cup \{\sv, \svp, \svpp\},
-$$
+\end{equation}
 \begin{align*}
 D_6 &= [E] &&\cup&& [C_2] &&\cup&& [\Ct] &&\cup&& [\Cs] &&\cup&& [\sv] &&\cup&& [\sd] \\
 &= \{E\} &&\cup&& \{C_2\} &&\cup&& \{\Ct, \Ctn{2}\} &&\cup&& \{\Cs, \Csn{5}\} &&\cup&& \{\sv, \svp, \svpp\} &&\cup&& \{\sd, \sdp, \sdpp\},
@@ -246,30 +246,30 @@ Let $V$ be a finite dimensional vector space with a scalar product. A representa
 
 Because of Theorem \ref{th:unitarity_rep}, most of our theory will be dedicated to unitary representations. If not otherwise stated, when we say the word ``representation'' we actually mean an \textbf{unitary representation}.
 
-Considering $G = D_6$, take $\Phi_2: G \to GL(V_2)$, $V_2 = \mathbb{R}^2$, as defined in Equation \ref{eq:D6_generators_2x2matrices}, and also consider the trivial representation $\Phi_1: G \to GL(V_1)$, $V_1 = \mathbb{R}$, $\Phi_1(g) = 1$, $\forall \, g \in G$. We can stack $\Phi_2$ and $\Phi_1$ to construct $\Phi_3: G \to GL(V_3)$, $V_3 = V_2 \oplus V_1$, given by
+Considering $G = D_3$, take $\Phi_2: G \to GL(V_2)$, $V_2 = \mathbb{R}^2$, as defined in Equation \ref{eq:D6_generators_2x2matrices}, and also consider the trivial representation $\Phi_1: G \to GL(V_1)$, $V_1 = \mathbb{R}$, $\Phi_1(g) = 1$, $\forall \, g \in G$. We can stack $\Phi_2$ and $\Phi_1$ to construct $\Psi: G \to GL(V_0)$, $V_0 = V_2 \oplus V_1$, given by
 $$
-\Phi_3(g) =
+\Psi(g) =
 \begin{pmatrix}
 \Phi_2(g) & 0 \\
 0 & \Phi_1(g)
 \end{pmatrix}, \quad \forall \, g \in G.
 $$
 \begin{equation} \label{eq:D6_generators_3x3matrices}
-\Phi_2(\Cs) =
+\Psi(\Ct) =
 \begin{pmatrix}
-\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) & 0 \\
--\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6}) & 0 \\
+\cos(\frac{2\pi}{3}) & \sin(\frac{2\pi}{3}) & 0 \\
+-\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3}) & 0 \\
 0 & 0 & 1
 \end{pmatrix},
 \;
-\Phi_2(\sd) =
+\Psi(\sd) =
 \begin{pmatrix}
 -1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{pmatrix},
 \;
-\Phi_2(\sv) =
+\Psi(\sv) =
 \begin{pmatrix}
 1 & 0 & 0 \\
 0 & -1 & 0 \\
@@ -277,17 +277,17 @@ $$
 \end{pmatrix}.
 \end{equation}
 
-We say that the representation $\Phi_3$ is a direct sum and we write $\Phi_3 \equiv \Phi_2 \oplus \Phi_1$. This is indeed a valid representation, but it kind of does not add much to our knowledge. Representations such as $\Phi_3$ are called \textit{reducible}. What distinguishes reducible representations are the existence of nontrivial invariant subspaces.
+We say that the representation $\Psi$ is a direct sum and we write $\Psi \equiv \Phi_2 \oplus \Phi_1$. This is indeed a valid representation, but it kind of does not add much to our knowledge. Representations such as $\Psi$ are called \textit{reducible}. What distinguishes reducible representations are the existence of nontrivial invariant subspaces.
 \begin{definition}[\textbf{Invariant subspace}]
 A vector subspace $W \subseteq V$ is said to be \textit{invariant} under a representation $\Pi: G \to GL(V)$ if it satisfies $\Pi(g) W \subseteq W$ (the action of $\Pi(g)$ on $W$ is contained within $W$), for every $g \in G$.
 \end{definition}
 
-The nontrivial subspaces $V_1$ and $V_2$ are invariant under the action of $\Phi_3$. Because $\Phi_3(g)$ is block diagonal for every $g$, we have that $\Phi_3(g) V_2 \subseteq V_2$ and $\Phi_3(g) V_1 \subseteq V_1$.
+The nontrivial subspaces $V_1$ and $V_2$ are invariant under the action of $\Psi$. Because $\Psi(g)$ is block diagonal for every $g$, we have that $\Psi(g) V_2 \subseteq V_2$ and $\Psi(g) V_1 \subseteq V_1$.
 \begin{definition}[\textbf{Irreducible representation}]
 A representation $\Pi: G \to GL(V)$ always has the trivial invariant subspace $\{0\}$ and $V$. If there are not others, $\Pi$ is said to be \textit{irreducible}.
 \end{definition}
 
-Unlike $\Phi_3$, the representations $\Phi_1$ and $\Phi_2$ are \textit{irreducible} because they are not equivalent to any representation that is block diagonal. Irreducible representations are building blocks for all representations in finite dimensional vector spaces \cite{dresselhaus}:
+Unlike $\Psi$, the representations $\Phi_1$ and $\Phi_2$ are \textit{irreducible} because they are not equivalent to any representation that is block diagonal. Irreducible representations are building blocks for all representations in finite dimensional vector spaces \cite{dresselhaus}:
 \begin{theorem}[\textbf{Decomposition of unitary representations}] \label{th:irreps_decomp}
 Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to U(V)$ be an unitary representation. Then, $\Gamma$ is either irreducible or reducible and can be decomposed into a direct sum
 $$
@@ -384,6 +384,45 @@ As such, we also conclude that $n_{\text{classes}} \leq n_{\text{irreps}}$. Now 
 The number of irreducible representations of a group $G$ is equal to its number of conjugacy classes.
 \end{theorem}
 
+With theorems \ref{th:1st-wot}, \ref{th:2nd-wot} and \ref{th:num_irreps_classes} we can construct the \textbf{TABLE OF CHARACTERS}. Let us come back to the $G = D_3$ example. We already established two irreducible representations $\Phi_1$ and $\Phi_2$. As we know from Equation \ref{eq:D3_classes}, the group $D_3$ has three distinct classes, thus also three inequivalent irreducible representations. Calculating the characters of the classes from Equation \ref{eq:D3_classes} under $\Phi_1$ and $\Phi_2$, we obtain
+$$
+\chi^{(\Phi_1)}(E) = \chi^{(\Phi_1)}(\Ct) = \chi^{(\Phi_1)}(\sv) = 1
+$$
+$$
+\chi^{(\Phi_2)}(E) = 2, \quad \chi^{(\Phi_2)}(\Ct) = 2 \cos(\frac{2\pi}{3}) = -1, \quad \chi^{(\Phi_2)}(\sv) = 0.
+$$
+
+Applying Theorem \ref{th:2nd-wot} with $S = S' = \{E\}$, the trivial conjugacy class with only the identity element, we obtain the relation
+\begin{equation} \label{eq:chi_E}
+\abs{G} = \sum_{\Gamma_j} \abs{\chi^{(\Gamma_j)}(E)}^2 = \sum_{\Gamma_j} \ell_j^2,
+\end{equation}
+where $\chi^{(\Gamma_j)}(E) = \ell_j$ is the dimensionality of the representation $\Gamma_j$. Using Equation \ref{eq:chi_E} with $G = D_3$, we obtain
+$$
+6 = 2^2 + 1^2 + \ell_3^2 \implies \ell_3 = 1,
+$$
+which tells us that the last irrep $\Gamma_3$ is an one-dimensional representation. Because of this, the matrix representatives are numbers, and $\Gamma_3(g) = \chi^{(\Gamma_3)}(g)$. Using that $C_3^3 = E$, we have $\Gamma_3(C_3)^3 = 1$, which implies that $\Gamma_3(C_3) = 1$. Analogously, $\sigma_v^2 = E \implies \Gamma_3(\sigma_v)^2 = 1$. But notice that, if $\Gamma_3$ would be $1$, we would end up with $\Gamma_3 \equiv \Gamma_1$. Therefore, the correct solution is $\Gamma_3(\sigma_v) = -1$. Summing up, we have
+$$
+\chi^{(\Gamma_3)}(E) = 1, \quad \chi^{(\Gamma_3)}(\Ct) = 1, \quad \chi^{(\Gamma_3)}(\sv) = -1.
+$$
+
+With all irreps, classes and characters known, we can now construct the table of characters for the group $D_3$:
+\begin{table}[H]
+\caption{Character table of group $D_3$.}
+\centering
+\begin{tabular} { c c c c }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 C_2'$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$A_1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$A_2$ & $\P1$ & $\P1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$E$   & $\P2$ & $ -1$ & $\P0$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:D6}
+\end{table}
+
 \begin{theorem}[\textbf{Reduction formula}] \label{th:reduction_formula}
 By Theorem \ref{th:irreps_decomp}, a representation $\Gamma: G \to U(V)$ is a direct sum of irreps
 $$
@@ -397,7 +436,7 @@ r_j =
 \end{equation}
 \end{theorem}
 
-With theorems \ref{th:1st-wot}, \ref{th:2nd-wot} and \ref{th:num_irreps_classes} we can construct the \textbf{TABLE OF CHARACTERS}, and utilize it with conjuction with the reduction formula \ref{th:reduction_formula} to determine the decomposition of whichever representation of a group.
+Utilize it with conjuction with the reduction formula \ref{th:reduction_formula} to determine the decomposition of whichever representation of a group.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Induction and subduction of representations}
