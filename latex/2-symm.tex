@@ -3,21 +3,26 @@
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Groups and Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Sei lá}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{TODO:}
+\begin{itemize}
+\item \textbf{ENUMERAR EQUAÇÕES.}
+\item \textbf{MELHORAR O TEXTO DAS CAPTIONS.}
+\item \textbf{MELHORAR A INTRODUÇÃO/MOTIVAÇÃO.}
+\item \textbf{ESCREVER SOBRE INDUCTION/SUBDUCTION}
+\item \textbf{ESCREVER SOBRE SPACE GROUPS}
+\item \textbf{ESCREVER SOBRE MAGNETIC SPACE GROUPS}
+\end{itemize}
 
 The concept of \textit{symmetry} reincidentally appears in physics, because various aspects of our reality exhibit symmetric objects.
 
 Our goal is to develop a fully symmetric model for TBG. To achieve this, it is essential to first understand the mathematical concepts of symmetry, specifically Group Theory and Representation Theory as applied to crystallographic solids. In this chapter we will provide the necessary definitions and theorems in order to develop our symmetry analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Elements of Group Theory}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Groups, cosets, and conjugacy classes}
+\section{Group theoretic concepts}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this thesis we are concerned with symmetries that relate to graphene. Because its carbon atoms form a honeycomb lattice, our basic object of study will be a 2D hexagon.
@@ -29,13 +34,14 @@ In this thesis we are concerned with symmetries that relate to graphene. Because
 \label{fig:hexagon}
 \end{figure}
 
+\begin{example}
 In a certain sense, a basic hexagon has 12 symmetry elements. Looking at Figure \ref{fig:hexagon}, the hexagon has the reflections $\sd$, $\sv$, the $60^\circ$ rotation $\Cs$, and all the combinations of these. Combining all the possibilities, we say all that the symmetry elements of the hexagon form the \textit{group}
 $$
 D_6 = \{E, \Cs, \underbrace{\Ct}_{\Csn{2}}, \underbrace{C_2}_{\Csn{3}}, \underbrace{\Ctn{2}}_{\Csn{4}}, \Csn{5}, \sd, \underbrace{\sdp}_{\sdp \Ct}, \underbrace{\sdpp}_{\sdp \Ctn{2}}, \sv, \underbrace{\svp}_{\svp \Ct}, \underbrace{\svpp}_{\svp \Ctn{2}} \}.
 $$
 In this list, we did not include repeated elements, observe that $\Csn{6} = \sdn{2} = \svn{2} = E$ is the element the identity element, the one that ``does nothing''.
+\end{example}
 
-\n
 
 The concept of \textit{group} $G$ grasps the set of elements $a \in G$ that represent the symmetry of an object, along with its symmetry operation ``$\vdot$''. The element $a \vdot b$ represents the ``composition'' of applying first the operation $a$, and then $b$.
 
@@ -54,15 +60,16 @@ Normally in the literature, one speaks of the set $G$ as being ``the group'' ins
 The order of a group $G$ is defined as its number of elements $\abs{G}$.
 \end{definition}
 
-It happens frequently that an object $A$ has all the symmetries of another object $B$. For example, a hexagon has all the symmetries of a triangle, as we can see in Figure \ref{fig:hexagon_subgroup}.
+\begin{example}
+Frequently, an object $A$ has all the symmetries of another object $B$. In Figure \ref{fig:hexagon_subgroup}, the \textcolor{ForestGreen}{green hexagon} has all the symmetries of the \textcolor{Cyan}{cyan triangle}. The symmetry elements of the triangle form the group $D_3 = \{E, \Ct, \Ctn{2}, \sv, \svp, \svpp\}$. Because $D_3$ is a subset of $D_6$ and also forms a group by itself, we say that $D_3$ is a subgroup of $D_6$.
+\end{example}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\linewidth]{fig/hexagon_subgroup.png}
 \caption{The \textcolor{ForestGreen}{hexagon} has all the symmetries of the \textcolor{Cyan}{triangle}, i.e., $D_3$ is a subgroup of $D_6$.}
 \label{fig:hexagon_subgroup}
 \end{figure}
-
-The symmetry elements of the triangle form the group $D_3 = \{E, \Ct, \Ctn{2}, \sv, \svp, \svpp\}$. Because $D_3$ is a subset of $D_6$ and also forms a group by itself, we say that $D_3$ is a subgroup of $D_6$.
 
 
 \begin{definition}[\textbf{Subgroup}]
@@ -75,12 +82,16 @@ It is common that one defines a group by its \textit{generators}. We did that wh
 If $S$ is a subset of a group $G$, we define $\ev{S}$ as the smallest subgroup of $G$ containing every element of $S$. The subgroup $\ev{S}$ is called the \textit{subgroup generated by $S$}. If $\ev{S} = G$, we say that the set $S$ \textit{generates} $G$.
 \end{definition}
 
-An intuitive way of thinking of $\ev{S}$ is by ``recursively multiplying'' all the elements of $S$, until all the possibilities are exhausted. For example, in general for two elements:
+
+\begin{example}
+An intuitive way of thinking of $\ev{S}$ is by ``recursively multiplying'' all the elements of $S$, until all the possibilities are exhausted. In general for two elements:
 $$
 \ev{\{a,b\}} = \{E, a, b, a^2, ab, ba, b^2, a^3, a^2b, aba, ba^2, ab^2, bab, b^2a, b^3, \ldots\}.
 $$
 
 For the hexagon at Figure \ref{fig:hexagon}, the set $\{\Cs, \sd, \sv\}$ generates the group $D_6$; and for the triangle at Figure \ref{fig:hexagon_subgroup}, the set $\{\Ct, \sv\}$ generates the group $D_3$.
+\end{example}
+
 
 \begin{definition}[\textbf{Cosets}]
 Let $G$ be a group and $H$ one of its subgroups. Given an element $g \in G$, we define the set $gH$ by
@@ -102,6 +113,7 @@ An iconic theorem due to Laplace says that the order of a subgroup $H \subseteq 
 The number of different left cosets is given by $\abs{G:H} = \abs{G} / \abs{H}$.
 \end{theorem}
 
+\begin{example}
 As an example, take $H = D_3$ and $G = D_6$. We have that $\abs{D_3}=6$ and $\abs{D_6} = 12$. Therefore, we only have two different left cosets. One of them has $E$ as its representative:
 $$
 E D_3 = D_3 = D_3 = \{E, \Ct, \Ctn{2}, \sv, \svp, \svpp\}.
@@ -117,6 +129,7 @@ The coset decomposition is the disjoint union of the two cosets
 $$
 D_6 = ED_3 \cup \sd D_3.
 $$
+\end{example}
 
 One would probably notice that the elements $\sd, \sdp, \sdpp$ are in some way related, also as $\sv, \svp, \svpp$. Actually, they belong to the same conjugacy class, which is a concept analogous to the notion of matrix similarity in Linear Algebra.
 
@@ -128,23 +141,34 @@ $$
 is called a \textit{conjugacy class} of $G$. Every group is a disjoint union of its conjugacy classes.
 \end{definition}
 
-Going back to our example groups $D_3$ and $D_6$, one finds the conjugacy classes
+\begin{example}
+For the groups $D_3$ and $D_6$, one finds the conjugacy classes
+
 \begin{equation} \label{eq:D3_classes}
 D_3 = [E] \cup [\Ct] \cup [\sv] = \{E\} \cup \{\Ct, \Ctn{2}\} \cup \{\sv, \svp, \svpp\},
 \end{equation}
-\begin{align*}
-D_6 &= [E] &&\cup&& [C_2] &&\cup&& [\Ct] &&\cup&& [\Cs] &&\cup&& [\sv] &&\cup&& [\sd] \\
-&= \{E\} &&\cup&& \{C_2\} &&\cup&& \{\Ct, \Ctn{2}\} &&\cup&& \{\Cs, \Csn{5}\} &&\cup&& \{\sv, \svp, \svpp\} &&\cup&& \{\sd, \sdp, \sdpp\},
-\end{align*}
+\begin{align} \label{eq:D6_classes}
+D_6 &= \{E\} &&\cup&& \{C_2\} &&\cup&& \{\Ct, \Ctn{2}\} &&\cup&& \{\Cs, \Csn{5}\} &&\cup&& \{\sv, \svp, \svpp\} &&\cup&& \{\sd, \sdp, \sdpp\}.
+\end{align}
+\end{example}
 
-Going back to the example of graphene, let us say we want to identify which elements of $D_6$ exchange sublattice types $A$ and $B$, as in Figure \ref{fig:hexagon_AB}. We can accomplish this task by using a labelling function $\vphi: D_6 \to \{1, -1\}$, where
+\begin{example}
+Let us say we want to identify which elements of $D_6$ exchange sublattice types $A$ and $B$, as in Figure \ref{fig:hexagon_AB}. We can accomplish this task by using a labelling function $\vphi: D_6 \to \{1, -1\}$, where
 \begin{align*}
 \vphi(g) =
 \begin{cases}
-\; \P1, \quad g \text{ changes sublattice type } A \leftrightarrow B \\
+\; \P1, \quad g \text{ changes sublattice type } A \leftrightarrow B, \\
 \; -1, \quad \text{otherwise.}
 \end{cases}
 \end{align*}
+
+For our generators of $D_6$ we have $\vphi(\Cs) = -1$, $\vphi(\sv) = 1$ and $\vphi(\sd) = -1$. Only these values are sufficient, because if we treat $\{1, -1\}$ as a group by itself, with standard multiplication as its operation, one may notice that $\vphi$ follows the rule
+$$
+\vphi(g_1 g_2) = \vphi(g_1) \vphi(g_2).
+$$
+
+The element $g_1 g_2$ changes sublattice only if exactly one of $g_1$ or $g_2$ do. Now, the elements $D_3$ do not exchange sublattice type, which translates to the property $\vphi(g) = 1$ for every $g \in D_3$.
+\end{example}
 
 \begin{figure}[H]
 \centering
@@ -153,12 +177,7 @@ Going back to the example of graphene, let us say we want to identify which elem
 \label{fig:hexagon_AB}
 \end{figure}
 
-For example, for our generators of $D_6$ we have $\vphi(C_6) = -1$, $\vphi(\sigma_v) = 1$ and $\vphi(\sigma_d) = -1$. Only these values are sufficient, because if we treat $\{1, -1\}$ as a group by itself, with standard multiplication as its operation, one may notice that $\vphi$ follows the rule
-$$
-\vphi(g_1 g_2) = \vphi(g_1) \vphi(g_2).
-$$
 
-The element $g_1 g_2$ changes sublattice only if exactly one of $g_1$ or $g_2$ do. Now, the elements $D_3$ do not exchange sublattice type, which translates to the property $\vphi(g) = 1$ for every $g \in D_3$.
 
 The function $\vphi$ is generally known as a homomorphism, which in the case above identifies the subgroup $D_3$ as its kernel.
 
@@ -174,102 +193,111 @@ $$
 where $e_H$ is the identity element of $H$.
 \end{definition}
 
-\pagebreak
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Elements of Representation Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In physics, specially in Quantum Mechanics, it is most common that one works with groups of matrices, where the theory of Linear Algebra holds. For example, a group of $2\times 2$ matrices isomorphic to $D_6$ can be found by defining the homomorphism $\Phi_2$ below
+In physics, specially in Quantum Mechanics, it is most common that one works with groups of matrices, where all the useful theorems of Functional Analysis hold.
+
+\begin{definition}[\textbf{Groups of matrices}]
+The set of invertible linear operators of a vector space $V$ form a group and we call it the \textit{general linear group}
+$$
+\GL(V) = \qty{A: V \to V \mid A \text{ is linear and invertible}}.
+$$
+If $V$ is finite dimensional with a scalar product, the set of unitary operators of $V$ is a subgroup of $\GL(V)$, defined by
+$$
+\U(V) = \qty{A \in \GL(V) \mid A A^\dagger = \1}.
+$$
+%When $V = \mathbb{R}^n$ or $\C^n$, we can choose a basis and explicitly say that
+%$$
+%\GL(n, \mathbb{R}) = \qty{\text{invertible } n\times n \text{ real matrices}}, \;
+%\GL(n, \mathbb{C}) = \qty{\text{invertible } n\times n \text{ complex matrices}}.
+%$$
+%In this case, the subgroups of orthogonal and unitary matrices are, respectively,
+%$$
+%O(n) = \qty{A \in \GL(n, \mathbb{R}) \mid A A^T = \1}, \quad SO(n) = \qty{A \in O(n) \mid \det A = 1};
+%$$
+%$$
+%\U(n) = \qty{A \in \GL(n, \mathbb{C}) \mid A A^\dagger = \1}, \quad S\U(n) = \qty{A \in \U(n) \mid \det A = 1}.
+%$$
+\end{definition}
+
+\begin{example} \label{ex:2x2_rep}
+A group of $2\times 2$ matrices isomorphic to $D_3$ can be found by defining the homomorphism (representation) $\Gamma_2$ below
 \begin{equation} \label{eq:D6_generators_2x2matrices}
-\Phi_2(\Cs) =
+\Gamma_2(\Ct) =
 \begin{pmatrix}
-\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) \\
--\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6})
+\cos(\frac{2\pi}{3}) & \sin(\frac{2\pi}{3}) \\
+-\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3})
 \end{pmatrix},
 \quad
-\Phi_2(\sd) =
+\Gamma_2(\sd) =
 \begin{pmatrix}
 -1 & 0 \\
 0 & 1
 \end{pmatrix},
 \quad
-\Phi_2(\sv) =
+\Gamma_2(\sv) =
 \begin{pmatrix}
 1 & 0 \\
 0 & -1
 \end{pmatrix}.
 \end{equation}
 
-Imposing the homomorphism relation \ref{eq:homomorphism}, we can find all the representative $2\times 2$ matrices of $D_6$ only by multiplying the matrices of the three generators in Equation \ref{eq:D6_generators_2x2matrices}. Because homomorphisms to groups of matrices are so frequent and important, we define:
-
-\begin{definition}[\textbf{Groups of matrices}]
-The set of invertible linear operators of a vector space $V$ form a group and we call it the \textit{general linear group}
-$$
-GL(V) = \qty{A: V \to V \mid A \text{ is linear and invertible}}.
-$$
-If $V$ is finite dimensional with a scalar product, the set of unitary operators of $V$ is a subgroup of $GL(V)$, defined by
-$$
-U(V) = \qty{A \in GL(V) \mid A A^\dagger = \1}.
-$$
-%When $V = \mathbb{R}^n$ or $\C^n$, we can choose a basis and explicitly say that
-%$$
-%GL(n, \mathbb{R}) = \qty{\text{invertible } n\times n \text{ real matrices}}, \;
-%GL(n, \mathbb{C}) = \qty{\text{invertible } n\times n \text{ complex matrices}}.
-%$$
-%In this case, the subgroups of orthogonal and unitary matrices are, respectively,
-%$$
-%O(n) = \qty{A \in GL(n, \mathbb{R}) \mid A A^T = \1}, \quad SO(n) = \qty{A \in O(n) \mid \det A = 1};
-%$$
-%$$
-%U(n) = \qty{A \in GL(n, \mathbb{C}) \mid A A^\dagger = \1}, \quad SU(n) = \qty{A \in U(n) \mid \det A = 1}.
-%$$
-\end{definition}
+Imposing the homomorphism relation \ref{eq:homomorphism}, we can find all the representative $2\times 2$ matrices of $D_3$ by multiplying the matrices of the three generators in Equation \ref{eq:D6_generators_2x2matrices}.
+\end{example}
 
 \begin{definition}[\textbf{Representation}]
-A \textit{representation} of a group $G$ on a vector space $V$ is a \textbf{homomorphism} $\Pi: G \to GL(V)$.
+A \textit{representation} of a group $G$ on a vector space $V$ is a \textbf{homomorphism} $\Pi: G \to \GL(V)$.
 \end{definition}
 
-As we learn in Quantum Mechanics (or Linear Algebra), conjugating an operator $H$ by means of $A$, as in $H' = A H A^{-1}$, has the meaning of only changing the reference frame (or the basis). This motivates us to considering two conjugate representations as equivalent:
+When applying the theory of representations to Quantum Mechanics, two key physical considerations must be incorporated. The first is the ability to change reference frames, and the second is the requirement to preserve probabilities by ensuring the unitarity of transformations.
+
+\n
+
+1. Conjugating an observable $H$ by means of $A$, as in $H' = A H A^{-1}$, corresponds to a change of reference frame (or basis). This leads us to regard two conjugate representations as equivalent, as they describe the same transformation in different bases.
+
 \begin{definition}[\textbf{Equivalent representations}]
-Two representations $\Pi_1: G \to GL(V_1)$ and $\Pi_2: G \to GL(V_2)$ of a group $G$ are said to be \textit{equivalent} if there is an invertible linear operator $A: V_1 \to V_2$ such that
+Two representations $\Pi_1: G \to \GL(V_1)$ and $\Pi_2: G \to \GL(V_2)$ of a group $G$ are said to be \textit{equivalent} if there is an invertible linear operator $A: V_1 \to V_2$ such that
 \begin{equation} \label{eq:intertwiner}
 \Pi_2(g) = A \Pi_1(g) A^{-1}, \, \forall \, g \in G.
 \end{equation}
 In this case we write $\Pi_1 \equiv \Pi_2$.
 \end{definition}
 
-In Quantum Mechanics, one is usually accostumed to work with unitary matrices and, as we will discuss in the next chapter, there are important orthogonality theorems that hold when we restrict ourselves to unitary representations. This restriction is actually general, as the following theorem asserts \cite{dresselhaus}:
+2. In Quantum Mechanics, unitary matrices are standard because they preserve probabilities and ensure the physical consistency of the theory. Moreover, as we will see in Section \ref{sec:characters}, unitary representations are particularly significant due to the orthogonality theorems for representation characters, which fundamentally depend on this restriction. Lastly, this preference for unitary representations is not merely practical but is underpinned by the general principle stated in Theorem \ref{th:unitarity_rep} \cite{dresselhaus}.
+
 \begin{theorem}[\textbf{Unitarity of representations}] \label{th:unitarity_rep}
-Let $V$ be a finite dimensional vector space with a scalar product. A representation $\Gamma: G \to GL(V)$ is called \textit{unitary} if $\Gamma(g) \in U(V)$, $\forall \, g \in G$. Every representation $\Pi: G \to GL(V)$ is equivalent to some unitary representation $\Gamma: G \to U(V)$.
+A representation $\Gamma: G \to \GL(V)$ is called \textit{unitary} if $\Gamma(g) \in \U(V)$, $\forall \, g \in G$. Every representation $\Pi: G \to \GL(V)$ is equivalent to some unitary representation $\Gamma: G \to \U(V)$.
 \end{theorem}
 
-Because of Theorem \ref{th:unitarity_rep}, most of our theory will be dedicated to unitary representations. If not otherwise stated, when we say the word ``representation'' we actually mean an \textbf{unitary representation}.
+Because of Theorem \ref{th:unitarity_rep}, most of our theory will be dedicated to unitary representations. If not otherwise stated, when we consider a representation we actually mean an \textbf{unitary representation}.
 
-Considering $G = D_3$, take $\Phi_2: G \to GL(V_2)$, $V_2 = \mathbb{R}^2$, as defined in Equation \ref{eq:D6_generators_2x2matrices}, and also consider the trivial representation $\Phi_1: G \to GL(V_1)$, $V_1 = \mathbb{R}$, $\Phi_1(g) = 1$, $\forall \, g \in G$. We can stack $\Phi_2$ and $\Phi_1$ to construct $\Psi: G \to GL(V_0)$, $V_0 = V_2 \oplus V_1$, given by
-$$
-\Psi(g) =
+\begin{example} \label{ex:direct_sum}
+Considering $G = D_3$, take $\Gamma_2$ acting on $V_2 = \mathbb{R}^2$, as previously defined in Example \ref{ex:2x2_rep}, and also consider the trivial representation $\Gamma_1$ acting on $V_1 = \mathbb{R}$, which is defined by $\Gamma_1(g) = 1$, $\forall \, g \in G$. We can stack $\Gamma_2$ and $\Gamma_1$ to construct another representation $\Gamma$, acting on $V_2 \oplus V_1$, given by
+\begin{equation} \label{eq:block_diagonal_Gamma_2_1}
+\Gamma(g) =
 \begin{pmatrix}
-\Phi_2(g) & 0 \\
-0 & \Phi_1(g)
+\Gamma_2(g) & 0 \\
+0 & \Gamma_1(g)
 \end{pmatrix}, \quad \forall \, g \in G.
-$$
+\end{equation}
 \begin{equation} \label{eq:D6_generators_3x3matrices}
-\Psi(\Ct) =
+\Gamma(\Ct) =
 \begin{pmatrix}
 \cos(\frac{2\pi}{3}) & \sin(\frac{2\pi}{3}) & 0 \\
 -\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3}) & 0 \\
 0 & 0 & 1
 \end{pmatrix},
 \;
-\Psi(\sd) =
+\Gamma(\sd) =
 \begin{pmatrix}
 -1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{pmatrix},
 \;
-\Psi(\sv) =
+\Gamma(\sv) =
 \begin{pmatrix}
 1 & 0 & 0 \\
 0 & -1 & 0 \\
@@ -277,58 +305,71 @@ $$
 \end{pmatrix}.
 \end{equation}
 
-We say that the representation $\Psi$ is a direct sum and we write $\Psi \equiv \Phi_2 \oplus \Phi_1$. This is indeed a valid representation, but it kind of does not add much to our knowledge. Representations such as $\Psi$ are called \textit{reducible}. What distinguishes reducible representations are the existence of nontrivial invariant subspaces.
+We say that $\Gamma$ is a direct sum and we write $\Gamma \equiv \Gamma_2 \oplus \Gamma_1$. Representations, such as $\Gamma$, that can be decomposed into a direct sum are called \textit{reducible}. What distinguishes reducible representations is the existence of nontrivial invariant subspaces.
+\end{example}
+
 \begin{definition}[\textbf{Invariant subspace}]
-A vector subspace $W \subseteq V$ is said to be \textit{invariant} under a representation $\Pi: G \to GL(V)$ if it satisfies $\Pi(g) W \subseteq W$ (the action of $\Pi(g)$ on $W$ is contained within $W$), for every $g \in G$.
+A vector subspace $W \subseteq V$ is said to be \textit{invariant} under a representation $\Pi: G \to \GL(V)$ if it satisfies $\Pi(g) W \subseteq W$ (the action of $\Pi(g)$ on $W$ is contained within $W$), for every $g \in G$.
 \end{definition}
 
-The nontrivial subspaces $V_1$ and $V_2$ are invariant under the action of $\Psi$. Because $\Psi(g)$ is block diagonal for every $g$, we have that $\Psi(g) V_2 \subseteq V_2$ and $\Psi(g) V_1 \subseteq V_1$.
+\begin{example}
+The nontrivial subspaces $V_2$ and $V_1$ are invariant under the action of $\Gamma$, defined in Example \ref{ex:direct_sum}. In Equation \ref{eq:block_diagonal_Gamma_2_1}, we see that $\Gamma(g)$ is block diagonal on subspaces $V_2$ and $V_1$, therefore we have that $\Gamma(g) V_2 \subseteq V_2$ and $\Gamma(g) V_1 \subseteq V_1$.
+\end{example}
+
 \begin{definition}[\textbf{Irreducible representation}]
-A representation $\Pi: G \to GL(V)$ always has the trivial invariant subspace $\{0\}$ and $V$. If there are not others, $\Pi$ is said to be \textit{irreducible}.
+A representation $\Pi: G \to \GL(V)$ always has the trivial invariant subspace $\{0\}$ and $V$. If there are not others, $\Pi$ is said to be \textit{irreducible}.
 \end{definition}
 
-Unlike $\Psi$, the representations $\Phi_1$ and $\Phi_2$ are \textit{irreducible} because they are not equivalent to any representation that is block diagonal. Irreducible representations are building blocks for all representations in finite dimensional vector spaces \cite{dresselhaus}:
+\begin{example}
+Still in the context of Example \ref{ex:direct_sum}, unlike $\Gamma$, the representations $\Gamma_1$ and $\Gamma_2$ are \textit{irreducible} because they have no trivial invariant subspaces and are not equivalent to any block diagonal representation.
+\end{example}
+
+Theorem \ref{th:irreps_decomp}, whose proof can be found in \cite{dresselhaus, hamermesh}, states that irreducible representations (irreps) are building blocks for all representations in finite dimensional vector spaces.
+
 \begin{theorem}[\textbf{Decomposition of unitary representations}] \label{th:irreps_decomp}
-Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to U(V)$ be an unitary representation. Then, $\Gamma$ is either irreducible or reducible and can be decomposed into a direct sum
+Let $V$ be a finite dimensional vector space with a scalar product and let $\Gamma: G \to \U(V)$ be an unitary representation. Then, $\Gamma$ is either irreducible or reducible and can be decomposed into a direct sum
 $$
 V = \bigoplus_{j=1}^N V_j, \quad
 \Gamma(g) =
 \begin{pmatrix}
-\pi_1(g) &  &  \\
+\Gamma_1(g) &  &  \\
  & \ddots &  \\
- &  & \pi_N(g) \\
+ &  & \Gamma_N(g) \\
 \end{pmatrix},
 $$
-where each $V_j$ is a nontrivial invariant subspace under $\Gamma$ and $\pi_j: G \to U(V_j)$ is an irreducible representation of $G$.
+where each $V_j$ is a nontrivial invariant subspace under $\Gamma$ and $\Gamma_j: G \to \U(V_j)$ is an irreducible representation of $G$. To summarize this, we write $\Gamma \equiv \bigoplus_{j=1}^N \Gamma_j$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Characters}
+\subsection{Characters} \label{sec:characters}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The trace of a representation is such an important quantity that it deserves the name of its \textit{character}. The \textit{characters} of irreps from a group provides enough information to determine the decomposition of a reducible representation into irreducible ones, as in Theorem \ref{th:irreps_decomp}.
 
 \begin{definition}[\textbf{Character}]
-The \textit{character} of an element $g \in G$ in the representation $\Pi: G \to GL(V)$ is defined as
+The \textit{character} of an element $g \in G$ in the representation $\Pi: G \to \GL(V)$ is defined as
 \begin{equation} \label{eq:character}
-\chi(g) = \tr[\Pi(g)] = \sum_{j} \Pi_{jj}(g).
+\chi^{(\Pi)}(g) = \tr[\Pi(g)] = \sum_{j} \Pi_{jj}(g).
 \end{equation}
 \end{definition}
-Due to the cyclic property of the trace of a matrix, equivalent irreducible representations (irreps) have the same characters
+Due to the cyclic property of the trace of a matrix, equivalent irreps have the same characters
 $$
-\chi'(g) = \tr[A^{-1} \Pi(g) A] =  \tr[AA^{-1} \Pi(g)] = \chi(g).
+\Pi'(g) = A\Pi(g)A^{-1} \implies \chi^{(\Pi')}(g) = \tr[A \Pi(g) A^{-1}] =  \tr[A^{-1}A \Pi(g)] = \chi^{(\Pi)}(g).
 $$
-Also, elements from the same conjugacy class $g$ and $g' = a g a^{-1}$ also have the same character
+
+Elements from the same conjugacy class $g$ and $g' = a g a^{-1}$ also have the same character
 $$
 \chi(g') = \chi(aga^{-1}) = \tr[\Pi(aga^{-1})] = \tr[\Pi(a)\Pi(g)\Pi(a^{-1})] = \tr[\Pi(a^{-1})\Pi(a)\Pi(g)] = \chi(g).
 $$
 
-Due to this fact, one could also speak of the character of a conjugacy class $S = [g]$, where we denote it by $\chi_S = \chi(g) = \chi(g')$.
+Due to this last fact, we can also speak of the character of a conjugacy class $S = [g]$, where we denote it by $\chi_S = \chi(g) = \chi(g')$.
 
-Now we are going to state some theorems about characters, which are known as ``Wonderful Orthogonality Theorems'' \cite{dresselhaus, hamermesh}.
+\n
+
+Now we are going to state the ``Wonderful Orthogonality Theorems'' for characters, whose proof can be found in \cite{dresselhaus, hamermesh}. They will be useful to construct the character table of a group.
 
 \begin{theorem}[\textbf{1st Wonderful Orthogonality Theorem}] \label{th:1st-wot}
-The characters $\chi^{(\Gamma_i)}$, $\chi^{(\Gamma_j)}$ of irreducible representations $\Gamma_i, \Gamma_j: G \to U(V)$ obey the orthogonality relation
+The characters $\chi^{(\Gamma_i)}$, $\chi^{(\Gamma_j)}$ of irreducible representations $\Gamma_i, \Gamma_j: G \to \U(V)$ obey the orthogonality relation
 \begin{equation} \label{eq:1st-wot}
 \delta_{\Gamma_i, \Gamma_j} =
 \frac{1}{\abs{G}} \sum_{g \in G} \chi^{(\Gamma_i)}(g) \chi^{(\Gamma_j)}(g)^* =
@@ -337,8 +378,8 @@ The characters $\chi^{(\Gamma_i)}$, $\chi^{(\Gamma_j)}$ of irreducible represent
 where the sum in $S$ runs through the conjugacy classes of $G$, with $\abs{S}$ denoting the number of elements of the class $S$.
 \end{theorem}
 
-If we consider a $n_{\text{classes}} -$dimensional vector space, with the vectors with a fixed irreps $\Gamma_i$
-$$
+Let $n_{\text{classes}}$ be the number of different classes of $G$. If we fix an irrep $\Gamma_i$ and consider a $n_{\text{classes}} -$dimensional vector space, with vectors
+\begin{equation} \label{eq:nclasses_space}
 \ket{\psi^{(\Gamma_i)}} =
 \qty(
 \sqrt{\frac{\abs{S_1}}{\abs{G}}} \chi^{(\Gamma_i)}_{S_1},
@@ -346,32 +387,32 @@ $$
 \ldots,
 \sqrt{\frac{\abs{S_m}}{\abs{G}}} \chi^{(\Gamma_i)}_{S_{n_{\text{classes}}}}
 ),
-$$
-where $n_{\text{classes}}$ is the number of different classes of $G$, then Theorem \ref{th:1st-wot} can be in fact viewed as an orthogonality relation because we can rewrite Equation \ref{eq:1st-wot} as
+\end{equation}
+Equation \ref{eq:1st-wot} can be rewritten as
 \begin{equation} \label{eq:orthog_irreps}
 \braket{\psi^{(\Gamma_i)}}{\psi^{(\Gamma_j)}} = \delta_{\Gamma_i, \Gamma_j}.
 \end{equation}
 
-A consequence of this orthogonality relation is that there are no more than $n_{\text{classes}}$ of such vectors. If there were more, they would be linearly dependent, contradicting Equation \ref{eq:orthog_irreps}. From this, the number of irreps satisfies $n_{\text{irreps}} \leq n_{\text{classes}}$.
+As a consequence, there are no more than $n_{\text{classes}}$ of such vectors. If there were more, they would be linearly dependent, contradicting Equation \ref{eq:orthog_irreps}. From this, we conclude that the number of irreps satisfies $n_{\text{irreps}} \leq n_{\text{classes}}$.
 
 \begin{theorem}[\textbf{2nd Wonderful Orthogonality Theorem}] \label{th:2nd-wot}
-Let $\Gamma_j: G \to U(V)$ be the irreducible representations of $G$. The summation over all irreps
+Let $\Gamma_j: G \to \U(V)$ be the irreducible representations of $G$. The summation over all irreps
 \begin{equation} \label{eq:2nd-wot}
-\frac{1}{\abs{G}} \sum_{\Gamma_j} \abs{S} \, \chi^{(\Gamma_j)}_S \qty[\chi^{(\Gamma_j)}_{S'}]^* = \delta_{S, S'}
+\delta_{S, S'} = \frac{1}{\abs{G}} \sum_{\Gamma_j} \abs{S} \, \chi^{(\Gamma_j)}_S \qty[\chi^{(\Gamma_j)}_{S'}]^*
 \end{equation}
 also yields an orthogonality relation, where $S$ and $S'$ are conjugacy classes of $G$.
 \end{theorem}
 
 \begin{corollary} \label{coro:chi_E}
-Applying Theorem \ref{th:2nd-wot} to the trivial class $S = S' = \{E\}$, we obtain
+Applying Theorem \ref{th:2nd-wot} to the trivial class $S = S' = \{E\}$ yields
 \begin{equation} \label{eq:chi_E_coro}
 \abs{G} = \sum_{\Gamma_j} \abs{\chi^{(\Gamma_j)}(E)}^2 = \sum_{\Gamma_j} \ell_j^2,
 \end{equation}
 where $\ell_j = \chi^{(\Gamma_j)}(E)$ is the dimension of the irrep $\Gamma_j$.
 \end{corollary}
 
-Now we can apply the same reasoning considering a $n_{\text{irreps}}-$dimensional vector space with the vectors for a fixed class $S$
-$$
+Analogous to Equation \ref{eq:nclasses_space} we can apply the same reasoning to a $n_{\text{irreps}}-$dimensional vector space. Fixing a class $S$ and considering the vectors
+\begin{equation} \label{eq:nirreps_space}
 \ket{\phi_{S}} =
 \qty(
 \sqrt{\frac{\abs{S}}{\abs{G}}} \chi^{(\Gamma_1)}_{S},
@@ -379,41 +420,39 @@ $$
 \ldots,
 \sqrt{\frac{\abs{S}}{\abs{G}}} \chi^{\qty(\Gamma_{n_{\text{irreps}}})}_{S}
 ),
-$$
-
-Analogously, Theorem \ref{th:2nd-wot} implies the orthogonality
+\end{equation}
+Equation \ref{eq:2nd-wot} implies the orthogonality relation
 $$
 \braket{\phi_{S}}{\phi_{S'}} = \delta_{S, S'}.
 $$
 
-As such, we also conclude that $n_{\text{classes}} \leq n_{\text{irreps}}$. Now we can announce the theorem:
+As such, we also conclude that $n_{\text{classes}} \leq n_{\text{irreps}}$. This allows us to establish Theorem \ref{th:num_irreps_classes}.
 
 \begin{theorem}[$\bm{n_{\textbf{irreps}} = n_{\textbf{classes}}}$] \label{th:num_irreps_classes}
 The number of irreducible representations of a group $G$ is equal to its number of conjugacy classes.
 \end{theorem}
 
-With theorems \ref{th:1st-wot}, \ref{th:2nd-wot} and \ref{th:num_irreps_classes} we can construct the \textbf{TABLE OF CHARACTERS}. Let us come back to the $G = D_3$ example. We already established two irreducible representations $\Phi_1$ and $\Phi_2$. As we know from Equation \ref{eq:D3_classes}, the group $D_3$ has three distinct classes, thus also three inequivalent irreducible representations. Calculating the characters of the classes from Equation \ref{eq:D3_classes} under $\Phi_1$ and $\Phi_2$, we obtain
-$$
-\chi^{(\Phi_1)}(E) = \chi^{(\Phi_1)}(\Ct) = \chi^{(\Phi_1)}(\sv) = 1
-$$
-$$
-\chi^{(\Phi_2)}(E) = 2, \quad \chi^{(\Phi_2)}(\Ct) = 2 \cos(\frac{2\pi}{3}) = -1, \quad \chi^{(\Phi_2)}(\sv) = 0.
-$$
+With the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}, along with the fact that \(n_{\text{irreps}} = n_{\text{classes}}\), we can construct character tables. These tables provide complete information for decomposing any representation into irreducible ones. In fields such as chemistry and crystallography, they are used to classify molecular vibrations according to their symmetry and to predict whether a transition between two states is forbidden by symmetry.
 
-Applying Theorem \ref{th:2nd-wot} with $S = S' = \{E\}$, the trivial conjugacy class with only the identity element, we obtain the relation
-\begin{equation} \label{eq:chi_E}
-\abs{G} = \sum_{\Gamma_j} \abs{\chi^{(\Gamma_j)}(E)}^2 = \sum_{\Gamma_j} \ell_j^2,
-\end{equation}
-where $\chi^{(\Gamma_j)}(E) = \ell_j$ is the dimensionality of the representation $\Gamma_j$. Using Equation \ref{eq:chi_E} with $G = D_3$, we obtain
+\begin{example} \label{ex:chartable_construction_D3}
+In Example \ref{ex:direct_sum} we established two irreducible representations $\Gamma_1$ and $\Gamma_2$. From Equation \ref{eq:D3_classes}, the group $D_3$ has three distinct classes, and thus also three inequivalent irreducible representations. Calculating the characters under $\Gamma_1$ and $\Gamma_2$, we obtain
+\begin{align} \label{eq:incomplete_characters_D3}
+& \chi^{(\Gamma_1)}(E) = 1, && \chi^{(\Gamma_1)}(\Ct) = 1 , && \chi^{(\Gamma_1)}(\sv) = 1, \\
+& \chi^{(\Gamma_2)}(E) = 2, && \chi^{(\Gamma_2)}(\Ct) = 2 \cos(\frac{2\pi}{3}) = -1, && \chi^{(\Gamma_2)}(\sv) = 0.
+\end{align}
+
+Using Corollary \ref{coro:chi_E}, we obtain for the third irrep $\Gamma_3$ that
 $$
 6 = 2^2 + 1^2 + \ell_3^2 \implies \ell_3 = 1,
 $$
-which tells us that the last irrep $\Gamma_3$ is an one-dimensional representation. Because of this, the matrix representatives are numbers, and $\Gamma_3(g) = \chi^{(\Gamma_3)}(g)$. Using that $C_3^3 = E$, we have $\Gamma_3(C_3)^3 = 1$, which implies that $\Gamma_3(C_3) = 1$. Analogously, $\sigma_v^2 = E \implies \Gamma_3(\sigma_v)^2 = 1$. But notice that, if $\Gamma_3$ would be $1$, we would end up with $\Gamma_3 \equiv \Gamma_1$. Therefore, the correct solution is $\Gamma_3(\sigma_v) = -1$. Summing up, we have
-$$
-\chi^{(\Gamma_3)}(E) = 1, \quad \chi^{(\Gamma_3)}(\Ct) = 1, \quad \chi^{(\Gamma_3)}(\sv) = -1.
-$$
+which tells us $\Gamma_3$ is one-dimensional and its matrix representatives are numbers $\Gamma_3(g) = \chi^{(\Gamma_3)}(g)$.
 
-With all irreps, classes and characters known, we can now construct the table of characters for the group $D_3$:
+Since \(\Ct^3 = E\) and \(\sv^2 = E\), it follows that \(\Gamma_3(\Ct)^3 = 1\) and \(\Gamma_3(\sv)^2 = 1\). We can immediately conclude that \(\Gamma_3(\Ct) = 1\). For \(\sv\), however, we must have \(\Gamma_3(\sv) = -1\), since if it were 1, we would obtain \(\Gamma_3 \equiv \Gamma_1\). Summarizing the results for \(\Gamma_3\), we have:
+\begin{align} \label{eq:Gamma3_characters_D3}
+\chi^{(\Gamma_3)}(E) = 1, && \chi^{(\Gamma_3)}(\Ct) = 1, && \chi^{(\Gamma_3)}(\sv) = -1.
+\end{align}
+
+With all irreps, classes and characters known, we construct the table of characters for $D_3$:
 \begin{table}[H]
 \caption{Character table of group $D_3$.}
 \centering
@@ -431,7 +470,10 @@ $E$   & $\P2$ & $ -1$ & $\P0$ \\
 \label{tab:D3}
 \end{table}
 
-The same procedure could be applied to construct the table for the group $D_3$, which we show in Table \ref{tab:D6}.
+In Table \ref{tab:D3}, we renamed the representations \(\Gamma_1 = A_1\), \(\Gamma_2 = A_2\), and \(\Gamma_3 = E\) to align with the commonly used notation in the literature.
+\end{example}
+
+An analogous procedure in Example \ref{ex:chartable_construction_D3} could be applied to construct the character table for the group $D_6$, which we show in Table \ref{tab:D6}.
 \begin{table}[H]
 \caption{Character table of point group $D_6$.}
 \centering
@@ -449,14 +491,16 @@ $B_2$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
 $E_1$ & $\P2$ & $ -2$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$E_1$ & $\P2$ & $\P2$ & $ -1$ & $ -1$ & $\P0$ & $\P0$ \\
+$E_2$ & $\P2$ & $\P2$ & $ -1$ & $ -1$ & $\P0$ & $\P0$ \\
 \specialrule{0.05em}{0.2em}{0em}
 \end{tabular}
 \label{tab:D6}
 \end{table}
 
+With the information from the character tables, we can decompose a representation into irreducible components using Theorem \ref{th:reduction_formula}, the proof of which is detailed in \cite{dresselhaus, hamermesh}.
+
 \begin{theorem}[\textbf{Reduction formula}] \label{th:reduction_formula}
-By Theorem \ref{th:irreps_decomp}, a representation $\Gamma: G \to U(V)$ is a direct sum of irreps
+By Theorem \ref{th:irreps_decomp}, a representation $\Gamma: G \to \U(V)$ is a direct sum of irreps
 $$
 \Gamma \equiv \bigoplus_j r_j \, \Gamma_j,
 $$
@@ -468,13 +512,6 @@ r_j =
 \end{equation}
 \end{theorem}
 
-Utilize it with conjuction with the reduction formula \ref{th:reduction_formula} to determine the decomposition of whichever representation of a group.
-
-\begin{example}
-teste
-\end{example}
-
-<++>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Induction and subduction of representations}
