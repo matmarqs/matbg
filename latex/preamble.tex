@@ -119,10 +119,22 @@
 %% Theorems, definitions, proofs
 \theoremstyle{definition}
 
+%%% defining my own colors %%%
+\definecolor{my-blue}{HTML}{f2f4ff}
+\definecolor{my-green}{HTML}{f5fcf6}    % a little better: green!5!white
+\definecolor{my-cyan}{HTML}{f2fffe}
+\definecolor{my-yellow}{HTML}{fffbed}
+\definecolor{my-green2}{HTML}{efffdb}
+
+%%% alternative colors %%%
+\definecolor{my-pink}{HTML}{fff2f7}
+\definecolor{my-teal}{HTML}{ebfffc}
+
 \newtheorem{definition}{Definition}[section]
 \tcolorboxenvironment{definition}{
-  colback=blue!5!white,
-  boxrule=0pt,
+  colback=my-blue,
+  %colback=blue!5!white,
+  boxrule=0.1pt,
   boxsep=1pt,
   left=2pt,right=2pt,top=2pt,bottom=2pt,
   oversize=2pt,
@@ -133,8 +145,9 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \tcolorboxenvironment{theorem}{
-  colback=blue!5!white,
-  boxrule=0pt,
+  colback=my-yellow,
+  %colback=yellow!22!white!95!black,
+  boxrule=0.1pt,
   boxsep=1pt,
   left=2pt,right=2pt,top=2pt,bottom=2pt,
   oversize=2pt,
@@ -145,8 +158,8 @@
 
 \newtheorem{corollary}{Corollary}[section]
 \tcolorboxenvironment{corollary}{
-  colback=blue!5!white,
-  boxrule=0pt,
+  colback=my-green2,
+  boxrule=0.1pt,
   boxsep=1pt,
   left=2pt,right=2pt,top=2pt,bottom=2pt,
   oversize=2pt,
@@ -157,8 +170,9 @@
 
 \newtheorem{example}{Example}[section]
 \tcolorboxenvironment{example}{
+  %colback=my-green,
   colback=green!5!white,
-  boxrule=0pt,
+  boxrule=0.1pt,
   boxsep=1pt,
   left=2pt,right=2pt,top=2pt,bottom=2pt,
   oversize=2pt,
