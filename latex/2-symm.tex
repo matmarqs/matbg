@@ -136,12 +136,12 @@ D_6 = ED_3 \cup \sd D_3.
 
 One would probably notice that the elements $\sd, \sdp, \sdpp$ are in some way related, also as $\sv, \svp, \svpp$. Actually, they belong to the same conjugacy class, which is a concept analogous to the notion of matrix similarity in Linear Algebra.
 
-\begin{definition}[\textbf{Conjugacy classes}] \label{def:conj_class}
-Let $G$ be a group and $a, g, g' \in G$. If $g' = a g a^{-1}$, we say that $g'$ is the \textit{conjugate} element of $g$ by means of $a$, and we write $g' \sim g$. The set
+\begin{definition}[\textbf{Conjugacy class}] \label{def:conj_class}
+Let \(G\) be a group and \(a, g, g' \in G\). If \(g' = aga^{-1}\), we say that \(g'\) is the \textit{conjugate} of \(g\) by \(a\), denoted as \(g' \sim g\). The set
 \begin{equation} \label{eq:defi_conjclass_[g]}
 [g] = \{ g' \in G \mid g' \sim g \} = \{ a g a^{-1} \mid a \in G \} \subseteq G
 \end{equation}
-is called a \textit{conjugacy class} of $G$. Every group is a disjoint union of its conjugacy classes.
+is said to be a \textit{conjugacy class} (or simply a \textit{class}) of \(G\). Every group can be expressed as a disjoint union of its conjugacy classes.
 \end{definition}
 
 \begin{example} \label{ex:conjclass_example_D3D6}
@@ -233,12 +233,12 @@ A group of $2\times 2$ matrices isomorphic to $D_3$ can be found by defining the
 \cos(\frac{2\pi}{3}) & \sin(\frac{2\pi}{3}) \\
 -\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3})
 \end{pmatrix},
-\quad
-\Gamma_2(\sd) =
-\begin{pmatrix}
--1 & 0 \\
-0 & 1
-\end{pmatrix},
+%\quad
+%\Gamma_2(\sd) =
+%\begin{pmatrix}
+%-1 & 0 \\
+%0 & 1
+%\end{pmatrix},
 \quad
 \Gamma_2(\sv) =
 \begin{pmatrix}
@@ -247,7 +247,7 @@ A group of $2\times 2$ matrices isomorphic to $D_3$ can be found by defining the
 \end{pmatrix}.
 \end{equation}
 
-Imposing the homomorphism relation \ref{eq:homomorphism}, we can find all the representative $2\times 2$ matrices of $D_3$ by multiplying the matrices of the three generators in Equation \ref{eq:D6_generators_2x2matrices}.
+Imposing the relation \ref{eq:homomorphism}, the other representative $2\times 2$ matrices $\Gamma_2(E), \Gamma_2(\Ctn{2}), \Gamma_2(\svp), \Gamma_2(\svpp)$ can be found by multiplying the matrices of the two generators in Equation \ref{eq:D6_generators_2x2matrices}.
 \end{example}
 
 \begin{definition}[\textbf{Representation}] \label{def:representation}
@@ -292,14 +292,14 @@ Considering $G = D_3$, take $\Gamma_2$ acting on $V_2 = \mathbb{R}^2$, as previo
 -\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3}) & 0 \\
 0 & 0 & 1
 \end{pmatrix},
-\;
-\Gamma(\sd) =
-\begin{pmatrix}
--1 & 0 & 0 \\
-0 & 1 & 0 \\
-0 & 0 & 1
-\end{pmatrix},
-\;
+%\;
+%\Gamma(\sd) =
+%\begin{pmatrix}
+%-1 & 0 & 0 \\
+%0 & 1 & 0 \\
+%0 & 0 & 1
+%\end{pmatrix},
+\quad
 \Gamma(\sv) =
 \begin{pmatrix}
 1 & 0 & 0 \\
@@ -324,7 +324,7 @@ A representation $\Pi: G \to \GL(V)$ always has the trivial invariant subspace $
 \end{definition}
 
 \begin{example} \label{ex:irrep_Gamma12_example}
-Still in the context of Example \ref{ex:direct_sum}, unlike $\Gamma$, the representations $\Gamma_1$ and $\Gamma_2$ are \textit{irreducible} because they have no trivial invariant subspaces and are not equivalent to any block diagonal representation.
+Still in the context of Example \ref{ex:direct_sum}, unlike $\Gamma$, the representations $\Gamma_1$ and $\Gamma_2$ of $D_3$ are \textit{irreducible} because they have no trivial invariant subspaces and are not equivalent to any block diagonal representation.
 \end{example}
 
 Theorem \ref{th:irreps_decomp}, whose proof can be found in \cite{dresselhaus, hamermesh}, states that irreducible representations (irreps) are building blocks for all representations in finite dimensional vector spaces.
@@ -355,17 +355,20 @@ The \textit{character} of an element $g \in G$ in the representation $\Pi: G \to
 \chi^{(\Pi)}(g) = \tr[\Pi(g)] = \sum_{j} \Pi_{jj}(g).
 \end{equation}
 \end{definition}
-Due to the cyclic property of the trace of a matrix, equivalent irreps have the same characters
+
+\begin{lemma} \label{lemma:character_equiv_sameclass}
+Due to the cyclic property of the matrix trace, equivalent irreps \(\Pi\) and \(\Pi'\) share the same characters:
 \begin{equation} \label{eq:trace_equivalent_reps_chi}
 \Pi'(g) = A\Pi(g)A^{-1} \implies \chi^{(\Pi')}(g) = \tr[A \Pi(g) A^{-1}] =  \tr[A^{-1}A \Pi(g)] = \chi^{(\Pi)}(g).
 \end{equation}
 
-Elements from the same conjugacy class $g$ and $g' = a g a^{-1}$ also have the same character
+Elements \(g\) and \(g' = aga^{-1}\) belonging to the same conjugacy class also have the same character:
 \begin{equation} \label{eq:trace_same_class_chi}
-\chi(g') = \chi(aga^{-1}) = \tr[\Pi(aga^{-1})] = \tr[\Pi(a)\Pi(g)\Pi(a^{-1})] = \tr[\Pi(a^{-1})\Pi(a)\Pi(g)] = \chi(g).
+\chi(g') = \chi(aga^{-1}) = \tr[\Pi(aga^{-1})] = \tr[\Pi(a)\Pi(g)\Pi(a^{-1})] = \tr[\Pi(a)^{-1}\Pi(a)\Pi(g)] = \chi(g).
 \end{equation}
 
-Due to this last fact, we can also speak of the character of a conjugacy class $S = [g]$, where we denote it by $\chi_S = \chi(g) = \chi(g')$.
+As a result, we can define the character of a class \(S = [g]\), denoted by \(\chi_S = \chi(g) = \chi(g')\).
+\end{lemma}
 
 \n
 
@@ -470,7 +473,7 @@ $E$   & $\P2$ & $ -1$ & $\P0$ \\
 \label{tab:D3}
 \end{table}
 
-In Table \ref{tab:D3}, we renamed the representations \(\Gamma_1 = A_1\), \(\Gamma_2 = A_2\), and \(\Gamma_3 = E\) to align with the standard notation commonly used in the literature. In the first row, the notation \(nA\) indicates a conjugacy class \([A]\) containing \(n\) elements. For instance, \(2C_3\) represents the conjugacy class \([C_3] = \{C_3, C_3^2\}\), which consists of two elements. Additionally, it can be verified that the rows and columns of Table \ref{tab:D3} satisfy the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}.
+In Table \ref{tab:D3}, we renamed the representations \(A_1 = \Gamma_1\), \(A_2 = \Gamma_3\), and \(A_3 = \Gamma_2\) to align with the standard notation commonly used in the literature. In the first row, the notation \(nA\) indicates a conjugacy class \([A]\) containing \(n\) elements. For instance, \(2C_3\) represents the conjugacy class \([C_3] = \{C_3, C_3^2\}\), which consists of two elements. Additionally, it can be verified that the rows and columns of Table \ref{tab:D3} satisfy the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}.
 \end{example}
 
 An analogous procedure in Example \ref{ex:chartable_construction_D3} could be applied to construct the character table for the group $D_6$, which we show in Table \ref{tab:D6}.
@@ -512,6 +515,16 @@ r_j =
 \end{equation}
 \end{theorem}
 
+If two unitary representations \(\Pi_1\) and \(\Pi_2\) have identical characters for each conjugacy class, then, by Equation \ref{eq:reduction_formula}, the coefficients \(r_j\) for both \(\Pi_1\) and \(\Pi_2\) are identical. Consequently, the representations are equivalent.
+\begin{equation} \label{eq:Phi_Psi_rj_equivalent}
+\Pi_1 \equiv \bigoplus_j r_j \, \Gamma_j \equiv \Pi_2.
+\end{equation}
+Conversely, as established in Lemma \ref{lemma:character_equiv_sameclass}, equivalent representations share the same characters. Together, these results lead to the following statement:
+
+\begin{corollary} \label{coro:same_characters_equiv_reps}
+Two unitary representations are equivalent if and only if they have the same characters for every conjugacy class.
+\end{corollary}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Induction and subduction of representations} \label{sec:induction_subsuction}
@@ -526,16 +539,93 @@ We denote $\rho = \Pi \downarrow H$ and is called the \textit{subduction} of $\P
 \end{definition}
 
 \begin{example} \label{ex:C3_D3_subduction_example}
-$H = \{E, C_3, C_3^2\}$, $G = D_3$ and $\Pi = \Gamma_2$.
+$H = \{E, \Ct, \Ctn{2}\} \subseteq G = D_3$ and $\Pi = \Gamma_2$ as defined in Example \ref{ex:2x2_rep}. The subduced representation $\rho = \Pi \downarrow H$ is obtained by using the matrices $\Pi(h)$, for $h = E, \Ct, \Ctn{2}$.
+\begin{equation} \label{eq:rho_subduced_C3_D3_subduction_example}
+\rho(E) =
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix},
+\quad
+\rho(\Ct) =
+\begin{pmatrix}
+\cos(\frac{2\pi}{3}) & \sin(\frac{2\pi}{3}) \\
+-\sin(\frac{2\pi}{3}) & \cos(\frac{2\pi}{3})
+\end{pmatrix},
+\quad
+\rho(\Ctn{2}) =
+\begin{pmatrix}
+\cos(\frac{4\pi}{3}) & \sin(\frac{4\pi}{3}) \\
+-\sin(\frac{4\pi}{3}) & \cos(\frac{4\pi}{3})
+\end{pmatrix}.
+\end{equation}
+
+The original representation \(\Pi\) includes additional matrices not present in \(\rho\):
+\begin{equation} \label{eq:Pi_C3_D3_subduction_example}
+\Pi(\sv) =
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix},
+\;
+\Pi(\svp) = \Pi(\sv \Ct) =
+\begin{pmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{pmatrix},
+\;
+\Pi(\svpp) = \Pi(\sv \Ctn{2}) =
+\begin{pmatrix}
+-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{pmatrix},
+\end{equation}
+As discussed in Example \ref{ex:irrep_Gamma12_example}, \(\Pi = \Gamma_2\) is irreducible because its six matrices cannot be transformed into block diagonal form through any conjugate transformation \(A \Pi(g) A^{-1}\), \(\forall g \in D_3\).
+
+However, if we consider only the three matrices in Equation \ref{eq:rho_subduced_C3_D3_subduction_example}, they can be transformed into block diagonal form through the following conjugation by \(A\):
+\begin{equation} \label{eq:subduction_can_be_reducible_example}
+\rho(E) =
+A
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+A^{-1},
+\quad
+\rho(\Ct) =
+A
+\begin{pmatrix}
+e^{-\frac{2\pi i}{3}} & 0 \\
+0 & e^{\frac{2\pi i}{3}}
+\end{pmatrix}
+A^{-1},
+\quad
+\rho(\Ctn{2}) =
+A
+\begin{pmatrix}
+e^{-\frac{4\pi i}{3}} & 0 \\
+0 & e^{\frac{4\pi i}{3}}
+\end{pmatrix}
+A^{-1},
+\quad
+\end{equation}
+\begin{equation} \label{eq:A_matrix_that_diagonalizes}
+A =
+\begin{pmatrix}
+i & -i \\
+1 & 1
+\end{pmatrix}.
+\end{equation}
+Therefore, we can assert that \(\rho\) is a direct sum of two one-dimensional representations, \(\{1, e^{-\frac{2\pi i}{3}}, e^{-\frac{4\pi i}{3}}\}\) and \(\{1, e^{\frac{2\pi i}{3}}, e^{\frac{4\pi i}{3}}\}\), making it reducible. This demonstrates that the subduction of an irreducible representation can result in a reducible one.
+
 \end{example}
 
-
-The more complex process is the inverse process, i.e., starting with a representation $\Pi$ of $H$, construct a representation on the bigger group $G$.
+The inverse process of subduction, known as \textit{induction}, is more complex. It involves starting with a representation \(\Pi\) of \(H\) and constructing a corresponding representation for the larger group \(G\).
 
 \begin{definition}[\textbf{Induction}] \label{def:induction_defi}
-Let $H$ be a subgroup of a finite group $G$ and $\Pi: H \to \GL(V)$ be a representation of $H$ on a vector space $V$. Let $R = \{g_1, \ldots, g_n\} \subseteq G$ be a full set of representatives of the left cosets in $G/H$, where $n = \abs{G/H}$. Consider the vector space
+Let $H$ be a subgroup of a finite group $G$ and $\Pi: H \to \GL(V)$ be a representation of $H$ on a $n$-dimensional vector space $V$. Let $R = \{g_1, \ldots, g_m\} \subseteq G$ be a full set of representatives of the left cosets in $G/H$, where $m = \abs{G/H}$. Consider the following $(m\cdot n)$-dimensional vector space
 \begin{equation} \label{eq:W_vectorspace_induction_copies}
-W = \bigoplus_{i=1}^n g_i V = \qty{w = \bigoplus_{i=1}^n (g_i, v_i) \;\bigg|\; v_i \in V_i},
+W = \bigoplus_{i=1}^m g_i V = \qty{w = \bigoplus_{i=1}^n (g_i, v_i) \;\bigg|\; v_i \in V_i},
 \end{equation}
 where each $g_i V$ is an isomorphic labelled copy of $V$, defined by
 \begin{equation} \label{eq:giV_vectorspace_labelled_copy}
@@ -543,14 +633,88 @@ g_i V = \{ (g_i, v) \mid g_i \in G, v \in V\}, \quad
 \alpha (g_i, u) + \beta (g_i, v) = (g_i, \alpha u + \beta v).
 \end{equation}
 
-For each $g \in G$ and $g_i \in R$ there is an $h_i \in H$ and a permutation index $j(i) \in \{1, \ldots, n\}$ such that $g g_i = g_{j(i)} h_i$. The \textit{induced} representation $\rho: G \to \GL(W)$, denoted by $\rho = \Pi \uparrow G$, is defined by the action on an element $w = \bigoplus_{i=1}^{n} (g_i, v_i) \in W$:
+For each $g \in G$ and $g_i \in R$ there is an $h_i \in H$ and a permutation index $j(i) \in \{1, \ldots, m\}$ such that $g g_i = g_{j(i)} h_i$. The \textit{induced} representation $\rho: G \to \GL(W)$, denoted by $\rho = \Pi \uparrow G$, is defined by the action on an element $w = \bigoplus_{i=1}^{m} (g_i, v_i) \in W$:
 \begin{equation} \label{eq:induced_rep_action_defi}
-\rho(g) w = \bigoplus_{i=1}^{n} \qty(g_{j(i)}, \Pi(h_i) v_i) \in W.
+\rho(g) w = \bigoplus_{i=1}^{m} \qty(g_{j(i)}, \Pi(h_i) v_i) \in W.
 \end{equation}
 \end{definition}
 
-\begin{example} \label{eq:induced_rep_C3D3}
-$H = \{E, C_3, C_3^2\}$, $G = D_3$ and $\Pi = $ complexos.
+\begin{example} \label{ex:induced_rep_C3D3}
+$H = \{E, \Ct, \Ctn{2}\}$, $G = D_3$ and $\Pi$ is an one-dimensional representation of $H$ (on vector space $\C^1$), defined by $\Pi(E) = 1$, $\Pi(\Ct) = e^{\frac{2\pi i}{3}}$, $\Pi(\Ctn{2}) = e^{\frac{4\pi i}{3}}$.
+
+\n
+
+Take $R = \{g_1 = E, g_2 = \sv\}$, where we have the coset decomposition
+\begin{equation} \label{eq:coset_decomp_of_D3_subgroup_C3}
+D_3 = \bigcup_{g_i \in R} g_i H =
+E H \cup \sv H = \{E, \Ct, \Ctn{2}\} \cup \{\underbrace{\sv}_{\sv E}, \underbrace{\svp}_{\sv \Ct}, \underbrace{\svpp}_{\sv \Ctn{2}}\}.
+\end{equation}
+
+Let us calculate the actions of $\rho = \Pi \uparrow G$ on the generators $\{\Ct, \sv\}$ of $D_3$.
+
+$g = \Ct$:
+
+$g_1 = E \implies g g_1 = \Ct E = E \Ct = g_1 h_1$, where $j(1) = 1$ and $h_1 = \Ct$.
+
+$g_2 = \sv \implies g g_2 = \Ct \sv = \svpp = \sv \Ctn{2} = g_2 h_2$, where $j(2) = 2$ and $h_2 = \Ctn{2}$.
+
+\n
+
+On the basis $(w_{11}, w_{21})$, where $w_{ij} = (g_i, e_j)$ and $(e_1)$ is the basis of $\C^1$, we have
+\begin{equation} \label{eq:rhoC3_w11_example_inducedrep_C3D3}
+\rho(\Ct) w_{11} = (g_{j(1)}, \Pi(h_1) e_1) = \qty(g_1, e^{\frac{2\pi i}{3}} e_1) = e^{\frac{2\pi i}{3}} w_{11}
+\end{equation}
+\begin{equation} \label{eq:rhoC3_w21_example_inducedrep_C3D3}
+\rho(\Ct) w_{21} = (g_{j(2)}, \Pi(h_2) e_1) = \qty(g_2, e^{\frac{4\pi i}{3}} e_1) = e^{\frac{4\pi i}{3}} w_{21}
+\end{equation}
+\begin{equation} \label{eq:rhoC3_matrix_example_inducedrep_C3D3}
+\boxed{ \rho(\Ct) =
+\begin{pmatrix}
+e^{\frac{2\pi i}{3}} & 0 \\
+0 & e^{\frac{4\pi i}{3}}
+\end{pmatrix} } =
+\begin{pmatrix}
+\Pi\qty(h_1) & 0 \\
+0 & \Pi(h_2)
+\end{pmatrix} =
+\begin{bmatrix}
+\Pi(g_{j(1)}^{-1} \Ct g_1) & 0 \\
+0 & \Pi(g_{j(2)}^{-1} \Ct g_2)
+\end{bmatrix}.
+\end{equation}
+
+\n
+
+$g = \sv$:
+
+$g_1 = E \implies g g_1 = \sv E = g_2 h_1$, where $j(1) = 2$ and $h_1 = E$.
+
+$g_2 = \sv \implies g g_2 = \sv \sv = E = E E = g_1 h_2$, where $j(2) = 1$ and $h_2 = E$.
+
+\begin{equation} \label{eq:rhoC3_w11_example_inducedrep_C3D3}
+\rho(\sv) w_{11} = (g_{j(1)}, \Pi(h_1) e_1) = \qty(g_2, e_1) = w_{21}
+\end{equation}
+\begin{equation} \label{eq:rhoC3_w21_example_inducedrep_C3D3}
+\rho(\sv) w_{21} = (g_{j(2)}, \Pi(h_2) e_1) = \qty(g_1, e_1) = w_{11}
+\end{equation}
+\begin{equation} \label{eq:rhoC3_matrix_example_inducedrep_C3D3}
+\boxed{ \rho(\sv) =
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix} } =
+\begin{pmatrix}
+0 & \Pi\qty(h_2) \\
+\Pi\qty(h_1) & 0
+\end{pmatrix} =
+\begin{bmatrix}
+0 & \Pi(g_{j(2)}^{-1} \sv g_2) \\
+\Pi(g_{j(1)}^{-1} \sv g_1) & 0
+\end{bmatrix}.
+\end{equation}
+
+The induced representation \(\rho\) is two-dimensional, with characters \(\chi^{(\rho)}(E) = 2\), \(\chi^{(\rho)}(\Ct) = -1\), and \(\chi^{(\rho)}(\sv) = 0\). By Corollary \ref{coro:same_characters_equiv_reps}, we conclude that the induced representation \(\rho\) is equivalent to the irreducible representation \(E\) from Table \ref{tab:D3}.
+
 \end{example}
 
 \begin{example} \label{ex:induced_rep_D3D6}
@@ -600,7 +764,7 @@ On the basis $(w_{11}, w_{12}, w_{21}, w_{22})$, where $w_{ij} = (g_i, e_j)$ and
 \end{equation}
 
 \begin{equation} \label{eq:rhoC6_matrix_example_inducedrep_D6}
-[\rho(\Cs)]_{i'j'ij} =
+\rho(\Cs) =
 \begin{pmatrix}
 \rho_{1111} & \rho_{1112} & \rho_{1211} & \rho_{1212} \\
 \rho_{1121} & \rho_{1122} & \rho_{1221} & \rho_{1222} \\
@@ -667,18 +831,27 @@ $g_2 = \sd \implies g g_2 = \sv \sd = C_2 = \sd \sv = g_2 h_2$, where $j(2) = 2$
 
 \end{example}
 
-\pagebreak
+By examining Examples \ref{ex:induced_rep_C3D3} and \ref{ex:induced_rep_D3D6}, we observe the pattern for the matrix of the induced representation:
 
-Looking at Example \ref{ex:induced_rep}, we can verify that the matrix representation of the induced representation $\rho =  \Pi \uparrow G$ is
+\begin{lemma} \label{lemma:induced_rep_matrix_i'j'ij_block}
+Let $H$ be a subgroup and $\Pi$ a representation of a group $G$ on a $n$-dimensional vector space $V$. On the basis $\{w_{ij} = (g_i, e_j)\}$ of $W = \bigoplus_{i=1}^{\abs{G/H}} g_i V$, where $(e_j)_{j=1}^n$ is a basis of $V$, the induced representation $\Pi \uparrow G$ has matrix elements
 \begin{align} \label{eq:induced_rep_matrix_i'j'ij_block}
-\rho_{i'j'ij}(g) =
+(\Pi \uparrow G)_{i'j'ij}(g) =
 \begin{cases}
-\; \Pi_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j}^{-1} g g_l \in H, \\
+\; \Pi_{i'i}(g_{j'}^{-1} g g_j), \quad & g_{j'}^{-1} g g_j \in H, \\
 \; 0,  & g_{j'}^{-1} g g_j \notin H.
 \end{cases}
 \end{align}
+\end{lemma}
 
-\pagebreak
+\begin{corollary} \label{coro:character_of_induced_rep}
+The characters of the induced representation are given by
+\begin{equation} \label{eq:character_induced_rep}
+\chi^{(\Pi \uparrow G)}(g) = \sum_{j=1}^{\abs{G/H}} \tilde{\chi}^{(\Pi)} (g_j^{-1} g g_j),
+\end{equation}
+where $\tilde{\chi}^{(\Pi)}(h) = \chi^{(\Pi)}(h)$ if $h \in H$, and $\tilde{\chi}^{(\Pi)}(h) = 0$ if $h \notin H$.
+\end{corollary}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Space Groups} \label{sec:space_groups}

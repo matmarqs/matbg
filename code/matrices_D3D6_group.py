@@ -14,27 +14,33 @@ C32 = [C6[0]**4, "C32"]
 
 C2 = [C6[0]**3, "C2"]
 
-Svp = [C65[0] * Sv[0] * C6[0], "Sv'"]
-Svpp = [C32[0] * Sv[0] * C3[0], "Sv''"]
+Svp = [Sv[0] * C3[0], "Sv'"]
+Svpp = [Sv[0] * C32[0], "Sv''"]
 
-Sdp = [C65[0] * Sd[0] * C6[0], "Sd'"]
-Sdpp = [C32[0] * Sd[0] * C3[0], "Sd''"]
+Sdp = [Sd[0] * C3[0], "Sd'"]
+Sdpp = [Sd[0] * C32[0], "Sd''"]
 
 E1 = [Sv[0]**2, "E"]
 
 group = [E1, C6, Sv, Sd, C65, C3, C32, C2, Svp, Svpp, Sdp, Sdpp]
 
-def main():
-    #g = C6
-    #g2 = Sd
-
-    #test_elem = [Sv[0] * Sd[0], "Sv * Sd"]
-    test_elem = Sv
-
+def main_elem():
+    g2 = Sv
+    g = C3
+    test_elem = [g[0] * g2[0], "C3 * Sv"]
     for elem in group:
         if test_elem[0] == elem[0]:
             print(test_elem[1], "=", elem[1])
-
     print(test_elem[0])
 
-main()
+def main_diag():
+    #A, D = C32[0].diagonalize()  # A D A^{-1}
+    #print("A =", A)
+    #print("D =", D)
+    A = Matrix([[-I, I], [1, 1]])
+    D = Matrix([[exp(2*pi*I/3), 0], [0, exp(4*pi*I/3)]])
+
+    Result = A * Sv[0] * A**(-1)
+    print(simplify(expand_complex(Result - Sv[0])))
+
+main_diag()
