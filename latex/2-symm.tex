@@ -844,12 +844,14 @@ Let $H$ be a subgroup and $\Pi$ a representation of a group $G$ on a $n$-dimensi
 \end{align}
 \end{lemma}
 
+Taking the trace of Equation \ref{eq:induced_rep_matrix_i'j'ij_block} leads us to
+
 \begin{corollary} \label{coro:character_of_induced_rep}
 The characters of the induced representation are given by
 \begin{equation} \label{eq:character_induced_rep}
-\chi^{(\Pi \uparrow G)}(g) = \sum_{j=1}^{\abs{G/H}} \tilde{\chi}^{(\Pi)} (g_j^{-1} g g_j),
+\chi^{(\Pi \uparrow G)}(g) = \sum_{\substack{j=1 \\ g_j^{-1} g g_j \in H}}^{\abs{G/H}} \chi^{(\Pi)} (g_j^{-1} g g_j),
 \end{equation}
-where $\tilde{\chi}^{(\Pi)}(h) = \chi^{(\Pi)}(h)$ if $h \in H$, and $\tilde{\chi}^{(\Pi)}(h) = 0$ if $h \notin H$.
+where the sum is performed only on the elements $g_j^{-1} g g_j$ that belong to the subgroup $H$.
 \end{corollary}
 
 
@@ -857,24 +859,56 @@ where $\tilde{\chi}^{(\Pi)}(h) = \chi^{(\Pi)}(h)$ if $h \in H$, and $\tilde{\chi
 \section{Space Groups} \label{sec:space_groups}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In Example \ref{ex:symm_elems_hexagon_D6_example}, we defined the \(D_6\) group by listing all its elements. However, one might wonder why other elements were not included. For instance, in Figure \ref{fig:hexagon_perm_12}, we could label the vertices of the hexagon as \(1, 2, 3, 4, 5, 6\) and consider the symmetry operation \(P_{(12)}\), which swaps vertices \(1\) and \(2\). While this operation seems to leave the hexagon invariant and could be viewed as a symmetry element, it does not preserve all distances in three-dimensional Euclidean space, which is a fundamental requirement for physical spatial symmetries. For example, as shown in Figure \ref{fig:hexagon_perm_12}, the distance \(d_{15}\) from vertex \(1\) to vertex \(5\) is not preserved under the action of \(P_{(12)}\).
 
-Essentially, when working with group theory in the context of solids, we are interested in subgroups of a particular group of matrices. These are called orthogonal matrices, and are defined by $R R^T = E$, where $E$ here is the identity matrix.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/hexagon_perm_12.png}
+\caption{Permutation element $P_{(12)}$.}
+\label{fig:hexagon_perm_12}
+\end{figure}
 
-\n
+Although \(P_{(12)}\) can be regarded as an element of the permutation group of the hexagon’s vertices, it holds little relevance in the context of Solid-State Physics. The spatial symmetries of physical interest are isometries, which preserve distances in Euclidean space, and these are always associated with the orthogonal group \(O(n)\).
 
-The point group and translation symmetry operations which carry the crystal into itself form a group called the \textit{space group}. The elements of it are commonly denoted by  $\{ R_\alpha \mid \tau \} $, where $R_\alpha$ is the point group operation and $\tau$ is the translation.
+\begin{definition}[\textbf{Orthogonal group}] \label{def:orthogonal_group}
+The \textit{orthogonal group} \(O(n)\) consists of all transformations of an \(n\)-dimensional Euclidean space that preserve a fixed point. In a chosen basis, these transformations can be explicitly represented as orthogonal matrices acting on \(\mathbb{R}^n\).
+\begin{equation} \label{eq:O(n)}
+O(n) = \qty{A: \mathbb{R}^n \to \mathbb{R}^n \mid A A^T = \1}.
+\end{equation}
+\end{definition}
+
+
+The symmetries that constitute \(D_6\) in Example \ref{ex:symm_elems_hexagon_D6_example} form a subgroup of \(O(2)\), the group of orthogonal transformations in two-dimensional space. In the context of Condensed Matter Physics, the most relevant systems are those associated with the symmetries of point groups.
+\begin{definition}[\textbf{Point group}] \label{def:point_group}
+A \textit{point group} is a group of transformations acting on Euclidean space such that all symmetry operations leave a fixed point unchanged. By convention, if the origin of the coordinate system is taken as the fixed point, a point group in \(n\) dimensions can be formally defined as a subgroup of \(O(n)\). Each element \(M\) of a point group is either a rotation (\(\det M = 1\)) or a reflection, inversion, or improper rotation (\(\det M = -1\)). When considering only point groups that are compatible with crystals, i.e., those consistent with the symmetry constraints imposed by lattice translations, these are referred to as \textit{crystallographic point groups}. In three dimensions, there are precisely 32 crystallographic point groups.
+\end{definition}
+
+To capture all the symmetries of a crystal, we must combine the point group operations with translations, which gives rise to the concept of a space group.
+
+\begin{definition}[\textbf{Space group}] \label{def:space_group}
+The combination of point group operations and translations that map a crystal onto itself forms the so-called \textit{space group}. Formally, a space group \(G\) in \(n\)-dimensions consists of elements \(g = \{R \mid \tau\}: \mathbb{R}^n \to \mathbb{R}^n\), where \(R \in O(n)\) represents a \textit{crystallographic} point group operation, \(\tau \in \mathbb{R}^n\) is a translation vector, and the action of $\{R \mid \tau\}$ is given by
+\begin{equation} \label{eq:space_group_action_def}
+\{R \mid \tau\} \r = R \r + \tau, \quad \r \in \mathbb{R}^n.
+\end{equation}
+In three dimensions, there are a total of 230 distinct space groups, which are derived from the 32 crystallographic point groups and the 14 Bravais lattices.
+\end{definition}
+
 
 Pure rotations and pure translations are special cases of space group operations:
 \begin{itemize}
-\item $\sg{\eps}{0} =$ identity.
-\item $\sg{R_\alpha}{0} =$ pure point group operation.
-\item $\sg{\eps}{\tau} =$ pure translation.
+\item $\sg{E}{0} =$ identity.
+\item $\sg{R}{0} =$ pure point group operation.
+\item $\sg{E}{\tau} =$ pure translation.
 \end{itemize}
 
 The result for the multiplication of two space group operations is
 $$
-\sg{R_\beta}{\tau_2} \sg{R_\alpha}{\tau_1} = \sg{R_\beta R_\alpha}{R_\beta\tau_1 + \tau_2}.
+\sg{R_2}{\tau_2} \sg{R_1}{\tau_1} \r = \sg{R_2}{\tau_2} (R_1 \r + \tau_1) =
+R_2(R_1 \r + \tau_1) + \tau_2 \implies
 $$
+\begin{equation} \label{eq:multiplication_two_space_group_elements}
+\sg{R_2}{\tau_2} \sg{R_1}{\tau_1} = \sg{R_2 R_1}{R_2\tau_1 + \tau_2}.
+\end{equation}
 
 Beyond pure operations, we may find compound operations that combine translations and point group operations. The two possible types are \textit{glide planes} and \textit{screw axes}.
 \begin{figure}[H]
@@ -1051,6 +1085,15 @@ $$
 where $r_n$ is a general vector of the Bravais lattice and $\tau_\alpha$ is either zero or a non-primitive Bravais lattice translation. Basically, we will have $\tau_\alpha = 0$ for simple group operations and $\tau_\alpha \neq 0$ for glide planes or screw axis.
 
 If, with a suitable choice of origin, all the elements of $G$ can be written in the form $\sg{R_\alpha}{\tau} = \sg{R_\alpha}{r_n} = \sg{\eps}{r_n} \sg{R_\alpha}{0}$ ($\tau_\alpha = 0$ for every symmetry operation), then call $G$ a \textit{symmorphic} space group.
+
+
+\textbf{SEI LÁ ESSE SCHRODINGER}
+
+The wave function $\psi(\r)$ of a stationary state of a quantum mechanical one-particle system with Hamiltonian $H(\r)$ satisfies the eigenvalue equation
+\begin{equation} \label{eq:schrodinger}
+H(\r) \psi(\r) = E \psi(\r),
+\end{equation}
+where $E$ is an eigenvalue of the hermitian operator $H$. If a generic transformation $g$ has been performed on the system, wavefunction and the Hamiltonian transform into $\psi(g^{-1}\r)$ and $H(g^{-1}\r)$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
