@@ -880,7 +880,9 @@ O(n) = \qty{A: \mathbb{R}^n \to \mathbb{R}^n \mid A A^T = \1}.
 
 The symmetries that constitute \(D_6\) in Example \ref{ex:symm_elems_hexagon_D6_example} form a subgroup of \(O(2)\), the group of orthogonal transformations in two-dimensional space. In the context of Condensed Matter Physics, the most relevant systems are those associated with the symmetries of point groups.
 \begin{definition}[\textbf{Point group}] \label{def:point_group}
-A \textit{point group} is a group of transformations acting on Euclidean space such that all symmetry operations leave a fixed point unchanged. By convention, if the origin of the coordinate system is taken as the fixed point, a point group in \(n\) dimensions can be formally defined as a subgroup of \(O(n)\). Each element \(M\) of a point group is either a rotation (\(\det M = 1\)) or a reflection, inversion, or improper rotation (\(\det M = -1\)). When considering only point groups that are compatible with crystals, i.e., those consistent with the symmetry constraints imposed by lattice translations, these are referred to as \textit{crystallographic point groups}. In three dimensions, there are precisely 32 crystallographic point groups.
+A \textit{point group} is a group of transformations acting on Euclidean space such that all symmetry operations leave a fixed point unchanged. If the origin of the coordinate system is taken as the fixed point, a point group in \(n\) dimensions can be defined as a subgroup of \(O(n)\). Each element \(M\) of a point group is either a rotation (\(\det M = 1\)) or a reflection, inversion, or improper rotation (\(\det M = -1\)). When considering only point groups that are compatible with crystals, i.e., those consistent with the symmetry constraints imposed by lattice translations, these are referred to as \textit{crystallographic point groups}.
+
+There are $10$ crystallographic point groups in two dimensions and $32$ in three dimensions.
 \end{definition}
 
 To capture all the symmetries of a crystal, we must combine the point group operations with translations, which gives rise to the concept of a space group.
@@ -890,7 +892,7 @@ The combination of point group operations and translations that map a crystal on
 \begin{equation} \label{eq:space_group_action_def}
 \{R \mid \tau\} \r = R \r + \tau, \quad \r \in \mathbb{R}^n.
 \end{equation}
-In three dimensions, there are a total of 230 distinct space groups, which are derived from the 32 crystallographic point groups and the 14 Bravais lattices.
+In two dimensions (2D), there are 17 space groups, also known as \textit{wallpaper groups}, 10 crystallographic point groups, and 5 Bravais lattices. In three dimensions (3D), these numbers increase to 230 space groups, 32 crystallographic point groups, and 14 Bravais lattices.
 \end{definition}
 
 
@@ -998,8 +1000,29 @@ If, by a suitable choice of origin, all elements of \(G\) can be written in the 
 where \(\tau_\alpha = 0\) for every symmetry operation, the space group \(G\) is called a \textit{symmorphic} space group. Conversely, if \(\tau_\alpha \neq 0\) for some operations, the space group is classified as \textit{nonsymmorphic}.
 \end{definition}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{fig/space_group_example_honeycomb.png}
+\caption{Example of space group operation}
+\label{fig:space_group_example_honeycomb}
+\end{figure}
+
+
 \begin{example} \label{ex:symmorphic_example_graphene}
-Let's take the honeycomb lattice as the example. The space group of interest $P622$ \cite{thesis_rennella} is symmorphic (Table 9.1 of \cite{dresselhaus}). Therefore it is impossible to find a screw axis or glide plane. We have to rely on pure translation + pure point group.
+Consider the honeycomb lattice, which has the wallpaper group $\#17$ and the corresponding space group $P6mm$ ($\#183$).
+
+On the origin $O$ of Figure \ref{fig:space_group_example_honeycomb}, take the space group element $g = \{R\mid \tau\}$, where
+\begin{equation} \label{eq:space_group_example_R_tau}
+R = C_6 =
+\begin{pmatrix}
+\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) \\
+-\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6})
+\end{pmatrix}, \quad
+\tau =
+\begin{pmatrix}
+1/2 \\ \frac{1}{2\sqrt{3}}
+\end{pmatrix}.
+\end{equation}
 
 \textbf{IT IS MUCH BETTER TO MAKE THE EXAMPLE 2x2}
 
