@@ -7,15 +7,15 @@
 \chapter{Groups and Representations} \label{ch:group_theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{TODO:}
-\begin{itemize}
-\item \textbf{ENUMERAR EQUAÇÕES.}
-\item \textbf{MELHORAR O TEXTO DAS CAPTIONS.}
-\item \textbf{MELHORAR A INTRODUÇÃO/MOTIVAÇÃO.}
-\item \textbf{ESCREVER SOBRE INDUCTION/SUBDUCTION}
-\item \textbf{ESCREVER SOBRE SPACE GROUPS}
-\item \textbf{ESCREVER SOBRE MAGNETIC SPACE GROUPS}
-\end{itemize}
+%\textbf{TODO:}
+%\begin{itemize}
+%\item \textbf{ENUMERAR EQUAÇÕES.}
+%\item \textbf{MELHORAR O TEXTO DAS CAPTIONS.}
+%\item \textbf{MELHORAR A INTRODUÇÃO/MOTIVAÇÃO.}
+%\item \textbf{ESCREVER SOBRE INDUCTION/SUBDUCTION}
+%\item \textbf{ESCREVER SOBRE SPACE GROUPS}
+%\item \textbf{ESCREVER SOBRE MAGNETIC SPACE GROUPS}
+%\end{itemize}
 
 The concept of \textit{symmetry} reincidentally appears in physics, because various aspects of our reality exhibit symmetric objects.
 
@@ -176,7 +176,7 @@ The element $g_1 g_2$ changes sublattice only if exactly one of $g_1$ or $g_2$ d
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\linewidth]{fig/hexagon_AB.png}
-\caption{Symmetries $D_6$ with sublattice type $A$ or $B$.}
+\caption{Symmetries of \(D_6\) and the conventional sublattices \(A\) and \(B\) in graphene.}
 \label{fig:hexagon_AB}
 \end{figure}
 
@@ -438,7 +438,7 @@ As such, we also conclude that $n_{\text{classes}} \leq n_{\text{irreps}}$. This
 The number of irreducible representations of a group $G$ is equal to its number of conjugacy classes.
 \end{theorem}
 
-With the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}, along with the fact that \(n_{\text{irreps}} = n_{\text{classes}}\), we can construct character tables. These tables provide complete information for decomposing any representation into irreducible ones. In fields such as chemistry and crystallography, they are used to classify molecular vibrations according to their symmetry and to predict whether a transition between two states is forbidden by symmetry.
+With the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}, along with the fact that \(n_{\text{irreps}} = n_{\text{classes}}\), we can construct character tables. These tables provide complete information for decomposing any representation into irreducible ones. %In fields such as chemistry and crystallography, they are used to classify molecular vibrations according to their symmetry and to predict whether a transition between two states is forbidden by symmetry.
 
 \begin{example} \label{ex:chartable_construction_D3}
 In Example \ref{ex:direct_sum} we established two irreducible representations $\Gamma_1$ and $\Gamma_2$. From Equation \ref{eq:D3_classes}, the group $D_3$ has three distinct classes, and thus also three inequivalent irreducible representations. Calculating the characters under $\Gamma_1$ and $\Gamma_2$, we obtain
@@ -456,6 +456,9 @@ Since \(\Ct^3 = E\) and \(\sv^2 = E\), it follows that \(\Gamma_3(\Ct)^3 = 1\) a
 \end{align}
 
 With all irreps, classes and characters known, we construct the table of characters for $D_3$:
+
+\vspace{-0.5em}
+
 \begin{table}[H]
 \caption{Character table of group $D_3$.}
 \centering
@@ -473,12 +476,14 @@ $E$   & $\P2$ & $ -1$ & $\P0$ \\
 \label{tab:D3}
 \end{table}
 
-In Table \ref{tab:D3}, we renamed the representations \(A_1 = \Gamma_1\), \(A_2 = \Gamma_3\), and \(A_3 = \Gamma_2\) to align with the standard notation commonly used in the literature. In the first row, the notation \(nA\) indicates a conjugacy class \([A]\) containing \(n\) elements. For instance, \(2C_3\) represents the conjugacy class \([C_3] = \{C_3, C_3^2\}\), which consists of two elements. Additionally, it can be verified that the rows and columns of Table \ref{tab:D3} satisfy the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}.
+\vspace{-0.5em}
+
+In Table \ref{tab:D3}, we renamed the representations \(A_1 = \Gamma_1\), \(A_2 = \Gamma_3\), and \(A_3 = \Gamma_2\) to align with the standard notation commonly used in the literature. In the first row, the notation \(nA\) indicates a conjugacy class \([A]\) containing \(n\) elements. For instance, \(2C_3\) represents the conjugacy class \([C_3] = \{C_3, C_3^2\}\), which consists of two elements. %Additionally, it can be verified that the rows and columns of Table \ref{tab:D3} satisfy the orthogonality theorems \ref{th:1st-wot} and \ref{th:2nd-wot}.
 \end{example}
 
 An analogous procedure in Example \ref{ex:chartable_construction_D3} could be applied to construct the character table for the group $D_6$, which we show in Table \ref{tab:D6}.
 \begin{table}[H]
-\caption{Character table of point group $D_6$.}
+\caption{Character table of group $D_6$.}
 \centering
 \begin{tabular} { c c c c c c c  }
 \specialrule{0.05em}{0em}{0.2em}
@@ -864,7 +869,7 @@ In Example \ref{ex:symm_elems_hexagon_D6_example}, we defined the \(D_6\) group 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{fig/hexagon_perm_12.png}
-\caption{Permutation element $P_{(12)}$.}
+\caption{Illustration of a non-isometric operation: the permutation \(P_{(12)}\).}
 \label{fig:hexagon_perm_12}
 \end{figure}
 
@@ -952,13 +957,13 @@ Similarly, a screw axis combines a translation along an axis with a simultaneous
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[height=.6\linewidth]{fig/glide_plane_dresselhaus.png}
+  \includegraphics[height=.4\linewidth]{fig/glide_plane_dresselhaus.png}
   \caption{The glide plane takes $A$ into $A'$}
   \label{fig:glideplane_screwaxis_a}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[height=.6\linewidth]{fig/screw_axis_dresselhaus.png}
+  \includegraphics[height=.4\linewidth]{fig/screw_axis_dresselhaus.png}
   \caption{Right-hand threefold screw axis}
   \label{fig:glideplane_screwaxis_b}
 \end{subfigure}
@@ -971,14 +976,14 @@ Certain crystals possess space groups that include nonsymmorphic symmetries. Fig
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[height=.45\linewidth]{fig/hexagonal_ice_lattice.png}
-  \includegraphics[height=.45\linewidth]{fig/hexagonal_ice_glide_plane.png}
+  \includegraphics[height=.4\linewidth]{fig/hexagonal_ice_lattice.png}
+  \includegraphics[height=.4\linewidth]{fig/hexagonal_ice_glide_plane.png}
   \caption{Glide plane in Hexagonal H$_2$O Ice $I_h$}
   \label{fig:hexagonal_ice_glideplane_a}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[height=.45\linewidth]{fig/tellurium_screw_axis.png}
+  \includegraphics[height=.4\linewidth]{fig/tellurium_screw_axis.png}
   \caption{Threefold screw axis in Trigonal Tellurium}
   \label{fig:tellurium_screwaxis_b}
 \end{subfigure}
@@ -1002,217 +1007,79 @@ where \(\tau_\alpha = 0\) for every symmetry operation, the space group \(G\) is
 
 \begin{figure}[H]
 \centering
+\includegraphics[width=0.55\linewidth]{fig/honeycomb_coordinates.png}
+\caption{Honeycomb lattice with Bravais lattice vectors \(\mathbf{a}_1\) and \(\mathbf{a}_2\). The red and blue atoms are labeled as type $A$ and type $B$, respectively, though they are identical.}
+\label{fig:honeycomb_coordinates}
+\end{figure}
+
+\begin{figure}[H]
+\centering
 \includegraphics[width=\linewidth]{fig/space_group_example_honeycomb.png}
-\caption{Example of space group operation}
+\caption{Illustration of Example \ref{ex:symmorphic_example_graphene}, showing a \(C_6\) rotation followed by a fractional translation \(\tau\) (top), which is equivalent to a \(C_6\) rotation around a different origin \(O'\) (bottom).}
 \label{fig:space_group_example_honeycomb}
 \end{figure}
 
 
-\begin{example} \label{ex:symmorphic_example_graphene}
-Consider the honeycomb lattice, which has the wallpaper group $\#17$ and the corresponding space group $P6mm$ ($\#183$).
 
-On the origin $O$ of Figure \ref{fig:space_group_example_honeycomb}, take the space group element $g = \{R\mid \tau\}$, where
-\begin{equation} \label{eq:space_group_example_R_tau}
+\begin{example} \label{ex:symmorphic_example_graphene}
+Consider the honeycomb lattice shown in Figure \ref{fig:honeycomb_coordinates}. The atoms of type \(A\) are marked in \textcolor{RoyalBlue}{blue}, and those of type \(B\) are marked in \textcolor{red}{red}. However, both types represent identical atoms (i.e., the same chemical species).
+
+We use the Bravais lattice vectors \(\mathcal{B} = \{\vb{a}_1 = a \vu{x}, \vb{a}_2 = \frac{a}{2} \vu{x} + \frac{a\sqrt{3}}{2} \vu{y}\}\) as a vector space basis, with the origin \(O\) as indicated in Figure \ref{fig:honeycomb_coordinates}. Let \(\vb{d}_1 = \0\) and \(\vb{d}_2 = \frac{a}{2} \vu{x} + \frac{a}{2\sqrt{3}} \vu{y}\). The positions of atoms \(A\) and \(B\) are given by:
+\begin{align} \label{eq:positions_atom_AB}
+&& \r_A &= m_1 \vb{a}_1 + m_2 \vb{a}_2 + \vb{d}_1, \quad m_1, m_2 \in \N , & \\
+&& \r_B &= n_1 \vb{a}_1 + n_2 \vb{a}_2 + \vb{d}_2, \quad \quad n_1, n_2 \in \N . &
+\end{align}
+
+Consider the space group element \(\{R \mid \tau\}\), where \(R\) is a \(60^\circ\) rotation and \(\tau = \vb{d}_2\). Its action is depicted in the upper part of Figure \ref{fig:space_group_example_honeycomb}, where the space undergoes a \(60^\circ\) rotation followed by a translation by \(\tau\). After the action of \(\{R \mid \tau\}\), although the \textcolor{RoyalBlue}{blue} and \textcolor{red}{red} colors are swapped (indicating an exchange of atoms \(A\) and \(B\)), the lattice itself (in \textbf{black}) remains unchanged. This confirms that \(\{R \mid \tau\}\) is indeed a space group symmetry. In the \(\mathcal{B}\) basis, we have:
+\begin{equation} \label{eq:rotation_matrix_C6_space_group_example}
+\begin{cases}
+\; R \vb{a}_1 = \vb{a}_2 \\
+\; R \vb{a}_2 = -\vb{a}_1 + \vb{a}_2
+\end{cases}
+\Rightarrow \;\;\;
 R = C_6 =
 \begin{pmatrix}
-\cos(\frac{2\pi}{6}) & \sin(\frac{2\pi}{6}) \\
--\sin(\frac{2\pi}{6}) & \cos(\frac{2\pi}{6})
-\end{pmatrix}, \quad
+0 & -1 \\
+1 &  1
+\end{pmatrix},
+\end{equation}
+\begin{equation} \label{eq:tau_translation_C6_space_group_example}
+\tau = \frac{1}{3} (\vb{a}_1 + \vb{a}_2) \implies
 \tau =
 \begin{pmatrix}
-1/2 \\ \frac{1}{2\sqrt{3}}
+1/3 \\ 1/3
 \end{pmatrix}.
 \end{equation}
 
-\textbf{IT IS MUCH BETTER TO MAKE THE EXAMPLE 2x2}
+Observe in Figure \ref{fig:space_group_example_honeycomb} that the pure rotation \(\{R \mid 0\}\) does not preserve the lattice, nor does the pure translation \(\{E \mid \tau\}\). Moreover, as shown in Equation \ref{eq:tau_translation_C6_space_group_example}, \(\tau\) corresponds to a fractional lattice translation. At first glance, this might lead us to conclude that \(\{R \mid \tau\}\) is nonsymmorphic. However, the lower part of Figure \ref{fig:space_group_example_honeycomb} reveals that \(\{R \mid \tau\}\) is equivalent to a pure \(60^\circ\) rotation about a different origin, \(O'\). This new origin is in fact the point \(\vb{r} = OO'\) that remains fixed under the action of \(\{R \mid \tau\}\):
+\begin{equation} \label{eq:fixed_point_O'_spacegroup_example}
+R \r + \tau = \r \implies (R-\1) \r = -\tau \implies
+\begin{pmatrix}
+-1 & -1 \\
+1 & 0
+\end{pmatrix}
+\r =
+\begin{pmatrix}
+-1/3 \\ -1/3
+\end{pmatrix} \implies
+\r =
+\begin{pmatrix}
+-1/3 \\ 2/3
+\end{pmatrix} .
+\end{equation}
 
-For example, let's take a translation of $d(\cos30^\circ, \sin30^\circ)$ with a rotation of $60^\circ$. The result is
-$$
-R_{\mathcal{E}} =
-\begin{pmatrix}
-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
-\frac{\sqrt{3}}{2} & \frac{1}{2} \\
-\end{pmatrix}
-$$
-
-Consider the two basis $\mathcal{E} = \{\ihat, \jhat\}$, and $\mathcal{B} = \{\v_1, \v_2\}$, where $\v_1 = a \ihat$, and $\v_2 = a \qty(\frac{1}{2}\ihat + \frac{\sqrt{3}}{2} \jhat)$. The change of basis matrix is from $\mathcal{B}$ to $\mathcal{E}$ is $M_{\mathcal{B}\to\mathcal{E}}$ and its inverse is $M_{\mathcal{E}\to\mathcal{B}} = M_{\mathcal{B}\to\mathcal{E}}^{-1}$
-$$
-M_{\mathcal{B} \to \mathcal{E}} =
-a
-\begin{pmatrix}
-1 & \frac{1}{2} \\
-0 & \frac{\sqrt{3}}{2}
-\end{pmatrix},
-\quad
-M_{\mathcal{E} \to \mathcal{B}} = M_{\mathcal{B}\to\mathcal{E}}^{-1} =
-\frac{1}{a}
-\begin{pmatrix}
-1 & -\frac{1}{\sqrt{3}} \\
-0 & \frac{2}{\sqrt{3}}
-\end{pmatrix},
-$$
-
-In this basis, the rotation matrix becomes
-$$
-R_{\mathcal{B}} =  M_{\mathcal{E} \to \mathcal{B}} \, R_{\mathcal{E}} \, M_{\mathcal{B}\to\mathcal{E}} =
-\begin{pmatrix}
-0 & -1 \\
-1 &  0
-\end{pmatrix}
-$$
-
-The translation of $d(\cos 30^\circ, \sin 30^\circ)$ is
-$$
-\bm{\tau}_E = a \begin{pmatrix} \frac{1}{2} \\ \frac{\sqrt{3}}{6} \end{pmatrix} \implies
-\bm{\tau}_B = M_{\mathcal{E} \to \mathcal{B}} \bm{\tau}_E =
-\begin{pmatrix}
-\frac{1}{3} \\ \frac{1}{3}
-\end{pmatrix}.
-$$
-
-Our space group matrix (in the $\mathcal{B}$ basis) is
-$$
-\{R_{\mathcal{B}}, \vtau_{\mathcal{B}}\} =
-\begin{pmatrix}
-1 & 0 & 0 \\
-1/3 & 0 & -1 \\
-1/3 & 1 & 0 \\
-\end{pmatrix}
-$$
-
-Some arbitrary lattice vector is represented by $\u_s = m \v_1 + n\v_2 + \bm{\beta_s}$, where $s = A, B$ represents the sublattice index, with $\bm{\beta}_A = \0$, $\bm{\beta}_B = \vtau_{\mathcal{B}}$. We have
-$$
-\{R_{\mathcal{B}}, \vtau_{\mathcal{B}}\} \, \u_A =
-\begin{pmatrix}
-1 & 0 & 0 \\
-1/3 & 0 & -1 \\
-1/3 & 1 & 0 \\
-\end{pmatrix}
-\begin{pmatrix}
-1 \\ m \\ n
-\end{pmatrix}
-=
-$$
-$$
-=
-\begin{pmatrix}
-1 \\ -n + \frac{1}{3} \\ m+n+\frac{1}{3}
-\end{pmatrix}
-=
-\begin{pmatrix}
-1 \\ -n \v_1 + (m+n) \v_2 + \vtau_{\mathcal{B}}
-\end{pmatrix}
-\in B.
-$$
-
-$$
-\{R_{\mathcal{B}}, \vtau_{\mathcal{B}}\} \, \u_B =
-\begin{pmatrix}
-1 & 0 & 0 \\
-1/3 & 0 & -1 \\
-1/3 & 1 & 0 \\
-\end{pmatrix}
-\begin{pmatrix}
-1 \\ m + \frac{1}{3} \\ n + \frac{1}{3}
-\end{pmatrix}
-=
-$$
-$$
-=
-\begin{pmatrix}
-1 \\ -n \\ 1+m+n
-\end{pmatrix}
-=
-\begin{pmatrix}
-1 \\ -n \v_1 + (1+m+n) \v_2
-\end{pmatrix}
-\in A.
-$$
-
-Therefore, the lattice is invariant by the space group operation $\{R_{\mathcal{B}}, \vtau_{\mathcal{B}}\}$.
+This proves that \(\{R \mid \tau\}\) is a symmorphic symmetry, as it can be expressed as a rotation about a suitably chosen origin. The honeycomb lattice can be verified to correspond to a symmorphic space group: the wallpaper group \(\#17\), or equivalently, the space group \(P6mm\) (\(\#183\)).
 \end{example}
 
 
+%\textbf{SEI LÁ ESSE SCHRODINGER}
+%
+%The wave function $\psi(\r)$ of a stationary state of a quantum mechanical one-particle system with Hamiltonian $H(\r)$ satisfies the eigenvalue equation
+%\begin{equation} \label{eq:schrodinger}
+%H(\r) \psi(\r) = E \psi(\r),
+%\end{equation}
+%where $E$ is an eigenvalue of the hermitian operator $H$. If a generic transformation $g$ has been performed on the system, wavefunction and the Hamiltonian transform into $\psi(g^{-1}\r)$ and $H(g^{-1}\r)$.
 
-%\section{Site-symmetry group}
-%
-%Let $G$ be a space group associated with its corresponding lattice and a choice of origin. The subgroup of all symmetry operations of $G$ that leaves a point $P$ of the real space inveriant is called the \textit{site-symmetry group} of $P$. This point $P$ is called \textit{of special position} with respect to $G$ if there is at least one non-trivial (not the identity) symmetry operation of $G$ that leaves $P$ invariant.
-%
-%For a general operation $g$ of $G$, the point $P$ will be mapped into some other point $Q = g P$. If $P$ is of special position with site-symmetry group $G_P$, then $Q$ will also be of special position and its site-symmetry group $G_Q$ will be a conjugate group of $G_P$, namely $G_Q = g G_P g^{-1}$. In fact, we have
-%$$
-%G_Q Q = g G_P g^{-1} Q = g G_P P = g P = Q.
-%$$
-%
-%If we apply of all operations of $G$ to $P$, we obtain the \textit{crystallographic orbit} of $P$, which is the set of points $Q$ with site-symmetry groups conjugate to $G_P$. If $P$ is of special position, we call its crystallographic orbit a \textit{Wyckoff position} of the space group $G$. Therefore, the concept of Wyckoff position refers to a \textbf{set of points of special position with site-symmetry groups conjugates of each other}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Translation subgroup}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%All the elements $\sg{\eps}{\tau}$ of the the space group $G$ constitute the translation group $T$. It is a subgroup of $G$ and defines the Bravais lattice. More than that, $T$ is a normal subgroup of $G$, which means that $g T g^{-1} = T$ for every $g \in G$. Because of that, the cosets
-%$$
-%\{ \sg{R_\alpha}{\tau'} \sg{\eps}{\tau} \mid \sg{\eps}{\tau} \in T \} \in G/T
-%$$
-%form a factor group of the space group $G$.
-%
-%This factor group $G/T$ is actually isomorphic to the point group of $G$.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Symmorphic and Nonsymmorphic Space Groups} \label{sec:symmorphic_groups}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\textbf{SEI LÁ ESSE SCHRODINGER}
-
-The wave function $\psi(\r)$ of a stationary state of a quantum mechanical one-particle system with Hamiltonian $H(\r)$ satisfies the eigenvalue equation
-\begin{equation} \label{eq:schrodinger}
-H(\r) \psi(\r) = E \psi(\r),
-\end{equation}
-where $E$ is an eigenvalue of the hermitian operator $H$. If a generic transformation $g$ has been performed on the system, wavefunction and the Hamiltonian transform into $\psi(g^{-1}\r)$ and $H(g^{-1}\r)$.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Space groups in Reciprocal Space}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Group of the wave vector $G_{\k}$ and the Star of $\k$}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%If we have
-%$$
-%(\hat{P}_\alpha \R_n) \vdot \K_m = 2 \pi N,
-%$$
-%than
-%$$
-%\R_n \vdot (\hat{P}_\alpha^{-1} \K_m) = 2 \pi N.
-%$$
-%
-%Thus, the effect of an operator $\hat{P}_\alpha$ on a direct lattice vector $\R_n$ is equivalent to the effect of the operator $\hat{P}_\alpha^{-1}$ on the corresponding reciprocal lattice vector $\K_m$.
-%
-%\n
-%
-%The group of the wave vector is formed by the set of space group operations which transform $\k$ into itself, or into an equivalent $\k = \k + \K_m$, where $\K_m$ is a vector of the reciprocal lattice.
-%
-%All the symmetry operation of the space group $G$ take the point $\k = 0$ into an equivalent point, so that the group of the wave vector at $\k = 0$ corresponds to $G$. Furthermore, the $G_\k$ for $\k \neq 0$ remains a subgroup of $G$.
-%
-%\n
-%
-%The set of wave vectors $\k'$ which are obtained by carrying out all the point group operations on $\k$ is called \textit{star of} $\k$.
-%
-%\n
-%
-%In summary
-%$$
-%\text{real space} \iff \text{reciprocal space}
-%$$
-%$$
-%\text{site-symmetry group} \iff \text{group of wave vector }G_\k
-%$$
-%$$
-%\text{Wyckoff position} \iff \text{star of }\k
-%$$
 
 \section{Magnetic Space Groups} \label{sec:magnetic_space_groups}
 
