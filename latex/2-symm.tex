@@ -1083,29 +1083,31 @@ This proves that \(\{R \mid \tau\}\) is a symmorphic symmetry, as it can be expr
 
 \section{Magnetic Space Groups} \label{sec:magnetic_space_groups}
 
-Magnetic moments in a solid appears when there are unpaired electrons in electronic shells. A common example is the Hund's rule, which favours the ``ferromagnetic'' interaction so that an intrinsic magnetic moment appears. Below the ordering temperature, a magnetic structure is formed, and above the ordering temperature, the system is in the paramagnetic state.
+Magnetic moments in solids arise when there are unpaired electrons in electronic shells. A common example is Hund's rule, which favors the ``ferromagnetic'' interaction, leading to the appearance of an intrinsic magnetic moment. Below the ordering temperature, a magnetic structure forms, while above this temperature, the system is in a paramagnetic state.
 
-In this section, we are going to introduce the concept of magnetic space group (Shubnikov group), which is important to study magnetic structures. But our main interest is to apply its theory to analyze symmetries of the TBG system, which has negligible SOC and we can say ``it is spinless'', but we can use the same formalism on the sublattice degree of freedom.
+In this section, we introduce the concept of the magnetic space group (Shubnikov group), which is crucial for studying magnetic structures. Our main focus will be to apply this theory to analyze the symmetries of the twisted bilayer graphene (TBG) system. Since TBG has negligible spin-orbit coupling (SOC) and can be considered ``spinless'', we will apply the same formalism to the sublattice degree of freedom instead of spin.
 
-To study the symmetries of magnetic configurations, we introduce the time reversal operator, denoted by $T$ or $1'$. In the context of magnetic systems, this operator acts on magnetic moments that are ``classical axial vectors''. Its action consists of reverting the sense of the current loop, so that the orientation of the magnetic moment is reversed.
+To analyze the symmetries of magnetic configurations, we introduce the time reversal operator, denoted by \(T\) or \(1'\). In the context of magnetic systems, this operator acts on magnetic moments, which are "classical axial vectors." The time reversal operator reverses the direction of the electrical current, which effectively inverts the magnetic moment, as shown in Figure \ref{fig:timerev_axialvec}.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[height=0.4\linewidth]{fig/timerev.png}
-  \caption{}
-  \label{fig:timerev}
-\end{subfigure}%
-\begin{subfigure}{.6\textwidth}
+  \includegraphics[height=0.6\linewidth]{fig/timerev.png}
+  \caption{The time reversal operator $T = 1'$ reverses the electrical current, which inverts the magnetic moment.}
+  \label{fig:timerev_a}
+\end{subfigure} \hfill
+\begin{subfigure}{.55\textwidth}
   \centering
   \includegraphics[width=\linewidth]{fig/axialvec.png}
-  \caption{}
-  \label{fig:axialvec}
+  \caption{Comparison between a vector (electrical dipole) and an axial vector (magnetic dipole) under a reflection.}
+  \label{fig:axialvec_b}
 \end{subfigure}
-\caption{.}
-\label{fig:geometry}
+\caption{The action of the time reversal operator. Figures taken from \cite{magnetic_structures2012}.}
+\label{fig:timerev_axialvec}
 \end{figure}
+
+<++>
 
 We define the time reversal group formed by only two elements $R = \{1, 1'\}$. Any magnetic group $M$ can be obtained as a subgroup of the direct product of $R$ with another group $G$, such that $M \leq G \otimes R$. The group $G \otimes \{1\}$ is a magnetic group, called ``colourless''. The paramagnetic (``grey'') groups are of the form $P = G \cup G1'$. The other form to construct magnetic groups (``black-white'') is
 $$
