@@ -107,7 +107,7 @@ It is always possible to decompose $G$ as a disjoint union of its left cosets:
 \begin{equation} \label{eq:disjoint_union_leftcosets}
 G = \bigcup_{j=1}^{\abs{G/H}} g_j H = \sum_{j=1}^{\abs{G/H}} g_j H,
 \end{equation}
-where $g_j \in G$ is a representative of $g_j H$, and $\abs{G/H}$ is the number of different left cosets.
+where \( g_j \in G \) is a representative of the coset \( g_j H \), and \( \abs{G/H} \) denotes the number of distinct left cosets, also referred to as the \textit{index} of \( H \) in \( G \).
 \end{definition}
 
 An iconic theorem due to Laplace says that the order of a subgroup $H \subseteq G$ divides the order of the group $G$.
@@ -1087,7 +1087,7 @@ Magnetic moments in solids arise when there are unpaired electrons in electronic
 
 In this section, we introduce the concept of the magnetic space group (Shubnikov group), which is crucial for studying magnetic structures. Our main focus will be to apply this theory to analyze the symmetries of the twisted bilayer graphene (TBG) system. Since TBG has negligible spin-orbit coupling (SOC) and can be considered ``spinless'', we will apply the same formalism to the sublattice degree of freedom instead of spin.
 
-To analyze the symmetries of magnetic configurations, we introduce the time reversal operator, denoted by \(T\) or \(1'\). In the context of magnetic systems, this operator acts on magnetic moments, which are "classical axial vectors." The time reversal operator reverses the direction of the electrical current, which effectively inverts the magnetic moment, as shown in Figure \ref{fig:timerev_axialvec}.
+To analyze the symmetries of magnetic configurations, we introduce the time reversal operator, denoted by \(T\) or \(1'\). In the context of magnetic systems, this operator acts on magnetic moments, which are ``classical axial vectors.'' The time reversal operator reverses the direction of the electrical current, which effectively inverts the magnetic moment, as shown in Figure \ref{fig:timerev_axialvec}.
 
 \begin{figure}[H]
 \centering
@@ -1107,18 +1107,33 @@ To analyze the symmetries of magnetic configurations, we introduce the time reve
 \label{fig:timerev_axialvec}
 \end{figure}
 
-<++>
+Although initially motivated by magnetic systems, the magnetic groups can be understood more abstractly as a mathematical construct: a tensor product with the group of two elements, \(\mathcal{T} = \{1, 1'\}\). In this view, time reversal is treated as an abstract operator, extending beyond its physical origins. For instance, in the context of TBG, the time-reversal operator can be interpreted as \textbf{swapping the sublattice types \(A\) and \(B\) (ISSO ESTÁ ERRADOOOO, TALVEZ EU FALE DE TIME-REVERSAL IN SPINLESS SYSTEMS)}.
 
-We define the time reversal group formed by only two elements $R = \{1, 1'\}$. Any magnetic group $M$ can be obtained as a subgroup of the direct product of $R$ with another group $G$, such that $M \leq G \otimes R$. The group $G \otimes \{1\}$ is a magnetic group, called ``colourless''. The paramagnetic (``grey'') groups are of the form $P = G \cup G1'$. The other form to construct magnetic groups (``black-white'') is
-$$
-M = H + (G - H) 1',
-$$
-where $H \leq G$ is a subgroup of index 2.
+Let \(G\) be a group that does not include the time-reversal operator. A \textit{magnetic group} is then defined as a subgroup of the tensor product \(G \otimes \mathcal{T}\), where its elements can be ``painted black, white, or grey,'' reflecting the interplay between time-reversal and spatial symmetries.
 
+\begin{definition}[\textbf{Magnetic group}] \label{def:magnetic_group}
+Any magnetic group \( M \) can be expressed as a subgroup of the external direct product of \( \mathcal{T} = \{1, 1'\}\) with another group \( G \) (excluding \( 1' \)), such that \( M \subseteq G \otimes \mathcal{T} \). A magnetic group $M$ is defeined to be only one of three types:
+\begin{enumerate}
+\item \textbf{Colorless}: These are magnetic groups of the form \(M =  G \otimes \{1\} \).
 
-\section{Application to TBG} \label{sec:application_to_tbg}
+\item \textbf{Grey (Paramagnetic)}: These are the full direct product \(M = G \otimes \{1, 1'\} \).
 
-The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin notation. According to the notation, we can choose its generators to be $C_{6z} T$, $C_{2y} T$ and $C_{2x}$.
+\item \textbf{Black-and-White}: If \( H \) is a subgroup of \( G \) with \hyperref[def:left_cosets]{index} \(2\), then \( M \) is constructed as
+\begin{equation} \label{eq:magnetic_black_white_def}
+M = H \otimes 1 \; \cup \; (G - H) \otimes 1'.
+\end{equation}
+\end{enumerate}
+\end{definition}
+
+To better grasp the concept introduced in Definition \ref{def:magnetic_group}, we can draw some analogies:
+\begin{enumerate}
+\item Colorless groups represent systems that lack time-reversal symmetry entirely.
+
+\item Grey groups correspond to systems in the paramagnetic state, where the temperature is above the critical ordering temperature \( T_c \). In this state, the system remains invariant under time-reversal symmetry, reflecting the absence of any net magnetic ordering.
+
+\item Black-and-white groups can be understood as systems where, for every primed element (black), there exists a corresponding unprimed element (white). This mirrors the interplay between symmetry operations that involve time reversal and those that do not.
+\end{enumerate}
+
 
 \begin{figure}[H]
 \centering
@@ -1126,6 +1141,12 @@ The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin no
 \caption{Representation of the magnetic point group $6'2'2$.}
 \label{fig:622_magnetic}
 \end{figure}
+
+\begin{example} \label{ex:magnetic_group_tbg_6'2'2}
+The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin notation. According to the notation, we can choose its generators to be $C_{6z} T$, $C_{2y} T$ and $C_{2x}$.
+\end{example}
+
+
 
 
 
