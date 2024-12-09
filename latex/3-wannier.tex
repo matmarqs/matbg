@@ -8,30 +8,99 @@
 \chapter{Topological Quantum Chemistry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+We are following the references \cite{lectures_tms2017, building_blocks2018}.
+
 In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct a fully symmetric interacting MATBG model.
 
 Since this theory involves numerous mathematical definitions and concepts, we will consistently use the example of monolayer graphene, which belongs to wallpaper group \#17 and the corresponding space group $P6mm$ (\#183).
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{fig/honeycomb_C3.png}\hfill
+\includegraphics[width=0.32\linewidth]{fig/honeycomb_C2.png}\hfill
+\includegraphics[width=0.32\linewidth]{fig/honeycomb_sigma.png}
+\caption{Generators of the point group \(\{C_3, C_2, \sigma_{1\bar{1}}\}\) for the space group \(P6mm\) of the honeycomb lattice, with the coordinate system origin $O$ located at a hexagon's center.}
+\label{fig:generators_P6mm}
+\end{figure}
 
-\section{Wyckoff positions}
+Following Figure \ref{fig:generators_P6mm}, we use the basis $\mathcal{B} = \{\a_1 = a \vu{x}, \a_2 = \frac{a}{2} \vu{x} + \frac{a\sqrt{3}}{2} \vu{y}\}$. In this basis, the generators \(\{C_3, C_2, \sigma_{1\bar{1}}\}\) for the point group $6mm$ act like:
+\begin{equation} \label{eq:generators_P6mm}
+\begin{cases}
+\; C_3 \a_1 = -\a_1+\a_2 \\
+\; C_3 \a_2 = -\a_1
+\end{cases}
+\quad
+\begin{cases}
+\; C_2\a_1 = -\a_1 \\
+\; C_2\a_2 = -\a_2
+\end{cases}
+\quad
+\begin{cases}
+\; \sigma_{1\bar{1}} \a_1 = \a_2 \\
+\; \sigma_{1\bar{1}} \a_2 = \a_1
+\end{cases}
+\end{equation}
 
-We are following the references \cite{lectures_tms2017, building_blocks2018}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definitions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{definition}[Orbit of $\q$] \label{def:orbit_q}
-It is the set of all positions related to $\q$ by elements of the space group $G$, i.e. $\text{Orb}_\q = \{g \q \mid g \in G\}$, \textit{and} belong to the same unit cell.
+Given a point \(\q\), the \textit{orbit} of \(\q\) is the set of all points \textbf{within the same unit cell} that are related to \(\q\) by symmetry elements of the space group \(G\), i.e.,
+\begin{equation} \label{eq:orbit_of_q}
+\text{Orb}_\q = \{g \q \mid g \in G\}.
+\end{equation}
 \end{definition}
+
+\begin{example} \label{ex:orbit_1a2b3c}
+In Figure \ref{fig:unitcell_q1q2q3q4q5}, using the basis $\mathcal{B} = \{\a_1, \a_2\}$, consider the points \(\textcolor{red}{\varhexagonblack} = \q_1 = (0,0)\), \(\textcolor{blue}{\mdblksquare} = \q_2 = \qty(\frac{1}{3}, \frac{1}{3})\), \(\textcolor{green}{\bigstar} = \q_3 = \qty(\frac{1}{2}, 0)\), \(\textcolor{magenta}{\varheartsuit} = \q_4 = \qty(\frac{1}{6}, \frac{1}{6})\), and \(\textcolor{orange}{\spadesuit} = \q_5 = \qty(\frac{1}{4}, 0)\).
+
+Note that the unit cell, as shown in Figure \ref{fig:unitcell_limit}, excludes points that are equivalent under translations by Bravais lattice vectors. By applying all symmetry elements of \(G\) to the points \(\q_1, \q_2, \q_3, \q_4, \q_5\) and retaining only those that lie within the same unit cell, the resulting orbits are represented by the symbols \(\textcolor{red}{\varhexagonblack}\), \(\textcolor{blue}{\mdblksquare}\), \(\textcolor{green}{\bigstar}\), \(\textcolor{magenta}{\varheartsuit}\), and \(\textcolor{orange}{\spadesuit}\), as shown in Figure \ref{fig:unitcell_orbitsymbols}.
+\end{example}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.3\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{fig/unitcell_q1q2q3q4q5.png}
+  \caption{Points $\q_1,\q_2,\q_3,\q_4,\q_5$}
+  \label{fig:unitcell_q1q2q3q4q5}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.3\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{fig/unitcell_orbitsymbols.png}
+  \caption{Orbits and Wyckoff letters}
+  \label{fig:unitcell_orbitsymbols}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.235\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{fig/unitcell_limit.png}
+  \caption{Unit cell choice}
+  \label{fig:unitcell_limit}
+\end{subfigure}
+\caption{Unit cell and orbits.}
+\label{fig:unitcell_orbits}
+\end{figure}
+
 
 \begin{definition}[Site-symmetry group / Stabilizer group] \label{def:sitesym}
 The site-symmetry group of a position $\q$ is the subgroup of operations $g \in G$ that leave $\q$ fixed.
 $$
-G_\q = \{g \mid g \q = \q\} \leq G.
+G_\q = \{g \mid g \q = \q\} \subseteq G.
 $$
 \end{definition}
 
 \textit{Remarks:}
 \begin{itemize}
-\item $G_\q$ can include elements $\{R \mid \r\}$, with nonzero translations, $\r \neq \0$.
+\item The site-symmetry group $G_\q$ can include elements $\{R \mid \r\}$, with nonzero translations, $\r \neq \0$.
 \item Since any site-symmetry group leaves a point invariant, it is also isomorphic to one of the 32 crystallographic points groups (in 3D).
 \end{itemize}
+
+\begin{example} \label{ex:site-symmetry_groups_p6mm}
+The point $\q_3 = \qty(\frac{1}{2}, 0) = \textcolor{green}{\bigstar}$ has the site-symmetry group $G_{\q_3}$ that has generators $\{C_2 \mid \a_1\}$ (rotation by $C_2$ followed by translation of $\a_1$) and $\{\sigma_{01}\mid 0\}$ (reflection by the $x$-axis)
+\end{example}
 
 \begin{definition}[Wyckoff position] \label{def:wyckpos}
 A \textit{Wyckoff position} $\q$ is any position in the unit cell of the crystal. There are \textit{special} Wyckoff positions, which are those which are left invariant by some symmetry operations. The \textit{multiplicity} of a Wyckoff positions is the number of elements in its orbit (in the same unit cell).
