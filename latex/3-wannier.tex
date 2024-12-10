@@ -12,7 +12,7 @@ We are following the references \cite{lectures_tms2017, building_blocks2018}.
 
 In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct a fully symmetric interacting MATBG model.
 
-Since this theory involves numerous mathematical definitions and concepts, we will consistently use the example of monolayer graphene, which belongs to wallpaper group \#17 and the corresponding space group $P6mm$ (\#183).
+Since this theory involves numerous mathematical definitions and concepts, we will consistently use the example of monolayer graphene, which belongs to wallpaper group \#17 and the corresponding space group $P6mm$ ($\#183$ in international tables).
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_C3.png}\hfill
@@ -45,10 +45,10 @@ Following Figure \ref{fig:generators_P6mm}, we use the basis $\mathcal{B} = \{\a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{definition}[Orbit of $\q$] \label{def:orbit_q}
+\begin{definition}[\textbf{Orbit}] \label{def:orbit_q}
 Given a point \(\q\), the \textit{orbit} of \(\q\) is the set of all points \textbf{within the same unit cell} that are related to \(\q\) by symmetry elements of the space group \(G\), i.e.,
 \begin{equation} \label{eq:orbit_of_q}
-\text{Orb}_\q = \{g \q \mid g \in G\}.
+\text{Orb}(\q) = G \q = \{g \q \mid g \in G\}.
 \end{equation}
 \end{definition}
 
@@ -85,11 +85,11 @@ Note that the unit cell, as shown in Figure \ref{fig:unitcell_limit}, excludes p
 \end{figure}
 
 
-\begin{definition}[Site-symmetry group / Stabilizer group] \label{def:sitesym}
+\begin{definition}[\textbf{Site-symmetry group / Stabilizer group}] \label{def:sitesym}
 The site-symmetry group of a position $\q$ is the subgroup of operations $g \in G$ that leave $\q$ fixed.
-$$
+\begin{equation} \label{eq:site-symmetry_def}
 G_\q = \{g \mid g \q = \q\} \subseteq G.
-$$
+\end{equation}
 \end{definition}
 
 \textit{Remarks:}
@@ -136,51 +136,90 @@ g \q_1 = \0 = \q_1, \quad \text{for all } g \in G_{\q_1}.
 
 \end{example}
 
-\begin{definition}[Wyckoff position] \label{def:wyckpos}
-A \textit{Wyckoff position} $\q$ is any position in the unit cell of the crystal. There are \textit{special} Wyckoff positions, which are those which are left invariant by some symmetry operations. The \textit{multiplicity} of a Wyckoff positions is the number of elements in its orbit (in the same unit cell).
+\begin{definition}[\textbf{Wyckoff position}] \label{def:wyckpos}
+A \textit{Wyckoff position} \( \q \) refers to any position within the unit cell of the crystal. Some Wyckoff positions are \textit{special}, meaning they are left invariant by certain symmetry operations (other than the identity $\{E \mid 0\}$). The \textit{multiplicity} $n$ of a Wyckoff position is the number of distinct positions in its orbit within the same unit cell, $n = \abs{\text{Orb}(q)}$. A Wyckoff position is generally denoted as \( n\ell \), where \( \ell \) is an alphabetical label that designates the increasing size of the site-symmetry group associated with the position.
 \end{definition}
 
-\begin{definition}[Coset representatives] \label{def:cosetrep}
-The \textit{coset representatives} of site-symmetry group are the elements that generate the orbit of Wyckoff position. The number of coset representatives is also equal to the multiplicity of the Wyckoff position.
+\begin{example} \label{ex:wyckpos_q1q2q3q4q5}
+The Wyckoff positions \( \q_1 = \textcolor{red}{\varhexagonblack} \), \( \q_2 = \textcolor{blue}{\mdblksquare} \), \( \q_3 = \textcolor{green}{\bigstar} \), \( \q_4 = \textcolor{magenta}{\varheartsuit} \), and \( \q_5 = \textcolor{orange}{\spadesuit} \) are respectively labeled as \( \textcolor{red}{1a} \), \( \textcolor{blue}{2b} \), \( \textcolor{green}{3c} \), \( \textcolor{magenta}{6d} \), and \( \textcolor{orange}{6e} \), as shown in Figure \ref{fig:unitcell_orbitsymbols}.
+\end{example}
+
+\begin{definition}[\textbf{Coset representatives}] \label{def:cosetrep_wyckoff}
+The \textit{coset representatives} of the site-symmetry group are the elements \( g_\alpha \) that generate the orbit of a Wyckoff position \( \q \), with each element in the orbit given by \( \q_\alpha = g_\alpha \q \). The number of coset representatives corresponds to the multiplicity of the Wyckoff position.
 \end{definition}
 
-\begin{definition}[Coset decomposition] \label{def:cosetdecomp}
-Given a Wyckoff position $\q$, the \textit{coset decomposition} with respect to $\q$ is the full space group is defined by
-$$
-G = \bigcup_\alpha g_\alpha (G_{\q} \ltimes \Z^d).
-$$
-\end{definition}
+\begin{example} \label{ex:coset_representatives_q1q2q3q4q5}
+For the points $\q_1 = \textcolor{red}{\varhexagonblack}$, $\q_2 = \textcolor{blue}{\mdblksquare}$, $\q_3 = \textcolor{green}{\bigstar}$, $\q_4 = \textcolor{magenta}{\varheartsuit}$ and $\q_5 = \textcolor{orange}{\spadesuit}$, we can choose coset representatives as
+\begin{align}
+\text{Orb}(\q_1) &= \qty{\{E\mid 0\} \q_1}, \label{eq:orbit_q1} \\
+\text{Orb}(\q_2) &= \qty{\{E\mid 0\} \q_2, \{C_6\mid 0\} \q_2}, \label{eq:orbit_q2} \\
+\text{Orb}(\q_3) &= \qty{\{E\mid 0\} \q_3, \{C_6\mid 0\} \q_3, \{C_6^2\mid 0\} \q_3}, \label{eq:orbit_q3} \\
+\text{Orb}(\q_4) &= \qty{\{E\mid 0\} \q_4, \{C_6\mid 0\} \q_4, \{C_6^2\mid 0\} \q_4, \{C_6^3\mid 0\} \q_4, \{C_6^4\mid 0\} \q_4, \{C_6^5\mid 0\} \q_4}, \label{eq:orbit_q4} \\
+\text{Orb}(\q_5) &= \qty{\{E\mid 0\} \q_5, \{C_6\mid 0\} \q_5, \{C_6^2\mid 0\} \q_5, \{C_6^3\mid 0\} \q_5, \{C_6^4\mid 0\} \q_5, \{C_6^5\mid 0\} \q_5}, \label{eq:orbit_q5}
+\end{align}
+For example, in Equation \ref{eq:orbit_q3}, the coset representatives of $G_{\q_3}$ are $g_1 = \{E\mid 0\}$, $g_2 = \{C_6\mid 0\}$, and $g_3 = \{C_6^2\mid 0\}$.
+\end{example}
 
-\begin{definition}[Maximal Wyckoff position]
+\begin{lemma}[\textbf{Coset decomposition}] \label{lemma:cosetdecomp_wyckoff}
+Let \( \q \) be a Wyckoff position in a space group \( G \). The coset decomposition of \( G \) with respect to \( \q \) is given by:
+\begin{equation} \label{eq:coset_decomp_wyckoff}
+G = \bigcup_\alpha g_\alpha (G_{\q} \ltimes \Z^d),
+\end{equation}
+where \( \Z^d \) represents the group of lattice translations, \(\{E\mid \t\}\), with \(\t = \sum_{i=1}^d n_i \a_i\), where \( n_i \in \Z \) and \(\{\a_i\}\) are the primitive lattice vectors in \( d \) dimensions.
+
+In practice, this decomposition means that for any \( g \in G \), we can write \( g = \{E \mid \t\} g_\alpha h \), for some translation \(\t\), coset representative \( g_\alpha \), and \( h \in G_\q \). Applying \( \q \) to both sides:
+\begin{equation} \label{eq:coset_decomp_translation_t_step1}
+g \q = \{E \mid \t\} g_\alpha h \q = \{E \mid \t\} g_\alpha \q = \{E \mid \t\} \q_\alpha = \q_\alpha + \t,
+\end{equation}
+which leads to
+\begin{equation} \label{eq:coset_decomp_translation_t}
+\t = g \q - \q_\alpha.
+\end{equation}
+\end{lemma}
+
+\begin{lemma}[\textbf{Conjugate site-symmetry groups}] \label{lemma:conjugate_group_G_qalpha}
+Positions \(\q\) and \(\q_\alpha\) on the same orbit are connected by the relation \(\q_\alpha = g_\alpha \q\), where \(g_\alpha\) is a coset representative. For \(h \in G_\q\), the following holds:
+\begin{equation} \label{eq:conjugate_group_qalpha}
+h \q = \q \implies h g_\alpha^{-1} \q_\alpha = g_\alpha^{-1} \q_\alpha \implies
+\qty(g_\alpha h g_\alpha^{-1}) \q_\alpha = \q_\alpha \implies
+g_\alpha h g_\alpha^{-1} \in G_{\q_\alpha}.
+\end{equation}
+Consequently, the site-symmetry groups of points on the same orbit are conjugates of each other, satisfying \(G_{\q_\alpha} = g_\alpha G_\q g_\alpha^{-1}\).
+\end{lemma}
+
+
+\begin{definition}[\textbf{Maximal Wyckoff position}]
 A site-symmetry group is \textbf{non-maximal} if there exists a finite group $H \neq G_\q$, such that $G_\q \subseteq H \subseteq G$. A site-symmetry group that is not non-maximal is \textbf{maximal}. A Wyckoff position containing $\q$ is maximal if the stabilizer group $G_\q$ is maximal.
 \end{definition}
 
 \section{Band Representations}
 
-Let a site $\q$ belong to a Wyckoff position of multiplicity $n$, and suppose that $n_q$ orbitals reside on it. The wavefunctions $W_{i1}(\r)$, $i = 1, \ldots, n_q$, of these orbitals transform under an $n_q$-dimensional representation $\rho$, of the site-symmetry group $G_\q$:
-$$
-g W_{i1}(\r) = W_{i1}(g^{-1} \r) = [\rho(g)]_{ij} W_{j1}(\r).
-$$
+Let a site \(\q\) belong to a Wyckoff position of multiplicity \(n\), with \(n_q\) orbitals residing on it. The wavefunctions \(W_{i1}(\r)\), where \(i = 1, \ldots, n_q\), transform according to an \(n_q\)-dimensional representation \(\rho\) of the site-symmetry group \(G_\q\):
+\begin{equation} \label{eq:gWi1_nq_rep}
+h W_{i1}(\r) = W_{i1}(h^{-1} \r) = [\rho(h)]_{ij} W_{j1}(\r), \quad h \in G_\q.
+\end{equation}
 
-Without loss of generality, choose the equivalent sites $\q_\alpha = g_{\alpha} \q$ to be in the same unit cell as $\q$. Their orbitals transform under the conjugate representation $\rho_\alpha(h) = \rho(g_\alpha^{-1} h g_\alpha)$, where $h \in G_{\q_\alpha}$ and $g_\alpha^{-1} h g_\alpha \in G_\q$. The wavefunctions localized on $\q_\alpha$ are then defined by
-$$
+Without loss of generality, let the equivalent sites \(\q_\alpha = g_{\alpha} \q\) be in the same unit cell as \(\q\). The orbitals at \(\q_\alpha\) transform under the conjugate representation \(\rho_\alpha(h) = \rho(g_\alpha^{-1} h g_\alpha)\), where \(h \in G_{\q_\alpha}\) and \(g_\alpha^{-1} h g_\alpha \in G_\q\). The wavefunctions localized at \(\q_\alpha\) are then given by
+\begin{equation} \label{eq:Wialpha_galpha_action}
 W_{i\alpha}(\r) = g_\alpha W_{i1}(\r) = W_{i1}(g_\alpha^{-1} \r),
-$$
-where $\alpha = 1, \ldots, n$ indexes the equivalent sites that belong to the Wyckoff position of multiplicity $n$. Now, the wavefunctions on other unit cells are obtained by an applied translation
-$$
+\end{equation}
+where \(\alpha = 1, \ldots, n\) indexes the equivalent sites that belong to the Wyckoff position of multiplicity \(n\). The wavefunctions on other unit cells are obtained by applying a translation operator, such that:
+\begin{equation} \label{eq:translated_Wialpha}
 \sg{E}{\t_\mu} W_{i\alpha}(\r) = W_{i\alpha}(\r-\t_\mu),
-$$
+\end{equation}
 where $\t_\mu$ is a Bravais lattice vector.
 
-Notice that we end up with $n \times n_\q \times N$ wavefunctions $W_{i\alpha}(\r-\t_\mu)$, where $N \to \infty$ is the number of unit cells in the system. Now we derive how they should transform under an arbitrary element $h = \sg{R}{\t} \in G$ of the space group. This will give us the band representation $\rho_G(h)$ induced from a representation $\rho$ of $G_\q$.
-$$
+We find that there are \(n \times n_\q \times N\) wavefunctions \(W_{i\alpha}(\r - \t_\mu)\), where \(N \to \infty\) represents the number of unit cells in the system. To determine how these wavefunctions transform under an arbitrary space group element \(h = \sg{R}{\t} \in G\), we derive the band representation \(\rho_G = \rho \uparrow G\) induced from the representation \(\rho\) of the site-symmetry group \(G_\q\).
+\begin{equation} \label{eq:}
 \rho_G(h) W_{i\alpha}(\r-\t_\mu) =
 \underbrace{h \sg{E}{\t_\mu}}_{= \sg{E}{R\t_\mu} h} W_{i\alpha} (\r) =
 \sg{E}{R\t_\mu} h W_{i\alpha} (\r) =
 \sg{E}{R\t_\mu} \, h g_\alpha \, W_{i1} (\r).
-$$
+\end{equation}
 
-From the coset decomposition of Definition \ref{def:cosetdecomp}, we write $h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g$, for some $g \in G_\q$, coset representative $g_\beta$, and a Bravais lattice vector $\t_{\beta\alpha}$.
+From the coset decomposition of Definition \ref{lemma:cosetdecomp_wyckoff}, we write $h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g$, for some $g \in G_\q$, coset representative $g_\beta$, and a Bravais lattice vector $\t_{\beta\alpha}$.
+
+Applying \ref{lemma:cosetdecomp_wyckoff}
 
 We can obtain a relation for the lattice vector $\t_{\beta\alpha}$. Notice that
 $$
