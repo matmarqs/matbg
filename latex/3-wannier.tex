@@ -18,7 +18,7 @@ Since this theory involves numerous mathematical definitions and concepts, we wi
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_C3.png}\hfill
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_C2.png}\hfill
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_sigma.png}
-\caption{Generators of the point group \(\{C_3, C_2, m_{1\bar{1}}\}\) for the space group \(P6mm\) of the honeycomb lattice, with the coordinate system origin $O$ located at a hexagon's center.}
+\caption{Generators of the point group \(\{C_3, C_2, m_{1\bar{1}}\}\) for the space group \(P6mm\) of the honeycomb lattice, with the coordinate system origin $O$ located at a hexagon's center. \textbf{CORRIGIR} $\sigma_{1\cc{1}} = m_{1\cc{1}}$.}
 \label{fig:generators_P6mm}
 \end{figure}
 
@@ -188,15 +188,19 @@ Consequently, the site-symmetry groups of points on the same orbit are conjugate
 \end{lemma}
 
 
-\begin{definition}[\textbf{Maximal Wyckoff position}]
-A site-symmetry group is \textbf{non-maximal} if there exists a finite group $H \neq G_\q$, such that $G_\q \subseteq H \subseteq G$. A site-symmetry group that is not non-maximal is \textbf{maximal}. A Wyckoff position containing $\q$ is maximal if the stabilizer group $G_\q$ is maximal.
+\begin{definition}[\textbf{Maximal Wyckoff position}] \label{def:maximal_wyckpos}
+A site-symmetry group is \textit{non-maximal} if there exists a finite group $H \neq G_\q$, such that $G_\q \subseteq H \subseteq G$. A site-symmetry group that is not non-maximal is \textit{maximal}. A Wyckoff position $\q$ is said to be \textit{maximal} if its site-symmetry group $G_\q$ is maximal.
 \end{definition}
+
+\begin{example} \label{ex:maximal_wyckpos_example}
+We have $G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. \textbf{Do I prove this?}
+\end{example}
 
 \section{Band Representations}
 
 Let a site \(\q\) belong to a Wyckoff position of multiplicity \(n\), with \(n_q\) orbitals residing on it. The wavefunctions \(W_{i1}(\r)\), where \(i = 1, \ldots, n_q\), transform according to an \(n_q\)-dimensional representation \(\rho\) of the site-symmetry group \(G_\q\):
 \begin{equation} \label{eq:gWi1_nq_rep}
-h W_{i1}(\r) = W_{i1}(h^{-1} \r) = [\rho(h)]_{ij} W_{j1}(\r), \quad h \in G_\q.
+h W_{i1}(\r) = W_{i1}(h^{-1} \r) = \sum_{j} [\rho(h)]_{ij} W_{j1}(\r), \quad h \in G_\q.
 \end{equation}
 
 Without loss of generality, let the equivalent sites \(\q_\alpha = g_{\alpha} \q\) be in the same unit cell as \(\q\). The orbitals at \(\q_\alpha\) transform under the conjugate representation \(\rho_\alpha(h) = \rho(g_\alpha^{-1} h g_\alpha)\), where \(h \in G_{\q_\alpha}\) and \(g_\alpha^{-1} h g_\alpha \in G_\q\). The wavefunctions localized at \(\q_\alpha\) are then given by
@@ -209,46 +213,35 @@ where \(\alpha = 1, \ldots, n\) indexes the equivalent sites that belong to the 
 \end{equation}
 where $\t_\mu$ is a Bravais lattice vector.
 
-We find that there are \(n \times n_\q \times N\) wavefunctions \(W_{i\alpha}(\r - \t_\mu)\), where \(N \to \infty\) represents the number of unit cells in the system. To determine how these wavefunctions transform under an arbitrary space group element \(h = \sg{R}{\t} \in G\), we derive the band representation \(\rho_G = \rho \uparrow G\) induced from the representation \(\rho\) of the site-symmetry group \(G_\q\).
-\begin{equation} \label{eq:}
-\rho_G(h) W_{i\alpha}(\r-\t_\mu) =
-\underbrace{h \sg{E}{\t_\mu}}_{= \sg{E}{R\t_\mu} h} W_{i\alpha} (\r) =
-\sg{E}{R\t_\mu} h W_{i\alpha} (\r) =
-\sg{E}{R\t_\mu} \, h g_\alpha \, W_{i1} (\r).
+There are \(n \times n_\q \times N\) wavefunctions \(W_{i\alpha}(\r - \t_\mu)\), where \(N \to \infty\) is the number of unit cells in the system. To determine their transformation properties under an arbitrary space group element \(g = \sg{R}{\t} \in G\), we derive the band representation \(\rho_G = \rho \uparrow G\) induced from the representation \(\rho\) of the site-symmetry group \(G_\q\), as in Definition \ref{def:induction_defi}.
+\begin{equation} \label{eq:induced_rho_G_wannier_step1}
+\rho_G(g) W_{i\alpha}(\r-\t_\mu) =
+\underbrace{g \sg{E}{\t_\mu}}_{= \sg{E}{R\t_\mu} g} W_{i\alpha} (\r) =
+\sg{E}{R\t_\mu} g W_{i\alpha} (\r) =
+\sg{E}{R\t_\mu} \, g g_\alpha \, W_{i1} (\r).
 \end{equation}
 
-From the coset decomposition of Definition \ref{lemma:cosetdecomp_wyckoff}, we write $h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g$, for some $g \in G_\q$, coset representative $g_\beta$, and a Bravais lattice vector $\t_{\beta\alpha}$.
-
-Applying \ref{lemma:cosetdecomp_wyckoff}
-
-We can obtain a relation for the lattice vector $\t_{\beta\alpha}$. Notice that
-$$
-h g_\alpha \q = h \q_\alpha =
-$$
-$$
-= \sg{E}{\t_{\beta\alpha}} g_\beta g \q = \sg{E}{\t_{\beta\alpha}} g_\beta \q = \sg{E}{\t_{\beta\alpha}} \q_\beta = \q_\beta + \t_{\beta\alpha}.
-$$
-This gives us that $\t_{\beta\alpha} = h \q_\alpha - \q_\beta$.
-
-Therefore, $g$ and $\t_{\beta\alpha}$ are determined by
-\begin{equation} \label{eq:g_and_tba}
-h g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta g, \quad \t_{\beta\alpha} = h \q_\alpha - \q_\beta.
+Applying Lemma \ref{lemma:cosetdecomp_wyckoff} for the element $g g_\alpha \in G$, we write $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$, for some $h \in G_\q$, coset representative and a Bravais lattice vector $\t_{\beta\alpha}$ given by
+\begin{equation} \label{eq:t_betaalpha}
+\t_{\beta\alpha} = gg_\alpha \q - \q_\beta = g \q_\alpha - \q_\beta.
 \end{equation}
 
-Following the derivation:
+Following the derivation from Equation \ref{eq:induced_rho_G_wannier_step1}:
 $$
-\rho_G(h) W_{i\alpha}(\r-\t_\mu) =
+\rho_G(g) W_{i\alpha}(\r-\t_\mu) =
 \sg{E}{R\t_\mu} \sg{E}{\t_{\beta\alpha}} g_\beta g W_{i1}(\r) =
 \sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j1}(\r) =
 $$
 $$
-\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j\beta}(\r) \implies
+\sg{E}{R\t_\mu + \t_{\beta\alpha}} [\rho(g)]_{ij} W_{j\beta}(\r) \implies
 $$
 \begin{equation} \label{eq:wannier_rep}
-\rho_G(h) W_{i\alpha}(\r-\t_\mu) = [\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
+\rho_G(g) W_{i\alpha}(\r-\t_\mu) = [\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
 \end{equation}
 
 \n
+
+\textbf{CORRIGIRRRRRRRRR} $G \ni g \leftrightarrow h \in G_\q$.
 
 Now define the Fourier transformed Wannier functions (Bloch functions):
 $$
@@ -257,15 +250,15 @@ $$
 
 Using Equation \ref{eq:wannier_rep}, the Bloch functions transform as
 $$
-\rho_G(h) a_{i\alpha}(\k,\r) =
-\rho_G(h) \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu) =
+\rho_G(g) a_{i\alpha}(\k,\r) =
+\rho_G(g) \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu) =
 \sum_{\mu} e^{i\k\vdot\t_\mu} [\rho(g)]_{ij} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) =
 $$
 $$
-= e^{i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \sum_{\mu} e^{i(R\k)\vdot(R\t_\mu+\t_{\beta\alpha})} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) \implies
+= e^{-i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \sum_{\mu} e^{i(R\k)\vdot(R\t_\mu+\t_{\beta\alpha})} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) \implies
 $$
 \begin{equation} \label{eq:bloch_rep}
-(\rho_G(h) a)_{i\alpha}(\k,\r) = e^{i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \, a_{j\beta}(R\k, \r),
+(\rho_G(h) a)_{i\alpha}(\k,\r) = e^{-i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \, a_{j\beta}(R\k, \r),
 \end{equation}
 where $g$ and $\t_{\beta\alpha}$ are determined by Equation \ref{eq:g_and_tba}. The choice of representatives $g_\alpha$ must be kept fixed through the construction.
 

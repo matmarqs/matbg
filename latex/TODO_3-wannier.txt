@@ -1,0 +1,7 @@
+TODO:
+No novo arquivo (1.2 Band representations)
+    Numerar *todas* as equações e não apenas as que foram utilizadas.
+    Incluir o exemplo do grafeno com spin (n=2, n_q=2 , N).
+    Como G_q é o equivalente do H no outro capítulo, melhor uniformizar de modo que h é um elemento de G_q (subgrupo) e g é um elemento do grupo maior.
+    Corrigir o g_beta extra da Eq. (1.2)
+    Corrigir os expoentes da Eq. (1.3).
