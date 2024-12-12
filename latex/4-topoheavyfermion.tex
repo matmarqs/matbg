@@ -12,7 +12,7 @@ As proved in \cite{all_magic_angles}, when one includes the emergent particle-ho
 \begin{equation} \label{eq:matbg-irreps}
 \Gamma_1 \oplus \Gamma_2; \; M_1 \oplus M_2; \; K_2 K_3
 \end{equation}
-of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{topological_quantum_chemistry}, we get the Table \ref{tab:matbg-irreps}. We see that the irreps at Equation \ref{eq:matbg-irreps} do not correspond to any of the local orbitals at \ref{tab:matbg-irreps}. In order to resolve the Wannier obstruction, we add the closest higher energy bands, which have the $\Gamma_3$ irrep at the $\Gamma_m$ point. These higher energy bands hybridize with the two middle ones, and we extract the trivial bands that form the band representation
+of the magnetic space group $P6'2'2$. Comparing this irreps with the EBRs \cite{topological_quantum_chemistry2017}, we get the Table \ref{tab:matbg-irreps}. We see that the irreps at Equation \ref{eq:matbg-irreps} do not correspond to any of the local orbitals at \ref{tab:matbg-irreps}. In order to resolve the Wannier obstruction, we add the closest higher energy bands, which have the $\Gamma_3$ irrep at the $\Gamma_m$ point. These higher energy bands hybridize with the two middle ones, and we extract the trivial bands that form the band representation
 \begin{equation} \label{eq:trivial-irreps}
 [E]_a \uparrow G: \quad \Gamma_3; \; M_1 \oplus M_2; \; K_2 K_3,
 \end{equation}
@@ -52,12 +52,12 @@ $2 C_3$ & $\P1$ & $\P1$ & $ -1$ & $\P C_2'$ & $\P1$ & $ -1$ & $\P C_3$ & $\P1$ &
 $3 C_2'$ & $\P1$ & $ -1$ & $\P0$ & $\P$ & $\P$ & $\P$ & $\P C_3^{-1}$ & $\P1$ & $-1$ \\
 \cline{1-10}
 \end{tabular}
-\label{tab:D6}
+\label{tab:P6'2'2}
 \end{table}
 
-\pagebreak
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Monolayer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Considering only nearest-neighbors, the hamiltonian of a single unrotated layer of graphene is given by
 $$
@@ -75,7 +75,9 @@ $$
 H_{\text{mono}}(\K + \q) \approx v_F \, \q \vdot \bm{\sigma}.
 $$
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BM model review}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The hamiltonian of the BM model is given by
 $$
@@ -122,8 +124,6 @@ $$
 V_{\alpha\beta}(\p, \p') = \bra{1, \alpha, \p} H \ket{2, \beta, \p'}.
 $$
 
-\pagebreak
-
 When we expand both $\p = \K_1 + \q$ and $\p' = \K_2 + \q'$, \textbf{after the BM considerations}, we get
 $$
 V_{\alpha\beta}(\K + \q, R_\theta \K + \q') \approx
@@ -162,7 +162,7 @@ $$
 \end{itemize}
 
 \begin{table}[H]
-\tiny
+\scriptsize
 \caption{Elementary band representations of the magnetic space group $P6'2'2$.}
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -198,7 +198,9 @@ $3 C_2'$ & $\P1$ & $ -1$ & $\P0$ & $\P$ & $\P$ & $\P$ & $\P C_3^{-1}$ & $\P1$ & 
 \label{tab:char-P6'2'2}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{There exists another model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 According to Bernevig: ``The MBM-1V is half of the TBG system, with similar physics taking place in the electron states around $\K'$''. A model with the two valleys can be written as
 $$
@@ -259,9 +261,25 @@ $3C_2''$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P0$ & $\P0$ &         &       &    
 
 Compare tables \ref{tab:ebr-P622} and \ref{tab:char-P622} with tables 2.5 and (2.1, 2.3) of Rennella \cite{thesis_rennella}, respectively.
 
-\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.35\linewidth]{fig/thf-correct_params.png}
+\includegraphics[height=0.35\linewidth]{fig/thf-no_M_no_gamma.png}
+%\caption{}
+\label{fig:thf-correct_params}
+\end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.35\linewidth]{fig/thf-no_M.png}
+\includegraphics[height=0.35\linewidth]{fig/thf-no_coupling.png}
+%\caption{}
+\label{fig:thf-exploration}
+\end{figure}
 
 
 
