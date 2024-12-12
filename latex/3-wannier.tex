@@ -8,9 +8,7 @@
 \chapter{Topological Quantum Chemistry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We are following the references \cite{lectures_tms2017, building_blocks2018}.
-
-In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct a fully symmetric interacting MATBG model.
+In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017, building_blocks2018, lectures_tms2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct a fully symmetric interacting MATBG model.
 
 Since this theory involves numerous mathematical definitions and concepts, we will consistently use the example of monolayer graphene, which belongs to wallpaper group \#17 and the corresponding space group $P6mm$ ($\#183$ in international tables).
 \begin{figure}[H]
@@ -193,12 +191,14 @@ A site-symmetry group is \textit{non-maximal} if there exists a finite group $H 
 \end{definition}
 
 \begin{example} \label{ex:maximal_wyckpos_example}
-We have $G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. \textbf{Do I prove this?}
+We have $G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. %\textbf{Do I prove this?}
 \end{example}
 
-\section{Band Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Band Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let a site \(\q\) belong to a Wyckoff position of multiplicity \(n\), with \(n_q\) orbitals residing on it. The wavefunctions \(W_{i1}(\r)\), where \(i = 1, \ldots, n_q\), transform according to an \(n_q\)-dimensional representation \(\rho\) of the site-symmetry group \(G_\q\):
+Consider a site \(\q\) within a Wyckoff position of multiplicity \(n\), hosting \(n_q\) orbitals. The corresponding wavefunctions, denoted as \(W_{i1}(\r)\) for \(i = 1, \ldots, n_q\), transform under an \(n_q\)-dimensional representation \(\rho\) of the site-symmetry group \(G_\q\):
 \begin{equation} \label{eq:gWi1_nq_rep}
 h W_{i1}(\r) = W_{i1}(h^{-1} \r) = \sum_{j} [\rho(h)]_{ij} W_{j1}(\r), \quad h \in G_\q.
 \end{equation}
@@ -218,58 +218,59 @@ There are \(n \times n_\q \times N\) wavefunctions \(W_{i\alpha}(\r - \t_\mu)\),
 \rho_G(g) W_{i\alpha}(\r-\t_\mu) =
 \underbrace{g \sg{E}{\t_\mu}}_{= \sg{E}{R\t_\mu} g} W_{i\alpha} (\r) =
 \sg{E}{R\t_\mu} g W_{i\alpha} (\r) =
-\sg{E}{R\t_\mu} \, g g_\alpha \, W_{i1} (\r).
+\sg{E}{R\t_\mu} \, (g g_\alpha) \, W_{i1} (\r).
 \end{equation}
 
-Applying Lemma \ref{lemma:cosetdecomp_wyckoff} for the element $g g_\alpha \in G$, we write $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$, for some $h \in G_\q$, coset representative and a Bravais lattice vector $\t_{\beta\alpha}$ given by
+Applying Lemma \ref{lemma:cosetdecomp_wyckoff} for the element $g g_\alpha \in G$, we write $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$, for some $h \in G_\q$, coset representative $g_\beta$ and a Bravais lattice vector $\t_{\beta\alpha}$ given by
 \begin{equation} \label{eq:t_betaalpha}
-\t_{\beta\alpha} = gg_\alpha \q - \q_\beta = g \q_\alpha - \q_\beta.
+\t_{\beta\alpha} = gg_\alpha \q - \q_\beta = g \q_\alpha - \q_\beta, \quad
+h = g_\beta^{-1} \{E\mid -\t_{\beta\alpha}\} g g_\alpha.
 \end{equation}
 
 Following the derivation from Equation \ref{eq:induced_rho_G_wannier_step1}:
 $$
 \rho_G(g) W_{i\alpha}(\r-\t_\mu) =
-\sg{E}{R\t_\mu} \sg{E}{\t_{\beta\alpha}} g_\beta g W_{i1}(\r) =
-\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta [\rho(g)]_{ij} W_{j1}(\r) =
+\sg{E}{R\t_\mu} \qty(\sg{E}{\t_{\beta\alpha}} g_\beta h) W_{i1}(\r) =
+\sg{E}{R\t_\mu + \t_{\beta\alpha}} g_\beta \sum_{j} [\rho(h)]_{ij} W_{j1}(\r) =
 $$
 $$
-\sg{E}{R\t_\mu + \t_{\beta\alpha}} [\rho(g)]_{ij} W_{j\beta}(\r) \implies
+= \sum_{j} \sg{E}{R\t_\mu + \t_{\beta\alpha}} [\rho(h)]_{ij} W_{j\beta}(\r) \implies
 $$
 \begin{equation} \label{eq:wannier_rep}
-\rho_G(g) W_{i\alpha}(\r-\t_\mu) = [\rho(g)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
+\rho_G(g) W_{i\alpha}(\r-\t_\mu) = \sum_{j} [\rho(h)]_{ij} W_{j\beta}(\r - R\t_\mu - \t_{\beta\alpha}).
 \end{equation}
 
 \n
 
-\textbf{CORRIGIRRRRRRRRR} $G \ni g \leftrightarrow h \in G_\q$.
-
-Now define the Fourier transformed Wannier functions (Bloch functions):
-$$
+Now define the Bloch functions:
+\begin{equation} \label{eq:bloch_functions}
 a_{i\alpha}(\k, \r) = \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu).
-$$
+\end{equation}
 
 Using Equation \ref{eq:wannier_rep}, the Bloch functions transform as
 $$
 \rho_G(g) a_{i\alpha}(\k,\r) =
 \rho_G(g) \sum_{\mu} e^{i\k\vdot\t_\mu} W_{i\alpha}(\r-\t_\mu) =
-\sum_{\mu} e^{i\k\vdot\t_\mu} [\rho(g)]_{ij} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) =
+\sum_{j} \sum_{\mu} e^{i\k\vdot\t_\mu} [\rho(h)]_{ij} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) =
 $$
 $$
-= e^{-i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \sum_{\mu} e^{i(R\k)\vdot(R\t_\mu+\t_{\beta\alpha})} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) \implies
+= e^{-i(R\k)\vdot\t_{\beta\alpha}} \sum_{j} [\rho(h)]_{ji} \sum_{\mu} e^{i(R\k)\vdot(R\t_\mu+\t_{\beta\alpha})} W_{j\beta}(\r-R\t_\mu-\t_{\beta\alpha}) \implies
 $$
 \begin{equation} \label{eq:bloch_rep}
-(\rho_G(h) a)_{i\alpha}(\k,\r) = e^{-i(R\k)\vdot\t_{\beta\alpha}} [\rho(g)]_{ji} \, a_{j\beta}(R\k, \r),
+(\rho_G(g) a)_{i\alpha}(\k,\r) = e^{-i(R\k)\vdot\t_{\beta\alpha}} \sum_{j} [\rho(h)]_{ji} \, a_{j\beta}(R\k, \r),
 \end{equation}
-where $g$ and $\t_{\beta\alpha}$ are determined by Equation \ref{eq:g_and_tba}. The choice of representatives $g_\alpha$ must be kept fixed through the construction.
+where $h$ and $\t_{\beta\alpha}$ are determined by Equation \ref{eq:t_betaalpha}. The choice of representatives $g_\alpha$ must be kept fixed through the construction.
 
-Observe that $\rho_G(h)$ in its matrix form consists of infinitely many $(n\cdot n_q)\times (n\cdot n_q)$ block, where each one is labelled by a $(\k', \k)$ pair, that correspond to Bloch functions labelled by $\k', \k$. For a given $h = \sg{R}{\v} \in G$ and each set of columns corresponding to $\k$, there is exactly one non-zero block, identified by $\k' = R\k$. Denoting this block by $\rho_G^\k(h)$, its matrix elements are given by
+Observe that $\rho_G(g)$ in its matrix form consists of infinitely many $(n\cdot n_q)\times (n\cdot n_q)$ block, where each one is labelled by a $(\k', \k)$ pair, that correspond to Bloch functions labelled by $\k', \k$. For a given $g = \sg{R}{\t} \in G$ and each set of columns corresponding to $\k$, there is exactly one non-zero block, identified by $\k' = R\k$. Denoting this block by $\rho_G^\k(g)$, its matrix elements are given by
 $$
-\rho_G^\k(h)_{j\beta,i\alpha} = e^{-i(R\k)\vdot\t_{\beta\alpha}}\rho_{ji}(g_\beta^{-1}\sg{E}{-\t_{\beta\alpha}}hg_\alpha).
+\qty[\rho_G^\k(g)]_{j\beta,i\alpha} = e^{-i(R\k)\vdot\t_{\beta\alpha}}\rho_{ij}(g_\beta^{-1}\sg{E}{-\t_{\beta\alpha}}gg_\alpha).
 $$
 
-The full set of matrices $\rho_G^\k(h)$, for each $\k$ in the first BZ, contain all the non-zero elements of $\rho_G(h)$.
+The full set of matrices $\rho_G^\k(g)$, for each $\k$ in the first BZ, contain all the non-zero elements of $\rho_G(g)$.
 
-\section{Momentum space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Momentum space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{definition}[\textbf{Little group}]
 Two reciprocal space vectors $\k_1$ and $\k_2$ are said to be equivalent, $\k_1 \equiv \k_2$, if $\k_2 - \k_1$ is a reciprocal lattice vector. The \textit{little group} $G_\k$ of a vector $\k$ in reciprocal space is the set of elements $g \in G$ such that $g \k \equiv \k$. Remember that the action of space group elements on reciprocal space is defined by
@@ -281,37 +282,29 @@ For each $\k$, notice that $G_\k$ is infinite because if $h \in G_\k$, the opera
 
 \n
 
-The set $\{\rho_G^\k(h) \mid g \in G_\k\}$ furnishes an $(n\cdot n_q)\times(n\cdot n_q)$ representation of the little group $G_\k$, which we denote by $\rho_G \downarrow G_\k$; this is a subduction of $\rho_G$ onto $G_\k$, projected onto the Wannier functions at $\k$. Although $G_\k$ is infinite, the representaiton of two space group operations, $\sg{R}{\v}$ and $\sg{R}{\v+\t_1}$, where $\t_1$ is a Bravais lattice translation, will differ only by an overall phase $e^{-i(R\k)\vdot\t_1} = -e^{i\k\vdot\t_1}$ in $\rho_G \downarrow G_\k$.
+The set \(\{\rho_G^\k(g) \mid g \in G_\k\}\) forms an \((n \cdot n_q) \times (n \cdot n_q)\) representation of the little group \(G_\k\), referred to as \(\rho_G \downarrow G_\k\). This subduction of \(\rho_G\) onto \(G_\k\) is projected onto the Wannier functions at \(\k\). Despite \(G_\k\) being infinite, the representations of two space group operations, \(\sg{R}{\t}\) and \(\sg{R}{\t + \t_1}\), where \(\t_1\) is a Bravais lattice translation, differ only by an overall phase factor \(e^{-i(R\k) \vdot \t_1} = e^{i\k \vdot \t_1}\) within \(\rho_G \downarrow G_\k\).
 
-\n
+The characters of \(\rho_G^\k = \rho_G \downarrow G_\k\), analogous to the expression for induced representations' characters, are given for \(g \in G_\k\) as:
 
-The characters of $\rho_G \downarrow G_\k$ are given by, for $h \in G_\k$,
-$$
-\rho_G^\k(h) =
-\sum_{\alpha} e^{-i(R\k)\vdot\t_{\alpha\alpha}}
-\tilde{\chi}[\rho(g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}h g_\alpha)],
-$$
-where
-\begin{align} \label{eq:tilde_chi}
-\tilde{\chi}[\rho(g)] =
-\begin{cases}
-\; \chi[\rho(g)], & \text{if } g \in G_\q \\
-\; 0, & \text{if } g \notin G_\q
-\end{cases}
-\end{align}
-and $\chi[\rho(g)]$ denotes the character of $g$ in the representation $\rho$.
-
-\n
-
-We would like to know how many times, $m_i^\k$, each irrep $\sigma_i^\k$ of $G_\k$ appears in $\rho_G \downarrow G_\k$:
-\begin{equation} \label{eq:induce_subduce}
-(\rho \uparrow G) \downarrow G_\k \equiv \bigoplus_i m_i^\k \sigma_i^\k,
+\begin{equation} \label{eq:}
+\rho_G^\k(g) =
+\sum_{\substack{\alpha=1 \\ g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}g g_\alpha \in G_\q}}^n e^{-i(R\k)\vdot\t_{\alpha\alpha}}
+\chi^{(\rho)}\qty(g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}g g_\alpha),
 \end{equation}
-where the symbol $\equiv$ in Equation \ref{eq:induce_subduce} denotes the equivalence of representations.
+where \(\chi^{(\rho)}\) represents the character of the site-symmetry representation \(\rho\).
 
-\section{Elementary Band Representations}
+To determine the number of times each irrep \(\sigma_i^\k\) of \(G_\k\) appears in the representation \(\rho_G \downarrow G_\k\), denoted by \(r_i^\k\), we use the decomposition:
 
-We call two band representations equivalent if they are, in some sense, topologically equivalent. In the same sense as a homotopy.
+\begin{equation} \label{eq:induce_subduce}
+(\rho \uparrow G) \downarrow G_\k \equiv \bigoplus_i r_i^\k \sigma_i^\k,
+\end{equation}
+where \(\equiv\) signifies the equivalence of representations. The multiplicities \(r_i^\k\) are computed using the \textit{Reduction Formula} \ref{eq:reduction_formula}:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Elementary Band Representations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Two band representations are considered equivalent if they can be continuously deformed into each other without closing energy gaps or breaking symmetries, similar to the concept of homotopy in topology. This notion of equivalence is essential for classifying electronic band structures in terms of their topological properties. By treating equivalence in this way, we can systematically identify whether a material exhibits non-trivial topological phases, such as those found in topological insulators, based purely on its symmetry and band structure.
 
 \begin{definition}[\textbf{Equivalence between band representations}] \label{def:equiv_bandrep}
 Two band representations $\rho_G$ and $\sigma_G$ are equivalent iff there exists a unitary matrix-valued function $S(\k,t,g)$ smooth in $\k$ and continuous in $t$ such that, for all $g \in G$
@@ -326,31 +319,37 @@ Two band representations $\rho_G$ and $\sigma_G$ are equivalent iff there exists
 A band representation is called \textbf{composite} if it is equivalent to the direct sum of other band representations. A band representation that is not composite is called \textbf{elementary}.
 \end{definition}
 
-\begin{theorem}[\textbf{Properties of band representations}]
-Some properties of band representations are:
-\begin{enumerate}
-\item Because induction commutes with direct sums
-$$
-(\rho_1 \oplus \rho_2) \uparrow G = (\rho_1 \uparrow G) \oplus (\rho_2 \uparrow G),
-$$
-reducible representations of $G_\q$ induce composite band representations.
+%\begin{theorem}[\textbf{Properties of band representations}]
+%Some properties of band representations are:
+%\begin{enumerate}
+%\item Because induction commutes with direct sums
+%$$
+%(\rho_1 \oplus \rho_2) \uparrow G = (\rho_1 \uparrow G) \oplus (\rho_2 \uparrow G),
+%$$
+%reducible representations of $G_\q$ induce composite band representations.
+%
+%\item Given subgroups $K \subset H \subset G$, and a representation $\rho$ of $K$, because induction is transitive it follows that
+%$$
+%(\rho \uparrow H) \uparrow G = \rho \uparrow G.
+%$$
+%From this we conclude that all EBRs can be induced from irreps of the maximal site symmetry groups.
+%\end{enumerate}
+%\end{theorem}
 
-\item Given subgroups $K \subset H \subset G$, and a representation $\rho$ of $K$, because induction is transitive it follows that
-$$
-(\rho \uparrow H) \uparrow G = \rho \uparrow G.
-$$
-From this we conclude that all EBRs can be induced from irreps of the maximal site symmetry groups.
-\end{enumerate}
-\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Exceptions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%There are exceptions where an irrep of the site symmetry group of a maximal Wyckoff position induces a composite band representation.
 
-\section{Exceptions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Topological Systems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-There are exceptions where an irrep of the site symmetry group of a maximal Wyckoff position induces a composite band representation.
-
-\section{Topological Systems}
+The \textit{atomic limit} refers to bands that can be constructed from localized orbitals situated on atomic sites while fully preserving the crystal's symmetry. These bands represent tightly bound electrons and lack any global topological properties. In contrast, \textit{topological bands} cannot be derived from such localized orbitals without violating symmetry or continuity. Their wavefunctions exhibit a global ``twisting'' that fundamentally sets them apart from the atomic case. Based on this concept, we define the following \cite{building_blocks2018}:
 
 \begin{definition}[\textbf{Topological band}]
-A set of bands are in the \textbf{atomic limit} of a space group if they can be induced from localized Wannier functions consistent with the crystallice symmetry of that space group. Otherwise, they are \textbf{topological}.
+A set of bands are in the \textbf{atomic limit} of a space group if they can be induced from localized Wannier functions consistent with the crystalline symmetry of that space group. Otherwise, they are \textbf{topological}.
 \end{definition}
 
 Band representations describe a system in the atomic limit. Topological band must be groups of bands that satisfy the crystal symmetry in momentum space, but nevertheless do not transform as a band representation. In other words, they cannot be induced from localized Wannier orbitals that obey the crystal symmetry.
@@ -360,18 +359,22 @@ Any isolated set of bands that is not equivalent to a band representation (compo
 \end{theorem}
 
 
-\section{How to determine if a set of bands is topological}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{How to determine if a set of bands is topological}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%As said in \cite{building_blocks2018}: \textbf{ESSA SEÇÃO EU COPIEI}
+%
+%A practical route to determining whether a set of bands $\mathcal{B}$ is \textbf{not} a band representation is as follows: first, enumerate all EBRs for the particular space group and list the irreps that appear in each EBR at each high symmetry point. Next, compute the irreps at each high-symmetry point for the bands in $\mathcal{B}$. If the set of irreps that have been computed for the bands in $\mathcal{B}$ cannot be obtained from a linear combination of the EBRs in the space group, then the bands in $\mathcal{B}$ do not comprise a band representation and, by Theorem \ref{th:topo_insul}, are topological.
+%
+%If the irreps that appear in $\mathcal{B}$ can be obtained from a linear combination of the EBRs of the space group, then one must compute symmetric and localized Wannier functions for the bands in $\mathcal{B}$ to confirm that they are equivalent to the atomic limit defined by the linear combination of EBRs or compute a Berry phase that will distinguish the two. This is because, it is possible for two distinct groups of bands to have the exact same irreps at all high-symmetry points, but different Berry phases (recall, this is exactly why we require the homotopic notion of equivalence, as in Definition \ref{def:equiv_bandrep}.)
 
-As said in \cite{building_blocks2018}: \textbf{ESSA SEÇÃO EU COPIEI}
 
-A practical route to determining whether a set of bands $\mathcal{B}$ is \textbf{not} a band representation is as follows: first, enumerate all EBRs for the particular space group and list the irreps that appear in each EBR at each high symmetry point. Next, compute the irreps at each high-symmetry point for the bands in $\mathcal{B}$. If the set of irreps that have been computed for the bands in $\mathcal{B}$ cannot be obtained from a linear combination of the EBRs in the space group, then the bands in $\mathcal{B}$ do not comprise a band representation and, by Theorem \ref{th:topo_insul}, are topological.
+To determine whether a set of bands \(\mathcal{B}\) does \textbf{not} form a band representation, a systematic approach can be followed: first, identify all elementary band representations (EBRs) for the relevant space group and catalog the irreducible representations (irreps) that appear at each high-symmetry point for these EBRs. Then, calculate the irreps associated with the bands in \(\mathcal{B}\) at the high-symmetry points. If the irreps corresponding to \(\mathcal{B}\) cannot be expressed as a linear combination of the irreps from the EBRs, the bands do not form a band representation. According to Theorem \ref{th:topo_insul}, this indicates that the bands are topological.
 
-If the irreps that appear in $\mathcal{B}$ can be obtained from a linear combination of the EBRs of the space group, then one must compute symmetric and localized Wannier functions for the bands in $\mathcal{B}$ to confirm that they are equivalent to the atomic limit defined by the linear combination of EBRs or compute a Berry phase that will distinguish the two. This is because, it is possible for two distinct groups of bands to have the exact same irreps at all high-symmetry points, but different Berry phases (recall, this is exactly why we require the homotopic notion of equivalence, as in Definition \ref{def:equiv_bandrep}.)
+If the irreps of \(\mathcal{B}\) can be written as a linear combination of EBRs, further analysis is required. One must either construct symmetric, localized Wannier functions to verify that the bands correspond to the atomic limit implied by the linear combination of EBRs, or calculate a Berry phase to distinguish between the two cases. This additional step is necessary because distinct sets of bands can share identical irreps at all high-symmetry points while differing in their Berry phases, reflecting the need for the homotopic equivalence notion described in Definition \ref{def:equiv_bandrep}.
 
-
-\n\n
-
-\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
+%\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
