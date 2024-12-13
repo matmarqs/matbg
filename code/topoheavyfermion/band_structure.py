@@ -74,7 +74,7 @@ def plot_bandstructure(path, eigenval_func, ticks_fontsize=20, n_line=100):
     plot_bands(bands, ticks_pos, n_line=n_line)
     #plt.axhline(y=0, ls='--', color='k')
     plt.xlim(ticks_pos[0], ticks_pos[-1])
-    plt.xticks(ticks_pos, labels, fontsize=20)
+    plt.xticks(ticks_pos, labels, fontsize=ticks_fontsize)
     plt.grid(True, axis='x')
 
 def test_1():
