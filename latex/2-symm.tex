@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{preamble}
-\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{preamble}
+%\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Groups and Representations} \label{ch:group_theory}
@@ -1136,17 +1136,21 @@ To better grasp the concept introduced in Definition \ref{def:magnetic_group}, w
 \item Black-and-white groups can be understood as systems where, for every primed element (black), there exists a corresponding unprimed element (white). This mirrors the interplay between symmetry operations that involve time reversal and those that do not.
 \end{enumerate}
 
+The magnetic point group of the BM model of TBG is \(6'2'2\) in Hermann-Mauguin notation. In this notation, the generators of the symmetry group can be chosen as \(C_{6z} T\), \(C_{2y} T\), and \(C_{2x}\). This magnetic point group corresponds to the magnetic space group \(P6'2'2\). Understanding the symmetry operations within \(P6'2'2\) is crucial for modeling an interacting model for twisted bilayer graphene and exploring the topological phases that emerge in the system.
+
+Figure \ref{fig:622_magnetic} illustrates the symmetries of the \(6'2'2\) magnetic point group. The black and white circles represent objects with distinct time-reversal properties, with \(+\) and \(-\) indicating the top and bottom layers, respectively. The dashed red lines indicate the \(C_2 T\) axes, which invert both the sign and the color of the circles. When \(C_{6z} T\) is applied, the circles are rotated by \(60^\circ\) around the $z$ axis, and their color is inverted as well, showcasing the combined effect of the sixfold rotation and time-reversal symmetry.
+
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{fig/622_magnetic.png}
-\caption{Representation of the magnetic point group $6'2'2$. \textbf{A FIGURA ESTÁ COM UM ERRO}, no South-East tá trocado $+$ e $-$.}
+\caption{Illustration of the magnetic point group \(6'2'2\), where black and white represent time-reversal symmetry, and \(+\) and \(-\) denote different layers.}
 \label{fig:622_magnetic}
 \end{figure}
 
-\begin{example} \label{ex:magnetic_group_tbg_6'2'2}
-The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin notation. According to the notation, we can choose its generators to be $C_{6z} T$, $C_{2y} T$ and $C_{2x}$.
-\end{example}
+%\begin{example} \label{ex:magnetic_group_tbg_6'2'2}
+%The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin notation. According to the notation, we can choose its generators to be $C_{6z} T$, $C_{2y} T$ and $C_{2x}$.
+%\end{example}
 
 
 
@@ -1158,13 +1162,13 @@ The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%-----
-%% Referências bibliográficas
-%%-----
-\addcontentsline{toc}{chapter}{\bibname}
-%\bibliographystyle{abntex2-num}
-\bibliography{citations}
-\bibliographystyle{ieeetr}
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%-----
+%%% Referências bibliográficas
+%%%-----
+%\addcontentsline{toc}{chapter}{\bibname}
+%%\bibliographystyle{abntex2-num}
+%\bibliography{citations}
+%\bibliographystyle{ieeetr}
+%\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
