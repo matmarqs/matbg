@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preamble}
-%\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Groups and Representations} \label{ch:group_theory}
@@ -1152,6 +1152,38 @@ Figure \ref{fig:622_magnetic} illustrates the symmetries of the \(6'2'2\) magnet
 %The magnetic point group of the BM model of TBG is $6'2'2$ in Hermann-Mauguin notation. According to the notation, we can choose its generators to be $C_{6z} T$, $C_{2y} T$ and $C_{2x}$.
 %\end{example}
 
+\section{Double groups}
+
+Beyond the inclusion of time-reversal symmetry, which gives rise to magnetic groups, another crucial extension in symmetry analysis is the incorporation of half-integral angular momentum states, particularly relevant in systems with spin-orbit interaction. This leads to the concept of *double groups*. The one-electron Hamiltonian for a solid including spin-orbit coupling can be expressed as \cite{dresselhaus}:
+
+\begin{equation} \label{eq:one_electron_hamiltonian_spin_orbit}
+H = \underbrace{\frac{\p^2}{2m} + V(\r)}_{H_0} +
+\underbrace{\frac{1}{2m^2c^2} (\grad{V} \cross \p) \vdot \vb{S}}_{H_{SO}},
+\end{equation}
+
+where \(\vb{S}\) is the spin of the electron. Here, the wave functions consist of both a spatial part and a spin part, implying that the irreducible representations used to classify states must account for spin.
+
+Double groups emerge when dealing with systems where the total angular momentum \(j\) can take half-integral values (e.g., \(j = 1/2, 3/2, \dots\)). In such cases, the symmetry of the wave functions under rotations requires special treatment. For instance, in a free atom, which exhibits full rotational symmetry, the number of symmetry operations commuting with the Hamiltonian is infinite. Any rotation \(C_\alpha\) about an axis has a character given by \cite{dresselhaus}:
+
+\begin{equation} \label{eq:character_chi_alpha_rotation}
+\chi^{(j)}(\alpha) = \frac{\sin[(j+1/2)\alpha]}{\sin(\alpha/2)},
+\end{equation}
+
+where \(j\) is the total angular momentum and \(\alpha\) is the angle of rotation.
+
+A key distinction arises in how the wave functions transform under a rotation of \(2\pi\). For integral angular momentum states, a \(2\pi\)-rotation acts as the identity. However, for half-integral angular momentum states, the transformation yields a sign change:
+
+\begin{equation} \label{eq:rotation_by_2pi_half-integral}
+\chi^{(j)}(\alpha+2\pi) = (-1)^{2j} \chi^{(j)}(\alpha).
+\end{equation}
+
+This sign inversion for half-integral \(j\) is a fundamental feature of spinor wave functions and motivates the concept of \textit{double groups}. Specifically, in such cases, a \(2\pi\)-rotation cannot be treated as the identity operation, as it results in a phase factor of \(-1\).
+
+To accommodate this behavior, the double group \(\cc{G}\) is defined as an extension of the original group \(G\), where a new group element \(\cc{E}\) represents a rotation of \(2\pi\). Unlike the identity element \(E\), \(\cc{E}\) satisfies $\cc{E}^2 = E$, indicating that two successive \(2\pi\)-rotations recover the identity operation. The double group \(\cc{G}\) can thus be expressed as $\cc{G} = G \otimes \{E, \cc{E}\}$, where \(\cc{E} \v = \v\) for any three-dimensional vector \(\v\).
+
+\begin{example} \label{ex:double_group_example}
+EXAMPLE OF CHARACTER TABLE OF $D_3$ double group.
+\end{example}
 
 
 
@@ -1162,13 +1194,13 @@ Figure \ref{fig:622_magnetic} illustrates the symmetries of the \(6'2'2\) magnet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%-----
-%%% Referências bibliográficas
-%%%-----
-%\addcontentsline{toc}{chapter}{\bibname}
-%%\bibliographystyle{abntex2-num}
-%\bibliography{citations}
-%\bibliographystyle{ieeetr}
-%\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
