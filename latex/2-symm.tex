@@ -1182,7 +1182,33 @@ This sign inversion for half-integral \(j\) is a fundamental feature of spinor w
 To accommodate this behavior, the double group \(\cc{G}\) is defined as an extension of the original group \(G\), where a new group element \(\cc{E}\) represents a rotation of \(2\pi\). Unlike the identity element \(E\), \(\cc{E}\) satisfies $\cc{E}^2 = E$, indicating that two successive \(2\pi\)-rotations recover the identity operation. The double group \(\cc{G}\) can thus be expressed as $\cc{G} = G \otimes \{E, \cc{E}\}$, where \(\cc{E} \v = \v\) for any three-dimensional vector \(\v\).
 
 \begin{example} \label{ex:double_group_example}
-EXAMPLE OF CHARACTER TABLE OF $D_3$ double group.
+When considering the $\cc{D}_3$ double group, its elements are doubled. Each $g \in D_3$ of them will have a corresponding barred element $\cc{g} = g \cc{E} = \cc{E} g$. Because of this, the character table of $\cc{D}_3$ is modified and will have more irreps. It can be calculated to be:
+
+\begin{table}[H]
+\caption{Character table of double group $\cc{D}_3$.}
+\centering
+\begin{tabular} { c c c c c c c  }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 m_i$ & $\P \cc{E}$ & $\P 2 \cc{C}_3$ & $\P3\cc{m}_i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $\P1$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$  & $\P1$ & $\P1$ & $ -1$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_3$      & $\P2$ & $ -1$ & $\P0$  & $\P2$ & $ -1$ & $\P0$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_4$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $ -i$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_5$ & $\P1$ & $ -1$ & $ -i$  & $ -1$ & $\P1$ & $\P i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:D3_double}
+\end{table}
+
+The irreps $\Gamma_1$, $\Gamma_2$ and $\Gamma_3$ are single-valued and correspond to irreps $A_1$, $A_2$ and $E$ of Table \ref{tab:D3}. The irreps $\cc{\Gamma}_4$, $\cc{\Gamma}_5$ and $\cc{\Gamma}_6$ are double-valued, they differentiate the identity $E$ from $\cc{E}$.
+
 \end{example}
 
 
