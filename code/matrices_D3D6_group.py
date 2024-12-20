@@ -25,9 +25,9 @@ E1 = [Sv[0]**2, "E"]
 group = [E1, C6, Sv, Sd, C65, C3, C32, C2, Svp, Svpp, Sdp, Sdpp]
 
 def main_elem():
-    g2 = Sv
-    g = C3
-    test_elem = [g[0] * g2[0], "C3 * Sv"]
+    #g2 = Sv
+    #g = C3
+    test_elem = [C6[0]**3 * Sv[0], "C6**3 * Sv"]
     for elem in group:
         if test_elem[0] == elem[0]:
             print(test_elem[1], "=", elem[1])
@@ -43,4 +43,4 @@ def main_diag():
     Result = A * Sv[0] * A**(-1)
     print(simplify(expand_complex(Result - Sv[0])))
 
-main_diag()
+main_elem()

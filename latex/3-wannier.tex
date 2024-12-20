@@ -38,6 +38,14 @@ Following Figure \ref{fig:generators_P6mm}, we use the basis $\mathcal{B} = \{\a
 \end{cases}
 \end{equation}
 
+The 6-fold rotation is given by $\{C_6 \mid 0\} = \{C_2 \mid 0\} \{C_3 \mid 0\}^{-1}$, therefore
+\begin{equation} \label{eq:C6_rotation_P6mm}
+\begin{cases}
+\; C_6 \a_1 = \a_2 \\
+\; C_6 \a_2 = -\a_1 + \a_2
+\end{cases}
+\end{equation}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Definitions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,7 +237,7 @@ There are \(n \times n_\q \times N\) wavefunctions \(W_{i\alpha}(\r - \t_\mu)\),
 Applying Lemma \ref{lemma:cosetdecomp_wyckoff} for the element $g g_\alpha \in G$, we write $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$, for some $h \in G_\q$, coset representative $g_\beta$ and a Bravais lattice vector $\t_{\beta\alpha}$ given by
 \begin{equation} \label{eq:t_betaalpha}
 \t_{\beta\alpha} = gg_\alpha \q - \q_\beta = g \q_\alpha - \q_\beta, \quad
-h = g_\beta^{-1} \{E\mid -\t_{\beta\alpha}\} g g_\alpha.
+g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h \implies h = g_\beta^{-1} \{E\mid -\t_{\beta\alpha}\} g g_\alpha.
 \end{equation}
 
 Following the derivation from Equation \ref{eq:induced_rho_G_wannier_step1}:
@@ -309,7 +317,81 @@ where \(\equiv\) signifies the equivalence of representations. The multiplicitie
 \subsection{Spinful Graphene Example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let us consider the Wyckoff position 2b on the honeycomb lattice. According to Equation \ref{eq:orbit_q2}, its orbit have the positions with coordinates $\q_2^{(1)} = \qty(\frac{1}{3}, \frac{1}{3})$ e $\q_2^{(2)} = \qty(-\frac{1}{3}, \frac{2}{3})$. The site-symmetry group of $\q_2$ is isomorphic to $D_3$. We will focus on $p_z$ orbitals with spin up $\uparrow$ and down $\downarrow$. Remember that for half-integral angular momentum, a rotation of $2\pi$ gives a minus sign instead of the identity, because they transform under a representation of $SU(2)$. This representation is double-valued as
+Let us consider the Wyckoff position 2b on the honeycomb lattice. According to Equation \ref{eq:orbit_q2}, its orbit have the positions with coordinates $\q_2^{(1)} = \qty(\frac{1}{3}, \frac{1}{3})$ e $\q_2^{(2)} = \qty(-\frac{1}{3}, \frac{2}{3})$. The site-symmetry group of $\q_2$ is isomorphic to $D_3$. We will focus on $p_z$ orbitals with spin up $\uparrow$ and down $\downarrow$. Remember that for half-integral angular momentum, a rotation of $2\pi$ gives a minus sign instead of the identity. Because of this, our chosen orbitals will transform accordingly to a double-valued representation of the site-symmetry group $G_{\q_2}$.
+
+As we saw in Example \ref{ex:site-symmetry_groups_p6mm}, the generators for $G_{\q_2}$ can be chosen as $\{C_3 \mid \a_1\}$ and $\{m_{1\cc{1}} \mid 0\}$ in our coordinate system of the honeycomb lattice. For the $p_z$ orbitals with spin up $\uparrow$ and down $\downarrow$, we can choose the matrix representation $\Pi$ according to \cite{building_blocks2018, lectures_tms2017}
+\begin{align} \label{eq:site_symmetry_Gq2_SU2_matrixrep}
+\Pi\qty(\{C_3 \mid \a_1\}) &= e^{\frac{i \pi}{3} \sigma_z} =
+\begin{pmatrix}
+e^{\frac{i\pi}{3}} & 0 \\
+0 & e^{\frac{-i\pi}{3}}
+\end{pmatrix},
+\\
+\Pi\qty(\{m_{1\cc{1}} \mid 0\}) &= i \sigma_x =
+\begin{pmatrix}
+0 & i \\
+i & 0
+\end{pmatrix},
+\end{align}
+where $\sigma_{x,y,z}$ are the Pauli matrices. Notice that $\Pi\qty(\{m_{1\cc{1}} \mid 0\}) = (i \sigma_x)^2 = -\1 = \Pi\qty(\cc{E})$, because we are dealing with a double group. If we take the trace to compute the characters, we obtain
+\begin{equation} \label{eq:characters_doublerep_spinfulgraphene}
+\chi^{(\Pi)}\qty(E) = 2, \quad
+\chi^{(\Pi)}\qty(\{C_3 \mid \a_1\}) = 1, \quad
+\chi^{(\Pi)}\qty(\{m_{1\cc{1}} \mid 0\}) = 0, \quad
+\chi^{(\Pi)}\qty(\cc{E}) = -2.
+\end{equation}
+
+We see that our site-symmetry group with spinful orbitals is isomorphic to $\cc{D}_3$ and the $\Pi$ representation is actually the irrep $\cc{\Gamma}_6$ from Table \ref{tab:D3_double}.
+
+Let us calculate the induced representation and then subduce it to little groups at high-symmetry points, in other words, compute $(\Pi \uparrow G) \downarrow G_\k$.
+
+First of all, as we have seen in Equation \ref{eq:orbit_q2}, the coset representatives of $G_{\q_2}$ can be chosen $g_1 = \{E \mid 0\}$ and $g_2 = \{C_6 \mid 0\}$. We need to compute $\t_{\beta\alpha}$ for every generator of $G$, which when we exclude translations, can be chosen as $\{C_3\mid 0\}$, $\{m_{1\cc{1}} \mid 0\}$, $\{C_2\mid 0\}$. We use decompose $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$ (Equation \ref{eq:t_betaalpha}) for every generator $g$ and coset representative $g_\alpha$.
+
+\begin{itemize}
+%\item $g = \{C_3\mid 0\}$:
+%\begin{equation} \label{eq:spinful_graphene_generator_C3_g1_induced}
+%gg_1 = \{C_3 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{C_3 \mid \a_1\}}_{h}
+%\end{equation}
+%For $g_2$, we know that the corresponding $g_\beta$ will also be $g_2$, therefore
+%\begin{align} \label{eq:spinful_graphene_C3_g2_tbetaalpha_induced}
+%t_{22} &= g \q_2 - \q_2 = \frac{1}{3} \{C_3 \mid 0\} \qty(\a_1+\a_2) - \frac{1}{3} \qty(\a_1+\a_2) = -\a_1, \\
+%h &= g_2^{-1} \{E \mid -\t_{22}\} g g_2 = \{C_6^{-1} \mid 0\} \{C_2 \mid \a_1\} = \{C_3 \mid \a_1-\a_2\}
+%\end{align}
+%$$
+%gg_2 = \{C_3 \mid 0\} \{C_6 \mid 0\} = \underbrace{\{C_6 \mid 0\}}_{g_2} \{C_3 \mid 0\}
+%$$
+
+\item $g = \{C_6 \mid 0\}$:
+
+\begin{equation} \label{eq:spinful_graphene_generator_C6_g1_decomp}
+gg_1 = \{C_6 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{21}\}} \underbrace{\{C_6 \mid 0\}}_{g_2} \underbrace{\{E \mid 0\}}_{h}
+\end{equation}
+\begin{equation} \label{eq:spinful_graphene_generator_C6_g2_decomp}
+gg_2 = \{C_6 \mid 0\} \{C_6 \mid 0\} = \{C_3 \mid 0\} =  \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{12}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{C_3 \mid \a_1\}}_{h}
+\end{equation}
+
+\item $\{m_{1\cc{1}} \mid 0\}$:
+
+\begin{equation} \label{eq:spinful_graphene_generator_C6_g1_decomp}
+gg_1 = \{m_{1\cc{1}} \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{m_{1\cc{1}} \mid 0\}}_{h}
+\end{equation}
+\begin{equation} \label{eq:spinful_graphene_generator_C6_g2_decomp}
+gg_2 = \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} = \underbrace{\{E \mid \a_1-\a_2\}}_{\{E\mid \t_{22}\}} \underbrace{\{C_6\mid 0\}}_{g_2} \underbrace{\{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\}}_{h}
+\end{equation}
+
+$$
+\t_{22} = g \q_2^{(2)} - \q_2^{(2)} = \{m_{1\cc{1}} \mid 0\} \q_2^{(2)} - \q_2^{(2)} = \a_1-\a_2
+$$
+\begin{align} \label{eq:spinful_graphene_generator_C6_g2_decomp_h}
+h &= \{C_6^{-1}\mid 0\} \{E \mid -\a_1+\a_2\} \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} =
+\{C_6^{-1} \mid \a_2 \}\{m_{1\cc{1}} C_6 \mid 0\} = \\
+&= \{C_6^{-1} m_{1\cc{1}} C_6 \mid \a_2\} = \{ m_{1\cc{1}} C_3 \mid \a_2 \} = \{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\} \in G_{\q_2}.
+\end{align}
+
+%\item $\{C_2\mid 0\}$:
+
+\end{itemize}
+<++>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Elementary Band Representations}
