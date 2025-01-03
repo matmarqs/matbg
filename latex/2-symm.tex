@@ -460,7 +460,7 @@ With all irreps, classes and characters known, we construct the table of charact
 \vspace{-0.5em}
 
 \begin{table}[H]
-\caption{Character table of group $D_3$.}
+\caption{Character table of group $D_3$ (or $C_{3v}$).}
 \centering
 \begin{tabular} { c c c c }
 \specialrule{0.05em}{0em}{0.2em}
@@ -483,7 +483,7 @@ In Table \ref{tab:D3}, we renamed the representations \(A_1 = \Gamma_1\), \(A_2 
 
 An analogous procedure in Example \ref{ex:chartable_construction_D3} could be applied to construct the character table for the group $D_6$, which we show in Table \ref{tab:D6}.
 \begin{table}[H]
-\caption{Character table of group $D_6$.}
+\caption{Character table of group $D_6$ (or $C_{6v}$).}
 \centering
 \begin{tabular} { c c c c c c c  }
 \specialrule{0.05em}{0em}{0.2em}
@@ -1185,11 +1185,11 @@ To accommodate this behavior, the double group \(\cc{G}\) is defined as an exten
 When considering the $\cc{D}_3$ double group, its elements are doubled. Each $g \in D_3$ of them will have a corresponding barred element $\cc{g} = g \cc{E} = \cc{E} g$. Because of this, the character table of $\cc{D}_3$ is modified and will have more irreps. It can be calculated to be:
 
 \begin{table}[H]
-\caption{Character table of double group $\cc{D}_3$.}
+\caption{Character table of double group $\cc{D}_3$ (or $\cc{C}_{3v}$).}
 \centering
 \begin{tabular} { c c c c c c c  }
 \specialrule{0.05em}{0em}{0.2em}
-$\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 m_i$ & $\P \cc{E}$ & $\P 2 \cc{C}_3$ & $\P3\cc{m}_i$ \\
+$\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 m$ & $\P \cc{E}$ & $\P 2 \cc{C}_3$ & $\P3\cc{m}$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
 $\Gamma_1$      & $\P1$ & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $\P1$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
@@ -1197,9 +1197,9 @@ $\Gamma_2$      & $\P1$ & $\P1$ & $ -1$  & $\P1$ & $\P1$ & $ -1$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
 $\Gamma_3$      & $\P2$ & $ -1$ & $\P0$  & $\P2$ & $ -1$ & $\P0$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_4$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $ -i$  \\
+$\cc{\Gamma}_4$ & $\P1$ & $ -1$ & $  -i$ & $ -1$ & $\P1$ & $\P i$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_5$ & $\P1$ & $ -1$ & $ -i$  & $ -1$ & $\P1$ & $\P i$ \\
+$\cc{\Gamma}_5$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $  -i$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
 $\cc{\Gamma}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
 \specialrule{0.05em}{0.2em}{0em}
@@ -1210,6 +1210,56 @@ $\cc{\Gamma}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
 The irreps $\Gamma_1$, $\Gamma_2$ and $\Gamma_3$ are single-valued and correspond to irreps $A_1$, $A_2$ and $E$ of Table \ref{tab:D3}. The irreps $\cc{\Gamma}_4$, $\cc{\Gamma}_5$ and $\cc{\Gamma}_6$ are double-valued, they differentiate the identity $E$ from $\cc{E}$.
 
 \end{example}
+
+%\begin{table}[H]
+%\caption{Character table of group $\cc{D}_6$ (or $\cc{C}_{6v}$).}
+%\centering
+%\begin{tabular} { c c c c c c c c c c  }
+%\specialrule{0.05em}{0em}{0.2em}
+%$\P$ & $\P E$ & $\P 2 C_3$ & $\P2C_2$ & $\P2C_6$ & $\P6 m$ & $\P6 C_6 m$ & $\cc{E}$ & $2 \cc{C}_3$ & $2 \cc{C}_6$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_2$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_3$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_4$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ & $\P1$ & $ -1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_5$      & $\P2$ & $ -1$ & $\P2$ & $ -1$ & $\P0$ & $\P0$ & $\P2$ & $ -1$ & $ -1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_6$      & $\P2$ & $ -1$ & $ -2$ & $\P1$ & $\P0$ & $\P0$ & $\P2$ & $ -1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\cc{\Gamma}_7$ & $\P2$ & $ -2$ & $\P0$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ & $\P2$ & $\P0$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\cc{\Gamma}_8$ & $\P2$ & $\P1$ & $\P0$ & $-\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & $ -1$ & $\P\sqrt{3}$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\cc{\Gamma}_9$ & $\P2$ & $\P1$ & $\P0$ & $\P\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & $ -1$ & $-\sqrt{3}$ \\
+%\specialrule{0.05em}{0.2em}{0em}
+%\end{tabular}
+%\label{tab:D6_double}
+%\end{table}
+
+%\begin{table}[H]
+%\caption{Character table of double group $\cc{D}_2$ (or $\cc{C}_{2v}$).}
+%\centering
+%\begin{tabular} { c c c c c c }
+%\specialrule{0.05em}{0em}{0.2em}
+%$\P$ & $\P E$ & $\P 2 C_2$ & $\P 2 m$ & $\P 2 C_2 m$ & $\P \cc{E}$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_3$      & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\Gamma_4$      & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ \\
+%\specialrule{0.01em}{0.2em}{0.2em}
+%$\cc{\Gamma}_5$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ \\
+%\specialrule{0.05em}{0.2em}{0em}
+%\end{tabular}
+%\label{tab:D2_double}
+%\end{table}
 
 
 

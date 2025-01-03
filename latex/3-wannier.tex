@@ -3,6 +3,11 @@
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\textbf{TODO:}
+\begin{itemize}
+\item Utilizar índices $ji$ ao invés de $ij$ em $\rho$ no desenvolvimento da induced rep.
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Topological Quantum Chemistry}
@@ -275,9 +280,9 @@ $$
 where $h$ and $\t_{\beta\alpha}$ are determined by Equation \ref{eq:t_betaalpha}. The choice of representatives $g_\alpha$ must be kept fixed through the construction.
 
 Observe that $\rho_G(g)$ in its matrix form consists of infinitely many $(n\cdot n_q)\times (n\cdot n_q)$ block, where each one is labelled by a $(\k', \k)$ pair, that correspond to Bloch functions labelled by $\k', \k$. For a given $g = \sg{R}{\t} \in G$ and each set of columns corresponding to $\k$, there is exactly one non-zero block, identified by $\k' = R\k$. Denoting this block by $\rho_G^\k(g)$, its matrix elements are given by
-$$
-\qty[\rho_G^\k(g)]_{j\beta,i\alpha} = e^{-i(R\k)\vdot\t_{\beta\alpha}}\rho_{ij}(g_\beta^{-1}\sg{E}{-\t_{\beta\alpha}}gg_\alpha).
-$$
+\begin{equation} \label{eq:k_block_inducedrep_jbia}
+\qty[\rho_G^\k(g)]_{j\beta,i\alpha} = e^{-i(R\k)\vdot\t_{\beta\alpha}}\rho_{ji}(g_\beta^{-1}\sg{E}{-\t_{\beta\alpha}}gg_\alpha).
+\end{equation}
 
 The full set of matrices $\rho_G^\k(g)$, for each $\k$ in the first BZ, contain all the non-zero elements of $\rho_G(g)$.
 
@@ -300,11 +305,10 @@ The set \(\{\rho_G^\k(g) \mid g \in G_\k\}\) forms an \((n \cdot n_q) \times (n 
 The characters of \(\rho_G^\k = \rho_G \downarrow G_\k\), analogous to the expression for induced representations' characters, are given for \(g \in G_\k\) as:
 
 \begin{equation} \label{eq:}
-\rho_G^\k(g) =
+\chi^{\rho_G^\k}(g) =
 \sum_{\substack{\alpha=1 \\ g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}g g_\alpha \in G_\q}}^n e^{-i(R\k)\vdot\t_{\alpha\alpha}}
-\chi^{(\rho)}\qty(g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}g g_\alpha),
+\chi^{(\rho)}\qty(g_\alpha^{-1}\sg{E}{-\t_{\alpha\alpha}}g g_\alpha).
 \end{equation}
-where \(\chi^{(\rho)}\) represents the character of the site-symmetry representation \(\rho\).
 
 To determine the number of times each irrep \(\sigma_i^\k\) of \(G_\k\) appears in the representation \(\rho_G \downarrow G_\k\), denoted by \(r_i^\k\), we use the decomposition:
 
@@ -345,53 +349,304 @@ We see that our site-symmetry group with spinful orbitals is isomorphic to $\cc{
 
 Let us calculate the induced representation and then subduce it to little groups at high-symmetry points, in other words, compute $(\Pi \uparrow G) \downarrow G_\k$.
 
-First of all, as we have seen in Equation \ref{eq:orbit_q2}, the coset representatives of $G_{\q_2}$ can be chosen $g_1 = \{E \mid 0\}$ and $g_2 = \{C_6 \mid 0\}$. We need to compute $\t_{\beta\alpha}$ for every generator of $G$, which when we exclude translations, can be chosen as $\{C_3\mid 0\}$, $\{m_{1\cc{1}} \mid 0\}$, $\{C_2\mid 0\}$. We use decompose $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$ (Equation \ref{eq:t_betaalpha}) for every generator $g$ and coset representative $g_\alpha$.
+First of all, as we have seen in Equation \ref{eq:orbit_q2}, the coset representatives of $G_{\q_2}$ can be chosen $g_1 = \{E \mid 0\}$ and $g_2 = \{C_6 \mid 0\}$. We need to compute $\t_{\beta\alpha}$ for every generator of $G$, which when we exclude translations, can be chosen as $\{C_3\mid 0\}$, $\{m_{1\cc{1}} \mid 0\}$, $\{C_2\mid 0\}$. We decompose $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$ (Equation \ref{eq:t_betaalpha}) for every generator $g$, and we call $\gamma_{\beta\alpha} = g_\beta$ which corresponds to the coset representative $g_\alpha$.
 
 \begin{itemize}
-%\item $g = \{C_3\mid 0\}$:
-%\begin{equation} \label{eq:spinful_graphene_generator_C3_g1_induced}
-%gg_1 = \{C_3 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{C_3 \mid \a_1\}}_{h}
-%\end{equation}
+\item $g = \{C_3\mid 0\}$:
+\begin{equation} \label{eq:spinful_graphene_generator_C3_g1_induced}
+gg_1 = \{C_3 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1 = \gamma_{11}} \underbrace{\{C_3 \mid \a_1\}}_{h_{11}}
+\end{equation}
 %For $g_2$, we know that the corresponding $g_\beta$ will also be $g_2$, therefore
 %\begin{align} \label{eq:spinful_graphene_C3_g2_tbetaalpha_induced}
-%t_{22} &= g \q_2 - \q_2 = \frac{1}{3} \{C_3 \mid 0\} \qty(\a_1+\a_2) - \frac{1}{3} \qty(\a_1+\a_2) = -\a_1, \\
-%h &= g_2^{-1} \{E \mid -\t_{22}\} g g_2 = \{C_6^{-1} \mid 0\} \{C_2 \mid \a_1\} = \{C_3 \mid \a_1-\a_2\}
+%\t_{22} &= g \q_2^{(2)} - \q_2^{(2)} = \frac{1}{3} \{C_3 \mid 0\} \qty(-\a_1+2\a_2) - \frac{1}{3} \qty(-\a_1+2\a_2) \\
+%&= \frac{1}{3} \qty(-\a_1-\a_2) - \frac{1}{3} \qty(-\a_1+2\a_2) = -\a_2, \\
+%h_{22} &= g_2^{-1} \{E \mid -\t_{22}\} g g_2 = \{C_6\mid0\}^{-1}\{E \mid \a_2\}\{C_3\mid 0\} \{C_6 \mid 0\} \\
+%&= \{C_6^{-1} \mid 0\} \{C_2 \mid \a_2\} = \{C_6^{-1}C_2 \mid C_6^{-1}\a_2\} = \{C_3 \mid \a_1\}.
 %\end{align}
-%$$
-%gg_2 = \{C_3 \mid 0\} \{C_6 \mid 0\} = \underbrace{\{C_6 \mid 0\}}_{g_2} \{C_3 \mid 0\}
-%$$
+\begin{equation} \label{eq:spinful_graphene_C3_gg2}
+gg_2 = \{C_3\mid 0\}\{C_6\mid 0\}= \{E\mid-\a_2\}\{C_2\mid\a_2\}= \underbrace{\{E\mid -\a_2\}}_{\{E\mid \t_{22}\}} \underbrace{\{C_6 \mid 0\}}_{g_2 = \gamma_{22}} \underbrace{\{C_3 \mid \a_1\}}_{h_{22}}.
+\end{equation}
+
+From Equation \ref{eq:k_block_inducedrep_jbia}, we have
+\begin{align} \label{eq:rhoC3_inducedrep_k_jbia}
+\qty[\rho_G^\k(\{C_3\mid0\})]_{j\beta,i\alpha} &=
+\begin{pmatrix}
+e^{-i(C_3 \k) \vdot \t_{11}} \Pi(h_{11}) & 0 \\
+0 & e^{-i(C_3 \k) \vdot \t_{22}} \Pi(h_{22})
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+e^{i(C_3 \k) \vdot \a_1 }\Pi(\{C_3\mid\a_1\}) & 0 \\
+0 & e^{i(C_3 \k) \vdot \a_2} \Pi(\{C_3\mid\a_1\})
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+e^{i(C_3 \k) \vdot \a_1} e^{i\frac{\pi}{3} \sigma_z} & 0 \\
+0 & e^{i(C_3 \k) \vdot \a_2} e^{i\frac{\pi}{3} \sigma_z}
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+e^{i(C_3 \k) \vdot \a_1} e^{i\frac{\pi}{3}} & 0 & 0 & 0 \\
+0 & e^{i(C_3 \k) \vdot \a_1} e^{-i\frac{\pi}{3}} & 0 & 0 \\
+0 & 0 & e^{i(C_3 \k) \vdot \a_2} e^{i\frac{\pi}{3}} & 0 \\
+0 & 0 & 0 & e^{i(C_3 \k) \vdot \a_2} e^{-i\frac{\pi}{3}} \\
+\end{pmatrix}.
+\end{align}
+
+\item $\{C_2\mid 0\}$:
+
+\begin{equation} \label{eq:spinful_graphene_generator_C2_g1_induced}
+gg_1 = \{C_2 \mid 0\} \{E \mid 0\} = \{E\mid-\a_2\} \{C_2 \mid \a_2\} = \underbrace{\{E \mid -\a_2\}}_{\{E\mid\t_{21}\}} \underbrace{\{C_6 \mid 0\}}_{g_2 = \gamma_{21}} \underbrace{\{C_3 \mid \a_1\}}_{h_{21}}
+\end{equation}
+
+\begin{equation} \label{eq:spinful_graphene_C2_gg2}
+gg_2 = \{C_2\mid 0\}\{C_6\mid 0\}= \{C_3^2\mid0\} = \{E\mid-\a_2\}\{C_3^2\mid\a_2\} = \underbrace{\{E\mid -\a_2\}}_{\{E\mid \t_{12}\}} \underbrace{\{E \mid 0\}}_{g_1 = \gamma_{12}} \underbrace{\{C_3 \mid \a_1\}^2}_{h_{12}}.
+\end{equation}
+
+\begin{align} \label{eq:rhoC2_inducedrep_k_jbia}
+\qty[\rho_G^\k(\{C_2\mid0\})]_{j\beta,i\alpha} &=
+\begin{pmatrix}
+0 & e^{-i(C_2 \k) \vdot \t_{12}} \Pi(h_{12}) \\
+e^{-i(C_2 \k) \vdot \t_{21}} \Pi(h_{21}) & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & e^{i(C_2 \k) \vdot \a_2} \Pi(\{C_3\mid\a_1\})^2 \\
+e^{i(C_2 \k) \vdot \a_2} \Pi(\{C_3\mid\a_1\}) & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & e^{i(C_2 \k) \vdot \a_2} e^{i\frac{\pi}{3} \sigma_z^2} \\
+e^{i(C_2 \k) \vdot \a_2} e^{i\frac{\pi}{3} \sigma_z} & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & 0 & e^{i(C_2 \k) \vdot \a_2} e^{i\frac{\pi}{3}} & 0 \\
+0 & 0 & 0 & e^{i(C_2 \k) \vdot \a_2} e^{i\frac{\pi}{3}} \\
+e^{i(C_2 \k) \vdot \a_2} e^{i\frac{\pi}{3}} & 0 & 0 & 0 \\
+0 & e^{i(C_2 \k) \vdot \a_2} e^{-i\frac{\pi}{3}} & 0 & 0 \\
+\end{pmatrix}.
+\end{align}
+
 
 \item $g = \{C_6 \mid 0\}$:
 
 \begin{equation} \label{eq:spinful_graphene_generator_C6_g1_decomp}
-gg_1 = \{C_6 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{21}\}} \underbrace{\{C_6 \mid 0\}}_{g_2} \underbrace{\{E \mid 0\}}_{h}
+gg_1 = \{C_6 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{21}\}} \underbrace{\{C_6 \mid 0\}}_{g_2 = \gamma_{21}} \underbrace{\{E \mid 0\}}_{h_{21}}
 \end{equation}
 \begin{equation} \label{eq:spinful_graphene_generator_C6_g2_decomp}
-gg_2 = \{C_6 \mid 0\} \{C_6 \mid 0\} = \{C_3 \mid 0\} =  \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{12}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{C_3 \mid \a_1\}}_{h}
+gg_2 = \{C_6 \mid 0\} \{C_6 \mid 0\} = \{C_3 \mid 0\} =  \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{12}\}} \underbrace{\{E \mid 0\}}_{g_1 = \gamma_{12}} \underbrace{\{C_3 \mid \a_1\}}_{h_{12}}
 \end{equation}
+
+\begin{align} \label{eq:rhoC6_inducedrep_k_jbia}
+\qty[\rho_G^\k(\{C_6\mid0\})]_{j\beta,i\alpha} &=
+\begin{pmatrix}
+0 & e^{-i(C_6 \k) \vdot \t_{12}} \Pi(h_{12}) \\
+e^{-i(C_6 \k) \vdot \t_{21}} \Pi(h_{21}) & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & e^{i (C_6 \k) \vdot \a_1} \Pi(\{C_3 \mid \a_1\}) \\
+\Pi(E) & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & e^{i (C_6 \k) \vdot \a_1} e^{i\frac{\pi}{3}\sigma_z} \\
+\1 & 0
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & 0 & e^{i (C_6 \k) \vdot \a_1} e^{\frac{i\pi}{3}} & 0 \\
+0 & 0 & 0 & e^{i (C_6 \k) \vdot \a_1} e^{-\frac{i\pi}{3}} \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+\end{pmatrix}.
+\end{align}
+
+%Since $\{C_3\mid 0\} = \{C_6\mid 0\}^2$, we can multiply \ref{eq:rhoC6_inducedrep_k_jbia} by itself to obtain
+%\begin{equation} \label{eq:rhoC3_jbia_matrix}
+%\qty[\rho_G^\k(\{C_3\mid0\})]_{j\beta,i\alpha} =
+%\begin{pmatrix}
+%e^{i (C_6 \k) \vdot \a_1} e^{\frac{i\pi}{3}} & 0  & 0 & 0 \\
+%0 & e^{i (C_6 \k) \vdot \a_1} e^{-\frac{i\pi}{3}} & 0 & 0 \\
+%0 & 0 & e^{i (C_6 \k) \vdot \a_1} e^{\frac{i\pi}{3}} & 0  \\
+%0 & 0 & 0 & e^{i (C_6 \k) \vdot \a_1} e^{-\frac{i\pi}{3}} \\
+%\end{pmatrix}
+%\end{equation}
+%
+%For $\{C_2 \mid 0\} = \{C_6\mid 0\}^3$, we have
+%\begin{equation} \label{eq:rhoC2_jbia_matrix}
+%\qty[\rho_G^\k(\{C_2\mid0\})]_{j\beta,i\alpha} =
+%\begin{pmatrix}
+%0 & 0 & e^{2 i (C_6 \k) \vdot \a_1} e^{\frac{2\pi i}{3}} & 0  \\
+%0 & 0 & 0 & e^{2 i (C_6 \k) \vdot \a_1} e^{-\frac{2\pi i}{3}} \\
+%e^{i (C_6 \k) \vdot \a_1} e^{\frac{i\pi}{3}} & 0  & 0 & 0 \\
+%0 & e^{i (C_6 \k) \vdot \a_1} e^{-\frac{i\pi}{3}} & 0 & 0 \\
+%\end{pmatrix}
+%\end{equation}
+
 
 \item $\{m_{1\cc{1}} \mid 0\}$:
 
 \begin{equation} \label{eq:spinful_graphene_generator_C6_g1_decomp}
-gg_1 = \{m_{1\cc{1}} \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1} \underbrace{\{m_{1\cc{1}} \mid 0\}}_{h}
+gg_1 = \{m_{1\cc{1}} \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid 0\}}_{\{E\mid\t_{11}\}} \underbrace{\{E \mid 0\}}_{g_1 = \gamma_{11}} \underbrace{\{m_{1\cc{1}} \mid 0\}}_{h_{11}}
 \end{equation}
 \begin{equation} \label{eq:spinful_graphene_generator_C6_g2_decomp}
-gg_2 = \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} = \underbrace{\{E \mid \a_1-\a_2\}}_{\{E\mid \t_{22}\}} \underbrace{\{C_6\mid 0\}}_{g_2} \underbrace{\{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\}}_{h}
+gg_2 = \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} = \underbrace{\{E \mid \a_1-\a_2\}}_{\{E\mid \t_{22}\}} \underbrace{\{C_6\mid 0\}}_{g_2 = \gamma_{22}} \underbrace{\{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\}}_{h_{22}},
 \end{equation}
-
+where we calculated $\t_{22}$ and $h_{22}$ from
 $$
 \t_{22} = g \q_2^{(2)} - \q_2^{(2)} = \{m_{1\cc{1}} \mid 0\} \q_2^{(2)} - \q_2^{(2)} = \a_1-\a_2
 $$
 \begin{align} \label{eq:spinful_graphene_generator_C6_g2_decomp_h}
-h &= \{C_6^{-1}\mid 0\} \{E \mid -\a_1+\a_2\} \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} =
+h_{22} &= \{C_6^{-1}\mid 0\} \{E \mid -\a_1+\a_2\} \{m_{1\cc{1}} \mid 0\} \{C_6 \mid 0\} =
 \{C_6^{-1} \mid \a_2 \}\{m_{1\cc{1}} C_6 \mid 0\} = \\
 &= \{C_6^{-1} m_{1\cc{1}} C_6 \mid \a_2\} = \{ m_{1\cc{1}} C_3 \mid \a_2 \} = \{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\} \in G_{\q_2}.
 \end{align}
 
-%\item $\{C_2\mid 0\}$:
+From Equation \ref{eq:k_block_inducedrep_jbia}, we have
+\begin{align} \label{eq:rho_m11_inducedrep_k_jbia}
+\qty[\rho_G^\k(\{m_{1\cc{1}}\mid0\})]_{j\beta,i\alpha} &=
+\begin{pmatrix}
+e^{-i(m_{1\cc{1}} \k) \vdot \t_{11}} \Pi(h_{11}) & 0 \\
+0 & e^{-i(m_{1\cc{1}} \k) \vdot \t_{22}} \Pi(h_{22})
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+\Pi(\{m_{1\cc{1}}\mid0\}) & 0 \\
+0 & e^{-i(m_{1\cc{1}} \k) \vdot (\a_1-\a_2)} \Pi(\{m_{1\cc{1}}\mid0\}) \Pi(\{C_3\mid \a_1\})
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+i \sigma_x & 0 \\
+0 & e^{-i(m_{1\cc{1}} \k) \vdot (\a_1-\a_2)} i \sigma_x e^{i\frac{\pi}{3}\sigma_z}
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 & i & 0 & 0 \\
+i & 0 & 0 & 0 \\
+0 & 0 & 0 & e^{-i(m_{1\cc{1}} \k) \vdot (\a_1-\a_2)} i e^{-\frac{i\pi}{3}} \\
+0 & 0 & e^{-i(m_{1\cc{1}} \k) \vdot (\a_1-\a_2)} i e^{ \frac{i\pi}{3}} & 0 \\
+\end{pmatrix}.
+\end{align}
 
 \end{itemize}
-<++>
+
+The characters are (if $g \in G_\k$, then $g \k \equiv \k$)
+\begin{align} \label{eq:characters_rho_inducedrep_k}
+\begin{cases}
+\chi^{\rho_G^\k}(\{E\mid 0\}) &= 4, \\
+\chi^{\rho_G^\k}(\{C_6\mid 0\}) &= 0, \\
+\chi^{\rho_G^\k}(\{C_3\mid 0\}) &= e^{i \k \vdot \a_1} + e^{i \k \vdot \a_2}, \\
+\chi^{\rho_G^\k}(\{C_2\mid 0\}) &= 0, \\
+\chi^{\rho_G^\k}(\{m_{1\cc{1}}\mid 0\}) &= 0.
+\end{cases}
+\end{align}
+
+For $\k = \Gamma = \0$ and $\k = K = \frac{2\b_1 + \b_2}{3}$ we have
+\begin{equation} \label{eq:characters_rhoC3_k_Gamma_K}
+\chi^{\rho_G^\Gamma}(\{C_3\mid 0\}) = 2, \quad
+\chi^{\rho_G^K}(\{C_3\mid 0\}) = e^{\frac{2\pi i}{3}} + e^{-\frac{2\pi i}{3}} = -1. \quad
+\end{equation}
+
+Notice that $\chi^{\rho_G^M}(\{C_3\mid 0\})$ does not make sense, because $\{C_3\mid 0\} \notin G_M$.
+
+\n
+
+We compare the characters in Equation \ref{eq:characters_rho_inducedrep_k, eq:characters_rhoC3_k_Gamma_K} to the character tables \ref{tab:D6_double, tab:D3_double_littlegroup_K, tab:D2_double}, in order to discover the multiplicities in Equation \ref{eq:induce_subduce}.
+
+For $\Gamma$, comparison with Table \ref{tab:D6_double} shows that $\rho_G^{\Gamma} = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9$.
+
+\begin{table}[H]
+\caption{Character table of group $\cc{D}_6$ (or $\cc{C}_{6v}$).}
+\centering
+\begin{tabular} { c c c c c c c c c c  }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P 2 C_3$ & $\P2C_2$ & $\P2C_6$ & $\P6 m$ & $\P6 C_6 m$ & $\cc{E}$ & $2 \cc{C}_3$ & $2 \cc{C}_6$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_2$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_3$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_4$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ & $\P1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_5$      & $\P2$ & $ -1$ & $\P2$ & $ -1$ & $\P0$ & $\P0$ & $\P2$ & $ -1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_6$      & $\P2$ & $ -1$ & $ -2$ & $\P1$ & $\P0$ & $\P0$ & $\P2$ & $ -1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_7$ & $\P2$ & $ -2$ & $\P0$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ & $\P2$ & $\P0$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_8$ & $\P2$ & $\P1$ & $\P0$ & $-\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & $ -1$ & $\P\sqrt{3}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_9$ & $\P2$ & $\P1$ & $\P0$ & $\P\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & $ -1$ & $-\sqrt{3}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\rho_G^\Gamma$ & $\P4$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ & $ -2$ & $\P0$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:D6_double}
+\end{table}
+
+
+For $K$, comparison with Table \ref{tab:D3_double_littlegroup_K} shows that $\rho_G^{K} = \cc{K}_4 \oplus \cc{K}_5 \oplus \cc{K}_6$, where we renamed $\cc{\Gamma}_{4,5,6}$ (in character tables of an abstract group) to $\cc{K}_{4,5,6}$, in order to emphasize the little group at $K$.
+
+\begin{table}[H]
+\caption{Character table of double group $\cc{D}_3$ (or $\cc{C}_{3v}$).}
+\centering
+\begin{tabular} { c c c c c c c  }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 m$ & $\P \cc{E}$ & $\P 2 \cc{C}_3$ & $\P3\cc{m}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $\P1$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$  & $\P1$ & $\P1$ & $ -1$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_3$      & $\P2$ & $ -1$ & $\P0$  & $\P2$ & $ -1$ & $\P0$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_4$ & $\P1$ & $ -1$ & $  -i$ & $ -1$ & $\P1$ & $\P i$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_5$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $  -i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\rho_G^{K}$    & $\P4$ & $ -1$ & $\P0$  & $ -4$ & $\P1$ & $\P0$  \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:D3_double_littlegroup_K}
+\end{table}
+
+
+For $M$, comparison with Table \ref{tab:D2_double} shows that $\rho_G^M = \cc{M}_5 \oplus \cc{M}_5$. Again, we use $\cc{\Gamma}_5$ to refer to the irrep of the abstract group $\cc{D}_2$, but the notation $\cc{M}_5$ to refer to the irrep of the little group at $M$.
+
+\begin{table}[H]
+\caption{Character table of double group $\cc{D}_2$ (or $\cc{C}_{2v}$).}
+\centering
+\begin{tabular} { c c c c c c }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P 2 C_2$ & $\P 2 m$ & $\P 2 C_2 m$ & $\P \cc{E}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_3$      & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Gamma_4$      & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_5$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\rho_G^{M}$    & $\P4$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:D2_double}
+\end{table}
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Elementary Band Representations}
