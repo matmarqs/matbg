@@ -14,43 +14,45 @@
 \chapter{Topological Quantum Chemistry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017, building_blocks2018, lectures_tms2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals for a tight-binding model. The application of these concepts play a major role to motivate and construct a fully symmetric interacting MATBG model.
+In this chapter we will introduce the formalism of Topological Quantum Chemistry (TQC) \cite{topological_quantum_chemistry2017, building_blocks2018, lectures_tms2017}. Among many things, this theory mathematically defines when a electronic band is topological, which is a concept intrinsically associated to the construction of Wannier orbitals within a tight-binding model. The principles of TQC play a pivotal role in motivating and developing a fully symmetric interacting model for Magic-Angle Twisted Bilayer Graphene (MATBG).
 
-Since this theory involves numerous mathematical definitions and concepts, we will consistently use the example of monolayer graphene, which belongs to wallpaper group \#17 and the corresponding space group $P6mm$ ($\#183$ in international tables).
+Given the numerous mathematical definitions and concepts in TQC, we will use monolayer graphene as a consistent example. Graphene's underlying honeycomb lattice belongs to the wallpaper group \#17, with its corresponding space group being $P6mm$ (\#183 in the International Tables for Crystallography). The generators of this wallpaper group are depicted in Figure \ref{fig:generators_P6mm}.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_C3.png}\hfill
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_C2.png}\hfill
 \includegraphics[width=0.32\linewidth]{fig/honeycomb_sigma.png}
-\caption{Generators of the point group \(\{C_3, C_2, m_{1\bar{1}}\}\) for the space group \(P6mm\) of the honeycomb lattice, with the coordinate system origin $O$ located at a hexagon's center. \textbf{CORRIGIR} $\sigma_{1\cc{1}} = m_{1\cc{1}}$.}
+\caption{Generators \(\{C_3, C_2, m_{1\bar{1}}\}\) of the point group $D_6$ for the wallpaper group \#17 of the honeycomb lattice, with the coordinate system origin $O$ located at a hexagon's center.}
 \label{fig:generators_P6mm}
 \end{figure}
 
-Following Figure \ref{fig:generators_P6mm}, we use the basis $\mathcal{B} = \{\a_1 = a \vu{x}, \a_2 = \frac{a}{2} \vu{x} + \frac{a\sqrt{3}}{2} \vu{y}\}$. In this basis, the generators \(\{C_3, C_2, m_{1\bar{1}}\}\) for the point group $6mm$ act like:
+Following Figure \ref{fig:generators_P6mm}, we use the basis $\mathcal{B} = \qty{\a_1 = a \vu{x}, \a_2 = \frac{a}{2} \vu{x} + \frac{a\sqrt{3}}{2} \vu{y}}$, where $a = \abs{\a_{1,2}}$. In this basis, the generators \(\{C_3, C_2, m_{1\bar{1}}\}\) for the point group $6mm$ act like:
 \begin{equation} \label{eq:generators_P6mm}
 \begin{cases}
-\; C_3 \a_1 = -\a_1+\a_2 \\
-\; C_3 \a_2 = -\a_1
+\; C_3 \a_1 = -\a_1+\a_2, \\
+\; C_3 \a_2 = -\a_1,
 \end{cases}
 \quad
 \begin{cases}
-\; C_2\a_1 = -\a_1 \\
-\; C_2\a_2 = -\a_2
+\; C_2\a_1 = -\a_1, \\
+\; C_2\a_2 = -\a_2,
 \end{cases}
 \quad
 \begin{cases}
-\; m_{1\bar{1}} \a_1 = \a_2 \\
-\; m_{1\bar{1}} \a_2 = \a_1
+\; m_{1\bar{1}} \a_1 = \a_2, \\
+\; m_{1\bar{1}} \a_2 = \a_1.
 \end{cases}
 \end{equation}
 
-The 6-fold rotation is given by $\{C_6 \mid 0\} = \{C_2 \mid 0\} \{C_3 \mid 0\}^{-1}$, therefore
+The 6-fold rotation is given by $\{C_6 \mid 0\} = \{C_2 \mid 0\} \{C_3 \mid 0\}^{-1}$, and its action is
 \begin{equation} \label{eq:C6_rotation_P6mm}
 \begin{cases}
-\; C_6 \a_1 = \a_2 \\
-\; C_6 \a_2 = -\a_1 + \a_2
+\; C_6 \a_1 = \a_2, \\
+\; C_6 \a_2 = -\a_1 + \a_2.
 \end{cases}
 \end{equation}
+
+In the following section, we will present a series of mathematical definitions, consistently using the honeycomb lattice as a guiding example to illustrate and clarify the concepts.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Definitions}
@@ -115,24 +117,24 @@ G_\q = \{g \mid g \q = \q\} \subseteq G.
 Let us identify the site-symmetry groups of points $\q_1$, $\q_2$, $\q_3$, $\q_4$ and $\q_5$.
 
 \begin{itemize}
-\item The point $\textcolor{orange}{\spadesuit} = \q_5 = \qty(\frac{1}{4}, 0)$ has a site-symmetry group \(G_{\q_5}\) with only the identity $\{E \mid 0\}$ and $\{m_{x} \mid 0\}$ (reflection by the $x$-axis) as symmetry elements. This makes $G_{\q_5}$ isomorphic to $D_1$.
+\item The point $\textcolor{orange}{\spadesuit} = \q_5 = \qty(\frac{1}{4}, 0)$ has a site-symmetry group \(G_{\q_5}\) with the identity $\{E \mid 0\}$ and $\{m_{x} \mid 0\}$ (reflection by the $x$-axis) as symmetry elements. This makes $G_{\q_5}$ isomorphic to $D_1$ (or $C_s$).
 \begin{equation} \label{eq:site-symmetry-q5}
-\{m_{x} \mid 0\} \q_3 = m_x \qty(\frac{1}{4} \a_1) = m_x \qty(\frac{a}{4} \vu{x}) = \frac{a}{4} \vu{x} = \frac{1}{4} \a_1 = \q_5.
+\{m_{x} \mid 0\} \q_5 = m_x \qty(\frac{1}{4} \a_1) = m_x \qty(\frac{a}{4} \vu{x}) = \frac{a}{4} \vu{x} = \frac{1}{4} \a_1 = \q_5.
 \end{equation}
 
 
-\item The point \(\textcolor{magenta}{\varheartsuit} = \q_4 = \qty(\frac{1}{6}, \frac{1}{6})\) has a site-symmetry group \(G_{\q_4}\) with only the identity $\{E \mid 0\}$ and $\{m_{1\cc{1}} \mid 0\}$ as symmetry elements. This also makes $G_{\q_4}$ isomorphic to $D_1$.
+\item The point \(\textcolor{magenta}{\varheartsuit} = \q_4 = \qty(\frac{1}{6}, \frac{1}{6})\) has a site-symmetry group \(G_{\q_4}\) with only the identity $\{E \mid 0\}$ and $\{m_{1\cc{1}} \mid 0\}$ as symmetry elements. This also makes $G_{\q_4}$ isomorphic to $D_1$ (or $C_s$).
 \begin{align} \label{eq:site-symmetry-q4}
 \{m_{1\cc{1}} \mid 0\} \q_4 &= m_{1\cc{1}}\qty(\frac{1}{6} \a_1 + \frac{1}{6} \a_2) = \frac{1}{6} \a_2 + \frac{1}{6} \a_1 = \q_4.
 \end{align}
 
-\item The point \(\textcolor{green}{\bigstar} = \q_3 = \qty(\frac{1}{2}, 0)\) has a site-symmetry group \(G_{\q_3}\), which is isomorphic to \(D_2\). We can choose its generators to be $\{C_2 \mid \a_1\}$ and $\{m_{x}\mid 0\}$.
+\item The point \(\textcolor{green}{\bigstar} = \q_3 = \qty(\frac{1}{2}, 0)\) has a site-symmetry group \(G_{\q_3}\), which is isomorphic to \(D_2\) (or $C_{2v}$). We can choose its generators to be $\{C_2 \mid \a_1\}$ and $\{m_{x}\mid 0\}$.
 \begin{align} \label{eq:site-symmetry-q3}
 \{C_2 \mid \a_1\} \q_3 &= C_2 \q_3 + \a_1 = -\q_3 + \a_1 = -\frac{1}{2} \a_1 + \a_1 = \q_3, \\
 \{m_{x} \mid 0\} \q_3 &= m_x \qty(\frac{1}{2} \a_1) = m_x \qty(\frac{a}{2} \vu{x}) = \frac{1}{2} \a_1 = \q_3.
 \end{align}
 
-\item The point $\textcolor{blue}{\mdblksquare} = \q_2 = \qty(\frac{1}{3}, \frac{1}{3})$ has site-symmetry group $G_{\q_2}$ isomorphic to $D_3$, and its generators are $\{C_3 \mid \a_1\}$ and $\{m_{1\cc{1}} \mid 0\}$.
+\item The point $\textcolor{blue}{\mdblksquare} = \q_2 = \qty(\frac{1}{3}, \frac{1}{3})$ has site-symmetry group $G_{\q_2}$ isomorphic to $D_3$ (or $C_{3v}$), and its generators are chosen $\{C_3 \mid \a_1\}$ and $\{m_{1\cc{1}} \mid 0\}$.
 \begin{align} \label{eq:site-symmetry-q2}
 \{C_3 \mid \a_1\} \q_2 &= C_3 \qty(\frac{1}{3} \a_1 + \frac{1}{3} \a_2) + \a_1 = \frac{1}{3} \qty(-2\a_1 + \a_2) + \a_1 =
 \frac{1}{3} (\a_1 + \a_2) = \q_2, \\
@@ -140,7 +142,7 @@ Let us identify the site-symmetry groups of points $\q_1$, $\q_2$, $\q_3$, $\q_4
 \frac{1}{3} \a_2 + \frac{1}{3} \a_1 = \q_2.
 \end{align}
 
-\item The point \(\textcolor{red}{\varhexagonblack} = \q_1 = (0,0)\) has a site-symmetry group \(G_{\q_1}\) isomorphic to \(D_6\), with generators \(\{C_3 \mid 0\}\), \(\{C_2 \mid 0\}\), and \(\{m_{1\cc{1}} \mid 0\}\). Since \(\q_1 = \0\) is the origin, it is evident that the action of any generator \(g\) on \(\q_1\) leaves it unchanged:
+\item The point \(\textcolor{red}{\varhexagonblack} = \q_1 = (0,0)\) has a site-symmetry group \(G_{\q_1}\) isomorphic to \(D_6\) (or $C_{6v}$), with generators \(\{C_3 \mid 0\}\), \(\{C_2 \mid 0\}\), and \(\{m_{1\cc{1}} \mid 0\}\). Since \(\q_1 = \0\) is the origin, it is evident that the action of any generator \(g\) on \(\q_1\) leaves it unchanged:
 \begin{equation} \label{eq:site-symmetry-q1}
 g \q_1 = \0 = \q_1, \quad \text{for all } g \in G_{\q_1}.
 \end{equation}
@@ -149,7 +151,7 @@ g \q_1 = \0 = \q_1, \quad \text{for all } g \in G_{\q_1}.
 \end{example}
 
 \begin{definition}[\textbf{Wyckoff position}] \label{def:wyckpos}
-A \textit{Wyckoff position} \( \q \) refers to any position within the unit cell of the crystal. Some Wyckoff positions are \textit{special}, meaning they are left invariant by certain symmetry operations (other than the identity $\{E \mid 0\}$). The \textit{multiplicity} $n$ of a Wyckoff position is the number of distinct positions in its orbit within the same unit cell, $n = \abs{\text{Orb}(q)}$. A Wyckoff position is generally denoted as \( n\ell \), where \( \ell \) is an alphabetical label that designates the increasing size of the site-symmetry group associated with the position.
+A \textit{Wyckoff position} \( \q \) refers to any (real space) position within the unit cell of the crystal. Some Wyckoff positions are \textit{special}, meaning they are left invariant by certain symmetry operations (other than the identity $\{E \mid 0\}$). The \textit{multiplicity} $n$ of a Wyckoff position is the number of distinct positions in its orbit within the same unit cell, $n = \abs{\text{Orb}(q)}$. A Wyckoff position is generally denoted as \( n\ell \), where \( \ell \) is an alphabetical label that designates the increasing size of the site-symmetry group associated with the position.
 \end{definition}
 
 \begin{example} \label{ex:wyckpos_q1q2q3q4q5}
@@ -174,7 +176,7 @@ For the points $\q_1 = \textcolor{red}{\varhexagonblack}$, $\q_2 = \textcolor{bl
 \text{Orb}(\q_5) &= \qty{\{E\mid 0\} \q_5, \{C_6\mid 0\} \q_5, \{C_6^2\mid 0\} \q_5, \{C_6^3\mid 0\} \q_5, \{C_6^4\mid 0\} \q_5, \{C_6^5\mid 0\} \q_5}, \label{eq:orbit_q5} \nonumber \\
                  &= \qty{\qty(\frac{1}{4},0),\qty(0,\frac{1}{4}),\qty(-\frac{1}{4},\frac{1}{4}),\qty(-\frac{1}{4},0),\qty(0,-\frac{1}{4}),\qty(\frac{1}{4},-\frac{1}{4})}.
 \end{align}
-For example, in Equation \ref{eq:orbit_q3}, the coset representatives of $G_{\q_3}$ are $g_1 = \{E\mid 0\}$, $g_2 = \{C_6\mid 0\}$, and $g_3 = \{C_6^2\mid 0\}$.
+For example, in Equation \ref{eq:orbit_q3}, the coset representatives of $G_{\q_2}$ are $g_1 = \{E\mid 0\}$ and $g_2 = \{C_6\mid 0\}$.
 \end{example}
 
 \begin{lemma}[\textbf{Coset decomposition}] \label{lemma:cosetdecomp_wyckoff}
@@ -184,7 +186,7 @@ G = \bigcup_\alpha g_\alpha (G_{\q} \ltimes \Z^d),
 \end{equation}
 where \( \Z^d \) represents the group of lattice translations, \(\{E\mid \t\}\), with \(\t = \sum_{i=1}^d n_i \a_i\), where \( n_i \in \Z \) and \(\{\a_i\}\) are the primitive lattice vectors in \( d \) dimensions.
 
-In practice, this decomposition means that for any \( g \in G \), we can write \( g = \{E \mid \t\} g_\alpha h \), for some translation \(\t\), coset representative \( g_\alpha \), and \( h \in G_\q \). Applying \( \q \) to both sides:
+This decomposition means that for any \( g \in G \), we can write \( g = \{E \mid \t\} g_\alpha h \), for some translation \(\t\), coset representative \( g_\alpha \), and \( h \in G_\q \). Applying \( \q \) to both sides:
 \begin{equation} \label{eq:coset_decomp_translation_t_step1}
 g \q = \{E \mid \t\} g_\alpha h \q = \{E \mid \t\} g_\alpha \q = \{E \mid \t\} \q_\alpha = \q_\alpha + \t,
 \end{equation}
@@ -210,7 +212,7 @@ A site-symmetry group is \textit{non-maximal} if there exists a finite group $H 
 \end{definition}
 
 \begin{example} \label{ex:maximal_wyckpos_example}
-We have $G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. \textbf{Do I prove this?}
+We have $<++> \simeq G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. In fact, the only way to add an element to $G_{\q_1} \subseteq G$ is by adding lattice translations $\{E \mid \t\}$, which make it infinite. Since
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
