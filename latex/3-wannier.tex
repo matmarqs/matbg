@@ -6,6 +6,7 @@
 \textbf{TODO:}
 \begin{itemize}
 \item Utilizar índices $ji$ ao invés de $ij$ em $\rho$ no desenvolvimento da induced rep.
+\item Trocar ``$=$'' of representations to ``$\equiv$''.
 \end{itemize}
 
 
@@ -318,7 +319,7 @@ To determine the number of times each irrep \(\sigma_i^\k\) of \(G_\k\) appears 
 where \(\equiv\) signifies the equivalence of representations. The multiplicities \(r_i^\k\) are computed using the \textit{Reduction Formula} \ref{eq:reduction_formula}:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Spinful Graphene Example}
+\subsection{Spinful Graphene Example} \label{subsec:spinful_graphene}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Let us consider the Wyckoff position 2b on the honeycomb lattice. According to Equation \ref{eq:orbit_q2}, its orbit have the positions with coordinates $\q_2^{(1)} = \qty(\frac{1}{3}, \frac{1}{3})$ e $\q_2^{(2)} = \qty(-\frac{1}{3}, \frac{2}{3})$. The site-symmetry group of $\q_2$ is isomorphic to $D_3$. We will focus on $p_z$ orbitals with spin up $\uparrow$ and down $\downarrow$. Remember that for half-integral angular momentum, a rotation of $2\pi$ gives a minus sign instead of the identity. Because of this, our chosen orbitals will transform accordingly to a double-valued representation of the site-symmetry group $G_{\q_2}$.
@@ -532,6 +533,14 @@ i & 0 & 0 & 0 \\
 
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{fig/honeycomb_tqc_BZ.png}
+\caption{Brillouin Zone of the honeycomb lattice of Figure \ref{fig:generators_P6mm}, where the momentum lattice vectors $\b_{1,2}$ satisfy $\vb{a}_i \vdot \vb{b}_j = 2\pi \delta_{ij}$.}
+\label{fig:honeycomb_tqc_BZ}
+\end{figure}
+
+
 The characters are (if $g \in G_\k$, then $g \k \equiv \k$)
 \begin{align} \label{eq:characters_rho_inducedrep_k}
 \begin{cases}
@@ -553,7 +562,7 @@ Notice that $\chi^{\rho_G^M}(\{C_3\mid 0\})$ does not make sense, because $\{C_3
 
 \n
 
-We compare the characters in Equation \ref{eq:characters_rho_inducedrep_k, eq:characters_rhoC3_k_Gamma_K} to the character tables \ref{tab:D6_double, tab:D3_double_littlegroup_K, tab:D2_double}, in order to discover the multiplicities in Equation \ref{eq:induce_subduce}.
+We compare the characters in Equation \ref{eq:characters_rho_inducedrep_k} to the character tables \ref{tab:D6_double}, \ref{tab:D3_double_littlegroup_K} and \ref{tab:D2_double}, in order to discover the multiplicities in Equation \ref{eq:induce_subduce}.
 
 For $\Gamma$, comparison with Table \ref{tab:D6_double} shows that $\rho_G^{\Gamma} = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9$.
 
@@ -582,7 +591,7 @@ $\cc{\Gamma}_8$ & $\P2$ & $\P1$ & $\P0$ & $-\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & 
 \specialrule{0.01em}{0.2em}{0.2em}
 $\cc{\Gamma}_9$ & $\P2$ & $\P1$ & $\P0$ & $\P\sqrt{3}$ & $\P0$ & $\P0$ & $ -2$ & $ -1$ & $-\sqrt{3}$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\rho_G^\Gamma$ & $\P4$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ & $ -2$ & $\P0$ \\
+$\rho_G^\Gamma = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9$ & $\P4$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ & $ -2$ & $\P0$ \\
 \specialrule{0.05em}{0.2em}{0em}
 \end{tabular}
 \label{tab:D6_double}
@@ -598,19 +607,19 @@ For $K$, comparison with Table \ref{tab:D3_double_littlegroup_K} shows that $\rh
 \specialrule{0.05em}{0em}{0.2em}
 $\P$ & $\P E$ & $\P 2 C_3$ & $\P 3 m$ & $\P \cc{E}$ & $\P 2 \cc{C}_3$ & $\P3\cc{m}$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $\P1$  \\
+$K_1$      & $\P1$ & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $\P1$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$  & $\P1$ & $\P1$ & $ -1$  \\
+$K_2$      & $\P1$ & $\P1$ & $ -1$  & $\P1$ & $\P1$ & $ -1$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_3$      & $\P2$ & $ -1$ & $\P0$  & $\P2$ & $ -1$ & $\P0$  \\
+$K_3$      & $\P2$ & $ -1$ & $\P0$  & $\P2$ & $ -1$ & $\P0$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_4$ & $\P1$ & $ -1$ & $  -i$ & $ -1$ & $\P1$ & $\P i$  \\
+$\cc{K}_4$ & $\P1$ & $ -1$ & $  -i$ & $ -1$ & $\P1$ & $\P i$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_5$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $  -i$ \\
+$\cc{K}_5$ & $\P1$ & $ -1$ & $\P i$ & $ -1$ & $\P1$ & $  -i$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
+$\cc{K}_6$ & $\P2$ & $\P1$ & $\P0$  & $ -2$ & $ -1$ & $\P0$  \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\rho_G^{K}$    & $\P4$ & $ -1$ & $\P0$  & $ -4$ & $\P1$ & $\P0$  \\
+$\rho_G^{K} = \cc{K}_4 \oplus \cc{K}_5 \oplus \cc{K}_6$    & $\P4$ & $ -1$ & $\P0$  & $ -4$ & $\P1$ & $\P0$  \\
 \specialrule{0.05em}{0.2em}{0em}
 \end{tabular}
 \label{tab:D3_double_littlegroup_K}
@@ -626,20 +635,71 @@ For $M$, comparison with Table \ref{tab:D2_double} shows that $\rho_G^M = \cc{M}
 \specialrule{0.05em}{0em}{0.2em}
 $\P$ & $\P E$ & $\P 2 C_2$ & $\P 2 m$ & $\P 2 C_2 m$ & $\P \cc{E}$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+$M_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_2$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
+$M_2$      & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P1$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_3$      & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ \\
+$M_3$      & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P1$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\Gamma_4$      & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ \\
+$M_4$      & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P1$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\cc{\Gamma}_5$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ \\
+$\cc{M}_5$ & $\P2$ & $\P0$ & $\P0$ & $\P0$ & $ -2$ \\
 \specialrule{0.01em}{0.2em}{0.2em}
-$\rho_G^{M}$    & $\P4$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ \\
+$\rho_G^{M} = 2 \cc{M}_5$    & $\P4$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ \\
 \specialrule{0.05em}{0.2em}{0em}
 \end{tabular}
 \label{tab:D2_double}
+\end{table}
+
+
+At each high-symmetry point $(\Gamma, K, M)$, we will decompose the little group irreps that appear at that point into a sum of irreps of the little group of each high-symmetry line emanating from that point. There are three high-symmetry lines: $\Gamma-K$, $\Gamma-M$ and $K-M$. Although the little group of each line is distinct, all three groups are isomorphic to $C_s \ltimes \mathbb{Z}^2$, generated by a single mirror and two primitive lattice translations. Its character table is
+
+\begin{table}[H]
+\caption{Character table of double group $\cc{C}_s$.}
+\centering
+\begin{tabular} { c c c c c }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P m$ & $\P \cc{E}$ & $\P \cc{m}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Lambda_1$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\Lambda_2$      & $\P1$ & $ -1$ & $\P1$ & $ -1$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Lambda}_3$ & $\P1$ & $ -i$ & $ -1$ & $\P i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Lambda}_4$ & $\P1$ & $\P i$ & $ -1$ & $ -i$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:Cs_double}
+\end{table}
+
+We are going to call the irreps of the little groups $G_\k$ points of high-symmetry lines $\Lambda_{1,2}$ and $\cc{\Lambda}_{3,4}$. We subduce the groups $G_\Gamma$, $G_K$ and $G_M$ (isomorphic to $\cc{D}_6$, $\cc{D}_3$ and $\cc{D}_2$) to the little group $G_\k$ at high-symmetry lines (isomorphic to $\cc{C}_s$, which is a subgroup of $\cc{D}_6$, $\cc{D}_3$ and $\cc{D}_2$). For this, we compare the representations of the subduction in Table \ref{Cs_subduction_highsymmlines}.
+
+\begin{table}[H]
+\caption{Double-valued representations of $\cc{C}_s$ and comparison with subduced representations of $G_\Gamma$, $G_K$ and $G_M$.}
+\centering
+\begin{tabular} { c c c c c }
+\specialrule{0.05em}{0em}{0.2em}
+$\P$ & $\P E$ & $\P m$ & $\P \cc{E}$ & $\P \cc{m}$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Lambda}_3$ & $\P1$ & $ -i$ & $ -1$ & $\P i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Lambda}_4$ & $\P1$ & $\P i$ & $ -1$ & $ -i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_8 \downarrow G_\Lambda = \cc{\Lambda}_3 \oplus \cc{\Lambda}_4$ & $\P2$ & $\P0$ & $ -2$ & $\P0$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{\Gamma}_9 \downarrow G_\Lambda = \cc{\Lambda}_3 \oplus \cc{\Lambda}_4$ & $\P2$ & $\P0$ & $ -2$ & $\P0$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{K}_4 \downarrow G_\Lambda = \cc{\Lambda}_3$ & $\P1$ & $  -i$ & $ -1$ & $\P i$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{K}_5 \downarrow G_\Lambda = \cc{\Lambda}_4$ & $\P1$ & $\P i$ & $ -1$ & $  -i$ \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{K}_6 \downarrow G_\Lambda = \cc{\Lambda}_3 \oplus \cc{\Lambda}_4$ & $\P2$ & $\P0$  & $ -2$ & $\P0$  \\
+\specialrule{0.01em}{0.2em}{0.2em}
+$\cc{M}_5 \downarrow G_\Lambda = \cc{\Lambda}_3 \oplus \cc{\Lambda}_4$ & $\P2$ & $\P0$ & $ -2$ & $\P0$ \\
+\specialrule{0.05em}{0.2em}{0em}
+\end{tabular}
+\label{tab:Cs_double}
 \end{table}
 
 
