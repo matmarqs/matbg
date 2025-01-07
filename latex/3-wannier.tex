@@ -209,7 +209,7 @@ We have \( D_1 \cong G_{\q_4} \subset G_{\q_2} \) and \( D_1 \cong G_{\q_5} \sub
 
 To establish this, observe that the only way to add an element to \( G_{\q_1} \subset G \) is by including lattice translations of the form \(\{E \mid \t\}\), which extend the group \(G_{\q_1}\) to an infinite set. This asserts that \(\q_1\) is a maximal Wyckoff position.
 
-Furthermore, \( D_2 \) and \( D_3 \) are subgroups of \( D_6 \), and it is straightforward to verify that adding any additional symmetry element to \( D_2 \) or \( D_3 \) results in a generating set for \( D_6 \). This establishes \( D_2 \) and \( D_3 \) as maximal subgroups of \( D_6 \). Consequently, \(\q_2\) and \(\q_3\) are maximal Wyckoff positions, as their associated site-symmetry groups \( G_{\q_2} \) and \( G_{\q_3} \) are maximal subgroups of \( G \).
+Furthermore, \( D_2 \) and \( D_3 \) are subgroups of \( D_6 \), and it is straightforward to verify that adding any additional symmetry element to \( D_2 \) or \( D_3 \) results in a generating set for \( D_6 \). This establishes \( D_2 \) and \( D_3 \) as maximal subgroups of \( D_6 \). Consequently, \(\q_2\) and \(\q_3\) are maximal Wyckoff positions, as their associated site-symmetry groups \( G_{\q_2} \cong D_3 \) and \( G_{\q_3} \cong D_2 \) are maximal subgroups of \( G \).
 \end{example}
 
 Having introduced the concepts of Wyckoff positions and site-symmetry groups, along with the theory of representations, in the next section we define a \textbf{band representation} (BR). A band representation is a mathematical framework that connects the real-space description of orbitals in a crystal to the momentum-space picture of energy bands in the Brillouin Zone (BZ).
@@ -329,45 +329,60 @@ In practice, the Bilbao Crystallographic Server \cite{bilbao_1} provides a suite
 \section{Elementary Band Representations} \label{sec:EBRs_topological}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<++> <++> <++> <++> <++> <++> <++> <++>
-
-Two band representations are considered equivalent if they can be continuously deformed into each other without closing energy gaps or breaking symmetries, similar to the concept of homotopy in topology. This notion of equivalence is essential for classifying electronic band structures in terms of their topological properties. By treating equivalence in this way, we can systematically identify whether a material exhibits non-trivial topological phases, such as those found in topological insulators, based purely on its symmetry and band structure.
+Two band representations are considered equivalent (distinct from the sense described in Definition \ref{def:equiv_representations}) if they can be continuously deformed into each other without closing energy gaps or breaking symmetries, analogous to the concept of homotopy in topology. This notion of equivalence is crucial for classifying electronic band structures based on their topological properties. By adopting this definition, it becomes possible to systematically determine whether a material exhibits non-trivial topological phases $-$ such as those characteristic of topological insulators $-$ using only its symmetries and band structure.
 
 \begin{definition}[\textbf{Equivalence between band representations}] \label{def:equiv_bandrep}
-Two band representations $\rho_G$ and $\sigma_G$ are equivalent iff there exists a unitary matrix-valued function $S(\k,t,g)$ smooth in $\k$ and continuous in $t$ such that, for all $g \in G$
+Two band representations \( \rho_G \) and \( \sigma_G \) are said to be equivalent if and only if there exists a unitary matrix-valued function \( S(\k,t,g) \), smooth in \( \k \) and continuous in \( t \), such that for all \( g \in G \), the following conditions hold:
 \begin{enumerate}
-\item $S(\k, t, g)$ defines a band representation according to Equation \ref{eq:bloch_rep} for all $t \in [0,1]$;
-\item $S(\k, 0, g) = \rho_G^\k(g)$;
-\item $S(\k, 1, g) = \sigma_G^\k(g)$.
+\item \( S(\k, t, g) \) is a band representation according to Equation \ref{eq:band_representation_definition} for all \( t \in [0,1] \);
+\item \( S(\k, 0, g) = \rho_G^\k(g) \);
+\item \( S(\k, 1, g) = \sigma_G^\k(g) \).
 \end{enumerate}
 \end{definition}
+
+For \( \rho_G^\k \) and \( \sigma_G^\k \) to be equivalent, it is necessary that both restrict to the same little group representations at all points in the Brillouin Zone \cite{building_blocks2018}. However, this condition alone is not sufficient. As demonstrated in \cite{building_blocks2018}, there is an explicit example where two elementary band representations (EBRs) have the same representations at every point $\k$ in the Brillouin zone but are physically distinguishable by a Berry phase. In such a case, any mapping \( S(\k,t,g) \) between the two representations would break a symmetry, which leads to the conclusion that \( \rho_G^\k \) and \( \sigma_G^\k \) are inequivalent.
+
+Now that we have established the notion of when two band representations are equivalent, we define an elementary band representation (EBR) based on the idea that all band representations can be decomposed into smaller ones. This concept is analogous to the notion of irreducible representations, but it is distinct, as it specifically applies to the decomposition of band representations in the context of site-symmetry groups and the corresponding electronic band structures.
 
 \begin{definition}[\textbf{Elementary band representation}]
 A band representation is called \textbf{composite} if it is equivalent to the direct sum of other band representations. A band representation that is not composite is called \textbf{elementary}.
 \end{definition}
 
-\begin{theorem}[\textbf{Properties of band representations}]
+To address the task of searching for all the elementary band representations associated with a given space group, we identify two necessary but not sufficient conditions for a band representation to be elementary, specifically in the case without time-reversal symmetry (for a full description, see \cite{building_blocks2018}). These conditions are outlined in the following Lemma \ref{lemma:properties_bandreps}.
+
+\begin{lemma}[\textbf{Properties of band representations}] \label{lemma:properties_bandreps}
 Some properties of band representations are:
 \begin{enumerate}
-\item Because induction commutes with direct sums
-$$
+\item Since induction commutes with direct sums, we have
+\begin{equation} \label{eq:induction_directsum}
 (\rho_1 \oplus \rho_2) \uparrow G = (\rho_1 \uparrow G) \oplus (\rho_2 \uparrow G),
-$$
-reducible representations of $G_\q$ induce composite band representations.
+\end{equation}
+which implies that reducible representations of \( G_\q \) induce composite band representations. Therefore, to search for EBRs, it is sufficient to consider irreducible representations of $G_\q$.
 
-\item Given subgroups $K \subset H \subset G$, and a representation $\rho$ of $K$, because induction is transitive it follows that
-$$
+\item Given subgroups \( K \subset H \subset G \), and a representation \( \rho \) of \( K \), the transitivity of induction implies
+\begin{equation} \label{eq:induction_induction_subgroup_KHG}
 (\rho \uparrow H) \uparrow G = \rho \uparrow G.
-$$
-From this we conclude that all EBRs can be induced from irreps of the maximal site symmetry groups.
+\end{equation}
+This means that all EBRs can be induced from irreps of the \textbf{maximal} site-symmetry groups.
 \end{enumerate}
-\end{theorem}
+\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Exceptions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-There are exceptions where an irrep of the site symmetry group of a maximal Wyckoff position induces a composite band representation.
+\textbf{O TEXTO A SEGUIR FOI PLAGIADO DO LECTURES FROM TMS 2017}
+
+We have determined that all elementary band representations can be induced from
+irreducible representations of the maximal site-symmetry groups. But this condition
+is not true in the opposite way; not all irreducible representation of the maximal site-
+symmetry groups induce an elementary band representation. These last cases, when
+what is induced is not an elementary band representation, are called exceptions. This
+may seem annoying, but they have already been tabulated in Topological Quantum
+Chemistry [10].
+Hence (with some exceptions), band representations induced from irreducible rep-
+resentations of maximal site-symmetry groups give elementary band representations,
+whose bands are connected in the first BZ (they have no gap).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Topological Systems}
@@ -385,6 +400,8 @@ Band representations describe systems in the atomic limit, where bands can be de
 Any isolated set of bands that is not equivalent to a band representation (composite or elementary) gives a strong, weak, or crystalline topological insulator.
 \end{theorem}
 
+\boxed{\textbf{TAMBÉM FALAR SOBRE BAND CONNECTIVITY.}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{How to determine if a set of bands is topological}
@@ -396,7 +413,7 @@ Any isolated set of bands that is not equivalent to a band representation (compo
 %
 %If the irreps that appear in $\mathcal{B}$ can be obtained from a linear combination of the EBRs of the space group, then one must compute symmetric and localized Wannier functions for the bands in $\mathcal{B}$ to confirm that they are equivalent to the atomic limit defined by the linear combination of EBRs or compute a Berry phase that will distinguish the two. This is because, it is possible for two distinct groups of bands to have the exact same irreps at all high-symmetry points, but different Berry phases (recall, this is exactly why we require the homotopic notion of equivalence, as in Definition \ref{def:equiv_bandrep}.)
 
-%\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
+\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
 
 
 To determine whether a set of bands \(\mathcal{B}\) does \textbf{not} form a band representation, a systematic approach can be followed: first, identify all elementary band representations (EBRs) for the relevant space group and catalog the irreducible representations (irreps) that appear at each high-symmetry point for these EBRs. Then, calculate the irreps associated with the bands in \(\mathcal{B}\) at the high-symmetry points. If the irreps corresponding to \(\mathcal{B}\) cannot be expressed as a linear combination of the irreps from the EBRs, the bands do not form a band representation. According to Theorem \ref{th:topo_insul}, this indicates that the bands are topological.
