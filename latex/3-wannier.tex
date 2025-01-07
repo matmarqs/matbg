@@ -52,10 +52,10 @@ The 6-fold rotation is given by $\{C_6 \mid 0\} = \{C_2 \mid 0\} \{C_3 \mid 0\}^
 \end{cases}
 \end{equation}
 
-In the following section, we will present a series of mathematical definitions, consistently using the honeycomb lattice as a guiding example to illustrate and clarify the concepts.
+In the following section, we will introduce a series of mathematical definitions, including the concept of Wyckoff positions, which is fundamental in crystallography. These definitions are essential for constructing a band representation, a critical tool for classifying topological materials within the TQC framework. To enhance understanding, we will consistently use the honeycomb lattice as a guiding example to illustrate and clarify these concepts.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Definitions}
+\section{Site-symmetry groups and Wyckoff positions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -212,12 +212,21 @@ A site-symmetry group is \textit{non-maximal} if there exists a finite group $H 
 \end{definition}
 
 \begin{example} \label{ex:maximal_wyckpos_example}
-We have $<++> \simeq G_{\q_4} \subset G_{\q_2}$ and $G_{\q_5} \subset G_{\q_3}$, therefore $\q_4$ and $\q_5$ are non-maximal Wyckoff positions. On the other hand, the Wyckoff positions $\q_1$, $\q_2$, $\q_3$ are maximal. In fact, the only way to add an element to $G_{\q_1} \subseteq G$ is by adding lattice translations $\{E \mid \t\}$, which make it infinite. Since
+We have \( D_1 \cong G_{\q_4} \subset G_{\q_2} \) and \( D_1 \cong G_{\q_5} \subset G_{\q_3} \), which implies that \(\q_4\) and \(\q_5\) are non-maximal Wyckoff positions. Conversely, the Wyckoff positions \(\q_1\), \(\q_2\), and \(\q_3\) are maximal.
+
+To establish this, observe that the only way to add an element to \( G_{\q_1} \subset G \) is by including lattice translations of the form \(\{E \mid \t\}\), which extend the group \(G_{\q_1}\) to an infinite set. This asserts that \(\q_1\) is a maximal Wyckoff position.
+
+Furthermore, \( D_2 \) and \( D_3 \) are subgroups of \( D_6 \), and it is straightforward to verify that adding any additional symmetry element to \( D_2 \) or \( D_3 \) results in a generating set for \( D_6 \). This establishes \( D_2 \) and \( D_3 \) as maximal subgroups of \( D_6 \). Consequently, \(\q_2\) and \(\q_3\) are maximal Wyckoff positions, as their associated site-symmetry groups \( G_{\q_2} \) and \( G_{\q_3} \) are maximal subgroups of \( G \).
 \end{example}
 
+Having introduced the concepts of Wyckoff positions and site-symmetry groups, along with the theory of representations, in the next section we define a \textbf{band representation} (BR). A band representation is a mathematical framework that connects the real-space description of orbitals in a crystal to the momentum-space picture of energy bands in the Brillouin Zone (BZ).
+
+At its core, a band representation originates from real-space orbitals localized at specific Wyckoff positions, where the symmetry properties of these orbitals are dictated by the associated site-symmetry groups. When a set of energy bands cannot be expressed as a band representation, it indicates that they cannot be associated with localized atomic-like orbitals in real space. These bands are then classified as \textbf{topological}, signifying the presence of nontrivial global properties in the electronic structure that cannot be captured by simple atomic insulator models.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Band Representations}
+\section{Band Representations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 Consider a site \(\q\) within a Wyckoff position of multiplicity \(n\), hosting \(n_q\) orbitals. The corresponding wavefunctions, denoted as \(W_{i1}(\r)\) for \(i = 1, \ldots, n_q\), transform under an \(n_q\)-dimensional representation \(\rho\) of the site-symmetry group \(G_\q\):
 \begin{equation} \label{eq:gWi1_nq_rep}
