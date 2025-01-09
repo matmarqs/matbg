@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preamble}
-%\begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,99 +10,168 @@
 
 Carbon is undoubtedly one of the most essential elements for the formation of life, largely due to its remarkable versatility in bonding, which enables the formation of a vast array of complex compounds. Among materials composed solely of carbon atoms, graphite is one of which we are very familiar since elementary school, as it used in pencils for drawing. Graphite is an allotrope of carbon, consisting of multiple layers stacked together and held by weak van der Waals forces. When writing with a pencil, some graphite layers transfer onto the paper, allowing for drawing and writing.
 
-In 2004, Andre Geim, Konstantin Novoselov, et. al. \cite{novoselov_2004} successfully isolated a single sheet of graphite using the ``sticky tape method'', allowing them to study its properties. This single atomic layer, known as graphene, was the first two-dimensional (2D) material ever discovered. Graphene exhibits extraordinary properties, including exceptional electrical conductivity, mechanical strength, flexibility, transparency, and thermal conductivity. Its unique combination of properties makes it a promising candidate for a wide range of applications, from electronics and energy storage to composite materials and biomedical devices. The discovery of graphene marked a breakthrough, inaugurating the field of 2D materials and earning Geim and Novoselov the Nobel Prize in Physics in 2010.
+In 2004, Andre Geim, Konstantin Novoselov, et. al. \cite{novoselov_2004} successfully isolated a single sheet of graphite using the ``sticky tape method'', allowing them to study its properties. This single atomic layer, known as graphene, was the first two-dimensional (2D) material ever discovered. Graphene exhibits extraordinary properties, including exceptional electrical conductivity, mechanical strength, flexibility, transparency, and thermal conductivity. Its unique combination of properties makes it a promising candidate for a wide range of applications, from electronics and energy storage to composite materials and biomedical devices. The discovery and stabilization of graphene marked a breakthrough, inaugurating the field of 2D materials and earning Geim and Novoselov the Nobel Prize in Physics in 2010. Since then, the family of 2D materials has expanded to include metals like NbSe\(_2\), semiconductors such as transition metal dichalcogenides (TMDs), and insulators like hexagonal boron nitride (hBN). Notably, hBN is the primary substrate for graphene due to its wide bandgap ($\sim 6 \unit{eV}$), chemical inertness, and favorable dielectric properties. Encapsulating graphene in hBN shields it from environmental contaminants and significantly enhances its electronic transport properties.
 
-When we vertically stack a few layers of 2D materials, the system is held together by weak van der Waals forces and is known as a van der Waals heterostructure. These heterostructures represent a promising new avenue for engineering the properties of 2D materials. While the properties of single-layer materials, such as graphene, are now well understood, predicting the behavior of few-layer heterostructures remains challenging. <++>
+These 2D materials can be stacked to form van der Waals heterostructures, held together by weak interlayer van der Waals forces, allowing the engineering of novel properties at their interfaces. While the behavior of single-layer materials like graphene is well understood, predicting the properties of multilayer heterostructures remains a challenge. A particularly fascinating type of heterostructure are the moiré materials, created by stacking two layers with a slight twist angle or mismatched lattice constants. This misalignment generates a moiré pattern, where the local atomic arrangement varies periodically over a much larger scale than the unit cell of each layer. The moiré pattern acts as a long-wavelength potential, dramatically altering the electronic and structural properties of the system. These emergent states differ fundamentally from those of the individual layers, giving rise to entirely new physical behaviors.
+
+The ability to control the twist angle introduces a new degree of freedom, giving rise to the field of \textit{twistronics}. A landmark moment in this field came in 2018 with two papers published by Jarillo-Herrero and colleagues \cite{cao2018, cao2018_correlated}. These works reported the discovery of correlated insulating and superconducting states in ``magic angle'' twisted bilayer graphene (MATBG), sparking intense theoretical interest and accelerating research into the properties of graphene-based systems. This thesis focuses on MATBG, where we will investigate its symmetry and topological characteristics, aiming to provide an understanding of the fundamental principles underlying the Topological Heavy Fermion model \cite{topoheavyfermion2022}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monolayer}
+\section{Monolayer Graphene}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Throughout our work, $\hbar = 1$.
+To establish consistent terminology and notation, we will begin by outlining a tight-binding model for monolayer graphene, which will serve as the foundation for much of our analysis. The models for twisted bilayer graphene are also strongly influenced by this approach. Graphene is an allotrope of graphite and consists of a honeycomb lattice of carbon atoms. These atoms are bonded via $sp^2$ hybridization, with an average interatomic distance of \( d = 1.42 \, \AA \). In this structure, three valence electrons from each carbon atom form $\sigma$ bonds, while the remaining valence electron resides in a $p_z$ orbital, which plays a dominant role in the material's electronic properties. A schematic of the lattice is shown in Figure \ref{fig:graphene-lattice_a}.
 
-\n
-
-Graphene is an allotrope of graphite and consists of a honeycomb lattice of carbon atoms linked in a $sp^2$ hybridization with an average distance $a = 0.246 \unit{nm}$, where three valence electrons from each carbon atom form $\sigma$ bonds and the last valence electron is located on a $\pi$ orbital and is the one that predominantly matters for the electronic properties of the material.
-
-\n
-
-Our convention is zig-zag in horizontal direction and arm-chair in vertical direction.
+%Our convention is zig-zag in horizontal direction and arm-chair in vertical direction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\linewidth]{fig/graphene-lattice_vectors2.png}
-\label{fig:graphene-lattice_vectors}
-\caption{\textcolor{red}{Graphene lattice vectors. Taken from \cite{handbook2019}}}
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[height=.78\linewidth]{fig/honeycomb_coordinates_deltas.png}
+  \caption{Graphene's lattice with atoms labeled $\textcolor{blue}{A}$ (blue) and $\textcolor{red}{B}$ (red), both being identical carbon atoms.}
+  \label{fig:graphene-lattice_a}
+\end{subfigure} \hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[height=.78\linewidth]{fig/honeycomb_tqc_BZ.png}
+  \caption{Graphene Brillouin Zone with high-symmetry momentum points labeled as $\Gamma$, $K$, and $M$.}
+  \label{fig:graphene-lattice_b}
+\end{subfigure}
+%\caption{}
+\label{fig:graphene-lattice}
 \end{figure}
 
-The lattice vectors are $\vb{a}_1 = a \qty(\frac{1}{2}, \frac{\sqrt{3}}{2})$, $\vb{a}_2 = a \qty(-\frac{1}{2}, \frac{\sqrt{3}}{2})$. The unit cell area is $ A_1 = \abs{\a_1 \times \a_2} = \frac{\sqrt{3}}{2} a^2 $.
-
-The Brillouin zone is
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.3\linewidth]{fig/brillouin-zone-monolayer.png}
-\caption{\textcolor{red}{Graphene Brillouin Zone. Taken from \cite{handbook2019}}}
-\label{fig:brillouin-zone-monolayer}
-\end{figure}
-
-Using the convention $\a_3 = \vu{z}$, the momentum lattice vectors are
+The lattice vectors are defined as \(\vb{a}_1 = a \qty(1, 0)\) and \(\vb{a}_2 = a \qty(\frac{1}{2}, \frac{\sqrt{3}}{2})\), with $a = d\sqrt{3} = 2.46 \, \AA$. The unit cell area is given by \( A_1 = \abs{\a_1 \times \a_2} = \frac{\sqrt{3}}{2} a^2 \). The momentum lattice vectors \(\b_1\) and \(\b_2\) satisfy the relation \(\a_i \vdot \b_j = 2\pi \delta_{ij}\) and can be derived as follows:
 \begin{equation} \label{eq:monolayer-bvecs}
-\b_1 = \frac{2\pi}{A_1} \a_2 \times \a_3 = \frac{4\pi}{\sqrt{3} a } \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}), \quad
-\b_2 = \frac{2\pi}{A_1} \a_3 \times \a_1 = \frac{4\pi}{\sqrt{3} a } \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
+\b_1 = \frac{2\pi}{A_1} \a_2 \times \a_3 = \frac{4\pi}{\sqrt{3} a } \qty(\frac{\sqrt{3}}{2}, -\frac{1}{2}), \quad
+\b_2 = \frac{2\pi}{A_1} \a_3 \times \a_1 = \frac{4\pi}{\sqrt{3} a } \qty(0, 1),
 \end{equation}
+where for calculation purposes, we used \(\a_3 = \vu{z}\).
 
-The two main Dirac points are defined as
+The two main Dirac points lie at the edge of the Brillouin Zone (BZ), as illustrated in Figure \ref{fig:graphene-lattice_b}, and are defined as:
 \begin{equation} \label{eq:monolayer-dirac-points}
-\K = \frac{4\pi}{3a} (1, 0) , \quad \K' = -\K.
+K = \frac{2\b_1 + \b_2}{3} = \frac{4\pi}{3a} (1, 0) , \quad K' = -K.
 \end{equation}
 
-
-
-We write a tight-binding hamiltonian with only nearest-neighbor hopping
+Ignoring the spin degree of freedom (since spin-orbit coupling is weak in graphene and magnetic fields are not considered), the tight-binding Hamiltonian with only nearest-neighbor hoppings is expressed as:
 \begin{equation} \label{eq:monolayer-tight-binding}
-H = -t \sum_{\R} c^\d_B(\R) \qty(c_A(\R) + c_A(\R-\a_1) + c_A(\R-\a_2)) + \hc,
+H = -t \sum_{\R} c^\d_A(\R) \qty(c_B(\R + \vdelta_1) + c_B(\R+\vdelta_2) + c_B(\R+\vdelta_3)) + \hc,
 \end{equation}
-where the $\R$ sum runs through all the associated Bravais triangular lattice. Applying the Fourier transforms
+where $t = 2.97 \unit{eV}$ according to \textit{ab initio} calculations \cite{handbook2019}, and \(\R = n_1 \a_1 + n_2 \a_2\), with integers \(n_1, n_2\), runs over all the lattice sites of the underlying Bravais triangular lattice. Applying the following Fourier transformation:
 \begin{equation} \label{eq:monolayer-fourier}
-c_{\alpha}^\d(\R) = \frac{1}{\sqrt{N}} \sum_{\k \in \text{BZ}} e^{-i \k \vdot \r_i} c_A^\d(\k),
+c_{\alpha}^\d(\r) = \frac{1}{\sqrt{N}} \sum_{\k \in \text{BZ}} e^{-i \k \vdot \r} c_\alpha^\d(\k),
 \end{equation}
-we get
+we obtain the Hamiltonian in momentum space
 \begin{equation} \label{eq:monolayer-tight-binding2}
 H = \sum_{\k}
 \begin{pmatrix}
 c_A^\d(\k) & c_B^\d(\k)
 \end{pmatrix}
-\begin{pmatrix}
-0 & -t f(\k) \\
--t f^*(\k) & 0
-\end{pmatrix}
+H_\k
 \begin{pmatrix}
 c_A^\d(\k) \\ c_B^\d(\k)
 \end{pmatrix},
 \end{equation}
-with
-\begin{equation} \label{eq:monolayer-fk}
-f(\k) = \sum_{\nu} e^{i \k \vdot \bm{\delta}_\nu} =
-e^{idk_y} + 2 e^{-\frac{idk_y}{2}} \cos(\frac{\sqrt{3}}{2} dk_x),
+where the matrix \(H_\k\) is
+\begin{equation} \label{eq:hamiltonian_k_monolayer}
+H_\k =
+\begin{pmatrix}
+0 & -t f(\k) \\
+-t f^{\dagger}(\k) & 0
+\end{pmatrix},
 \end{equation}
-where $\bm{\delta}_1 = (\a_1 + \a_2)/3 = d (0, 1)$, $\bm{\delta}_2 = (-2\a_1 + \a_2)/3 = d(-\frac{\sqrt{3}}{2}, -\frac{1}{2})$, $\bm{\delta}_3 = (\a_1 - 2\a_2)/3 = d (\frac{\sqrt{3}}{2}, -\frac{1}{2})$ are the vectors that connect to the three nearest neighboring sites, and $d = a/\sqrt{3}$.
+and the function \(f(\k)\) is given by
+\begin{equation} \label{eq:monolayer-fk}
+f(\k) = e^{i \k \vdot \bm{\delta}_1} + e^{i \k \vdot \bm{\delta}_2} + e^{i \k \vdot \bm{\delta}_3} =
+e^{-idk_y} + 2 e^{\frac{idk_y}{2}} \cos(\frac{\sqrt{3}}{2} dk_x),
+\end{equation}
+where \(\bm{\delta}_1 = \frac{\a_1 + \a_2}{3} = d \qty(\frac{\sqrt{3}}{2}, \frac{1}{2})\), \(\bm{\delta}_2 = \frac{-2 \a_1 + \a_2}{3} = d \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2})\), and \(\bm{\delta}_3 = \frac{\a_1 - 2 \a_2}{3} = d \qty(0, -1)\) are the vectors connecting the three nearest neighbor sites.
+
+The eigenenergies of the Hamiltonian matrix \(H_\k\) are \(E_\pm(\k) = \pm t \abs{f(\k)}\). The Dirac points \(K\) and \(K' = -K\) correspond to the zeros of \(f(\k)\), i.e., \(f(\pm K) = 0\). In the vicinity of these points, the dispersion relation is approximately linear, as illustrated in Figure \ref{fig:monolayer_dispersion}.
+\begin{equation} \label{eq:linear_Ek_monolayer}
+E(\K + \q) = v_F \abs{\q} + O\left(\frac{\abs{\q}}{\abs{K}}\right)^2,
+\end{equation}
+where \(v_F = 3td/2\) is the Fermi velocity, with the convention \(\hbar = 1\).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/monolayer_dispersion.png}
+\caption{Electronic band structure of graphene (energy in eV). Adapted from \cite{geim2009}.}
+\label{fig:monolayer_dispersion}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental features of TBG}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \n
+\textbf{O SEGUINTE TEXTO FOI CHATGPTADO DO PLAGIO DO ANGELI E RENNELLA}
+\n
 
-The eigenenergies of hamiltonian \ref{eq:monolayer-tight-binding2} are $E_\pm(\k) = \pm t \abs{f(\k)}$. Notice that the points $\K$ and $\K'=-\K$ are roots of $f$, i.e., $f(\pm\K) = 0$. These are the so-called Dirac points, around which the dispersion relation are approximately linear $E(\K + \q) = v_F \abs{\q} + O(\abs{\q}/\abs{\K})^2$.
+
+Twisted bilayer graphene (TBG), created by stacking two graphene layers at a small twist angle, has become a highly researched material due to its rich and tunable electronic properties. When two graphene sheets are twisted with respect to each other, the resulting moiré pattern leads to an intricate modulation of the interlayer interactions, causing significant changes in the band structure. At specific twist angles, particularly at ``magic angles'', this modification results in nearly flat electronic bands near the charge neutrality point (CNP), which are separated from other bands by gaps on the order of tens of meV. The interplay between the intra- and interlayer hybridization energies can explain this flattening, as the energy associated with interlayer coupling becomes comparable to the energy mismatch between the Dirac cones at the K points.
+
+At twist angles near these magic angles, a variety of extraordinary phenomena emerge. Bistritzer and MacDonald (2011) first predicted that the Dirac cones at the K and K' points would hybridize, opening energy gaps at their intersection and significantly renormalizing the Fermi velocity. At certain twist angles, known as magic angles (around 1.1$^\circ$), the Fermi velocity vanishes, resulting in the appearance of isolated, narrow bands around the CNP. These near-zero Fermi velocity bands are a hallmark of tBLG and have been experimentally confirmed, particularly at the first magic angle (\(\theta \approx 1.1^\circ\)), where four extremely narrow bands appear at the CNP.
+
+In addition to the presence of these narrow bands, tBLG exhibits remarkable phenomena such as insulating and superconducting states, which are accessible by tuning carrier density through electrochemical doping. The discovery by Cao et al. (2018) that doping these flat bands leads to both insulating and superconducting phases has opened a new frontier in the study of two-dimensional materials. These insulating states, observed at quarter filling of the flat bands (i.e., \(\nu = \pm 2\) electrons per moiré unit cell), are Mott insulators and are distinguished from traditional band insulators by the role of electron-electron interactions, rather than band structure alone. A sudden drop in conductance occurs at these fillings, marking the transition from metallic to insulating behavior.
+
+The fabrication of tBLG devices employs a "tear and stack" technique, which allows precise control of the twist angle with accuracies on the order of 0.1$^\circ$-0.2$^\circ$. These devices are typically encapsulated in hexagonal boron nitride (hBN) to protect them from environmental effects and fabricated on SiO2/Si substrates. A bottom Pd/Au gate is used to control the charge carrier density, allowing for precise doping of the material. The system exhibits insulating behavior at quarter fillings of \(\pm 2\) electrons per moiré unit cell, with conductance being exponentially suppressed below a critical temperature of approximately 4 K. Furthermore, applying a perpendicular magnetic field has been shown to suppress these insulating states, highlighting the interplay between charge carrier density and external fields.
+
+In terms of theoretical modeling, various approaches—including tight-binding and continuum models—have been employed to calculate the electronic band structure of tBLG. For small twist angles (typically between 1$^\circ$ and 2$^\circ$), these models predict a significant reduction in the Fermi velocity, which tends to zero at the magic angle. The energy dispersion around the K and K' points is not linear, and the hybridization of Dirac cones results in a pair of Van Hove singularities in the density of states. As the twist angle decreases, the interlayer hopping energy, denoted as \(t_\theta\), becomes comparable to the energy mismatch between the cones, pushing the intersection of the cones to zero energy.
+
+A particularly interesting feature of tBLG is the formation of a Mott-like insulator phase at half-filling of the moiré unit cell. The correlated insulating states observed near half-filling are consistent with theoretical predictions based on the interplay between the Coulomb interaction and the suppression of kinetic energy due to the flat bands near magic angles. This Mott-like insulating behavior can be confirmed by temperature-dependent conductance measurements, which show a transition from a metallic phase at higher temperatures to an insulating phase at low temperatures.
+
+Upon slight doping away from these insulating states, the system exhibits superconducting behavior, with a critical temperature in the range of a few Kelvins. This superconductivity, which emerges at doping levels near half-filling, has similarities to high-temperature superconductivity observed in cuprates, and has stimulated extensive theoretical and experimental investigations. The phase diagram of tBLG reveals superconducting domes surrounding the insulating phase, with the system transitioning to a normal metallic state at higher temperatures or under the application of a magnetic field.
+
+Scanning tunneling microscopy (STM) has provided valuable insights into the local density of states (LDOS) and the evolution of the flat bands as the system is doped away from the charge neutrality point. These experiments show that the bandwidth of the flat bands increases as the chemical potential is tuned closer to the CNP, with a maximum bandwidth observed at charge neutrality. Furthermore, STM studies have revealed breaking of the three-fold rotational symmetry in the system when doped around quarter filling, indicating the potential emergence of new symmetries and topological phenomena in tBLG.
+
+The application of a magnetic field to tBLG devices has also been shown to affect the insulating and superconducting phases. At high magnetic fields (\(B \approx 4T\)), the insulating states are suppressed, and the system enters a metallic phase. The Zeeman energy required to suppress the insulating states is approximately 0.5 meV, which is consistent with the thermal activation gap observed in low-temperature measurements. The combination of strong electron-electron interactions, superconductivity, and topological phenomena observed in tBLG makes it a promising material for exploring new quantum phases and understanding the complex behavior of correlated electron systems in two dimensions.
+
+In conclusion, the study of twisted bilayer graphene presents a fascinating and multifaceted exploration of two-dimensional materials, with applications spanning superconductivity, Mott insulators, and topological phenomena. The ability to control the twist angle with high precision, along with the discovery of superconductivity in the absence of traditional pairing mechanisms, makes tBLG an exciting material for future research in condensed matter physics.
+
+\n
+\textbf{OUTRA VERSÃO DO CHATGPT}
+\n
+
+Twisted bilayer graphene (tBLG) exhibits some of the most striking and profound moiré phenomena, especially when two graphene layers are slightly twisted relative to each other. This twist leads to an interlayer coupling whose strength is modulated by the local registry between the two layers, varying gradually according to the long-wavelength moiré pattern. The resulting low-energy band structure of tBLG reveals two sets of monolayer graphene Dirac cones rotated by the twist angle \(\theta\) (Fig. 1.1(b)), with the interlayer hybridization mixing the Dirac cones at either the \(K\) or \(K'\) valleys. Bistritzer and MacDonald (Ref. [11]) predicted that this hybridization induces energy gaps near the intersection of the Dirac cones and a significant renormalization of the Fermi velocity \(v_F\). At specific twist angles, termed "magic angles," the Fermi velocity vanishes, and the associated moiré bands become extremely flat, with bandwidths reduced to tens of meV. This flattening arises due to the competition between intra- and interlayer hybridization energy strengths (Fig. 1.1(b-d)).
+
+At the first magic angle (\(\theta \approx 1.1^\circ\)), the band structure, as shown in Fig. 1.1(f), exhibits four narrow, isolated bands centered around the charge neutrality point (CNP). Cao et al. (Ref. [8], [9]) discovered that doping these bands opened a new frontier in the study of 2D materials, moiré superlattices, insulating and superconducting states, emergent symmetries, and topological phenomena. The devices were fabricated using the "tear and stack" method, which ensures precise control over the twist angle (accuracy of \(0.1^\circ - 0.2^\circ\)), and encapsulated in hexagonal boron nitride (hBN) flakes on SiO\(_2\)/Si substrates (Fig. 1.1(a)). A bottom Pd/Au gate was used to control the charge carrier density.
+
+Fig. 1.2(a) presents the conductance as a function of charge carrier density, showing metallic behavior as the chemical potential is shifted away from the CNP. However, as the system reaches quarter-integer fillings of \(\pm 2\) electrons per unit cell, the conductance drops sharply, indicating a transition to an insulating state. Temperature-dependent conductance measurements in Fig. 1.2(b) show exponential suppression of conductance below approximately 4 K, consistent with an activation gap \(\Delta \approx 0.3 \, \text{meV}\). Further, applying a perpendicular magnetic field (Fig. 1.2(c)) converts these insulating states into metallic ones, with the Zeeman energy required to suppress the insulating states matching the thermal activation energy. These insulating states are thought to be Mott insulators, driven by electron-electron interactions, rather than single-particle effects predicted by band structure calculations.
+
+The insulator-metal transition and superconductivity in tBLG have been subjects of intense study. Upon slight doping away from the insulating phase, conductance sharply increases, with resistance dropping to zero—indicative of superconductivity. The superconducting critical temperature is a few Kelvins, and the state can be suppressed by a magnetic field of 0.4 Tesla. The phase diagram around quarter filling (Fig. 1.2(d)) reveals two superconducting domes surrounding the insulating state, similar to the phase diagram observed in cuprate superconductors, which has spurred both experimental and theoretical efforts to understand the underlying mechanisms.
+
+Recent improvements in sample quality and experimental setups have expanded the phase diagram, with insulating states observed at other integer fillings of the flat bands, including charge neutrality (Refs. [14]-[20]). At a filling of \(\nu = \pm 3\), an intriguing magnetic phase emerges, where longitudinal resistance approaches the quantized Hall value \(\frac{\hbar}{e^2}\) and exhibits hysteresis, signaling the Quantum Anomalous Hall effect. This behavior suggests spontaneous time-reversal symmetry breaking and points to a topological origin.
+
+Scanning tunneling microscopy (STM) studies have provided insights into the local and total density of states near the magic angle, with the density of states exhibiting a pronounced peak at the AA stacking regions of the moiré pattern (Refs. [16], [17], [18]). Additionally, the separation between van Hove singularities increases as the chemical potential moves within the flat bands, peaking at the CNP. Furthermore, a three-fold rotational symmetry breaking has been observed when doping near the quarter-filling insulating phase (Refs. [16], [20], [17]).
+
+Another fascinating feature of tBLG is the large linear-in-temperature resistivity, which persists over a broad range of twist angles and up to several tens of Kelvins (Refs. [23], [24]). This behavior is attributed to electron-phonon scattering (Refs. [23], [25]) or quantum fluctuations (Ref. [24]).
+
+Superconductivity has been observed across a broader range of doping densities, even when insulating states are suppressed, either by the proximity of a metallic layer (Ref. [27]) or by slight deviation from the magic angle (Ref. [26]). The fact that superconductivity arises in the absence of correlated insulating states suggests that it originates independently and might be explained by the standard BCS electron–phonon coupling mechanism (Refs. [28], [29], [30]).
+
+Calculations of the tBLG band structure have been performed using methods such as tight-binding and continuum approximations, as well as more advanced ab initio approaches (Refs. [10], [16], [17], [18], [24], [26], [27]). These calculations consistently predict that for small twist angles, especially near the magic angles, four nearly flat bands emerge near the charge neutrality point, with a bandwidth on the order of 10–20 meV (Fig. 1.15(a)).
+
+For twist angles between \(2^\circ\) and \(15^\circ\), the mini-band dispersion around the K and K' points remains linear, but the Fermi velocity decreases with decreasing twist angle (Refs. [18], [19]). This behavior is explained by the hybridization of the Dirac cones at the K points, leading to a saddle point in the energy dispersion and the appearance of van Hove singularities in the density of states (Fig. 1.16). As the twist angle decreases, the Fermi velocity approaches zero at the magic angle (\(\theta \approx 1.1^\circ\)) and oscillates for smaller angles (Refs. [17], [18], [20]).
+
+The first magic angle can be estimated by balancing the interlayer hopping energy \(t_\theta\) and the energy scale of the Dirac cones \(v_F k_\theta\), where \(v_F\) is the Fermi velocity, and \(k_\theta\) is the wavevector at the K point (Eq. 1.48). This yields an estimated value of \(\theta \approx 1.1^\circ\), which matches the experimental observation (Ref. [20]). Near this magic angle, the local density of states at the AA stacking regions is highly peaked, and the resulting quenching of the quantum kinetic energy gives rise to a correlated insulating phase at half-filling of the moiré unit cell, resembling a Mott insulator.
+
+In conclusion, the interplay between twist angle, electron-electron interactions, and the resulting moiré patterns in tBLG leads to a rich and tunable phase diagram, with insulating, metallic, and superconducting phases emerging in a manner reminiscent of strongly correlated systems such as cuprate superconductors. This presents exciting opportunities for exploring novel quantum phases in two-dimensional materials.
+
+<++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++>
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%-----
-%%% Referências bibliográficas
-%%%-----
-%\addcontentsline{toc}{chapter}{\bibname}
-%%\bibliographystyle{abntex2-num}
-%\bibliography{citations}
-%\bibliographystyle{ieeetr}
-%\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----
+%% Referências bibliográficas
+%%-----
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{abntex2-num}
+\bibliography{citations}
+\bibliographystyle{ieeetr}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENT THIS TO COMPILE main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
