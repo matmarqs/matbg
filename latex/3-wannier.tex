@@ -367,22 +367,22 @@ This means that all EBRs can be induced from irreps of the \textbf{maximal} site
 \end{enumerate}
 \end{lemma}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Exceptions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\textbf{O TEXTO A SEGUIR FOI PLAGIADO DO LECTURES FROM TMS 2017}
-
-We have determined that all elementary band representations can be induced from
-irreducible representations of the maximal site-symmetry groups. But this condition
-is not true in the opposite way; not all irreducible representation of the maximal site-
-symmetry groups induce an elementary band representation. These last cases, when
-what is induced is not an elementary band representation, are called exceptions. This
-may seem annoying, but they have already been tabulated in Topological Quantum
-Chemistry [10].
-Hence (with some exceptions), band representations induced from irreducible rep-
-resentations of maximal site-symmetry groups give elementary band representations,
-whose bands are connected in the first BZ (they have no gap).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%\subsection{Exceptions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%\textbf{O TEXTO A SEGUIR FOI PLAGIADO DO LECTURES FROM TMS 2017}
+%%%
+%%%We have determined that all elementary band representations can be induced from
+%%%irreducible representations of the maximal site-symmetry groups. But this condition
+%%%is not true in the opposite way; not all irreducible representation of the maximal site-
+%%%symmetry groups induce an elementary band representation. These last cases, when
+%%%what is induced is not an elementary band representation, are called exceptions. This
+%%%may seem annoying, but they have already been tabulated in Topological Quantum
+%%%Chemistry [10].
+%%%Hence (with some exceptions), band representations induced from irreducible rep-
+%%%resentations of maximal site-symmetry groups give elementary band representations,
+%%%whose bands are connected in the first BZ (they have no gap).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Topological Systems}
@@ -400,7 +400,7 @@ Band representations describe systems in the atomic limit, where bands can be de
 Any isolated set of bands that is not equivalent to a band representation (composite or elementary) gives a strong, weak, or crystalline topological insulator.
 \end{theorem}
 
-\boxed{\textbf{TAMBÉM FALAR SOBRE BAND CONNECTIVITY.}}
+%%%\boxed{\textbf{TAMBÉM FALAR SOBRE BAND CONNECTIVITY.}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -413,7 +413,7 @@ Any isolated set of bands that is not equivalent to a band representation (compo
 %
 %If the irreps that appear in $\mathcal{B}$ can be obtained from a linear combination of the EBRs of the space group, then one must compute symmetric and localized Wannier functions for the bands in $\mathcal{B}$ to confirm that they are equivalent to the atomic limit defined by the linear combination of EBRs or compute a Berry phase that will distinguish the two. This is because, it is possible for two distinct groups of bands to have the exact same irreps at all high-symmetry points, but different Berry phases (recall, this is exactly why we require the homotopic notion of equivalence, as in Definition \ref{def:equiv_bandrep}.)
 
-\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
+%%%\textbf{REFINAR ESSE TEXTO COM BASE NO ARTIGO PRINCIPAL TOPOLOGICAL QUANTUM CHEMISTRY.}
 
 
 To determine whether a set of bands \(\mathcal{B}\) does \textbf{not} form a band representation, a systematic approach can be followed: first, identify all elementary band representations (EBRs) for the relevant space group and catalog the irreducible representations (irreps) that appear at each high-symmetry point for these EBRs. Then, calculate the irreps associated with the bands in \(\mathcal{B}\) at the high-symmetry points. If the irreps corresponding to \(\mathcal{B}\) cannot be expressed as a linear combination of the irreps from the EBRs, the bands do not form a band representation. According to Theorem \ref{th:topo_insul}, this indicates that the bands are topological.
@@ -452,7 +452,7 @@ We see that our site-symmetry group with spinful orbitals is isomorphic to $\cc{
 
 Let us calculate the induced representation and then subduce it to little groups at high-symmetry points, in other words, compute $(\Pi \uparrow G) \downarrow G_\k$.
 
-First of all, as we have seen in Equation \ref{eq:orbit_q2}, the coset representatives of $G_{\q_2}$ can be chosen $g_1 = \{E \mid 0\}$ and $g_2 = \{C_6 \mid 0\}$. We need to compute $\t_{\beta\alpha}$ for every generator of $G$, which when we exclude translations, can be chosen as $\{C_3\mid 0\}$, $\{m_{1\cc{1}} \mid 0\}$, $\{C_2\mid 0\}$. We decompose $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$ (Equation \ref{eq:t_betaalpha}) for every generator $g$, and we call $\gamma_{\beta\alpha} = g_\beta$ which corresponds to the coset representative $g_\alpha$.
+First of all, as we have seen in Equation \ref{eq:orbit_q2}, the coset representatives of $G_{\q_2}$ can be chosen $g_1 = \{E \mid 0\}$ and $g_2 = \{C_6 \mid 0\}$. We need to compute $\t_{\beta\alpha}$ for every generator of $G$, which when we exclude translations, can be chosen as $\{C_3\mid 0\}$, $\{m_{1\cc{1}} \mid 0\}$, $\{C_2\mid 0\}$. We decompose $g g_\alpha = \sg{E}{\t_{\beta\alpha}} g_\beta h$ (Equation \ref{eq:t_betaalpha}) for every generator $g$, and we call $\gamma_{\beta\alpha} = g_\beta$ which corresponds to the coset representative $g_\alpha$. Finally, we use Equation \ref{eq:k_block_inducedrep_jbia} to calculate $[\rho_G^\k(g)]_{j\beta,i\alpha}$.
 
 \begin{itemize}
 \item $g = \{C_3\mid 0\}$:
@@ -470,7 +470,6 @@ gg_1 = \{C_3 \mid 0\} \{E \mid 0\} = \underbrace{\{E \mid -\a_1\}}_{\{E\mid\t_{1
 gg_2 = \{C_3\mid 0\}\{C_6\mid 0\}= \{E\mid-\a_2\}\{C_2\mid\a_2\}= \underbrace{\{E\mid -\a_2\}}_{\{E\mid \t_{22}\}} \underbrace{\{C_6 \mid 0\}}_{g_2 = \gamma_{22}} \underbrace{\{C_3 \mid \a_1\}}_{h_{22}}.
 \end{equation}
 
-From Equation \ref{eq:k_block_inducedrep_jbia}, we have
 \begin{align} \label{eq:rhoC3_inducedrep_k_jbia}
 \qty[\rho_G^\k(\{C_3\mid0\})]_{j\beta,i\alpha} &=
 \begin{pmatrix}
@@ -607,7 +606,6 @@ h_{22} &= \{C_6^{-1}\mid 0\} \{E \mid -\a_1+\a_2\} \{m_{1\cc{1}} \mid 0\} \{C_6 
 &= \{C_6^{-1} m_{1\cc{1}} C_6 \mid \a_2\} = \{ m_{1\cc{1}} C_3 \mid \a_2 \} = \{ m_{1\cc{1}} \mid 0 \} \{C_3\mid\a_1\} \in G_{\q_2}.
 \end{align}
 
-From Equation \ref{eq:k_block_inducedrep_jbia}, we have
 \begin{align} \label{eq:rho_m11_inducedrep_k_jbia}
 \qty[\rho_G^\k(\{m_{1\cc{1}}\mid0\})]_{j\beta,i\alpha} &=
 \begin{pmatrix}
@@ -635,40 +633,37 @@ i & 0 & 0 & 0 \\
 
 \end{itemize}
 
+Since we are working with the honeycomb lattice, the corresponding Brillouin Zone is shown in Figure \ref{fig:honeycomb_tqc_BZ}. We now focus on calculating the characters for the high-symmetry points: \(\Gamma\), \(K\), and \(M\).
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{fig/honeycomb_tqc_BZ.png}
-\caption{Brillouin Zone of the honeycomb lattice of Figure \ref{fig:generators_P6mm}, where the momentum lattice vectors $\b_{1,2}$ satisfy $\vb{a}_i \vdot \vb{b}_j = 2\pi \delta_{ij}$.}
+\caption{Brillouin Zone of the honeycomb lattice.}
 \label{fig:honeycomb_tqc_BZ}
 \end{figure}
 
 
-The characters are (if $g \in G_\k$, then $g \k \equiv \k$)
+The characters \(\chi^{\rho_G^\k(g)}\) for \(g \in G_\k\) (with \(g \k \equiv \k\)) are given by:
 \begin{align} \label{eq:characters_rho_inducedrep_k}
-\begin{cases}
-\chi^{\rho_G^\k}(\{E\mid 0\}) &= 4, \\
-\chi^{\rho_G^\k}(\{C_6\mid 0\}) &= 0, \\
-\chi^{\rho_G^\k}(\{C_3\mid 0\}) &= e^{i \k \vdot \a_1} + e^{i \k \vdot \a_2}, \\
-\chi^{\rho_G^\k}(\{C_2\mid 0\}) &= 0, \\
+\chi^{\rho_G^\k}(\{E\mid 0\})           &= 4, \\
+\chi^{\rho_G^\k}(\{C_6\mid 0\})         &= 0, \\
+\chi^{\rho_G^\k}(\{C_3\mid 0\})         &= e^{i \k \vdot \a_1} + e^{i \k \vdot \a_2}, \label{eq:characters_Gk_C3} \\
+\chi^{\rho_G^\k}(\{C_2\mid 0\})         &= 0, \\
 \chi^{\rho_G^\k}(\{m_{1\cc{1}}\mid 0\}) &= 0.
-\end{cases}
 \end{align}
 
-For $\k = \Gamma = \0$ and $\k = K = \frac{2\b_1 + \b_2}{3}$ we have
+In particular, for \(\{C_3 \mid 0\}\), the characters at \(\k = \Gamma = \mathbf{0}\) and \(\k = K = \frac{2\mathbf{b}_1 + \mathbf{b}_2}{3}\) are:
 \begin{equation} \label{eq:characters_rhoC3_k_Gamma_K}
 \chi^{\rho_G^\Gamma}(\{C_3\mid 0\}) = 2, \quad
 \chi^{\rho_G^K}(\{C_3\mid 0\}) = e^{\frac{2\pi i}{3}} + e^{-\frac{2\pi i}{3}} = -1. \quad
 \end{equation}
 
-Notice that $\chi^{\rho_G^M}(\{C_3\mid 0\})$ does not make sense, because $\{C_3\mid 0\} \notin G_M$.
+%Note that \(\chi^{\rho_G^M}(\{C_3 \mid 0\})\) is not meaningful because \(\{C_3 \mid 0\} \notin G_M\).
 
-\n
-
-We compare the characters in Equation \ref{eq:characters_rho_inducedrep_k} to the character tables \ref{tab:D6_double}, \ref{tab:D3_double_littlegroup_K} and \ref{tab:D2_double}, in order to discover the multiplicities in Equation \ref{eq:induce_subduce}.
-
-For $\Gamma$, comparison with Table \ref{tab:D6_double} shows that $\rho_G^{\Gamma} = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9$.
+To determine the multiplicities in Equation \ref{eq:induce_subduce}, we compare the characters of $\rho_G^\k$ with the character tables \ref{tab:D6_double}, \ref{tab:D3_double_littlegroup_K}, and \ref{tab:D2_double}. For \(\Gamma\), a comparison on Table \ref{tab:D6_double} reveals that \(\rho_G^{\Gamma} = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9\).
 
 \begin{table}[H]
+\small
 \caption{Character table of group $\cc{D}_6$ (or $\cc{C}_{6v}$).}
 \centering
 \begin{tabular} { c c c c c c c c c c  }
@@ -700,9 +695,10 @@ $\rho_G^\Gamma = \cc{\Gamma}_8 \oplus \cc{\Gamma}_9$ & $\P4$ & $\P2$ & $\P0$ & $
 \end{table}
 
 
-For $K$, comparison with Table \ref{tab:D3_double_littlegroup_K} shows that $\rho_G^{K} = \cc{K}_4 \oplus \cc{K}_5 \oplus \cc{K}_6$, where we renamed $\cc{\Gamma}_{4,5,6}$ (in character tables of an abstract group) to $\cc{K}_{4,5,6}$, in order to emphasize the little group at $K$.
+For $K$, the comparison on Table \ref{tab:D3_double_littlegroup_K} shows that $\rho_G^{K} = \cc{K}_4 \oplus \cc{K}_5 \oplus \cc{K}_6$.%, where we renamed $\cc{\Gamma}_{4,5,6}$ (in character tables of an abstract group) to $\cc{K}_{4,5,6}$, in order to emphasize the little group at $K$.
 
 \begin{table}[H]
+\small
 \caption{Character table of double group $\cc{D}_3$ (or $\cc{C}_{3v}$).}
 \centering
 \begin{tabular} { c c c c c c c  }
@@ -728,9 +724,10 @@ $\rho_G^{K} = \cc{K}_4 \oplus \cc{K}_5 \oplus \cc{K}_6$    & $\P4$ & $ -1$ & $\P
 \end{table}
 
 
-For $M$, comparison with Table \ref{tab:D2_double} shows that $\rho_G^M = \cc{M}_5 \oplus \cc{M}_5$. Again, we use $\cc{\Gamma}_5$ to refer to the irrep of the abstract group $\cc{D}_2$, but the notation $\cc{M}_5$ to refer to the irrep of the little group at $M$.
+For $M$, comparison with Table \ref{tab:D2_double} shows that $\rho_G^M = \cc{M}_5 \oplus \cc{M}_5$. %Again, we use $\cc{\Gamma}_5$ to refer to the irrep of the abstract group $\cc{D}_2$, but the notation $\cc{M}_5$ to refer to the irrep of the little group at $M$.
 
 \begin{table}[H]
+\small
 \caption{Character table of double group $\cc{D}_2$ (or $\cc{C}_{2v}$).}
 \centering
 \begin{tabular} { c c c c c c }
@@ -754,9 +751,10 @@ $\rho_G^{M} = 2 \cc{M}_5$    & $\P4$ & $\P0$ & $\P0$ & $\P0$ & $ -4$ \\
 \end{table}
 
 
-At each high-symmetry point $(\Gamma, K, M)$, we will decompose the little group irreps that appear at that point into a sum of irreps of the little group of each high-symmetry line emanating from that point. There are three high-symmetry lines: $\Gamma-K$, $\Gamma-M$ and $K-M$. Although the little group of each line is distinct, all three groups are isomorphic to $C_s \ltimes \mathbb{Z}^2$, generated by a single mirror and two primitive lattice translations. Its character table is
+At each high-symmetry point $(\Gamma, K, M)$, we decompose the little group irreps that appear at that point into a sum of irreps of the little group of each high-symmetry line emanating from that point. There are three high-symmetry lines: $\Gamma-K$, $\Gamma-M$ and $K-M$. Although the little group of each line is distinct, all three groups are isomorphic to $C_s \ltimes \mathbb{Z}^2$, generated by a single mirror and two primitive lattice translations. The character table for the double point group \(\cc{C}_s\) is provided in Table \ref{tab:Cs_double}.
 
 \begin{table}[H]
+\small
 \caption{Character table of double group $\cc{C}_s$.}
 \centering
 \begin{tabular} { c c c c c }
@@ -775,10 +773,11 @@ $\cc{\Lambda}_4$ & $\P1$ & $\P i$ & $ -1$ & $ -i$ \\
 \label{tab:Cs_double}
 \end{table}
 
-We are going to call the irreps of the little groups $G_\k$ points of high-symmetry lines $\Lambda_{1,2}$ and $\cc{\Lambda}_{3,4}$. We subduce the groups $G_\Gamma$, $G_K$ and $G_M$ (isomorphic to $\cc{D}_6$, $\cc{D}_3$ and $\cc{D}_2$) to the little group $G_\k$ at high-symmetry lines (isomorphic to $\cc{C}_s$, which is a subgroup of $\cc{D}_6$, $\cc{D}_3$ and $\cc{D}_2$). For this, we compare the representations of the subduction in Table \ref{tab:Cs_subduction_highsymmlines}.
+We refer to the irreps of the little groups \(G_\k\) as points on the high-symmetry lines \(\Lambda_{1,2}\) and \(\cc{\Lambda}_{3,4}\). We perform the subduction of the groups \(G_\Gamma\), \(G_K\), and \(G_M\) (isomorphic to \(\cc{D}_6\), \(\cc{D}_3\), and \(\cc{D}_2\), respectively) to the little group \(G_\Lambda\) at the high-symmetry lines (isomorphic to \(\cc{C}_s\), a subgroup of \(\cc{D}_6\), \(\cc{D}_3\), and \(\cc{D}_2\)). This is achieved by comparing the representations of the subduction, as shown in Table \ref{tab:Cs_subduction_highsymmlines}.
 
 \begin{table}[H]
-\caption{Double-valued representations of $\cc{C}_s$ and comparison with subduced representations of $G_\Gamma$, $G_K$ and $G_M$.}
+\small
+\caption{Double-valued representations of \(\cc{C}_s\) and subductions of \(G_\Gamma\), \(G_K\), and \(G_M\).}
 \centering
 \begin{tabular} { c c c c c }
 \specialrule{0.05em}{0em}{0.2em}
@@ -808,13 +807,10 @@ With the information about the decomposition of representations of Table \ref{ta
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{fig/bands_con_discon.png}
-\caption{The two possible kinds of bands from Wyckoff position $2b$.}
+\includegraphics[width=0.8\linewidth]{fig/bands_con_discon.png}
+\caption{The two possible types of bands originating from the Wyckoff position \(2b\).}
 \label{fig:bands_con_discon}
 \end{figure}
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
