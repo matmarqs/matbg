@@ -14,7 +14,11 @@ In 2004, Andre Geim, Konstantin Novoselov, et. al. \cite{novoselov_2004} success
 
 These 2D materials can be stacked to form van der Waals heterostructures, held together by weak interlayer van der Waals forces, allowing the engineering of novel properties at their interfaces. While the behavior of single-layer materials like graphene is well understood, predicting the properties of multilayer heterostructures remains a challenge. A particularly fascinating type of heterostructure are the moiré materials, created by stacking two layers with a slight twist angle or mismatched lattice constants. This misalignment generates a moiré pattern, where the local atomic arrangement varies periodically over a much larger scale than the unit cell of each layer. The moiré pattern acts as a long-wavelength potential, dramatically altering the electronic and structural properties of the system. These emergent states differ fundamentally from those of the individual layers, giving rise to entirely new physical behaviors.
 
-The ability to control the twist angle introduces a new degree of freedom, giving rise to the field of \textit{twistronics}. A landmark moment in this field came in 2018 with two papers published by Jarillo-Herrero and colleagues \cite{cao2018, cao2018_correlated}. These works reported the discovery of correlated insulating and superconducting states in ``magic angle'' twisted bilayer graphene (MATBG), sparking intense theoretical interest and accelerating research into the properties of graphene-based systems. \textbf{MAIS TEXTO AQUI. FALAR DA WANNIER OBSTRUCTION E PORQUE É NECESSÁRIO O THF model}. This thesis focuses on MATBG, where we will investigate its symmetry and topological characteristics, aiming to provide an understanding of the fundamental principles underlying the Topological Heavy Fermion model \cite{topoheavyfermion2022}.
+The ability to control the twist angle introduces a new degree of freedom, giving rise to the field of \textit{twistronics}. A landmark moment in this field came in 2018 with two papers published by Jarillo-Herrero and colleagues \cite{cao2018, cao2018_correlated}. These works reported the discovery of correlated insulating and superconducting states in ``magic angle'' twisted bilayer graphene (MATBG), sparking intense theoretical interest and accelerating research into the properties of graphene-based systems.
+%\textbf{MAIS TEXTO AQUI. FALAR DA WANNIER OBSTRUCTION E PORQUE É NECESSÁRIO O THF model}.
+This thesis focuses on MATBG, where we will investigate its symmetry and topological characteristics, aiming to provide an understanding of the fundamental principles underlying the Topological Heavy Fermion model \cite{topoheavyfermion2022}.
+
+\pagebreak
 
 This chapter serves as an introduction to the complexities and intriguing properties of twisted bilayer graphene (TBG). Section \ref{sec:monolayer_graphene} begins with a brief discussion of the tight-binding model for monolayer graphene, laying the groundwork and terminology essential for later analyses. In Section \ref{sec:experimental_tbg}, we delve into key experimental findings from the literature that highlight the remarkable characteristics of TBG. Finally, Section \ref{sec:outline_thesis} outlines the structure of this thesis, detailing the approach and organization of the subsequent chapters as they tackle the central challenges of the subject.
 
@@ -108,12 +112,6 @@ where \( v_0 = \frac{3td}{2} \) is the Fermi velocity, adopting the convention \
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Twisted bilayer graphene (TBG), formed by stacking two graphene layers with a small twist angle, has become a highly researched material due to its rich and highly tunable electronic properties. The twist between the layers gives rise to a moiré pattern, as illustrated in Figure \ref{fig:moire_pattern}, which introduces a complex modulation of the interlayer interactions. This modulation significantly alters the band structure compared to that of monolayer graphene, as previously shown in Figure \ref{fig:monolayer_dispersion}.
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=0.4\linewidth]{fig/moire_pattern.png}
-%\caption{Moiré pattern.}
-%\label{fig:moire_pattern}
-%\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -133,29 +131,11 @@ Twisted bilayer graphene (TBG), formed by stacking two graphene layers with a sm
 \label{fig:tbg_moire_device}
 \end{figure}
 
-%\begin{figure}[H]
-%\centering
-%\begin{subfigure}{.37\textwidth}
-%  \centering
-%  \includegraphics[height=10em]{fig/tbg_device.png}
-%  \caption{Schematic of the TBG devices. The TBG is encapsulated in hBN flakes and fabricated on SiO$_2$/Si substrates.}
-%  \label{fig:tbg_device}
-%\end{subfigure} \hfill
-%\begin{subfigure}{.60\textwidth}
-%  \centering
-%  \includegraphics[height=10em]{fig/tbg_dirac_cones.png}
-%  \caption{Illustration of the effect of interlayer hybridization: \( w = 0 \), \( 2w \ll \hbar v_0 k_\theta \), and \( 2w \approx \hbar v_0 k_\theta \), where \( v_0 = 10^6 \, \text{m/s} \) is the Fermi velocity of graphene.}
-%  \label{fig:tbg_dirac_cones}
-%\end{subfigure}
-%\caption{Both figures were taken from \cite{cao2018_correlated}.}
-%\label{fig:tbg_figures_taken_from_correlated_insul}
-%\end{figure}
-
 At specific twist angles, known as \textit{magic angles}, these interactions give rise to nearly flat electronic bands near the charge neutrality point (CNP), separated from other bands by gaps on the order of tens of meV. This band flattening is a result of the interplay between intra- and interlayer hybridization energies, as shown in Figure \ref{fig:tbg_dirac_cones}. It occurs when the energy \(2w\), associated with interlayer coupling, becomes comparable to the energy difference \(\hbar v_0 k_\theta\) between the Dirac cones at the \(K^{(1)}\) and \(K^{(2)}\) points of the two layers.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.60\linewidth]{fig/tbg_dirac_cones}
+\includegraphics[width=0.70\linewidth]{fig/tbg_dirac_cones}
 \caption{Illustration of interlayer hybridization in three scenarios: (1) \( w = 0 \), no interlayer coupling; (2) \( 2w \ll \hbar v_0 k_\theta \), weak interlayer coupling; and (3) \( 2w \approx \hbar v_0 k_\theta \), strong interlayer coupling. Here, \( v_0 \approx 10^6 \, \text{m/s} \) is the Fermi velocity of graphene and $k_\theta = 2 \abs{K} \sin(\theta/2)$. Adapted from \cite{cao2018_correlated}.}
 \label{fig:tbg_dirac_cones}
 \end{figure}
@@ -181,7 +161,7 @@ At twist angles near the magic angles, a variety of extraordinary phenomena emer
 \end{figure}
 
 
-Jarillo-Herrero et al. \cite{cao2018, cao2018_correlated} discovered that doping the flat bands in TBG leads to the emergence of both insulating and superconducting phases, marking a new frontier in two-dimensional materials research. The insulating states, observed at half-fillings of the flat bands in Figure \ref{fig:tbg_conductance_filling_insulating}, are Mott insulators, driven by electron-electron interactions rather than band theory alone. These states are characterized by a sharp drop in conductance, indicating a transition from metallic to insulating behavior, with conductance exponentially suppressed below a critical temperature of approximately \(T_c = 4 \, \text{K}\), as shown in Figure \ref{fig:tbg_conductance_temperature_insulating}.
+Jarillo-Herrero et al. \cite{cao2018, cao2018_correlated} discovered that doping the flat bands in TBG leads to the emergence of both insulating and superconducting phases, marking a new frontier in two-dimensional materials research. The insulating states, observed at half-fillings of the flat bands in Figure \ref{fig:tbg_conductance_filling_insulating}, are Mott insulators, driven by electron-electron interactions rather than band theory alone. These states are characterized by a sharp drop in conductance, indicating a transition from metallic to insulating behavior, with conductance exponentially suppressed below a critical temperature of approximately \(T = 4 \, \text{K}\), as shown in Figure \ref{fig:tbg_conductance_temperature_insulating}.
 
 \begin{figure}[H]
 \centering
@@ -201,55 +181,48 @@ Jarillo-Herrero et al. \cite{cao2018, cao2018_correlated} discovered that doping
 \label{fig:tbg_insulating}
 \end{figure}
 
-%The fabrication of TBG devices involves a "tear and stack" technique, which enables precise control of the twist angle with accuracies on the order of \(0.1^\circ\)-\(0.2^\circ\). These devices are typically encapsulated in hexagonal boron nitride (hBN) to protect them from environmental effects and fabricated on SiO\(_2\)/Si substrates. A bottom Pd/Au gate is employed to control the charge carrier density, allowing for precise doping of the material. These advancements in fabrication techniques have been critical in probing the unique physics of TBG, including its insulating and superconducting behaviors.
+When slightly doped away from the insulating states at half-filling, twisted bilayer graphene exhibits superconducting behavior, characterized by a sharp drop in resistance to zero. This superconductivity, observed at a critical temperature of \( T_c = 1.7 \, \text{K} \) for a twist angle of \( \theta = 1.05^\circ \) (Figure \ref{fig:tbg_superconductivity_b}), can be suppressed by a perpendicular magnetic field as low as \( B = 0.4 \, \text{T} \) \cite{cao2018}. The phase diagram for \( \theta = 1.16^\circ \), shown in Figure \ref{fig:tbg_superconductivity_a}, features two superconducting domes flanking the Mott insulating phase, with the system transitioning to a normal metallic state at elevated temperatures. This phase diagram shows a notable resemblance to that of high-temperature superconducting cuprates \cite{cuprate_superconductivity_lee2006}, inspiring extensive theoretical and experimental efforts to explore the origins of these phenomena.
 
-%In terms of theoretical modeling, various approaches—including tight-binding and continuum models—have been employed to calculate the electronic band structure of tBLG. For small twist angles (typically between 1$^\circ$ and 2$^\circ$), these models predict a significant reduction in the Fermi velocity, which tends to zero at the magic angle. The energy dispersion around the K and K' points is not linear, and the hybridization of Dirac cones results in a pair of Van Hove singularities in the density of states. As the twist angle decreases, the interlayer hopping energy, denoted as \(t_\theta\), becomes comparable to the energy difference between the cones, pushing the intersection of the cones to zero energy.
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[height=17em]{fig/tbg_Tc_superconductivity_M1.png}
+  \caption{Phase diagram for \(\theta = 1.16^\circ\) showing weak superconductivity with a critical temperature \(T_c = 0.5 \, \text{K}\). The phase diagram resembles that of cuprates \cite{cuprate_superconductivity_lee2006}.}
+  \label{fig:tbg_superconductivity_a}
+\end{subfigure} \hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[height=17em]{fig/tbg_Tc_superconductivity_M2.png}
+  \caption{Phase diagram for \(\theta = 1.05^\circ\) showing two asymmetric and overlapping superconducting domes with the highest critical temperature \(T_c = 1.7 \, \text{K}\).}
+  \label{fig:tbg_superconductivity_b}
+\end{subfigure}
+\caption{Four-probe resistance \(R_{xx}\) as a function of temperature $T$ and carrier density $n$. Two superconducting domes surround the half-filling state, labeled ``Mott,'' and are centered around \(\nu = -2\) electrons per moiré unit cell. Regions outside the domes exhibit metallic behavior, characterized by a typical metallic temperature dependence. Adapted from \cite{cao2018}.}
+\label{fig:tbg_superconductivity}
+\end{figure}
 
-%A particularly interesting feature of tBLG is the formation of a Mott-like insulator phase at half-filling of the moiré unit cell. The correlated insulating states observed near half-filling are consistent with theoretical predictions based on the interplay between the Coulomb interaction and the suppression of kinetic energy due to the flat bands near magic angles. This Mott-like insulating behavior can be confirmed by temperature-dependent conductance measurements, which show a transition from a metallic phase at higher temperatures to an insulating phase at low temperatures.
+Beyond the discovery of superconducting \cite{cao2018} and correlated insulating states \cite{cao2018_correlated}, improvements in sample quality and experimental techniques have significantly expanded the phase diagram of twisted bilayer graphene. First of all, correlated insulating states have been observed at nearly all integer fillings of the four flat bands \cite{Lu_2019, Kerelsky_2019, Choi_2019}. Notably, aligning one graphene layer with the hBN substrate reveals unexpected magnetic properties at \(\nu = 3\) fillings \cite{Serlin_2020}. In this alignment, the longitudinal resistance \(R_{xy}\) attains the quantized value \(\hbar/e^2\), accompanied by a deep minimum in \(R_{xx}\), reminiscent of an integer quantum Hall state. Moreover, the Hall resistivity exhibits hysteresis with a coercive field of several tens of millitesla, signaling the emergence of the quantum anomalous Hall effect \cite{thesis_angeli}. These findings indicate spontaneous breaking of time-reversal symmetry and suggest a non-trivial topological origin for these phenomena.
 
-Also upon slight doping away from these insulating states, the system exhibits superconducting behavior, with a critical temperature in the range of a few Kelvins. This superconductivity, which emerges at doping levels near half-filling, has similarities to high-temperature superconductivity observed in cuprates, and has stimulated extensive theoretical and experimental investigations. The phase diagram of tBLG reveals superconducting domes surrounding the insulating phase, with the system transitioning to a normal metallic state at higher temperatures or under the application of a magnetic field.
-
-Scanning tunneling microscopy (STM) has provided valuable insights into the local density of states (LDOS) and the evolution of the flat bands as the system is doped away from the charge neutrality point. These experiments show that the bandwidth of the flat bands increases as the chemical potential is tuned closer to the CNP, with a maximum bandwidth observed at charge neutrality. Furthermore, STM studies have revealed breaking of the three-fold rotational symmetry in the system when doped around quarter filling, indicating the potential emergence of new symmetries and topological phenomena in tBLG.
-
-The application of a magnetic field to tBLG devices has also been shown to affect the insulating and superconducting phases. At high magnetic fields (\(B \approx 4T\)), the insulating states are suppressed, and the system enters a metallic phase. The Zeeman energy required to suppress the insulating states is approximately 0.5 meV, which is consistent with the thermal activation gap observed in low-temperature measurements. The combination of strong electron-electron interactions, superconductivity, and topological phenomena observed in tBLG makes it a promising material for exploring new quantum phases and understanding the complex behavior of correlated electron systems in two dimensions.
-
-In conclusion, the study of twisted bilayer graphene presents a fascinating and multifaceted exploration of two-dimensional materials, with applications spanning superconductivity, Mott insulators, and topological phenomena. The ability to control the twist angle with high precision, along with the discovery of superconductivity in the absence of traditional pairing mechanisms, makes tBLG an exciting material for future research in condensed matter physics.
-
-In terms of theoretical modeling, various approaches—including tight-binding and continuum models—have been employed...
-
-\n
-\textbf{OUTRA VERSÃO DO CHATGPT}
-\n
-
-Twisted bilayer graphene (tBLG) exhibits some of the most striking and profound moiré phenomena, especially when two graphene layers are slightly twisted relative to each other. This twist leads to an interlayer coupling whose strength is modulated by the local registry between the two layers, varying gradually according to the long-wavelength moiré pattern. The resulting low-energy band structure of tBLG reveals two sets of monolayer graphene Dirac cones rotated by the twist angle \(\theta\) (Fig. 1.1(b)), with the interlayer hybridization mixing the Dirac cones at either the \(K\) or \(K'\) valleys. Bistritzer and MacDonald (Ref. [11]) predicted that this hybridization induces energy gaps near the intersection of the Dirac cones and a significant renormalization of the Fermi velocity \(v_F\). At specific twist angles, termed "magic angles," the Fermi velocity vanishes, and the associated moiré bands become extremely flat, with bandwidths reduced to tens of meV. This flattening arises due to the competition between intra- and interlayer hybridization energy strengths (Fig. 1.1(b-d)).
-
-At the first magic angle (\(\theta \approx 1.1^\circ\)), the band structure, as shown in Fig. 1.1(f), exhibits four narrow, isolated bands centered around the charge neutrality point (CNP). Cao et al. (Ref. [8], [9]) discovered that doping these bands opened a new frontier in the study of 2D materials, moiré superlattices, insulating and superconducting states, emergent symmetries, and topological phenomena. The devices were fabricated using the "tear and stack" method, which ensures precise control over the twist angle (accuracy of \(0.1^\circ - 0.2^\circ\)), and encapsulated in hexagonal boron nitride (hBN) flakes on SiO\(_2\)/Si substrates (Fig. 1.1(a)). A bottom Pd/Au gate was used to control the charge carrier density.
-
-Fig. 1.2(a) presents the conductance as a function of charge carrier density, showing metallic behavior as the chemical potential is shifted away from the CNP. However, as the system reaches quarter-integer fillings of \(\pm 2\) electrons per unit cell, the conductance drops sharply, indicating a transition to an insulating state. Temperature-dependent conductance measurements in Fig. 1.2(b) show exponential suppression of conductance below approximately 4 K, consistent with an activation gap \(\Delta \approx 0.3 \, \text{meV}\). Further, applying a perpendicular magnetic field (Fig. 1.2(c)) converts these insulating states into metallic ones, with the Zeeman energy required to suppress the insulating states matching the thermal activation energy. These insulating states are thought to be Mott insulators, driven by electron-electron interactions, rather than single-particle effects predicted by band structure calculations.
-
-The insulator-metal transition and superconductivity in tBLG have been subjects of intense study. Upon slight doping away from the insulating phase, conductance sharply increases, with resistance dropping to zero—indicative of superconductivity. The superconducting critical temperature is a few Kelvins, and the state can be suppressed by a magnetic field of 0.4 Tesla. The phase diagram around quarter filling (Fig. 1.2(d)) reveals two superconducting domes surrounding the insulating state, similar to the phase diagram observed in cuprate superconductors, which has spurred both experimental and theoretical efforts to understand the underlying mechanisms.
-
-Recent improvements in sample quality and experimental setups have expanded the phase diagram, with insulating states observed at other integer fillings of the flat bands, including charge neutrality (Refs. [14]-[20]). At a filling of \(\nu = \pm 3\), an intriguing magnetic phase emerges, where longitudinal resistance approaches the quantized Hall value \(\frac{\hbar}{e^2}\) and exhibits hysteresis, signaling the Quantum Anomalous Hall effect. This behavior suggests spontaneous time-reversal symmetry breaking and points to a topological origin.
-
-Scanning tunneling microscopy (STM) studies have provided insights into the local and total density of states near the magic angle, with the density of states exhibiting a pronounced peak at the AA stacking regions of the moiré pattern (Refs. [16], [17], [18]). Additionally, the separation between van Hove singularities increases as the chemical potential moves within the flat bands, peaking at the CNP. Furthermore, a three-fold rotational symmetry breaking has been observed when doping near the quarter-filling insulating phase (Refs. [16], [20], [17]).
-
-Another fascinating feature of tBLG is the large linear-in-temperature resistivity, which persists over a broad range of twist angles and up to several tens of Kelvins (Refs. [23], [24]). This behavior is attributed to electron-phonon scattering (Refs. [23], [25]) or quantum fluctuations (Ref. [24]).
-
-Superconductivity has been observed across a broader range of doping densities, even when insulating states are suppressed, either by the proximity of a metallic layer (Ref. [27]) or by slight deviation from the magic angle (Ref. [26]). The fact that superconductivity arises in the absence of correlated insulating states suggests that it originates independently and might be explained by the standard BCS electron–phonon coupling mechanism (Refs. [28], [29], [30]).
-
-Calculations of the tBLG band structure have been performed using methods such as tight-binding and continuum approximations, as well as more advanced ab initio approaches (Refs. [10], [16], [17], [18], [24], [26], [27]). These calculations consistently predict that for small twist angles, especially near the magic angles, four nearly flat bands emerge near the charge neutrality point, with a bandwidth on the order of 10–20 meV (Fig. 1.15(a)).
-
-For twist angles between \(2^\circ\) and \(15^\circ\), the mini-band dispersion around the K and K' points remains linear, but the Fermi velocity decreases with decreasing twist angle (Refs. [18], [19]). This behavior is explained by the hybridization of the Dirac cones at the K points, leading to a saddle point in the energy dispersion and the appearance of van Hove singularities in the density of states (Fig. 1.16). As the twist angle decreases, the Fermi velocity approaches zero at the magic angle (\(\theta \approx 1.1^\circ\)) and oscillates for smaller angles (Refs. [17], [18], [20]).
-
-The first magic angle can be estimated by balancing the interlayer hopping energy \(t_\theta\) and the energy scale of the Dirac cones \(v_F k_\theta\), where \(v_F\) is the Fermi velocity, and \(k_\theta\) is the wavevector at the K point (Eq. 1.48). This yields an estimated value of \(\theta \approx 1.1^\circ\), which matches the experimental observation (Ref. [20]). Near this magic angle, the local density of states at the AA stacking regions is highly peaked, and the resulting quenching of the quantum kinetic energy gives rise to a correlated insulating phase at half-filling of the moiré unit cell, resembling a Mott insulator.
-
-In conclusion, the interplay between twist angle, electron-electron interactions, and the resulting moiré patterns in tBLG leads to a rich and tunable phase diagram, with insulating, metallic, and superconducting phases emerging in a manner reminiscent of strongly correlated systems such as cuprate superconductors. This presents exciting opportunities for exploring novel quantum phases in two-dimensional materials.
-
-<++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++> <++>
+In summary, the interplay between the twist angle, electron-electron interactions, and moiré patterns in TBG gives rise to a diverse and highly tunable phase diagram, featuring superconductivity, Mott insulating states, and topological phenomena. These discoveries open new avenues for investigating exotic quantum phases in two-dimensional materials.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structure of the thesis} \label{sec:outline_thesis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this thesis, we analyze the symmetries and topology of twisted bilayer graphene (TBG), with the ultimate goal of understanding the Topological Heavy Fermion (THF) model proposed by Bernevig et al. \cite{topoheavyfermion2022}. Our work is structured as follows:
+
+\begin{itemize}
+\item Chapter \ref{ch:group_theory} introduces group theory and representation theory, providing the foundation for the following chapters. This chapter is designed to be instructional, with a focus on graphene examples, particularly the honeycomb lattice and hexagons.
+
+\item Chapter \ref{ch:topological_quantum_chemistry} presents the Topological Quantum Chemistry (TQC) framework, which classifies topological materials based on their symmetries and band structures. This chapter builds on the group theory concepts from Chapter \ref{ch:group_theory} and sets the stage for applying TQC to TBG.
+
+\item Chapter \ref{ch:emmergent_symm_wannier_obstruction} explores the TBG system through the Bistritzer-MacDonald model (continuum theory). Here, we analyze its geometry, emergent symmetries, and topology using TQC, and discuss the Wannier obstruction arising from the topological analysis.
+
+\item Chapter \ref{ch:topoheavyfermion} introduces the Topological Heavy Fermion (THF) model, which maps the low-energy bands of TBG to the heavy fermion problem. The model resolves the Wannier obstruction by coupling $f$-electrons (flat bands, heavy) with $c$-electrons (nearly free), providing a comprehensive description that incorporates all emergent symmetries.
+
+\item Finally, Chapter \ref{ch:conclusions} offers concluding remarks and reflections on the work presented.
+\end{itemize}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
