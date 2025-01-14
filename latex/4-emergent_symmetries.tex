@@ -375,9 +375,9 @@ we conclude that the three possibilities in Equation \ref{eq:G1G2_3_possibilitie
 
 Ultimately, the interlayer coupling reduces to three terms:
 \begin{equation} \label{eq:interlayer-3terms}
-T_{12}^{\alpha\beta}(\q_1, \q_2) = T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_1 - \q_2, \q_\text{b}}
-+ T^{\alpha\beta}_{\q_\text{tr}} \delta_{\q_1 - \q_2, -\q_\text{tr}}
-+ T^{\alpha\beta}_{\q_\text{tl}} \delta_{\q_1 - \q_2, -\q_\text{tl}},
+T_{12}^{\alpha\beta}(\q_1, \q_2) = T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_2 - \q_1, \q_\text{b}}
++ T^{\alpha\beta}_{\q_\text{tr}} \delta_{\q_2 - \q_1, \q_\text{tr}}
++ T^{\alpha\beta}_{\q_\text{tl}} \delta_{\q_2 - \q_1, \q_\text{tl}},
 \end{equation}
 where
 \begin{equation} \label{eq:interlayer-tensor}
@@ -410,9 +410,9 @@ e^{2\pi i/3} & 1
 
 For the valley $K'$ the derivation is analogous, which leads us to
 \begin{equation} \label{eq:interlayer-3terms_valley-1}
-T^{\zeta=-1}(\q_1, \q_2) = T_{\q_\text{b}}^* \delta_{\q_1 - \q_2, \q_\text{b}}
-+ T_{\q_\text{tr}}^* \delta_{\q_1 - \q_2, -\q_\text{tr}}
-+ T_{\q_\text{tl}}^* \delta_{\q_1 - \q_2, -\q_\text{tl}},
+T^{\zeta=-1}(\q_1, \q_2) = T_{\q_\text{b}}^* \delta_{\q_2 - \q_1, \q_\text{b}}
++ T_{\q_\text{tr}}^* \delta_{\q_2 - \q_1, \q_\text{tr}}
++ T_{\q_\text{tl}}^* \delta_{\q_2 - \q_1, \q_\text{tl}},
 \end{equation}
 
 \textbf{TEXTO DO ANGELI ++++++++++++++++++++++++++++}
@@ -453,6 +453,44 @@ where \( u \) is generally smaller than \( u' \), reflecting the asymmetry intro
 In **Fig. 2.6**, we show the band structure of twisted bilayer graphene at \( \theta = 1.08^\circ \), obtained using the \( u \) and \( u' \) parameters reported in Ref. [53]. The resulting band structure closely resembles that obtained via tight-binding models, with the notable feature that the bands exhibit particle-hole symmetry.
 
 \textbf{FINAL DO TEXTO DO ANGELI ++++++++++++++++++++++++++++}
+
+To obtain the final hamiltonian for the BM model, it is useful to represent it in a new lattice \cite{all_magic_angles}. We define the set of vectors
+\begin{equation} \label{eq:Q_lattice_QA_QB_def}
+\{\Q_A, \Q_B\} =
+\begin{cases}
+\; \Q_A = \K_2 + m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}}; \\
+\; \Q_B = \K_1 + m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}},
+\end{cases}
+\end{equation}
+where $\Q_A$ represent the black lattice and $\Q_B$ the red lattice as in \cite{thesis_angeli, all_magic_angles}. They span the vertices of the mBZs, where $\Q_A$ (black circles) correspond to valley $\zeta = -1$ in layer 1 and valley $\zeta = +1$ in layer 2, while $\Q_B$ (red circles) correspond to valley $\zeta = +1$ in layer 1 and valley $\zeta = -1$ in layer 2.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/moire-vectors.png}
+\caption{\textbf{FAZER MINHA PRÓPRIA FIGURA.}}
+\end{figure}
+
+Next, we redefine the momenta for layers 1 and 2 as
+\begin{equation} \label{eq:redef_k1k2_momenta_Qlattice}
+\q_1 = \k_1 - K_1 = \k - \Q_B, \quad \q_2 = \k_2 - K_2 = \k - \Q_A.
+\end{equation}
+
+Since $\q_2 - \q_1$ can assume the three values $\q_{\text{b}}$, $\q_{\text{tr}}$ or $\q_{\text{tl}}$, in the new representation the selection rules becomes
+\begin{align} \label{eq:selection_rules_qbqtrqtl_QAQB}
+\begin{cases}
+\; \q_2-\q_1=\q_{\text{b}}  \implies \Q_B = \Q_A + \q_{\textbf{b}} \\
+\; \q_2-\q_1=\q_{\text{tr}} \implies \Q_B = \Q_A + \q_{\textbf{tr}} \\
+\; \q_2-\q_1=\q_{\text{tl}} \implies \Q_B = \Q_A + \q_{\textbf{tl}}
+\end{cases}
+\end{align}
+
+With those definitions, the Hamiltonian of valley $\zeta$ reads
+\begin{equation} \label{eq:mbm-1v}
+H^\zeta_{\Q\Q'}(\k) = \zeta \delta_{\Q,\Q'} v_F (\k - \Q) \vdot (\s_x, \zeta \s_y) +
+\sum_{j = \text{b},\text{tr},\text{tl}} \qty(\delta_{\Q'-\Q,\q_j} + \delta_{\Q-\Q',\q_j}) T_{j}^\zeta.
+\end{equation}
+
+<++> <++> <++> <++> <++> <++> <++> <++>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Symmetry analysis and Wannier obstruction} \label{sec:wannier_obstruction}

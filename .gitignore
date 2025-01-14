@@ -15,3 +15,4 @@ articles/*.pdf
 **/*.listing
 **/*.nav
 reading/
+**/.ipynb_checkpoints/
