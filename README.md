@@ -1,2 +1,2 @@
 # matbg
-Resources for MATBG
+Resources for MATBG and thesis.
