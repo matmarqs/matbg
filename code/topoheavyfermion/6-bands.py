@@ -65,8 +65,8 @@ def main():
     # momentum k is in Angstroms^{-1}
     path = [
              bs.k_point(r'$\text{K}_{M}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
-             bs.k_point(r'$\Gamma_{M}$', np.array([0, 0])),                           # Gamma_M
-             #bs.k_point(r"$K_{m}'$",     np.array([np.sqrt(3)/2 * kth, -1/2 * kth])), # K_M'
+             bs.k_point(r'$\Gamma_{M}$',        np.array([0, 0])),                           # Gamma_M
+             #bs.k_point(r"$K_{m}'$",            np.array([np.sqrt(3)/2 * kth, -1/2 * kth])), # K_M'
              bs.k_point(r'$\text{M}_{M}$',      np.array([np.sqrt(3)/2 * kth, 0])),          # M_M
              bs.k_point(r'$\text{K}_{M}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
            ]
