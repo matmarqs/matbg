@@ -296,7 +296,7 @@ Using the relation
 \[
 \sum_{\R_\ell} e^{i \k \vdot \R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell},
 \]
-where the summation is over momentum lattice vectors \(\G_\ell = m_1 \b_1^{\text{moiré}} + m_2 \b_2^{\text{moiré}}\), Eq.~\eqref{eq:interlayer-hopping-step1} can be rewritten as:
+where the summation is over momentum lattice vectors run over the layers \(\G_\ell = m_1 \b_1^{(\ell)} + m_2 \b_2^{(\ell)}\), Eq.~\eqref{eq:interlayer-hopping-step1} can be rewritten as:
 \begin{equation} \label{eq:interlayer-hopping-step2}
 T_{12}^{\alpha\beta}(\k_1,\k_2) =
 \sqrt{N_1 N_2} \int \frac{\dd[2]{\p}}{(2\pi)^2} \sum_{\G_1, \G_2}
@@ -320,32 +320,58 @@ e^{i \G_1 \vdot \vtau_\alpha^{(1)}} t_{12}^{\alpha\beta}(\k_1+\G_1) e^{-i \G_2\v
 \end{equation}
 Here, the condition \(\k_1 + \G_1 = \k_2 + \G_2\) is known as the generalized umklapp condition \cite{handbook2019}.
 
-\n
+\textbf{TEXTO DO ANGELI ++++++++++++++++++++++++++++}
 
-Equation \eqref{eq:interlayer-hopping-simplified} relies on the functional form of \( t_{12}^{\alpha\beta}(\mathbf{p}) \). To make further progress, we introduce additional assumptions. Since both \( A \) and \( B \) sites in graphene correspond to \( p_z \) orbitals of carbon atoms, we assume that \( t_{12}^{\alpha\beta}(\mathbf{r}) = t_\perp(\mathbf{r}) \) is independent of \( \alpha \) and \( \beta \). In \cite{tperp-laissardiere2012}, the authors characterize the behavior of \( t_\perp(\mathbf{r}) \) using Slater-Koster parameters and numerically evaluate \( t_\perp(\mathbf{p}) \) through Eq. \eqref{eq:interlayer-hopping-fourier}. They establish that \( t_\perp(\mathbf{p}) \) depends solely on \( \abs{\mathbf{p}} \) and decays rapidly. This observation is significant, as it ensures that only a few umklapp processes contribute to the coupling in Eq. \eqref{eq:interlayer-hopping-simplified}.
+Since we are interested in the low-energy physics, \( \mathbf{k} \) and \( \mathbf{p} \) must lie close to their respective Dirac points: \( \mathbf{K}_\phi \) and \( \mathbf{K}'_\phi \) for \( \mathbf{p} \) in layer 1, and \( \mathbf{K}_{-\phi} \) and \( \mathbf{K}'_{-\phi} \) for \( \mathbf{k} \) in layer 2. Consequently, \( \hat{T}_{\mathbf{k}\mathbf{p}} \) can, in principle, couple states within the same valley of different layers or states between opposite valleys. However, since \( T_\perp(\mathbf{q}) \) decays exponentially with \( \mathbf{q} = \abs{\mathbf{q}} \) \cite{tperp-laissardiere2012}, the leading contributions arise from terms with the smallest possible \( \abs{\mathbf{k} + \mathbf{G}^{(2)}} \) that satisfy momentum conservation:
+\[
+\mathbf{k} + \mathbf{G}^{(2)} = \mathbf{p} + \mathbf{G}^{(1)}.
+\]
 
-In the small-angle limit \( \theta \lesssim 10^\circ \), we expand \( \mathbf{k}_\ell = \K_\ell + \q_\ell \) around the Dirac points of each layer, with \( \abs{\q_\ell} \sim k_\theta \ll \abs{\K} \). Approximating \( t_\perp(\K_1 + \q_1 + \G_1) \approx t_\perp(\K_1 + \G_1) \), the interlayer coupling becomes
+For small twist angles \( \phi \), only the intra-valley matrix elements (\( \mathbf{p} \sim \mathbf{k} \)) are significant, while inter-valley contributions are negligibly small. This remains true despite opposite valleys of different layers folding into the same point in the moiré Brillouin zone (MBZ). For example, if \( \mathbf{p} \approx \mathbf{K}_\phi \) and \( \mathbf{k} \approx \mathbf{K}'_{-\phi} \), momentum conservation requires very large reciprocal lattice vectors, specifically \( \mathbf{G}^{(1)} = (2k+1)(\mathbf{G}^{(1)}_a - \mathbf{G}^{(1)}_b) \) and \( \mathbf{G}^{(2)} = (2k+1)(\mathbf{G}^{(2)}_b - \mathbf{G}^{(2)}_a) \), resulting in an exponentially small \( T_\perp(\abs{\mathbf{k} + \mathbf{G}^{(2)}}) \).
+
+This effective decoupling of the two valleys ensures that the number of electrons within each valley is, to a high degree of accuracy, a conserved quantity. Consequently, there emerges an approximate valley \( U_v(1) \) symmetry \cite{tperp-laissardiere2012, 69}, which leads to accidental band degeneracies along high-symmetry directions in the MBZ.
+
+\textbf{FINAL DO TEXTO DO ANGELI ++++++++++++++++++++++}
+
+Equation \eqref{eq:interlayer-hopping-simplified} relies on the functional form of \( t_{12}^{\alpha\beta}(\mathbf{p}) \). To make further progress, we introduce additional assumptions. Since both \( A \) and \( B \) sites in graphene correspond to \( p_z \) orbitals of carbon atoms, we assume that \( t_{12}^{\alpha\beta}(\mathbf{r}) = t_\perp(\mathbf{r}) \) is independent of \( \alpha \) and \( \beta \). In \cite{tperp-laissardiere2012}, the authors characterize the behavior of \( t_\perp(\mathbf{r}) \) using Slater-Koster parameters and numerically evaluate \( t_\perp(\mathbf{p}) \) through Eq. \eqref{eq:interlayer-hopping-fourier}. They establish that \( t_\perp(\mathbf{p}) \) depends solely on \( \abs{\mathbf{p}} \) and decays exponentially. This observation is significant, as it ensures that only a few umklapp processes contribute to the coupling in Eq. \eqref{eq:interlayer-hopping-simplified}.
+
+In the small-angle limit \( \theta \lesssim 10^\circ \), we expand \( \mathbf{k}_\ell = K^{(\ell)}+ \q_\ell \) around the Dirac points of each layer, with \( \abs{\q_\ell} \sim k_\theta \ll \abs{K} \). Approximating \( t_\perp(K^{(1)}+ \q_1 + \G_1) \approx t_\perp(K^{(1)} + \G_1) \), the interlayer coupling becomes
 \begin{equation} \label{eq:interlayer-hopping-truncation}
-T_{12}^{\alpha\beta}(\q_1, \q_2) = \frac{1}{A_{1}} \sum_{\G_1, \G_2} e^{i \G_1 \cdot \bm{\tau}_{1,\alpha}}
-t_{12}^{\alpha\beta}(\K_1 + \G_1) e^{-i \G_2 \cdot \bm{\tau}_{2,\beta}}
+T_{12}^{\alpha\beta}(\q_1, \q_2) = \frac{1}{A_{1}} \sum_{\G_1, \G_2} e^{i \G_1 \cdot \bm{\tau}_{\alpha}^{(1)}}
+t_{\perp}(K_1 + \G_1) e^{-i \G_2 \cdot \bm{\tau}_{\beta}^{(2)}}
 \delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2}.
 \end{equation}
 
-Since \( t_\perp(\mathbf{p}) \) decays rapidly with \( \abs{\mathbf{p}} \), we truncate \( t_\perp(\mathbf{p}) \approx 0 \) for \( \abs{\mathbf{p}} > \abs{\K} \). This leaves only three possible values for \( \G_\ell \): \( \g_{\ell 1} = 0 \), \( \g_{\ell 2} = \b_{\ell 2} \), or \( \g_{\ell 3} = -\b_{\ell 1} \). These correspond to the three equivalent Dirac points of the monolayer Brillouin zone, with \( t_\perp(\abs{\K}) \) as the crucial contributing quantity. After truncation, the term simplifies to
-\begin{equation} \label{eq:delta-term}
-\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2} = \delta_{\q_2 - \q_1, \K_1 - \K_2 + \G_1 - \G_2}.
-\end{equation}
+Since \( t_\perp(\mathbf{p}) \) decays exponentially with \( \abs{\mathbf{p}} \), we truncate \( t_\perp(\mathbf{p}) \approx 0 \) for \( \abs{\mathbf{p}} > \abs{K} \). Thus, the quantity $t_\perp(K_1 + \G_1)$ is only significant for values of $K_1 + \G_1$ inside the BZ of the first layer. Since $\G_1$ is a lattice vector of the first layer, this will only happen if $K_1 + \G_1$ is equivalent to some of the equivalent Dirac points $K_1$, $C_{3} K_1$ or $C_{3}^2 K_1$. This leaves only three possible values for $\G_1 = \0, -\b_1^{(1)}, -(\b_1^{(1)}+\b_2^{(1)})$. Because of the term $\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2}$, something analogous must happen with $\G_2 = \0, -\b_1^{(2)}, -(\b_1^{(2)}+\b_2^{(2)})$. In summary, there are three possibilities:
+\begin{align} \label{eq:G1G2_3_possibilities}
+\begin{cases}
+\; \G_1^{(\text{b})} = \0,                      & \G_2^{(\text{b})} = \0; \\
+\; \G_1^{(\text{tr})} = -\b_1^{(1)},            & \G_2^{(\text{tr})} = \b_1^{(2)}; \\
+\; \G_1^{(\text{tl})} = -\b_1^{(1)}-\b_2^{(1)}, & \G_2^{(\text{tl})} = -\b_1^{(2)}-\b_2^{(2)}.
+\end{cases}
+\end{align}
 
-Given that \( \abs{\q_\ell} \ll \abs{\K} \), the condition \( \q_2 - \q_1 = \K_1 - \K_2 + \G_1 - \G_2 \) holds only when \( \G_1 = \g_{1n} \) and \( \G_2 = \g_{2n} \) share the same index \( n \). This results in three possible momentum transfers:
-\begin{equation} \label{eq:qb}
-\q_\text{b} = \K_1 - \K_2 = k_\theta \, (0, -1),
+Also, rewriting the Delta term as
+\begin{equation} \label{eq:delta-term}
+\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2} = \delta_{\q_2 - \q_1, \K_1 - \K_2 + \G_1 - \G_2},
 \end{equation}
-\begin{equation} \label{eq:qtr}
-\q_\text{tr} = (\K_1 - \K_2) + (\g_{12} - \g_{22}) = k_\theta \, \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}),
+we conclude that the three possibilities in Equation \ref{eq:G1G2_3_possibilities} result in three possible momentum transfers bottom (b), top right (tr), and top left (tl) for $\q_2-\q_1$:
+\begin{equation} \label{eq:qb_qtr_qtl}
+\begin{cases}
+\; \q_\text{b} = K_1 - K_2 = k_\theta \, (0, -1), \\
+\; \q_\text{tr} = K_1 - K_2 - \b_1^{\text{moiré}} = k_\theta \, \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}), \\
+\; \q_\text{tl} = K_1 - K_2 -\b_1^{\text{moiré}}-\b_2^{\text{moiré}} = k_\theta \, \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
+\end{cases}
 \end{equation}
-\begin{equation} \label{eq:qtl}
-\q_\text{tl} = (\K_1 - \K_2) + (\g_{13} - \g_{23}) = k_\theta \, \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
-\end{equation}
+%\begin{equation} \label{eq:qb}
+%\q_\text{b} = \K_1 - \K_2 = k_\theta \, (0, -1),
+%\end{equation}
+%\begin{equation} \label{eq:qtr}
+%\q_\text{tr} = (\K_1 - \K_2) + (\g_{12} - \g_{22}) = k_\theta \, \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}),
+%\end{equation}
+%\begin{equation} \label{eq:qtl}
+%\q_\text{tl} = (\K_1 - \K_2) + (\g_{13} - \g_{23}) = k_\theta \, \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
+%\end{equation}
 
 Ultimately, the interlayer coupling reduces to three terms:
 \begin{equation} \label{eq:interlayer-3terms}
@@ -355,8 +381,8 @@ T_{12}^{\alpha\beta}(\q_1, \q_2) = T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_1 - 
 \end{equation}
 where
 \begin{equation} \label{eq:interlayer-tensor}
-T^{\alpha\beta}_{\q_n} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \g_{1n} \cdot \bm{\tau}_{1\alpha}}
-e^{-i \g_{2n} \cdot \bm{\tau}_{2\beta}}.
+T^{\alpha\beta}_{\q_{\text{b},\text{tr},\text{tl}}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \G_{1}^{(\text{b},\text{tr},\text{tl})} \cdot \bm{\tau}_{\alpha}^{(1)}}
+e^{-i \G_{2}^{(\text{b},\text{tr},\text{tl})} \cdot \bm{\tau}_{\beta}^{(2)}}.
 \end{equation}
 
 In the \( A, B \) basis, the matrices for each term are:
@@ -368,21 +394,65 @@ T_{\q_\text{b}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
 \end{pmatrix},
 \end{equation}
 \begin{equation} \label{eq:T-qtr}
-T_{\q_\text{tr}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{-i \g_{12} \cdot \bm{\tau}_0}
+T_{\q_\text{tr}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
 \begin{pmatrix}
-e^{i\phi} & 1 \\
-e^{-i\phi} & e^{i\phi}
+1 & e^{2\pi i/3} \\
+e^{-2\pi i/3} & 1
 \end{pmatrix},
 \end{equation}
 \begin{equation} \label{eq:T-qtl}
-T_{\q_\text{tl}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{-i \g_{13} \cdot \bm{\tau}_0}
+T_{\q_\text{tl}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
 \begin{pmatrix}
-e^{-i\phi} & 1 \\
-e^{i\phi} & e^{-i\phi}
-\end{pmatrix},
+1 & e^{-2\pi i/3} \\
+e^{2\pi i/3} & 1
+\end{pmatrix}.
 \end{equation}
-where \( \phi = 2\pi/3 \).
 
+For the valley $K'$ the derivation is analogous, which leads us to
+\begin{equation} \label{eq:interlayer-3terms_valley-1}
+T^{\zeta=-1}(\q_1, \q_2) = T_{\q_\text{b}}^* \delta_{\q_1 - \q_2, \q_\text{b}}
++ T_{\q_\text{tr}}^* \delta_{\q_1 - \q_2, -\q_\text{tr}}
++ T_{\q_\text{tl}}^* \delta_{\q_1 - \q_2, -\q_\text{tl}},
+\end{equation}
+
+\textbf{TEXTO DO ANGELI ++++++++++++++++++++++++++++}
+
+Let us briefly discuss how lattice relaxation effects can be incorporated into the model. As highlighted in the previous section, lattice relaxation tends to compress the energetically unfavorable AA regions while enlarging the Bernal-stacked triangular domains in the moiré pattern. This modification influences the amplitudes of both inter-sublattice and intra-sublattice hopping processes. These effects are captured by adjusting the operators \( \hat{T}_i \) in Eq. (2.27) as follows:
+\[
+\hat{T}_1 \to T_1(u, u') =
+\begin{pmatrix}
+u & u' \\
+u' & u
+\end{pmatrix}
+= u \sigma_0 + u' \sigma_x,
+\]
+\[
+\hat{T}_2 \to \hat{T}_2(u, u') =
+\begin{pmatrix}
+u & u' \omega^* \\
+u' \omega & u
+\end{pmatrix}
+= u \sigma_0 + u'
+\left(
+\cos \frac{2\pi}{3} \sigma_x + \sin \frac{2\pi}{3} \sigma_y
+\right),
+\]
+\[
+\hat{T}_3 \to \hat{T}_3(u, u') =
+\begin{pmatrix}
+u & u' \omega \\
+u' \omega^* & u
+\end{pmatrix}
+= u \sigma_0 + u'
+\left(
+\cos \frac{2\pi}{3} \sigma_x - \sin \frac{2\pi}{3} \sigma_y
+\right),
+\]
+where \( u \) is generally smaller than \( u' \), reflecting the asymmetry introduced by lattice relaxation.
+
+In **Fig. 2.6**, we show the band structure of twisted bilayer graphene at \( \theta = 1.08^\circ \), obtained using the \( u \) and \( u' \) parameters reported in Ref. [53]. The resulting band structure closely resembles that obtained via tight-binding models, with the notable feature that the bands exhibit particle-hole symmetry.
+
+\textbf{FINAL DO TEXTO DO ANGELI ++++++++++++++++++++++++++++}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Symmetry analysis and Wannier obstruction} \label{sec:wannier_obstruction}
