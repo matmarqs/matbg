@@ -96,11 +96,11 @@ def main():
 
     # momentum k is in Angstroms^{-1}
     path = [
-             bs.k_point(r'$\text{K}_{M}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
-             bs.k_point(r'$\Gamma_{M}$',        np.array([0, 0])),                           # Gamma_M
-             #bs.k_point(r"$K_{m}'$",            np.array([np.sqrt(3)/2 * kth, -1/2 * kth])), # K_M'
-             bs.k_point(r'$\text{M}_{M}$',      np.array([np.sqrt(3)/2 * kth, 0])),          # M_M
-             bs.k_point(r'$\text{K}_{M}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
+             bs.k_point(r'$\text{K}_{m}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
+             bs.k_point(r'$\Gamma_{m}$',        np.array([0, 0])),                           # Gamma_M
+             bs.k_point(r'$\text{M}_{m}$',      np.array([np.sqrt(3)/2 * kth, 0])),          # M_M
+             bs.k_point(r"$K_{m}'$",            np.array([np.sqrt(3)/2 * kth, -1/2 * kth])), # K_M'
+             #bs.k_point(r'$\text{K}_{m}$',      np.array([np.sqrt(3)/2 * kth,  1/2 * kth])), # K_M
            ]
 
     bs.plot_bandstructure(path, eigenval_func=eigenval_thf_NG, ticks_fontsize=fontsz, n_line=100, color_index=1)
