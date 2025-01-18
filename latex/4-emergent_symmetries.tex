@@ -8,21 +8,11 @@
 \chapter{Emmergent symmetries and Wannier obstruction in TBG} \label{ch:emmergent_symm_wannier_obstruction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\textbf{THE TEXT BELOW IS PLACEHOLDER. IT WAS COPIED FROM PREVIOUS REPORTS}
-%
-%Regarding (a), in Section \ref{sec:tbg}, we present our progress in understanding the MATBG system by studying its geometry \cite{handbook2019}, the Bistritzer-MacDonald (BM) model \cite{macdonald2011}, and its symmetry properties \cite{thesis_rennella}. Symmetry analysis is a prerequisite for comprehending the Wannier obstruction phenomenon \cite{zou2018}, which arises from the non-trivial topology of the electronic bands. This phenomenon refers to the impossibility of representing the flat bands using exponentially localized Wannier functions that preserve all symmetries of the band structure. In contrast, the THF model addresses this issue by providing a fully symmetric framework that reformulates and maps the interacting MATBG as a topological heavy fermion system \cite{topoheavyfermion2022}.
-%
-%We initiated our exploration of the MATBG theory with reference to \cite{handbook2019}, aiming primarily to comprehend the Moiré pattern geometry and the Bistritzer-MacDonald continuous model \cite{macdonald2011}. Subsequently, our focus shifted to analyzing the system's symmetries \cite{thesis_rennella}, which are pivotal, with implications such as the Wannier obstruction \cite{zou2018}. In Section \ref{sec:tbg}, we elucidate our studies.
-%
-%By implementing the BM model \cite{macdonald2011}, when we twist the two graphene layers (from the initial AB stacking) by a discrete set of very specific angles, with the first being $\theta \approx 1.05^\circ$, the bands should become very flat around the point $K$, which corresponds to the low-energy excitations of the system.
-%
-%\textbf{THE TEXT ABOVE IS PLACEHOLDER. IT WAS COPIED FROM PREVIOUS REPORTS}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Commensurate structures} \label{sec:tbg_geom}
+\section{Commensurate structures} \label{sec:tbg_commensurate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Twisted bilayer graphene (TBG) features two graphene layers rotated relative to each other by an angle \( \theta \). This rotation gives rise to a Moiré pattern, formed by the interference of the two lattices. The pattern can be either \textit{commensurate}, exhibiting translational symmetry and forming a periodic superlattice, or \textit{incommensurate}, lacking translational symmetry and periodicity. Figure \ref{fig:moireD6} illustrates a commensurate Moiré pattern with \( D_6 \) point group symmetry, where the rotation center lies at the center of a hexagon. The AA, AB, and BA regions in the pattern represent areas where \( A \) or \( B \) carbon atoms from the layers align with each other.
+Twisted bilayer graphene (TBG) features two graphene layers rotated relative to each other by an angle \( \theta \). This rotation gives rise to a moiré pattern, formed by the interference of the two lattices. The pattern can be either \textit{commensurate}, exhibiting translational symmetry and forming a periodic superlattice, or \textit{incommensurate}, lacking translational symmetry and periodicity. Figure \ref{fig:moireD6} illustrates a commensurate moiré pattern with \( D_6 \) point group symmetry, where the rotation center lies at the center of a hexagon. The AA, AB, and BA regions in the pattern represent areas where \( A \) or \( B \) carbon atoms from the layers align with each other.
 
 The system can generally exhibit different symmetry groups depending on the choice of the origin for the rotation by \( \theta \). However, the largest possible point group is \( D_6 \), due to the honeycomb Bravais lattice of the two layers. In the commensurate case, the primitive lattice vectors \( \vb{L}_1 \) and \( \vb{L}_2 \) are defined as the least common multiples of the unit vectors of the monolayers. Figure \ref{fig:latvec} provides an example for \( \theta = 21.8^\circ \).
 \begin{figure}[H]
@@ -126,15 +116,15 @@ m+\frac{r}{3} & \frac{r}{3} \\
 
 For both Type I and Type II structures, the moiré lattice constant \( L(m, r) = \abs{\vb{L}_1} = \abs{\vb{L}_2} \) is determined by the following formula:
 \begin{equation} \label{eq:commensurate-constant}
-L(m, r) = a \sqrt{\frac{3m^2 + 3mr + r^2}{\gcd(r, 3)}},
+L(m, r) = a \sqrt{\frac{3m^2 + 3mr + r^2}{\gcd(r, 3)}} = \frac{r}{\sqrt{\gcd(r,3)}} \cdot \frac{a}{2 \sin(\theta(m,r)/2)},
 \end{equation}
 where \(a = 0.246 \unit{nm}\) is the lattice constant of the monolayer, and \(\gcd(r, 3)\) accounts for the sublattice exchange parity.
 
-The area of the unit cell of the moiré superlattice is given by
+The unit cell of the moiré superlattice has an area given by
 \begin{equation} \label{eq:superlattice_area_unitcell}
-A_{\text{moiré}} = \frac{\sqrt{3}}{2} L^2 = \frac{3m^2 + 3mr + r^2}{\gcd(r,3)} \, A_1,
+A_{\text{moiré}} = \frac{\sqrt{3}}{2} L^2,
 \end{equation}
-where \( A_1 = \frac{\sqrt{3}}{2} \, a^2 \) represents the area of the unit cell of monolayer graphene. As the unit cell area of the moiré superlattice increases, its corresponding Brillouin Zone shrinks, forming what is referred to as the mini Brillouin Zone (mBZ). The area of the mBZ is given by
+where \( A_1 = \frac{\sqrt{3}}{2} \, a^2 \) represents the area of the unit cell of monolayer graphene. As the angle \( \theta \) decreases, \( A_{\text{moiré}} \) increases significantly. For the magic angle \( \theta \approx 1.1^\circ \), the number of atoms in the moiré unit cell reaches approximately 11,000. As the moiré unit cell expands, its corresponding Brillouin Zone shrinks, forming the mini Brillouin Zone (mBZ). The area of the mBZ is given by
 \begin{equation} \label{eq:bz-volume}
 \Omega_{\text{mBZ}} = \frac{(2\pi)^2}{A_{\text{moiré}}} = \frac{\gcd(r,3)}{3m^2 + 3mr + r^2} \, \Omega_1,
 \end{equation}
@@ -161,61 +151,42 @@ For instance, when \( (m, r) = (1, 1) \), we have \( \gcd(r,3) = 1 \) (Type I st
 \label{fig:geometry}
 \end{figure}
 
-The distinct relationships between the superlattice vectors for Type I and Type II structures lead to different folding patterns for the Dirac points \(K^{(1)}\) and \(K^{(2)}\) of the monolayers into the mBZ. In Type I structures, the Dirac points \(K^{(1)}\) and \(K^{(2)}\) fold into different time-reversal types of Dirac points in the mBZ, with \(K^{(1)}\) folding to \(K_m'\) and \(K^{(2)}\) folding to \(K_m\), as illustrated in Figure \ref{fig:bzminibz}. In contrast, for Type II structures, \(K^{(1)}\) and \(K^{(2)}\) fold into the same type of Dirac point, \(K_m\), in the mBZ. For a more detailed discussion of these folding patterns, refer to \cite{zou2018}.
+The distinct relationships between the superlattice vectors for Type I and Type II structures lead to different folding patterns for the Dirac points \(K_1\) and \(K_2\) of the monolayers into the mBZ. For example, in Type I structures, the Dirac points \(K_1\) and \(K_2\) fold into different valleys in the mBZ, with \(K_1\) folding to \(K_m'\) and \(K_2\) folding to \(K_m\), as illustrated in Figure \ref{fig:bzminibz}. In contrast, for Type II structures, \(K_1\) and \(K_2\) fold into the same type of Dirac point, \(K_m\), in the mBZ. For a more detailed discussion of these folding patterns, refer to \cite{zou2018}.
 
 
-We emphasize that the commensuration condition for TBG depends only on the twist angle $\theta$, not the twisting center. As long as the twist angle satisfies Equation \ref{eq:costheta}, the bilayer retains exact translational symmetry, even if the twisting center is a generic point where no two carbon atoms align perfectly. The Moiré lattice vectors $\vb{L}_1$ and $\vb{L}_2$, lattice constant \( L(m, r) \), and momentum mapping between the microscopic and Moiré Brillouin zones (BZs) depend solely on the twist angle and not the twisting center. However, the twisting center determines the exact point-group symmetries of the commensurate lattice. If the twisting center is a generic point, translations are the only exact spatial symmetries. If it is the center of a hexagon as in Figure \ref{fig:moireD6}, the twisted bilayer graphene (TBG) inherits the six-fold rotational symmetry \( C_6 \) of the monolayers.
+We emphasize that the commensuration condition for TBG depends only on the twist angle $\theta$, not the twisting center. As long as the twist angle satisfies Equation \ref{eq:costheta}, the bilayer retains exact translational symmetry, even if the twisting center is a generic point where no two carbon atoms align perfectly. The moiré lattice vectors $\vb{L}_1$ and $\vb{L}_2$, lattice constant \( L(m, r) \), and momentum mapping between the microscopic and moiré Brillouin zones depend solely on the twist angle and not the twisting center. However, the twisting center determines the exact point-group symmetries of the commensurate lattice. If the twisting center is a generic point, translations are the only exact spatial symmetries. If it is the center of a hexagon as in Figure \ref{fig:moireD6}, the twisted bilayer graphene inherits the six-fold rotational symmetry \( C_6 \) of the monolayers.
 
-From the discussion above, one would conclude that a commensurate TBG system should have a translational symmetry with lattice constant $L(\theta)$ given by Eq. \eqref{eq:commensurate-constant}. However, as discussed in \cite{zou2018}, scanning tunneling microscopy (STM) experiments actually observe an effective moiré lattice constant
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Emergent symmetries} \label{sec:emergent_symm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+From the discussion in Section \ref{sec:tbg_commensurate}, one might conclude that a commensurate TBG system should exhibit a translational symmetry with a lattice constant \( L(\theta) \), as given by Eq. \eqref{eq:commensurate-constant}. However, as discussed in \cite{zou2018}, scanning tunneling microscopy (STM) experiments actually observe an effective moiré lattice constant \( L'(\theta) \), which does not depend on whether the system is commensurate or incommensurate. This effective lattice constant is given by
 \begin{equation} \label{eq:STM-constant}
-L'(\theta) = \frac{a}{2 \sin(\theta/2)} \leq \frac{r}{\sqrt{\gcd(r,3)}} \cdot \frac{a}{2 \sin(\theta/2)} = L(\theta).
+L'(\theta) = \frac{a}{2 \sin(\theta/2)} \leq L(\theta).
 \end{equation}
 
 This can be interpreted as TBG exhibiting an approximate translational symmetry with superlattice constant $L'(\theta)$, despite optionally possessing an exact translational symmetry with $L(\theta)$ in the commensurate case.
 
-The Bistritzer-MacDonald model (also known as the ``continuum theory'') incorporates translational symmetry by a lattice constant $L'(\theta)$ and other emergent symmetries observed in TBG experiments. This theory describes the system at every twist angle $\theta \lesssim 10^\circ$, including incommensurate ones \cite{continuum_model_castroneto2007, macdonald2011}. It predicts universal features, such as Dirac crossings between valence and conduction bands in each valley, which match tight-binding calculations for commensurate structures and experimental data for larger twist angles, where correlation effects are less significant \cite{zou2018}. However, the theory underestimates the gap between the nearly flat bands and the other bands. This discrepancy can be addressed by incorporating effects like lattice relaxation and electron interactions, which can be phenomenologically accounted for by adjusting the model's parameters \cite{koshinohubbard2018}.
+The presence of over 11,000 atoms in the unit cell of MATBG at \( \theta \approx 1.1^\circ \) makes any calculation beyond a simple tight-binding model highly computationally demanding, if not practically infeasible. This issue can be addressed by employing the less computationally intensive Bistritzer-MacDonald (BM) model \cite{macdonald2011}. The Bistritzer-MacDonald model (also known as the ``continuum theory'') incorporates translational symmetry by a lattice constant $L'(\theta)$ and other emergent symmetries observed in TBG experiments. This theory describes the system at every twist angle $\theta \lesssim 10^\circ$, including incommensurate ones \cite{continuum_model_castroneto2007, macdonald2011}. It predicts universal features, such as Dirac crossings between valence and conduction bands in each valley, which match tight-binding calculations for commensurate structures and experimental data for larger twist angles, where correlation effects are less significant \cite{zou2018}.
 
-The continuum theory includes additional symmetries, such as \(C_6 T\) rotation and valley \(U_v(1)\) symmetries, which, while not fully present in commensurate structures, are essential for protecting Dirac points in valley-filtered bands. The \(C_2 T = (C_6 T)^3\) symmetry prevents the Dirac points from opening a gap. Although these symmetries are approximations, they remain effective in small-angle TBG experiments, making the differences between commensurate and incommensurate structures negligible.
+However, the original Bistritzer-MacDonald model underestimates the gap between the nearly flat bands and the other bands. In a real system, the lattice structure spontaneously relaxes to achieve an energetically favorable configuration. In twisted bilayer graphene (TBG) with a small twist angle, distinct regions of AB/BA and AA stacking emerge. Since the interlayer binding energy is minimized in the AB and BA configurations and maximized in the AA configuration, TBG undergoes in-plane deformation to enhance the AB/BA regions and reduce the AA regions. This structural relaxation alters the electronic band structure, leading to the opening of gaps. The effects of lattice relaxation can be phenomenologically incorporated into the BM model by adjusting its parameters, as demonstrated in previous work \cite{koshinohubbard2018}.
 
-A key feature of the band structure is the inability to construct well-localized Wannier functions that respect all symmetry operations. This issue arises because some symmetries in the continuum theory, such as \(C_2 T\) and \(U_v(1)\), are not exact microscopic symmetries, yet they are essential for preserving Dirac crossings.
+The continuum theory incorporates additional symmetries, such as translations by $L'(\theta)$, rotation \(C_6 T\) and valley \(U_v(1)\) symmetries, which, while not fully realized in commensurate structures, play a crucial role in protecting Dirac points in valley-filtered bands \cite{zou2018}. The \(C_2 T = (C_6 T)^3\) symmetry, in particular, prevents the Dirac points from opening a gap. While these symmetries are approximations, they remain effective down to the energy scales currently accessible in small-angle TBG experiments. As a result, the differences between commensurate and incommensurate structures become negligible in practice.
 
-In conclusion, it is essential to study systems with translational, \(C_6 T\), and \(U_v(1)\) emergent symmetries, even though fully implementing these symmetries leads to a Wannier obstruction in the band structure. In Section \ref{sec:BM-model}, we derive the continuum model, and in Section \ref{sec:wannier_obstruction}, we address the related Wannier obstruction.
+A key feature of the band structure resulting from the Bistritzer-MacDonald model is the inability to construct well-localized Wannier functions that respect all the model's symmetries. This issue arises because certain symmetries, such as \(C_2 T\) and \(U_v(1)\), are not exact at the microscopic level, but are crucial for preserving Dirac crossings and they alter the topology of the bands. As discussed in Chapter \ref{ch:topological_quantum_chemistry}, this phenomenon is known as a Wannier obstruction, which occurs because the topology of the bands is non-trivial.
 
-\textbf{FALAR QUE TIGHT-BINDING E DMFT SÃO MUITO HEAVY. E CONTINUUM MODEL É LIGHT}
-
-\textbf{MENCIONAR LATTICE RELAXATION?}
+In conclusion, the continuum theory offers significant advantages for the description of TBG, such as incorporating the ``good'' emergent symmetries, such translations, \(C_6 T\) and \(U_v(1)\). However, fully implementing these symmetries results in a Wannier obstruction. In Section \ref{sec:BM-model}, we provide a detailed derivation of the BM model, while in Section \ref{sec:wannier_obstruction}, we discuss its associated Wannier obstruction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bistritzer-MacDonald model} \label{sec:BM-model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Qual o objetivo desta seção? Com certeza chegar na hamiltoniana do BM-Bernevig para resolver numericamente.}
 
-\textbf{OK! Então vou seguir a tese do Angeli, que é a referência mais didática a fim de chegar lá.}
-
-\textbf{Sim! Mas tenho que seguir a convenção do artigo de THF.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Monolayers}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The single-layer Dirac Hamiltonian, for momentum $\k$ around $K$ or $K' = -K$, is
-\begin{equation} \label{eq:}
-H_\k^\eta = -\nu (\k - \zeta K) \vdot \qty(\zeta \s_x, \s_y),
-\end{equation}
-where $\zeta = \pm 1$ is the valley index ($\zeta = +1$ for $K$ and $\zeta = -1$ for $K = -K$).
-
-The Dirac nodes of each monolayer are $K^{(\ell)} = R(\theta_\ell) K$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Hybridization}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The atomic 2D positions for each layer $\ell$ are given by
+The atomic 2D positions for each layer $\ell$ of TBG are given by
 \begin{equation} \label{eq:position-atoms-tbg}
 \r = n_1 \a_{1}^{(\ell)} + n_2 \a_{2}^{(\ell)} + \vtau_{\alpha}^{(\ell)},
 \end{equation}
-where $\alpha = A, B$ indexes the site type, and $\tau_{\alpha}^{(\ell)}$ are the basis vectors. The lattice vectors $\a_{j}^{(\ell)}$ are obtained by rotating the unrotated vectors $\a_j$ by an angle $\theta_\ell$ using the rotation matrix $R_{\theta_\ell}$. In our coordinate system, $\a_1 = a(1,0)$ and $\a_2 = a\qty(\frac{1}{2}, \frac{\sqrt{3}}{2})$. The rotation matrix is defined as
+where $\alpha = A, B$ indexes the site type, and $\vtau_{\alpha}^{(\ell)}$ are the basis vectors. The lattice vectors $\a_{j}^{(\ell)}$ are obtained by rotating the unrotated vectors $\a_j$ by an angle $\theta_\ell$ using the rotation matrix $R_{\theta_\ell}$. We use the convention $\a_1 = a(1,0)$ and $\a_2 = a\qty(\frac{1}{2}, \frac{\sqrt{3}}{2})$. The rotation matrix is defined as
 \begin{equation} \label{eq:rotation-matrix}
 R_\theta =
 \begin{pmatrix}
@@ -223,126 +194,131 @@ R_\theta =
 \sin\theta & \cos\theta
 \end{pmatrix}.
 \end{equation}
-We choose the reference frame such that $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$, with the AA-stacking configuration as the starting position ($\theta=0$). In this configuration, the twisting center is placed at the center of a hexagon. For the unrotated layer, the sublattice vectors are $\tau_A = \frac{\a_1 + \a_2}{3} = d\qty(\frac{\sqrt{3}}{2}, \frac{1}{2})$ and $\tau_B = \frac{-\a_1 + 2\a_2}{3} = d(0,1)$. The sublattice vectors for the rotated layers are then given by
+We choose the reference frame such that $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$, with the AA-stacking configuration as the starting position ($\theta=0$). In this configuration, our the twisting center is placed at the center of a hexagon. Before the rotation, the sublattice vectors are $\vtau_A = \frac{\a_1 + \a_2}{3} = d\qty(\frac{\sqrt{3}}{2}, \frac{1}{2})$ and $\vtau_B = \frac{-\a_1 + 2\a_2}{3} = d(0,1)$. The sublattice vectors of each layer after the rotation are then given by
 \begin{equation} \label{eq:tau_tbg_lattice_AB}
-\tau_{\alpha}^{(\ell)} = R_{\theta_\ell} \tau_\alpha.
+\vtau_{\alpha}^{(\ell)} = R_{\theta_\ell} \vtau_\alpha.
 \end{equation}
 
-The momentum lattice vectors for each layer are expressed as $\b_j^{(\ell)} = R_{\theta_\ell} \b_j$, with $\b_{1,2}$ defined in Equation \ref{eq:monolayer-bvecs}. The periodicity of the moiré pattern arises from the beat effect \cite{handbook2019}, leading to
+The momentum lattice vectors for each layer are expressed as \( \mathbf{b}_j^{(\ell)} = R_{\theta_\ell} \mathbf{b}_j \), where \( \mathbf{b}_{1,2} \) are the reciprocal lattice vectors of the monolayer graphene, as defined in Equation \ref{eq:monolayer-bvecs}. The moiré pattern can be understood as arising from a beat effect \cite{handbook2019}, with the outer beat periodicity determined by the moiré reciprocal lattice vectors
 \begin{equation} \label{eq:beat_effect-moire_momentum}
 \b_j^{\text{moiré}} = \b_{j}^{(1)} - \b_{j}^{(2)}.
 \end{equation}
 
-Under this assumption, $K^{(1)}$ folds into $K_m'$ and $K^{(2)}$ folds into $K_m$ in the mBZ, implying that the continuum model presumes a Type I (SE-odd) structure. From Equation \ref{eq:beat_effect-moire_momentum}, the explicit expressions for the moiré momentum lattice vectors are
+Under this assumption, \( K_1 \) folds into \( K_m' \) and \( K_2 \) folds into \( K_m \) in the moiré Brillouin zone (mBZ), implying that the Bistritzer-MacDonald (BM) model assumes a Type I (SE-odd) structure if the system were commensurate \cite{thesis_angeli, zou2018}. From Equation \ref{eq:beat_effect-moire_momentum}, the explicit expressions for the moiré momentum lattice vectors are given by:
 \begin{equation} \label{eq:moire-bvecs}
 \vb{b}_1^{\text{moiré}} = \sqrt{3} k_\theta \qty(-\frac{1}{2}, -\frac{\sqrt{3}}{2}), \quad
 \vb{b}_2^{\text{moiré}} = \sqrt{3} k_\theta \qty(1, 0),
 \end{equation}
-where $k_\theta = \abs{K^{(1)}-K^{(2)}} = 2 \abs{K} \sin(\theta/2) = \frac{8\pi}{3a} \sin(\theta/2)$.
+where $k_\theta = \abs{K_1-K_2} = 2 \abs{K} \sin(\theta/2) = \frac{8\pi}{3a} \sin(\theta/2)$.
 
-The Hamiltonian $H$ is constructed from a tight-binding approach, $H = H_1 + H_2 + H_{\perp}$, where $H_\ell$ corresponds to the Hamiltonian of layer $\ell$ and $H_\perp = V_{12} + V_{12}^\d$ accounts for interlayer hybridization. In the Bloch wave basis, the wavefunctions are written as
+The BM Hamiltonian $H$ is constructed from a tight-binding approach, $H = H_1 + H_2 + H_{\perp}$, where $H_\ell$ corresponds to the Hamiltonian of layer $\ell$ and $H_\perp = V + V^\d$ accounts for interlayer hybridization. In the Bloch wave basis, the wavefunctions are written as
 \begin{equation} \label{eq:BM-blochwave}
 \ket{\psi_{\ell, \k, \alpha}} = \frac{1}{\sqrt{N_\ell}} \sum_{\R_\ell} e^{i \k \vdot \qty(\R_\ell + \vtau_{\alpha}^{(\ell)})} \ket{\ell, \R_\ell, \alpha},
 \end{equation}
-where $\ell$ labels the layer, $N_\ell$ is the number of unit cells, $\R_\ell = n_1 \a_1^{(\ell)} + n_2 \a_2^{(\ell)}$ are the Bravais lattice positions, $\vtau_{\alpha}^{(\ell)}$ are sublattice centers, and $\ket{\ell,\R_\ell,\alpha}$ represents localized Wannier states.
+where $\ell$ labels the layer, $N_\ell$ is the number of unit cells, $\R_\ell = n_1 \a_1^{(\ell)} + n_2 \a_2^{(\ell)}$ are the Bravais triangular lattice positions, $\vtau_{\alpha}^{(\ell)}$ are sublattice centers, and $\ket{\ell,\R_\ell,\alpha}$ represents Wannier states.
 
-%In this basis, considering only nearest-neighbor intralayer hopping, the low-energy Hamiltonian of each layer is
-%\begin{equation} \label{eq:blg-eachlayer-hamil-lowenergy}
-%H^{\pm \K}(\q) = \hbar v_F \abs{\q}
-%\begin{pmatrix}
-%0 & e^{\mp i (\theta_\q - \theta_\ell)} \\
-%e^{\pm i (\theta_\q - \theta_\ell)} & 0
-%\end{pmatrix},
-%\end{equation}
-%where we expanded $\k = \pm \K_\ell + \q$ to first-order in $\q$.
+The Hamiltonian of an unrotated single layer of graphene, in its low-energy Dirac description for a momentum \(\k\) around the \(K\) or \(K' = -K\) point, is given by
+\begin{equation} \label{eq:single_layer_dirac_hamil_mono}
+H_{\text{mono}}^\zeta(\k) \approx v_F (\k - \zeta K) \vdot \qty(\zeta \s_x, \s_y),
+\end{equation}
+where $\zeta = \pm 1$ is the valley index ($\zeta = +1$ for $K$ and $\zeta = -1$ for $K = -K$).
 
-The interlayer Hamiltonian in the second quantization formalism is given by \cite{handbook2019}:
-\begin{equation} \label{eq:interlayer-hopping}
-V_{12} = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d(\R_1) t_{12}^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2), \quad
-t_{12}^{\alpha\beta}(\R_1,\R_2) =
-\mel{1,\R_1,\alpha}{V_{12}}{2,\R_2,\beta}.
+The Dirac nodes of each layer $\ell$ are $K_{\ell} = R_{\theta_\ell} K$, and the layers hamiltonians expanded around the Dirac points are:
+\begin{equation} \label{eq:single_layer_dirac_hamil_valley}
+H_\ell^{\zeta}\qty(\zeta K_\ell + \q) = H_{\text{mono}}^\zeta\qty(R_{\theta_\ell}^{-1}\qty(\zeta K_\ell + \q)) \approx v_F \qty(R_{\theta_\ell}^{-1} \q) \vdot \qty(\zeta \s_x, \s_y) \approx \zeta v_F \q \vdot \qty(\s_x, \zeta \s_y).
 \end{equation}
 
-By performing a Fourier transformation,
+In Equation \ref{eq:single_layer_dirac_hamil_valley}, we make a second approximation by neglecting the \(\theta\)-dependence and effectively assuming \(R_\theta \approx \1\). This approximation, extensively analyzed in \cite{all_magic_angles, bernevig_II_2021}, proves to be accurate and simplifies the mathematical treatment of the system. Notably, it introduces an effective particle-hole symmetry, which plays a crucial for the topology of the bands. The implications of this symmetry will be discussed in Section \ref{sec:wannier_obstruction}.
+
+
+The hybridization $V$ of the interlayer Hamiltonian in the second quantization formalism is \cite{handbook2019}
+\begin{equation} \label{eq:interlayer-hopping}
+V = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d(\R_1) t_\perp^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2), \quad
+t_\perp^{\alpha\beta}(\R_1,\R_2) =
+\mel{1,\R_1,\alpha}{V}{2,\R_2,\beta}.
+\end{equation}
+
+By performing a transformation to momentum space,
 \begin{equation} \label{eq:blg-fourier}
 c_{\ell,\alpha}^\d(\R_\ell) = \frac{1}{\sqrt{N_\ell}} \sum_{\k_\ell}
 e^{-i\k_\ell \vdot \qty(\R_\ell + \vtau_{\alpha}^{(\ell)})} c_{\ell,\alpha}^\d(\k_\ell),
 \end{equation}
-where the summation over $\k_\ell$ spans the Brillouin zone (BZ) of layer $\ell$, the interlayer Hamiltonian becomes:
+where the momenta $\k_\ell$ span the Brillouin zone of layer $\ell$, the interlayer hybridization becomes
 \begin{equation} \label{eq:interlayer-hopping-kspace}
-V_{12} = \sum_{\k_1,\alpha,\k_2,\beta} c_{1,\alpha}^\d(\k_1) T_{12}^{\alpha\beta}(\k_1,\k_2) c_{2,\beta}(\k_2),
+V = \sum_{\k_1,\alpha,\k_2,\beta} c_{1,\alpha}^\d(\k_1) T^{\alpha\beta}(\k_1,\k_2) c_{2,\beta}(\k_2),
 \end{equation}
 with
 \begin{equation} \label{eq:interlayer-hopping-Tkspace}
-T_{12}^{\alpha\beta}(\k_1,\k_2) =
+T^{\alpha\beta}(\k_1,\k_2) =
 \frac{1}{\sqrt{N_1 N_2}} \sum_{\R_1,\R_2} e^{-i\k_1\vdot\qty(\R_1+\vtau_{\alpha}^{(1)})}
-t_{12}^{\alpha\beta}(\R_1,\R_2) e^{i\k_2\vdot\qty(\R_2+\vtau_{\beta}^{(2)})}.
+t_\perp^{\alpha\beta}(\R_1,\R_2) e^{i\k_2\vdot\qty(\R_2+\vtau_{\beta}^{(2)})}.
 \end{equation}
 
-Assuming that the interlayer hopping term \( t_{12}^{\alpha\beta}(\R_1,\R_2) \) depends only on the relative separation of the two orbital centers, we can apply a Fourier transformation:
+Assuming that the interlayer hopping term \( t_\perp^{\alpha\beta}(\R_1,\R_2) \) depends only on the relative separation of the two orbital centers \cite{macdonald2011}, we can apply a Fourier transformation:
 \begin{equation} \label{eq:interlayer-hopping-fourier}
-t_{12}^{\alpha\beta}(\R_1,\R_2) = t_{12}^{\alpha\beta}\qty(\R_1+\vtau_{\alpha}^{(1)}-\R_2-\vtau_{\beta}^{(2)}) =
-\int \frac{\dd[2]{\p}}{(2\pi)^2} e^{i \p \vdot \qty(\R_1+\vtau_{\alpha}^{(1)}-\R_2-\vtau_{\beta}^{(2)})} t_{12}^{\alpha\beta}(\p).
+t_\perp^{\alpha\beta}(\R_1,\R_2) = t_\perp^{\alpha\beta}\qty(\R_1+\vtau_{\alpha}^{(1)}-\R_2-\vtau_{\beta}^{(2)}) =
+\int \frac{\dd[2]{\p}}{(2\pi)^2} e^{i \p \vdot \qty(\R_1+\vtau_{\alpha}^{(1)}-\R_2-\vtau_{\beta}^{(2)})} t_\perp^{\alpha\beta}(\p).
 \end{equation}
 
 Substituting Eq.~\eqref{eq:interlayer-hopping-fourier} into Eq.~\eqref{eq:interlayer-hopping-Tkspace}, we obtain:
 \begin{equation} \label{eq:interlayer-hopping-step1}
-T_{12}^{\alpha\beta}(\k_1,\k_2) =
+T^{\alpha\beta}(\k_1,\k_2) =
 \frac{1}{\sqrt{N_1 N_2}} \int \frac{\dd[2]{\p}}{(2\pi)^2} \sum_{\R_1} e^{-i(\k_1-\p)\vdot\qty(\R_1+\vtau_{\alpha}^{(1)})}
-t_{12}^{\alpha\beta}(\p) \sum_{\R_2} e^{i(\k_2-\p)\vdot\qty(\R_2+\vtau_{\beta}^{(2)})}.
+t_\perp^{\alpha\beta}(\p) \sum_{\R_2} e^{i(\k_2-\p)\vdot\qty(\R_2+\vtau_{\beta}^{(2)})}.
 \end{equation}
 
-Using the relation
-\[
+Using the lattice relation
+\begin{equation} \label{eq:delta_lattice_relation}
 \sum_{\R_\ell} e^{i \k \vdot \R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell},
-\]
-where the summation is over momentum lattice vectors run over the layers \(\G_\ell = m_1 \b_1^{(\ell)} + m_2 \b_2^{(\ell)}\), Eq.~\eqref{eq:interlayer-hopping-step1} can be rewritten as:
+\end{equation}
+where the summation is over the momentum lattice vectors of each layer, \(\G_\ell = m_1 \b_1^{(\ell)} + m_2 \b_2^{(\ell)}\), Equation \eqref{eq:interlayer-hopping-step1} can be rewritten as:
 \begin{equation} \label{eq:interlayer-hopping-step2}
-T_{12}^{\alpha\beta}(\k_1,\k_2) =
+T^{\alpha\beta}(\k_1,\k_2) =
 \sqrt{N_1 N_2} \int \frac{\dd[2]{\p}}{(2\pi)^2} \sum_{\G_1, \G_2}
-e^{-i \G_1 \vdot \vtau_\alpha^{(1)}} t_{12}^{\alpha\beta}(\p) e^{i \G_2\vdot\vtau_\beta^{(2)}}
+e^{-i \G_1 \vdot \vtau_\alpha^{(1)}} t_\perp^{\alpha\beta}(\p) e^{i \G_2\vdot\vtau_\beta^{(2)}}
 \delta_{\k_1-\p, \G_1} \delta_{\k_2-\p, \G_2}.
 \end{equation}
 
-Using the Dirac delta property \(\int \dd[2]{\k} \delta_{\k-\k'} = \frac{(2\pi)^2}{A}\), where \(A\) is the total area of the system, we can write:
+Using the Dirac delta property
+\begin{equation} \label{eq:dirac_delta_2d_property}
+\int \dd[2]{\k} \delta_{\k-\k'} = \frac{(2\pi)^2}{A},
+\end{equation}
+where \(A\) is the total area of the system, we can write:
 \begin{equation} \label{eq:interlayer-hopping-step3}
-T_{12}^{\alpha\beta}(\k_1,\k_2) =
+T^{\alpha\beta}(\k_1,\k_2) =
 \sqrt{\frac{N_1 N_2}{A^2}} \sum_{\G_1, \G_2}
-e^{i \G_1 \vdot \vtau_\alpha^{(1)}} t_{12}^{\alpha\beta}(\k_1+\G_1) e^{-i \G_2\vdot\vtau_\beta^{(2)}}
+e^{i \G_1 \vdot \vtau_\alpha^{(1)}} t_\perp^{\alpha\beta}(\k_1+\G_1) e^{-i \G_2\vdot\vtau_\beta^{(2)}}
 \delta_{\k_1+\G_1, \k_2+\G_2}.
 \end{equation}
 
-By expressing \(A\) as \(A = N_\ell A_1\), where \(A_1 = \frac{\sqrt{3}}{2} a^2\) represents the unit cell area of each layer, the above simplifies to:
+Notice that the total area is \(A = N_\ell A_1\), where \(A_1 = \frac{\sqrt{3}}{2} a^2\) represents the unit cell area of both layers. Equation \ref{eq:interlayer-hopping-step3} then simplifies to:
 \begin{equation} \label{eq:interlayer-hopping-simplified}
-T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{A_1} \sum_{\G_1, \G_2}
-e^{i \G_1 \vdot \vtau_\alpha^{(1)}} t_{12}^{\alpha\beta}(\k_1+\G_1) e^{-i \G_2\vdot\vtau_\beta^{(2)}}
+T^{\alpha\beta}(\k_1,\k_2) = \frac{1}{A_1} \sum_{\G_1, \G_2}
+e^{i \G_1 \vdot \vtau_\alpha^{(1)}} t_\perp^{\alpha\beta}(\k_1+\G_1) e^{-i \G_2\vdot\vtau_\beta^{(2)}}
 \delta_{\k_1+\G_1, \k_2+\G_2}.
 \end{equation}
-Here, the condition \(\k_1 + \G_1 = \k_2 + \G_2\) is known as the generalized umklapp condition \cite{handbook2019}.
 
-\textbf{TEXTO DO ANGELI ++++++++++++++++++++++++++++}
+The term $\delta_{\k_1+\G_1, \k_2+\G_2}$ in Eq. \eqref{eq:interlayer-hopping-simplified}, leads to a ``momentum conservation'',
+\begin{equation} \label{eq:umklapp_condition}
+\k_1 + \G_1 = \k_2 + \G_2,
+\end{equation}
+which is known as generalized umklapp condition \cite{handbook2019}.
 
-Since we are interested in the low-energy physics, \( \mathbf{k} \) and \( \mathbf{p} \) must lie close to their respective Dirac points: \( \mathbf{K}_\phi \) and \( \mathbf{K}'_\phi \) for \( \mathbf{p} \) in layer 1, and \( \mathbf{K}_{-\phi} \) and \( \mathbf{K}'_{-\phi} \) for \( \mathbf{k} \) in layer 2. Consequently, \( \hat{T}_{\mathbf{k}\mathbf{p}} \) can, in principle, couple states within the same valley of different layers or states between opposite valleys. However, since \( T_\perp(\mathbf{q}) \) decays exponentially with \( \mathbf{q} = \abs{\mathbf{q}} \) \cite{tperp-laissardiere2012}, the leading contributions arise from terms with the smallest possible \( \abs{\mathbf{k} + \mathbf{G}^{(2)}} \) that satisfy momentum conservation:
-\[
-\mathbf{k} + \mathbf{G}^{(2)} = \mathbf{p} + \mathbf{G}^{(1)}.
-\]
 
-For small twist angles \( \phi \), only the intra-valley matrix elements (\( \mathbf{p} \sim \mathbf{k} \)) are significant, while inter-valley contributions are negligibly small. This remains true despite opposite valleys of different layers folding into the same point in the moiré Brillouin zone (MBZ). For example, if \( \mathbf{p} \approx \mathbf{K}_\phi \) and \( \mathbf{k} \approx \mathbf{K}'_{-\phi} \), momentum conservation requires very large reciprocal lattice vectors, specifically \( \mathbf{G}^{(1)} = (2k+1)(\mathbf{G}^{(1)}_a - \mathbf{G}^{(1)}_b) \) and \( \mathbf{G}^{(2)} = (2k+1)(\mathbf{G}^{(2)}_b - \mathbf{G}^{(2)}_a) \), resulting in an exponentially small \( T_\perp(\abs{\mathbf{k} + \mathbf{G}^{(2)}}) \).
+Since both \( A \) and \( B \) sublattice sites in graphene correspond to \( p_z \) orbitals of carbon atoms, it is reasonable to assume that the interlayer hopping term, \( t_\perp^{\alpha\beta}(\mathbf{r}) \), is independent of the sublattice indices \( \alpha \) and \( \beta \). Thus, we write \( t_\perp^{\alpha\beta}(\mathbf{r}) = t_\perp(\mathbf{r}) \). In \cite{macdonald2011}, the behavior of \( t_\perp(\mathbf{r}) \) is characterized using Slater-Koster parameters \cite{tperp-laissardiere2012}, and the Fourier transform \( t_\perp(\mathbf{p}) \) is numerically evaluated via Eq.~\eqref{eq:interlayer-hopping-fourier}. These estimates confirm that \( t_\perp(\mathbf{p}) \) depends only on \( \abs{\mathbf{p}} \) and exhibits exponential decay. This fact is particularly important, as it ensures that only a limited number of umklapp processes contribute significantly to the coupling in Eq.~\eqref{eq:interlayer-hopping-simplified}.
 
-This effective decoupling of the two valleys ensures that the number of electrons within each valley is, to a high degree of accuracy, a conserved quantity. Consequently, there emerges an approximate valley \( U_v(1) \) symmetry \cite{tperp-laissardiere2012, 69}, which leads to accidental band degeneracies along high-symmetry directions in the MBZ.
+To analyze the low-energy physics of the system, we focus on momentum states \(\k_1\) and \(\k_2\) that lie near their respective Dirac points: \(K_1\) and \(K_1'\) for layer 1, and \(K_2\) and \(K_2'\) for layer 2. The interlayer coupling matrix \(T^{\alpha\beta}(\k_1, \k_2)\) can, in principle, couple states within the same valley across layers or states between opposite valleys. However, the interlayer hopping term \(t_\perp(\mathbf{p})\), as expressed in Eq.~\eqref{eq:interlayer-hopping-simplified}, decays exponentially with \(\abs{\mathbf{p}}\). As a result, the dominant contributions come from terms where \(\abs{\k_1 + \G_1}\) is minimized while satisfying the momentum conservation of Eq.~\eqref{eq:umklapp_condition}.
 
-\textbf{FINAL DO TEXTO DO ANGELI ++++++++++++++++++++++}
+For small twist angles \(\theta\), the contributions are dominated by intra-valley couplings, as inter-valley couplings become negligibly small. This holds true even though opposite valleys from different layers fold into the same point in the moiré Brillouin zone. For instance, when \(\k_1 \approx K_1\) and \(\k_2 \approx K_2'\), momentum conservation would require very large reciprocal lattice vectors of order \(\mathcal{O}(1/a)\), leading to an exponentially suppressed \(t_\perp\qty(\k_1 + \G_1)\) \cite{zou2018, thesis_angeli}. This effective decoupling between valleys ensures that the electron number in each valley is approximately conserved, giving rise to an emergent valley \(U_v(1)\) symmetry. This symmetry is responsible for accidental band degeneracies along high-symmetry directions in the moiré Brillouin zone.
 
-Equation \eqref{eq:interlayer-hopping-simplified} relies on the functional form of \( t_{12}^{\alpha\beta}(\mathbf{p}) \). To make further progress, we introduce additional assumptions. Since both \( A \) and \( B \) sites in graphene correspond to \( p_z \) orbitals of carbon atoms, we assume that \( t_{12}^{\alpha\beta}(\mathbf{r}) = t_\perp(\mathbf{r}) \) is independent of \( \alpha \) and \( \beta \). In \cite{tperp-laissardiere2012}, the authors characterize the behavior of \( t_\perp(\mathbf{r}) \) using Slater-Koster parameters and numerically evaluate \( t_\perp(\mathbf{p}) \) through Eq. \eqref{eq:interlayer-hopping-fourier}. They establish that \( t_\perp(\mathbf{p}) \) depends solely on \( \abs{\mathbf{p}} \) and decays exponentially. This observation is significant, as it ensures that only a few umklapp processes contribute to the coupling in Eq. \eqref{eq:interlayer-hopping-simplified}.
-
-In the small-angle limit \( \theta \lesssim 10^\circ \), we expand \( \mathbf{k}_\ell = K^{(\ell)}+ \q_\ell \) around the Dirac points of each layer, with \( \abs{\q_\ell} \sim k_\theta \ll \abs{K} \). Approximating \( t_\perp(K^{(1)}+ \q_1 + \G_1) \approx t_\perp(K^{(1)} + \G_1) \), the interlayer coupling becomes
+In the limit \( \theta \lesssim 10^\circ \) and for the valley $\zeta = +1$, we expand \(\k_\ell = K_\ell + \q_\ell\), where \(\q_\ell\) represents the deviation from the Dirac points of each layer and is of order \(\abs{\q_\ell} \sim k_\theta \ll \abs{K_{\ell}}\). By approximating \(t_\perp(\k_1 + \G_1) \approx t_\perp(K_1 + \G_1)\), the interlayer coupling simplifies to:
 \begin{equation} \label{eq:interlayer-hopping-truncation}
-T_{12}^{\alpha\beta}(\q_1, \q_2) = \frac{1}{A_{1}} \sum_{\G_1, \G_2} e^{i \G_1 \cdot \bm{\tau}_{\alpha}^{(1)}}
-t_{\perp}(K_1 + \G_1) e^{-i \G_2 \cdot \bm{\tau}_{\beta}^{(2)}}
-\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2}.
+T^{\alpha\beta}(\q_1, \q_2) = \frac{1}{A_{1}} \sum_{\G_1, \G_2} e^{i \G_1 \cdot \vtau_{\alpha}^{(1)}}
+t_{\perp}(K_1 + \G_1) e^{-i \G_2 \cdot \vtau_{\beta}^{(2)}}
+\delta_{\q_2 - \q_1, \K_1 - \K_2 + \G_1 - \G_2}.
 \end{equation}
 
-Since \( t_\perp(\mathbf{p}) \) decays exponentially with \( \abs{\mathbf{p}} \), we truncate \( t_\perp(\mathbf{p}) \approx 0 \) for \( \abs{\mathbf{p}} > \abs{K} \). Thus, the quantity $t_\perp(K_1 + \G_1)$ is only significant for values of $K_1 + \G_1$ inside the BZ of the first layer. Since $\G_1$ is a lattice vector of the first layer, this will only happen if $K_1 + \G_1$ is equivalent to some of the equivalent Dirac points $K_1$, $C_{3} K_1$ or $C_{3}^2 K_1$. This leaves only three possible values for $\G_1 = \0, -\b_1^{(1)}, -(\b_1^{(1)}+\b_2^{(1)})$. Because of the term $\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2}$, something analogous must happen with $\G_2 = \0, -\b_1^{(2)}, -(\b_1^{(2)}+\b_2^{(2)})$. In summary, there are three possibilities:
+Since \( t_\perp(\mathbf{p}) \) decays exponentially, \( t_\perp(K_1 + \G_1) \) is significant only when \( K_1 + \G_1 \) lies within the Brillouin zone of the first layer. This occurs if and only if \( K_1 + \G_1 \) coincides with one of the symmetry-equivalent Dirac points of the first layer: \( K_1 \), \( C_{3z} K_1 \), or \( C_{3z}^2 K_1 \). Due to the presence of the term \( \delta_{\q_2 - \q_1, \K_1 - \K_2 + \G_1 - \G_2} \), this restriction implies that there are only three possible values for \( \G_1 \) and \( \G_2 \):
 \begin{align} \label{eq:G1G2_3_possibilities}
 \begin{cases}
 \; \G_1^{(\text{b})} = \0,                      & \G_2^{(\text{b})} = \0; \\
@@ -351,11 +327,7 @@ Since \( t_\perp(\mathbf{p}) \) decays exponentially with \( \abs{\mathbf{p}} \)
 \end{cases}
 \end{align}
 
-Also, rewriting the Delta term as
-\begin{equation} \label{eq:delta-term}
-\delta_{\K_1 + \q_1 + \G_1, \K_2 + \q_2 + \G_2} = \delta_{\q_2 - \q_1, \K_1 - \K_2 + \G_1 - \G_2},
-\end{equation}
-we conclude that the three possibilities in Equation \ref{eq:G1G2_3_possibilities} result in three possible momentum transfers bottom (b), top right (tr), and top left (tl) for $\q_2-\q_1$:
+There are three possible momentum transfers $\q_2-\q_1$: bottom (b), top right (tr), and top left (tl).
 \begin{equation} \label{eq:qb_qtr_qtl}
 \begin{cases}
 \; \q_\text{b} = K_1 - K_2 = k_\theta \, (0, -1), \\
@@ -363,111 +335,130 @@ we conclude that the three possibilities in Equation \ref{eq:G1G2_3_possibilitie
 \; \q_\text{tl} = K_1 - K_2 -\b_1^{\text{moiré}}-\b_2^{\text{moiré}} = k_\theta \, \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
 \end{cases}
 \end{equation}
-%\begin{equation} \label{eq:qb}
-%\q_\text{b} = \K_1 - \K_2 = k_\theta \, (0, -1),
-%\end{equation}
-%\begin{equation} \label{eq:qtr}
-%\q_\text{tr} = (\K_1 - \K_2) + (\g_{12} - \g_{22}) = k_\theta \, \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}),
-%\end{equation}
-%\begin{equation} \label{eq:qtl}
-%\q_\text{tl} = (\K_1 - \K_2) + (\g_{13} - \g_{23}) = k_\theta \, \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}).
-%\end{equation}
 
 Ultimately, the interlayer coupling reduces to three terms:
 \begin{equation} \label{eq:interlayer-3terms}
-T_{12}^{\alpha\beta}(\q_1, \q_2) = T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_2 - \q_1, \q_\text{b}}
-+ T^{\alpha\beta}_{\q_\text{tr}} \delta_{\q_2 - \q_1, \q_\text{tr}}
-+ T^{\alpha\beta}_{\q_\text{tl}} \delta_{\q_2 - \q_1, \q_\text{tl}},
+T^{\alpha\beta}(\q_1, \q_2) = w \qty(T^{\alpha\beta}_{\text{b}} \delta_{\q_2 - \q_1, \q_\text{b}}
++ T^{\alpha\beta}_{\text{tr}} \delta_{\q_2 - \q_1, \q_\text{tr}}
++ T^{\alpha\beta}_{\text{tl}} \delta_{\q_2 - \q_1, \q_\text{tl}}),
 \end{equation}
 where
 \begin{equation} \label{eq:interlayer-tensor}
-T^{\alpha\beta}_{\q_{\text{b},\text{tr},\text{tl}}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \G_{1}^{(\text{b},\text{tr},\text{tl})} \cdot \bm{\tau}_{\alpha}^{(1)}}
-e^{-i \G_{2}^{(\text{b},\text{tr},\text{tl})} \cdot \bm{\tau}_{\beta}^{(2)}}.
+T^{\alpha\beta}_{\text{b},\text{tr},\text{tl}} = e^{i \G_{1}^{(\text{b},\text{tr},\text{tl})} \cdot \vtau_{\alpha}^{(1)}}
+e^{-i \G_{2}^{(\text{b},\text{tr},\text{tl})} \cdot \vtau_{\beta}^{(2)}},
 \end{equation}
+and the parameter is estimated to be \( w = t_\perp(|\mathbf{K}|) / A_1 \approx 110 \, \mathrm{meV} \) \cite{macdonald2011}.
 
-In the \( A, B \) basis, the matrices for each term are:
+Substituting the explicit vectors into Eq. \eqref{eq:interlayer-tensor}, in the \( A, B \) sublattice basis, the matrices are
 \begin{equation} \label{eq:T-qb}
-T_{\q_\text{b}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
+T_{\text{b}} =
 \begin{pmatrix}
 1 & 1 \\
 1 & 1
 \end{pmatrix},
 \end{equation}
 \begin{equation} \label{eq:T-qtr}
-T_{\q_\text{tr}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
+T_{\text{tr}} =
 \begin{pmatrix}
 1 & e^{2\pi i/3} \\
 e^{-2\pi i/3} & 1
 \end{pmatrix},
 \end{equation}
 \begin{equation} \label{eq:T-qtl}
-T_{\q_\text{tl}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
+T_{\text{tl}} =
 \begin{pmatrix}
 1 & e^{-2\pi i/3} \\
 e^{2\pi i/3} & 1
 \end{pmatrix}.
 \end{equation}
 
-For the valley $K'$ the derivation is analogous, which leads us to
+For the valley $\zeta=-1$, we expand around $K'_{1,2}$ and the derivation is analogous, which leads to
 \begin{equation} \label{eq:interlayer-3terms_valley-1}
-T^{\zeta=-1}(\q_1, \q_2) = T_{\q_\text{b}}^* \delta_{\q_2 - \q_1, \q_\text{b}}
-+ T_{\q_\text{tr}}^* \delta_{\q_2 - \q_1, \q_\text{tr}}
-+ T_{\q_\text{tl}}^* \delta_{\q_2 - \q_1, \q_\text{tl}},
+T^{\zeta=-1}(\q_1, \q_2) = w \qty(
+T_{\text{b}}^* \delta_{\q_2 - \q_1, \q_\text{b}}
++ T_{\text{tr}}^* \delta_{\q_2 - \q_1, \q_\text{tr}}
++ T_{\text{tl}}^* \delta_{\q_2 - \q_1, \q_\text{tl}} ) .
 \end{equation}
 
-\textbf{TEXTO DO ANGELI ++++++++++++++++++++++++++++}
-
-Let us briefly discuss how lattice relaxation effects can be incorporated into the model. As highlighted in the previous section, lattice relaxation tends to compress the energetically unfavorable AA regions while enlarging the Bernal-stacked triangular domains in the moiré pattern. This modification influences the amplitudes of both inter-sublattice and intra-sublattice hopping processes. These effects are captured by adjusting the operators \( \hat{T}_i \) in Eq. (2.27) as follows:
-\[
-\hat{T}_1 \to T_1(u, u') =
+Lattice relaxation effects can be incorporated into the model by modifying the interlayer coupling matrices. As discussed earlier, relaxation compresses the energetically unfavorable AA-stacked regions while expanding the Bernal-stacked (AB/BA) triangular domains in the moiré superlattice. This redistribution alters both inter-sublattice and intra-sublattice hopping amplitudes, which can be represented through adjusted forms of the operators \( T_{\text{b, tr, tl}}^{\zeta=\pm 1} \). Specifically, the modified coupling matrices are expressed as \cite{thesis_angeli}:
+\begin{align}
+T^{\zeta}(\q_1, \q_2) &= w \qty( T_{\text{b}}^\zeta \delta_{\q_2 - \q_1, \q_\text{b}} + T_{\text{tr}}^\zeta \delta_{\q_2 - \q_1, \q_\text{tr}} + T_{\text{tl}}^\zeta \delta_{\q_2 - \q_1, \q_\text{tl}} ), \\
+T_{\text{b}}^\zeta &=
 \begin{pmatrix}
-u & u' \\
-u' & u
+\kappa & 1 \\
+1 & \kappa
 \end{pmatrix}
-= u \sigma_0 + u' \sigma_x,
-\]
-\[
-\hat{T}_2 \to \hat{T}_2(u, u') =
+= \kappa \sigma_0 + \sigma_x,
+\label{eq::T-qb-w0w1} \\
+T_{\text{tr}}^\zeta &=
 \begin{pmatrix}
-u & u' \omega^* \\
-u' \omega & u
+\kappa & e^{2\pi \zeta i/3} \\
+e^{-2\pi \zeta i/3} & \kappa
 \end{pmatrix}
-= u \sigma_0 + u'
+= \kappa \sigma_0 +
 \left(
-\cos \frac{2\pi}{3} \sigma_x + \sin \frac{2\pi}{3} \sigma_y
+\sigma_x \cos \frac{2\pi \zeta}{3} + \sigma_y \sin \frac{2\pi \zeta}{3}
 \right),
-\]
-\[
-\hat{T}_3 \to \hat{T}_3(u, u') =
+\label{eq::T-qtr-w0w1} \\
+T_{\text{tl}}^\zeta &=
 \begin{pmatrix}
-u & u' \omega \\
-u' \omega^* & u
+\kappa & e^{-2\pi \zeta i/3} \\
+e^{2\pi \zeta i/3} & \kappa
 \end{pmatrix}
-= u \sigma_0 + u'
+= \kappa \sigma_0 +
 \left(
-\cos \frac{2\pi}{3} \sigma_x - \sin \frac{2\pi}{3} \sigma_y
-\right),
-\]
-where \( u \) is generally smaller than \( u' \), reflecting the asymmetry introduced by lattice relaxation.
+\sigma_x \cos \frac{2\pi \zeta}{3} - \sigma_y \sin \frac{2\pi \zeta}{3}
+\right).
+\label{eq::T-qb-w0w1}
+\end{align}
 
-In **Fig. 2.6**, we show the band structure of twisted bilayer graphene at \( \theta = 1.08^\circ \), obtained using the \( u \) and \( u' \) parameters reported in Ref. [53]. The resulting band structure closely resembles that obtained via tight-binding models, with the notable feature that the bands exhibit particle-hole symmetry.
+%\begin{align}
+%T_{\text{b}}^\zeta &=
+%\begin{pmatrix}
+%w_0 & w \\
+%w & w_0
+%\end{pmatrix}
+%= w_0 \sigma_0 + w \sigma_x,
+%\label{eq::T-qb-w0w1} \\
+%T_{\text{tr}}^\zeta &=
+%\begin{pmatrix}
+%w_0 & w e^{2\pi \zeta i/3} \\
+%w e^{-2\pi \zeta i/3} & w_0
+%\end{pmatrix}
+%= w_0 \sigma_0 + w
+%\left(
+%\cos \frac{2\pi \zeta}{3} \sigma_x + \sin \frac{2\pi \zeta}{3} \sigma_y
+%\right),
+%\label{eq::T-qtr-w0w1} \\
+%T_{\text{tl}}^\zeta &=
+%\begin{pmatrix}
+%w_0 & w e^{-2\pi \zeta i/3} \\
+%w e^{2\pi \zeta i/3} & w_0
+%\end{pmatrix}
+%= w_0 \sigma_0 + w
+%\left(
+%\cos \frac{2\pi \zeta}{3} \sigma_x - \sin \frac{2\pi \zeta}{3} \sigma_y
+%\right).
+%\label{eq::T-qb-w0w1}
+%\end{align}
 
-\textbf{FINAL DO TEXTO DO ANGELI ++++++++++++++++++++++++++++}
+The parameters \( w_1 = w \approx 110 \, \mathrm{meV} \) and \( w_0 = \kappa w_1 \) denote the inter-sublattice (off-diagonal) and intra-sublattice (diagonal) hopping amplitudes, respectively \cite{thesis_angeli, topoheavyfermion2022}. The condition \( w_0 \leq w_1 \) with \( 0 \leq \kappa \leq 1 \) accounts for the asymmetry introduced by lattice relaxation effects.
 
-To obtain the final hamiltonian for the BM model, it is useful to represent it in a new lattice \cite{all_magic_angles}. We define the set of vectors
+It is useful to represent the final hamiltonian for the BM model in a momentum $\Q$-lattice, defined by the set of vectors
 \begin{equation} \label{eq:Q_lattice_QA_QB_def}
 \{\Q_A, \Q_B\} =
 \begin{cases}
-\; \Q_A = \K_2 + m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}}; \\
-\; \Q_B = \K_1 + m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}},
+\Q_A = m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}} - \q_{\text{tr}}, \\
+\Q_B = m \b_1^{\text{moiré}} + n \b_2^{\text{moiré}} + \q_{\text{tr}},
 \end{cases}
 \end{equation}
-where $\Q_A$ represent the black lattice and $\Q_B$ the red lattice as in \cite{thesis_angeli, all_magic_angles}. They span the vertices of the mBZs, where $\Q_A$ (black circles) correspond to valley $\zeta = -1$ in layer 1 and valley $\zeta = +1$ in layer 2, while $\Q_B$ (red circles) correspond to valley $\zeta = +1$ in layer 1 and valley $\zeta = -1$ in layer 2.
+where \( \Q_A \) represents the black lattice and \( \Q_B \) represents the red lattice, as detailed in \cite{thesis_angeli, all_magic_angles}. These lattices define the vertices of the moiré Brillouin zones. Specifically, \( \Q_A \) (black circles) corresponds to the moiré Dirac points \( K_m \), associated with valley \( \zeta = -1 \) in layer 1 and valley \( \zeta = +1 \) in layer 2. Similarly, \( \Q_B \) (red circles) corresponds to the moiré Dirac points \( K_m' \), associated with valley \( \zeta = +1 \) in layer 1 and valley \( \zeta = -1 \) in layer 2.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{fig/moire-vectors.png}
-\caption{\textbf{FAZER MINHA PRÓPRIA FIGURA.}}
+\caption{Momentum transfers \( \q_{\text{b}} \), \( \q_{\text{tr}} \), \( \q_{\text{tl}} \), and the \( \Q \)-lattice in the reciprocal moiré space.}
+\label{fig:Q_lattice}
 \end{figure}
 
 Next, we redefine the momenta for layers 1 and 2 as
@@ -475,7 +466,7 @@ Next, we redefine the momenta for layers 1 and 2 as
 \q_1 = \k_1 - K_1 = \k - \Q_B, \quad \q_2 = \k_2 - K_2 = \k - \Q_A.
 \end{equation}
 
-Since $\q_2 - \q_1$ can assume the three values $\q_{\text{b}}$, $\q_{\text{tr}}$ or $\q_{\text{tl}}$, in the new representation the selection rules becomes
+Since $\q_2 - \q_1$ can assume the three values $\q_{\text{b}}$, $\q_{\text{tr}}$ or $\q_{\text{tl}}$, in the new representation the transfer rules become
 \begin{align} \label{eq:selection_rules_qbqtrqtl_QAQB}
 \begin{cases}
 \; \q_2-\q_1=\q_{\text{b}}  \implies \Q_B = \Q_A + \q_{\textbf{b}} \\
@@ -484,153 +475,111 @@ Since $\q_2 - \q_1$ can assume the three values $\q_{\text{b}}$, $\q_{\text{tr}}
 \end{cases}
 \end{align}
 
-With those definitions, the Hamiltonian of valley $\zeta$ reads
+Within the $\Q$-lattice representation, combining Equations \ref{eq:single_layer_dirac_hamil_valley}, \ref{eq:interlayer-hopping-kspace}, and \ref{eq:interlayer-3terms}, the Bistritzer-MacDonald Hamiltonian for one single valley \( \zeta \), also referred to as MBM-1V \cite{all_magic_angles}, is given by:
 \begin{equation} \label{eq:mbm-1v}
-H^\zeta_{\Q\Q'}(\k) = \zeta \delta_{\Q,\Q'} v_F (\k - \Q) \vdot (\s_x, \zeta \s_y) +
-\sum_{j = \text{b},\text{tr},\text{tl}} \qty(\delta_{\Q'-\Q,\q_j} + \delta_{\Q-\Q',\q_j}) T_{j}^\zeta.
+H^\zeta_{\Q\Q'}(\k) = \zeta v_F \delta_{\Q,\Q'} (\k - \Q) \vdot (\s_x, \zeta \s_y) +
+w \sum_{j = \text{b},\text{tr},\text{tl}} \qty(\delta_{\Q'-\Q,\q_j} + \delta_{\Q-\Q',\q_j}) T_{j}^\zeta.
 \end{equation}
 
-<++> <++> <++> <++> <++> <++> <++> <++>
+By inserting the usual values \( \theta = 1.05^\circ \), \( v_F = 5.994 \, \unit{eV \cdot \AA} \), \( a = 2.46 \unit{\AA} \), \( w = 110 \unit{meV} \), and \( w_0 = 0.8 \, w \) \cite{topoheavyfermion2022}, and diagonalizing the Hamiltonian given in Equation \ref{eq:mbm-1v} for valley \( \zeta = +1 \), we obtain the band structure depicted in Figure \ref{fig:continuum_model_bands}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Symmetry analysis and Wannier obstruction} \label{sec:wannier_obstruction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-As discussed in \cite{zou2018}, at currently accessible energy scales, experiments indicate that MATBG exhibits some approximate symmetries. These include translational symmetry characterized by the constant $L' = a / (2 \sin\theta/2)$, valley symmetry $U_v(1)$, $C_{2z} \mathcal{T}$, and $D_6$ point group symmetry, which are not fully captured by a generic commensurate structure described in Section \ref{sec:tbg_geom}. The continuum model outlined in Section \ref{sec:BM-model} incorporates all these ``good'' symmetries. In this section, we will explore group theory concepts that will later be applied to understand the Wannier Obstruction \cite{zou2018} and the Topological Heavy Fermion model of MATBG \cite{topoheavyfermion2022}.
-
-For our purposes, the MATBG system exhibits emergent symmetries compatible with the $P622$ space group \cite{thesis_rennella}, which is symmorphic and associated with the $D_6$ point group.
-
-For TBG, we focus on the Wyckoff position $2c$ (\textbf{NO! WE DO NOT!}), corresponding to the AB and BA regions of interest in Figure \ref{fig:moireD6}. The site-symmetry groups of these regions are all isomorphic to the point group $D_3$, a subgroup of $D_6$. In contrast, the $AA$ regions belong to Wyckoff position $1a$, and their site-symmetry groups have higher symmetry $D_6$.
-
-The BM model is advantageous as it is independent of whether a configuration of TBG is commensurate or not, and it also incorporates all the emergent symmetries observed in experiments \cite{zou2018}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monolayer}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Considering only nearest-neighbors, the hamiltonian of a single unrotated layer of graphene is given by
-$$
-H_{\text{mono}}(\k) = -t
-\begin{pmatrix}
-0 & f(\k) \\
-f^*(\k) & 0
-\end{pmatrix}
-, \quad \ell = 1, 2,
-$$
-where $f = \sum_{i=1}^{3} e^{i \k \vdot \bm{\delta}}$, and $\bm{\delta}$ are the three nearest-neighbor vectors from a site $A$ of the honeycomb lattice.
-
-Expanding in first-order $\k = \K + \q$, where $\K = \frac{4\pi}{3a} (1, 0)$ is the Dirac point of the unrotated layer, we have
-$$
-H_{\text{mono}}(\K + \q) \approx v_F \, \q \vdot \bm{\sigma}.
-$$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{BM model review}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The hamiltonian of the BM model is given by
-$$
-H = H_1 + H_2 + V + V^\dagger,
-$$
-where $H_1$ and $H_2$ correspond to the layers 1 and 2, and $V$ is the hybridization between them.
-
-\n
-
-For this discussion, we use the reference frame where layer 1 is unrotated and layer 2 is rotated counter-clockwise by an angle $\theta$. Therefore, we have
-$$
-H_1(\k) = H_{\text{mono}}(\k), \quad H_2(\k) = H_1(R_\theta^{-1}\k),
-$$
-$$
-R_\theta =
-\begin{pmatrix}
-\cos\theta & -\sin\theta \\
-\sin\theta & \cos\theta
-\end{pmatrix}.
-$$
-
-Also, the Dirac points of each layer are
-$$
-\K_1 = \K = \frac{4\pi}{3a} (1, 0), \quad \K_2 = R_\theta \K_1 = R_\theta \K,
-$$
-$$
-$$
-
-Therefore, expanding around the Dirac points $\K_1$ and $\K_2$, respectively:
-$$
-H_1(\K_1 + \q) \approx v_F \, \q \vdot \bm{\sigma}.
-$$
-$$
-\boxed{ H_2(\K_2 + \q) = H_2(R_\theta \K_1 + \q) = H_1(\K_1 + R_\theta^{-1}\q) \approx v_F \, (R_\theta^{-1}\q) \vdot \bm{\sigma} \approx v_F \, (1 - i \theta \sigma_y ) \, \q \vdot \bm{\sigma}. }
-$$
-
-If we \textbf{neglect the $\theta$-dependence on $H_2$}, our BM model will be \textbf{particle-hole symmetric}, as defined by Bernevig.
-
-\n
-
-Of course, the more difficult part is due to the hybridization term $V$. It is written on the Bloch basis $\ket{\ell, \alpha, \p}$, where $\ell = 1, 2$ is the layer index, $\alpha = A, B$ is the sublattice index, and $\p$ is the momentum.
-We have
-$$
-V_{\alpha\beta}(\p, \p') = \bra{1, \alpha, \p} H \ket{2, \beta, \p'}.
-$$
-
-When we expand both $\p = \K_1 + \q$ and $\p' = \K_2 + \q'$, \textbf{after the BM considerations}, we get
-$$
-V_{\alpha\beta}(\K + \q, R_\theta \K + \q') \approx
-w \sum_{j=1}^{3} \delta_{\q, \q' + \q_j} T_{\alpha\beta}^j,
-$$
-where $\q_1, \q_2, \q_3$ are the moiré momentum vectors, with absolute value $k_D = 2 \sin(\theta/2) \abs{\K}$. The matrices $T^j_{\alpha\beta}$ are
-$$
-T_1 = \sigma_0 + \sigma_x
-$$
-$$
-T_2 = \sigma_0 + \cos(\frac{2\pi}{3}) \sigma_x + \sin(\frac{2\pi}{3}) \sigma_y
-$$
-$$
-T_3 = \sigma_0 + \cos(\frac{2\pi}{3}) \sigma_x - \sin(\frac{2\pi}{3}) \sigma_y
-$$
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\linewidth]{fig/moire-vectors.png}
+\includegraphics[width=0.8\linewidth]{fig/continuum_model_bands.png}
+\caption{Continuum model energy spectrum for valley \( \zeta = +1 \). The energy range was zoomed in to emphasize the flat bands.}
+\label{fig:continuum_model_bands}
 \end{figure}
 
-\n
 
-This \textbf{BM model} is called \textbf{MBM-1V (Moiré Band Model - One Valley)} by Bernevig. If we decompose $\q = \k - \Q$, $\q'=\k-\Q'$, where $\Q$ and $\Q'$ belong to the hexagonal lattice formed by adding $\q_{1,2,3}$ iteratively, we can rewrite the hamiltonian as
-$$
-\boxed{
-H_{\Q, \Q'}^{(\text{MBM-1V})}(\k) =
-\delta_{\Q,\Q'} v_F (\k-\Q) \vdot \bm{\sigma}
-+ w \sum_{j=1}^{3} (\delta_{\Q'-\Q, \q_j} + \delta_{\Q-\Q', \q_j}) T^j.
-}
-$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Symmetry analysis and Wannier obstruction} \label{sec:symmetry_analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+As discussed in \cite{zou2018}, at currently accessible energy scales, experiments indicate that MATBG exhibits approximate emergent symmetries. These include translational symmetry characterized by the constant $L'(\theta) = a / (2 \sin\theta/2)$, valley symmetry $U_v(1)$, and $C_{6} T$, which are not fully captured by a generic commensurate structure described in Section \ref{sec:tbg_commensurate}. The continuum model in Section \ref{sec:BM-model} incorporates all these ``good'' symmetries. In this section, we will characterize the symmetries of the BM model that will later be analyzed to understand the Wannier Obstruction \cite{zou2018} and the Topological Heavy Fermion model of MATBG \cite{topoheavyfermion2022}.
+In this section, we define $H = H_{\text{MBM-1V}}$, which refers to the Hamiltonian in Eq. \eqref{eq:mbm-1v}. \textbf{MELHORAR PARÁGRAFO}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$U_v(1)$ valley symmetry} \label{subsec:Uv(1)-valley_symmetry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The double degeneracy of the flat bands at \( \Gamma_m \), as seen in Figure \ref{fig:continuum_model_bands}, is not a typical feature but rather an accidental one \cite{thesis_angeli}. This degeneracy arises from the effective suppression of interlayer coupling between Dirac points of different valleys at small twist angles, despite symmetry not explicitly forbidding such couplings. This phenomenon is attributed to an emergent symmetry, often referred to as valley charge conservation or the \( U_v(1) \) symmetry.
+
+At small twist angles, the matrix element of the single-layer component of the Hamiltonian becomes negligibly small, leading to an effective decoupling of the valleys from one another. This decoupling implies that the operator
+\begin{equation} \label{eq:Uv(1)_symmetry_N1N2}
+\Delta N_v = N_1 - N_2,
+\end{equation}
+where \( N_1 \) and \( N_2 \) represent the occupation numbers of each valley, commutes with the non-interacting Hamiltonian at small angles. This operator acts as the generator of the emergent \( U_v(1) \) symmetry.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Magnetic point group symmetries} \label{subsec:magnetic_point_group_symmetries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+First of all, we would like to emphasize that spin-orbit coupling (SOC) is completely neglected in the model presented in Eq. \eqref{eq:mbm-1v}, as it is negligible in graphene itself. Additionally, when we refer to time-reversal symmetry, we are specifically referring to the spinless version.
+
+The MBM-1V model exhibits symmetry properties distinct from the intuitive candidate magnetic space group \( P6221' \), which corresponds to the honeycomb lattice space group with a \( D_6 \) point group combined with time-reversal \( T \). These differences arise due to the absence of inter-valley coupling between the \( K \) and \( K' \) Dirac points, from the $U_v(1)$ symmetry. This absence breaks certain symmetries inherent in the original graphene lattice, including time-reversal \( T \) and the rotational symmetries \( C_{6z} \) and \( C_{2y} \), while preserving \( C_{3z} \).
+
+As a result, the symmetry group of the MBM-1V model is identified as the magnetic space group \( P6'2'2 \) (\#177.151 in BNS notation \cite{bilbao_1}). This group incorporates the symmetries \( C_{6z}T \), \( C_{2y}T \), and \( C_{2x} \), which satisfy the algebraic relations \( (C_{6z}T)^2 = C_{3z} \), \( (C_{6z}T)^3 = C_{2z}T \), and $C_{2y} T = (C_{2z}T) C_{2x}$.
+
+The MBM-1V Hamiltonian, given in Eq.~\eqref{eq:mbm-1v}, is constructed from the Dirac states near the \( K \) point of the top and bottom graphene layers, excluding contributions from the \( K' \) cone. Consequently, the states at \( K' \) form a separate, time-reversed MBM-1V system, breaking explicit time-reversal symmetry in the one-valley model. However, the MBM-1V Hamiltonian retains invariance under the combined anti-unitary operation \( C_{2z}T \), which is in the magnetic space group \( P6'2'2 \).
+
+The point group \( 6'2'2 \), as geometrically depicted in Figure \ref{fig:622_magnetic}, can be generated by the following symmetries, where their operators are represented in the \( \Q \)-lattice by matrix elements \( D_{\Q',\Q} \) \cite{all_magic_angles}. To simplify notation, we label $\q_1 = \q_{\text{b}}$, $\q_2 = \q_{\text{tr}}$, and $\q_3 = \q_{\text{tl}}$.
 \begin{itemize}
-\item This model is \textbf{topological} and is what we have been discussing the whole time.
-\item The tables of Bernevig apply to this model, where we consider the Wyckoff position 1a within the THF approach to solve the topological obstruction.
-\item Its magnetic space group is $P6'2'2$. Generators: $C_{6z} T$, $C_{2y} T$, $C_{2x}$.
+\item \( C_{3z} \):
+\begin{equation} \label{eq:C3z_Qlattice_mbm1v}
+H_{\text{MBM-1V}}(\mathbf{k}) = D^\dagger(C_{3z}) H_{\text{MBM-1V}}(C_{3z}\mathbf{k}) D(C_{3z}),
+\end{equation}
+\begin{equation}
+D_{\Q',\Q}(C_{3z}) = e^{i\frac{2\pi}{3}\sigma_z} \delta_{\Q',C_{3z}\Q}, \quad C_{3z}\q_j = \q_{j+1}.
+\end{equation}
+
+\item \( C_{2x} \):
+\begin{equation} \label{eq:C2x_Qlattice_mbm1v}
+H_{\text{MBM-1V}}(\mathbf{k}) = D^\dagger(C_{2x}) H_{\text{MBM-1V}}(C_{2x}\mathbf{k}) D(C_{2x}),
+\end{equation}
+\begin{equation}
+D_{\Q',\Q}(C_{2x}) = \sigma_x \delta_{\Q',C_{2x}\Q}, \quad C_{2x}\q_1 = -\q_1, \quad C_{2x}\q_2 = -\q_3, \quad C_{2x}\q_3 = -\q_2.
+\end{equation}
+
+\item \( C_{2z}T \):
+\begin{equation} \label{eq:C2zT_Qlattice_mbm1v}
+H_{\text{MBM-1V}}(\mathbf{k}) = D(C_{2z}T) H_{\text{MBM-1V}}^*(\mathbf{k}) D^T(C_{2z}T),
+\end{equation}
+\begin{equation}
+D_{\Q',\Q}(C_{2z}T) = \sigma_x \delta_{\Q',\Q}.
+\end{equation}
 \end{itemize}
 
-\begin{table}[H]
-\scriptsize
-\caption{Elementary band representations of the magnetic space group $P6'2'2$.}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-\hline
-Wyckoff & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
-\cline{1-9}
-Site sym. & \multicolumn{3}{c|}{$6'2'2$, $32$} & \multicolumn{3}{c|}{$32$, $32$} & \multicolumn{2}{c|}{$2'2'2$, $2$} \\
-\cline{1-9}
-EBR & $G_{A_1}^{1a}(1)$ & $G_{A_2}^{1a}(1)$ & $G_{E}^{1a}(2)$ & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$   & $G_{A}^{3f}(3)$ & $G_{B}^{3f}(3)$ \\
-\hline
-$\Gamma$ & $\Gamma_1(1)$ & $\Gamma_2(1)$ & $\Gamma_3(1)$ & $2\Gamma_1(1)$ & $2\Gamma_2(1)$ & $2\Gamma_3(2)$ & $\Gamma_1(1)+\Gamma_3(2)$ & $\Gamma_2(1)+\Gamma_3(2)$ \\
-\hline
-$K$ & $K_1(1)$ & $K_1(1)$ & $K_2 K_3(2)$ & $K_2 K_3(2)$ & $K_2 K_3(2)$ & $2K_1(1) + K_2 K_3(2)$ & $K_1(1)+K_2 K_3(2)$ & $K_1(1)+K_2 K_3(2)$ \\
-\hline
-$M$ & $M_1(1)$ & $M_2(1)$ & $M_1(1)+M_2(1)$ & $2M_1(1)$ & $2M_2(1)$ & $2M_1(1)+2M_2(1)$ & $2M_1(1)+M_2(1)$ & $M_1(1)+2M_2(2)$ \\
-\hline
-\end{tabular}
-\label{tab:ebr-P6'2'2}
-\end{table}
+In the real-space basis of the Hamiltonian \( H_{\text{MBM-1V}}(\r) \), these symmetries are more conveniently represented in terms of valley (\( \tau \)) and sublattice (\( \sigma \)) degrees of freedom \cite{bernevig_II_2021}. Specifically, we have \( C_{2z}T = \sigma_x \mathcal{K} \), where \( \mathcal{K} \) denotes complex conjugation, \( C_{3z} = e^{i\frac{2\pi}{3} \sigma_z} \), and \( C_{2x} = \tau_x \sigma_x \).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Particle-hole symmetry} \label{subsec:ph_symmetry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The MBM-1V model features an approximate \textit{particle-hole} (PH) symmetry $P$, derived from the PH symmetry inherent to the low-energy Dirac nodes in monolayer graphene.  This symmetry is a central aspect of understanding the band topology in the model \cite{all_magic_angles}. However, it is not exact and can be broken under specific conditions. For instance, regarding \( H_{\ell}^\zeta \), deviations arise due to the inclusion of \(\theta\)-dependent terms (as we saw in Equation \ref{eq:single_layer_dirac_hamil_valley}), which disrupt the symmetry. Additionally, higher-order momentum corrections, such as \( k^2 \)-dependent terms, break the PH symmetry originally present in the Dirac nodes.
+
+Despite these breaking mechanisms, the particle-hole (PH) symmetry remains a useful approximation for analyzing the band topology. The corresponding operator \( P \) is unitary and satisfies the algebra \cite{bernevig_II_2021}:
+\begin{equation} \label{eq:PH_symmetry_algebra}
+[P, C_{2z}T] = [P, C_{3z}] = 0, \quad \{P, C_{2x}\} = 0, \quad P^2 = -1,
+\end{equation}
+where its representation in the valley-sublattice degrees of freedom is given by \( P = i \tau_x \sigma_y \), with \( \tau_x \) being the Pauli matrix associated with the \( x \)-component of the valley degree of freedom.
+
+Within the $\Q$-lattice, $P$ can be mathematically expressed as \cite{all_magic_angles}:
+\begin{equation} \label{eq:ph_symmetry_hamiltonian}
+H_{\text{MBM-1V}}(\mathbf{k}) = -D^\dagger(P) H_{\text{MBM-1V}}(-\mathbf{k}) D(P),
+\end{equation}
+The matrix \( D_{\Q',\Q}(P) \) is defined as:
+\begin{equation} \label{eq:D(P)_Q_lattice_PH_symmetry}
+D_{\Q',\Q}(P) = \delta_{\Q',-\Q} \zeta_\Q,
+\end{equation}
+with \( \zeta_\Q = 1 \) assigned to \( \Q_A \) vectors, while \( \zeta_\Q = -1 \) corresponds to \( \Q_B \) vectors. Note that \( \Q_A \) and \( \Q_B \) correspond to the black and red circles, respectively, as depicted in Figure \ref{fig:Q_lattice}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representations of the two middle bands} \label{subsec:reps_two_middle_bands}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+By utilizing the \texttt{COREPRESENTATIONS} tool from the Bilbao Crystallographic Server \cite{bilbao_1} for the magnetic space group \( P6'2'2 \) (\#177.151 in BNS notation), we determine the irreducible co-representations (irreps) at the high-symmetry momenta \(\Gamma_m\), \(K_m\), and \(M_m\). Given that twisted bilayer graphene is considered spinless, double groups are not relevant in this context, and irreps ``with bars'', such as \(\overline{\Gamma}_4\), can be disregarded. As a result, the allowed irreps are \(\Gamma_1\), \(\Gamma_2\), and \(\Gamma_3\) at \(\Gamma_m\); \(M_1\) and \(M_2\) at \(M_m\); and \(K_1\) and \(K_2K_3\) at \(K_m\). The corresponding character tables for these irreps are provided in Table \ref{tab:P6'2'2_characters}.
 
 \begin{table}[H]
 \caption{Character table of irreps at high symmetry momenta in magnetic space group $P6'2'2$.}
@@ -644,485 +593,119 @@ $2 C_3$ & $\P1$ & $\P1$ & $ -1$ & $\P C_2'$ & $\P1$ & $ -1$ & $\P C_3$ & $\P1$ &
 $3 C_2'$ & $\P1$ & $ -1$ & $\P0$ & $\P$ & $\P$ & $\P$ & $\P C_3^{-1}$ & $\P1$ & $-1$ \\
 \cline{1-10}
 \end{tabular}
-\label{tab:char-P6'2'2}
+\label{tab:P6'2'2_characters}
 \end{table}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{There exists another model}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In Table \ref{tab:P6'2'2_characters}, all the irreducible co-reps are induced from the irreps of the corresponding high-symmetry momenta in the unitary subspace group \( P312 \) (\#149) \cite{all_magic_angles, bradley_representation_theory_2010}, which can be read from the Bilbao server \cite{bilbao_1}. For instance, consider the \( K_m \) point. In \( P312 \), the \( K_m \) point has three one-dimensional irreps: \( K_1 \), \( K_2 \), and \( K_3 \). Here, \( K_1 \) is real, while \( K_2 \) and \( K_3 \) are complex conjugates of each other. Under the action of the \( C_{2z}T \) symmetry, \( K_1 \) remains invariant, whereas \( K_2 \) and \( K_3 \) are interchanged due to complex conjugation. Consequently, in \( P6'2'2 \), \( K_1 \) forms an independent co-rep, while \( K_2 \) and \( K_3 \) combine to form a co-rep denoted as \( K_2K_3 \).
 
-According to Bernevig: ``The MBM-1V is half of the TBG system, with similar physics taking place in the electron states around $\K'$''. A model with the two valleys can be written as
-$$
-\boxed{
-H_{\Q, \Q'}^{(\text{MBM-2V})}(\k) =
-\delta_{\Q,\Q'} v_F (\k-\Q) \vdot \bm{\sigma} \otimes \tau_z
-+ w \sum_{j=1}^{3} (\delta_{\Q'-\Q, \q_j} + \delta_{\Q-\Q', \q_j}) T^j \otimes \tau_0.
-}
-$$
-
-Here $\tau_z$ and $\tau_0$ are the Pauli and identity matrix representing the valley degree of freedom.
+Next, we sketch the proof from \cite{all_magic_angles} that the middle two bands in the system, whenever they are gapped, form the irreps \(\Gamma_1 \oplus \Gamma_2\), \(M_1 \oplus M_2\), and \(K_2K_3\). This result holds for any value of \(w\) in the Hamiltonian defined by Eq.~\eqref{eq:mbm-1v}, provided the magnetic space group \(P6'2'2\) and the particle-hole symmetry \(P\) are included.
 
 \begin{itemize}
-\item This model is \textbf{apparently different} from the latter, and \textbf{is not topological}. You can decompose it in EBR's as $G_{A_1}^{2c} + G_{A_2}^{2c}$.
-\item The tables of Rennella apply to this model. There the authors (Vafek, Rennella, Angeli, Koshino, etc) consider Wyckoff position 2c, because these positions really correspond to symmetry-adapted exponentially localized Wannier functions.
-\item The magnetic space group is $P6221'$. Generators: $C_{6z}$, $C_{2y}$, $C_{2x}$, $T$.
+\item $K_m$ point:
+
+First of all, we prove that the irrep \(K_2K_3\) at the point \(K_m\) is pinned at zero energy. The little group of \(K_m\) contains the symmetries \(C_{3z}\), \(C_{2z}T\), and \(PC_{2x}\). These symmetries satisfy the relations:
+\begin{equation} \label{eq:proof_flatbands_Km_point_1}
+[C_{3z}, C_{2z}T] = 0, \quad C_{3z}(PC_{2x}) = (PC_{2x})C_{3z}^{-1} , \quad [C_{2z}T, PC_{2x}] = 0.
+\end{equation}
+
+From the character table \ref{tab:P6'2'2_characters}, we select the \(C_{3z}\) eigenstates for a basis for \(K_2K_3\):
+\begin{equation} \label{eq:proof_flatbands_Km_point_2}
+C_{3z} |1\rangle = e^{i \frac{2\pi}{3}} |1\rangle, \quad C_{3z} |\bar{1}\rangle = e^{-i \frac{2\pi}{3}} |\bar{1}\rangle.
+\end{equation}
+
+The symmetry \(PC_{2x}\) flips the \(C_{3z}\) eigenvalue:
+\begin{equation} \label{eq:proof_flatbands_Km_point_2}
+C_{3z}\qty(PC_{2x} |1\rangle) = PC_{2x}C_{3z}^{-1} |1\rangle = e^{-i \frac{2\pi}{3}} \qty(PC_{2x} |1\rangle).
+\end{equation}
+Additionally, \(PC_{2x}\) anti-commutes with the Hamiltonian at $K_m$. If $H(K_m) \ket{1} = \eps \ket{1}$, then $PC_{2x} \ket{1}$ is an eigenstate of $H(K_m)$ with opposite eigenvalue $-\eps$:
+\begin{equation} \label{eq:proof_flatbands_Km_point_2}
+H(K_m) \qty(PC_{2x} |1\rangle) = -PC_{2x} H(K_m) |1\rangle = -\epsilon \qty(PC_{2x} |1\rangle).
+\end{equation}
+This leads to two cases:
+\begin{enumerate}[label=(\Roman*)]
+\item \(\epsilon = 0\), where \(|\bar{1}\rangle = PC_{2x} |1\rangle\), indicating that the states are related by particle-hole symmetry and lie at zero energy.
+\item \(\epsilon \neq 0\), where \(|\bar{1}\rangle \neq PC_{2x} |1\rangle\), and \(PC_{2x} |1\rangle\) forms a state with opposite energy, \(-\epsilon\).
+\end{enumerate}
+
+In case (II), the states \(PC_{2x} |1\rangle\) and \(C_{2z}T \qty(PC_{2x} |1\rangle)\) together form another \(K_2K_3\) irrep at opposite energy \(-\epsilon\). As a result, the \(K_2K_3\) irrep can either appear in pairs with opposite energy eigenvalues or appear alone at zero energy.
+
+In the \(w = 0\) limit, where there is no interlayer hybridization, the Hamiltonian \(H(K_m)\) has two zero-energy eigenstates forming a \(K_2K_3\) irrep. Upon increasing \(w\), the system undergoes a continuous transformation while preserving particle-hole symmetry. Such a transformation cannot shift a single \(K_2K_3\) irrep away from zero energy in a PH-symmetric manner. Consequently, case (I) prevails: a single \(K_2K_3\) irrep is constrained to remain at zero energy.
+
+\item $\Gamma_m$ point:
+
+Here we prove that the middle two bands, when gapped, form \(\Gamma_1 \oplus \Gamma_2\) irreps at \(\Gamma_m\). While the two-dimensional irrep \(\Gamma_3\) could, in principle, represent the middle two bands if they are degenerate, this is prohibited in the MBM-1V Hamiltonian at Eq. \eqref{eq:mbm-1v} with PH symmetry. The little group of the \(\Gamma_m\) point has the symmetries \(C_{3z}\), \(C_{2x}\), \(C_{2z}T\), and \(P\), which satisfy:
+\begin{equation} \label{eq:proof_flatbands_GMm_point_1}
+C_{2x}C_{3z}C_{2x}^{-1} = C_{3z}^{-1}, \quad [C_{3z}, C_{2z}T] = 0, \quad [C_{3z}, P] = 0,
+\end{equation}
+\begin{equation} \label{eq:proof_flatbands_GMm_point_2}
+[C_{2x}, C_{2z}T] = 0, \quad \{C_{2x}, P\} = 0, \quad [C_{2z}T, P] = 0.
+\end{equation}
+
+Since \( \Gamma_3 \) shares the same \( C_{3z} \) eigenvalues as \( K_2K_3 \) (as shown in Table \ref{tab:P6'2'2_characters}), the same reasoning applies. Thus, similar to \( K_2K_3 \), the \( \Gamma_3 \) irrep either appears in pairs with opposite energies or at zero energy. However, in the case of the Hamiltonian \( H(\Gamma_m) \) with \( w = 0 \), there is no zero eigenvalue. Additionally, no process preserving particle-hole symmetry can generate a single zero mode. As a result, \( \Gamma_3 \) can only appear in pairs, and each of the middle two bands must actually form \( \Gamma_1 \) or \( \Gamma_2 \) irreps.
+
+Next, we show that these two bands have opposite energy eigenvalues due to \( P \)-symmetry. Suppose \( |\Gamma_1\rangle \) has a \( C_{2x} \) eigenvalue of \( +1 \) and an energy \( \epsilon \). Using the anti-commutation relations \( \{C_{2x}, P\} = 0 \) and \( \{H(\Gamma_m), P\} = 0 \), it follows that \( P |\Gamma_1\rangle \) has a \( C_{2x} \) eigenvalue of \( -1 \) and an energy eigenvalue of \( -\epsilon \). Consequently, \( P |\Gamma_1\rangle \) forms a \( \Gamma_2 \) irrep at energy \( -\epsilon \). Therefore, we conclude that the gapped middle two bands always form the direct sum of irreps \( \Gamma_1 \oplus \Gamma_2 \) at \( \Gamma_m \).
+
+\item $M_m$ point:
+
+At the \(M\) point, the middle two bands form \(M_1 \oplus M_2\) irreps. The little group of the \(M\) point has the symmetries \(C_2' = C_{3z}C_{2x}C_{3z}^{-1}\), \(C_{2z}T\), and \(P\), which satisfy:
+\[
+[C_2', C_{2z}T] = 0, \quad \{C_2', P\} = 0, \quad [C_{2z}T, P] = 0.
+\]
+The irreps \(M_1\) and \(M_2\) have \(C_{2x}\) eigenvalues of \(+1\) and \(-1\), respectively, and, similar to \(\Gamma_1 \oplus \Gamma_2\), they appear in pairs due to the anti-commutation relation \(\{C_2', P\} = 0\).
+
 \end{itemize}
 
-\begin{table}[H]
-\caption{Elementary band representations generated from Wyckoff position $2c$ of the space group $P622$.}
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-Wyckoff & \multicolumn{3}{c|}{$2c$} \\
-\cline{1-4}
-Site sym. & \multicolumn{3}{c|}{$32$} \\
-\cline{1-4}
-EBR & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$  \\
-\hline
-$\Gamma$ & $\Gamma_1(1) + \Gamma_4(1)$ & $\Gamma_2(1) + \Gamma_3(1)$ & $\Gamma_5(2) + \Gamma_6(2)$ \\
-\hline
-$K$ & $K_3(2)$ & $K_3(2)$ & $K_1(1) + K_2(1) + K_3(2)$ \\
-\hline
-$M$ & $M_1(1) + M_4(1)$ & $M_2(1) + M_3(1)$ & $M_1(1) + M_2(1) + M_3(1) + M_4(1)$ \\
-\hline
-\end{tabular}
-\label{tab:ebr-P622}
-\end{table}
+In conclusion, this establishes that the gapped middle two bands must inevitably form the irreps \( \Gamma_1 \oplus \Gamma_2 \), \( M_1 \oplus M_2 \), and \( K_2K_3 \).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Wannier obstruction} \label{subsec:wannier_obstruction_mbm_1v}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The Elementary Band Representations (EBRs) for the magnetic space group \( P6'2'2 \) are readily accessible through the \texttt{MBANDREP} program on the Bilbao Crystallographic Server \cite{bilbao_1, bilbao_2}. In Table \ref{tab:P6'2'2-ebrs}, we present only the maximal Wyckoff positions and inductions from single-valued irreps, as double groups are not relevant to our analysis.
 
 \begin{table}[H]
-\caption{Character table of irreps at high symmetry momenta in space group $P622$.}
-\scriptsize
+\footnotesize
+\caption{Elementary band representations for the magnetic space group \( P6'2'2 \). The first row lists the Wyckoff positions. The second row provides the corresponding site-symmetry groups and their unitary subgroups. In the third row, \( G_\rho^q = \rho \uparrow G \) denotes the elementary band representation (EBR) generated from the co-rep \( \rho \) of the site-symmetry group at Wyckoff position \( q \), with the dimension of each EBR indicated in parentheses. The co-reps \( \rho \) are induced from the irreps of the unitary subgroups \cite{bradley_representation_theory_2010}, which can be accessed at the Bilbao server \cite{bilbao_1}. The fourth to sixth rows provide the decomposition of $G_\rho^q$ into irreps of the little groups at high-symmetry momenta $\Gamma$, $K$ and $M$ (Equation \ref{eq:induce_subduce}).}
 \centering
-\begin{tabular} { c c c c c c c | c c c c c | c c c c }
-\cline{1-16}
-$\P$ & $\P \Gamma_1$ & $\P \Gamma_2$ & $\P \Gamma_3$ & $\P \Gamma_4$ & $\P \Gamma_5$ & $\P \Gamma_6$ & $\P$ & $\P M_1$ & $\P M_2$ & $\P M_3$ & $\P M_4$ & $\P$ & $\P K_1$ & $\P K_2$ & $\P K_3$\\
-\cline{1-16}
-$E$      & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $\P2$ & $\P2$ & $E$     & $\P1$ & $\P1$  & $\P1$ & $\P1$ & $E$      & $\P1$ & $\P1$ & $\P2$ \\
-$2C_6$   & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $ -1$ & $\P1$ & $C_2$   & $\P1$ & $\P1$  & $ -1$ & $ -1$ & $C_3$    & $\P1$ & $\P1$ & $ -1$ \\
-$2C_3$   & $\P1$ & $\P1$ & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $C_2'$  & $\P1$ & $ -1$  & $ -1$ & $\P1$ & $3C_2''$ & $\P1$ & $ -1$ & $\P0$ \\
-$C_2$    & $\P1$ & $\P1$ & $ -1$ & $ -1$ & $\P2$ & $ -2$ & $C_2''$ & $\P1$ & $ -1$  & $\P1$ & $ -1$ &          &       &       &       \\
-$3C_2'$  & $\P1$ & $ -1$ & $ -1$ & $\P1$ & $\P0$ & $\P0$ &         &       &        &       &       &          &       &       &       \\
-$3C_2''$ & $\P1$ & $ -1$ & $\P1$ & $ -1$ & $\P0$ & $\P0$ &         &       &        &       &       &          &       &       &       \\
-\cline{1-16}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Wyckoff pos. & \multicolumn{3}{c|}{$1a$} & \multicolumn{3}{c|}{$2c$} & \multicolumn{2}{c|}{$3f$} \\
+\cline{1-9}
+Site sym. & \multicolumn{3}{c|}{$6'2'2$, $32$} & \multicolumn{3}{c|}{$32$, $32$} & \multicolumn{2}{c|}{$2'2'2$, $2$} \\
+\cline{1-9}
+EBR & $G_{A_1}^{1a}(1)$ & $G_{A_2}^{1a}(1)$ & $G_{E}^{1a}(2)$ & $G_{A_1}^{2c}(2)$ & $G_{A_2}^{2c}(2)$ & $G_{E}^{2c}(4)$   & $G_{A}^{3f}(3)$ & $G_{B}^{3f}(3)$ \\
+\hline
+$\Gamma$ & $\Gamma_1$ & $\Gamma_2$ & $\Gamma_3$ & $2\Gamma_1$ & $2\Gamma_2$ & $2\Gamma_3$ & $\Gamma_1\oplus \Gamma_3$ & $\Gamma_2\oplus \Gamma_3$ \\
+\hline
+$K$ & $K_1$ & $K_1$ & $K_2 K_3$ & $K_2 K_3$ & $K_2 K_3$ & $2K_1 \oplus  K_2 K_3$ & $K_1\oplus K_2 K_3$ & $K_1\oplus K_2 K_3$ \\
+\hline
+$M$ & $M_1$ & $M_2$ & $M_1\oplus M_2$ & $2M_1$ & $2M_2$ & $2M_1\oplus 2M_2$ & $2M_1\oplus M_2$ & $M_1\oplus 2M_2$ \\
+\hline
 \end{tabular}
-\label{tab:char-P622}
+\label{tab:P6'2'2-ebrs}
 \end{table}
 
-Compare tables \ref{tab:ebr-P622} and \ref{tab:char-P622} with tables 2.5 and (2.1, 2.3) of Rennella \cite{thesis_rennella}, respectively.
+On Table \ref{tab:P6'2'2-ebrs}, we emphasize that each Wyckoff position in the Moiré pattern corresponds to a distinct region. For instance, the \( 1a \) and \( 2c \) Wyckoff positions correspond to the AA-stacking and AB-stacking regions, respectively.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\textcolor{red}{DOWN BELOW INCOMPLETE OLD TEXT}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Bistritzer-MacDonald Model}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Geometry}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The atoms positions of the each layer are given by
-\begin{equation} \label{eq:position-atoms-tbg}
-\r = n_1 \a_{\ell,1} + n_2 \a_{\ell,2} + \vtau_{\ell,\alpha},
+As demonstrated in Section \ref{subsec:reps_two_middle_bands}, incorporating the approximate particle-hole symmetry $P$ within the single valley Bistritzer-MacDonald model ensures that the middle two flat bands in each valley align with the irreducible co-representations (irreps)
+\begin{equation} \label{eq:matbg-irreps}
+\Gamma_1(1) \oplus \Gamma_2(1); \; M_1(1) \oplus M_2(1); \; K_2 K_3(2),
 \end{equation}
-where $\alpha = A,B$ indexes the type of the site, and $\tau_{\ell,\alpha}$ are basis vectors. The lattice vectors of each layer are the rotated $\a_{\ell,j} = R_{\theta_\ell} \a_{j}$, where
-\begin{equation} \label{eq:rotation-matrix}
-R_\theta =
-\begin{pmatrix}
-\cos\theta & -\sin\theta \\
-\sin\theta & \cos\theta
-\end{pmatrix},
-\end{equation}
-is the rotation matrix by an angle $\theta$ and we use the reference frame where $\theta_1 = -\theta/2$ and $\theta_2 = +\theta/2$.
+of the magnetic space group \( P6'2'2 \), with their characters shown in Table \ref{tab:P6'2'2_characters}.
 
-We shall consider AB-stacking. In this case, the translation vectors are given by
-\begin{align}
-\tau_{1,A} &= R_{-\theta/2}(0,0), \quad \tau_{2,A} = R_{\theta/2} [(0,-d) + \vtau_0], \label{eq:tauA} \\
-\tau_{1,B} &= R_{-\theta/2}(0,d), \quad \tau_{2,B} = R_{\theta/2} [(0,0) + \vtau_0], \label{eq:tauB}
-\end{align}
-where $\vtau_0$ is an additional arbitrary translation considered in layer 2 for the sake of generalization. For example, $\vtau_0 = (0,0)$ corresponds to AB-stacking and $\vtau_0 = (0, d)$ corresponds to AA-stacking.
+We now show that the middle two bands exhibit at least fragile topology, with this result relying crucially on particle-hole (PH) symmetry. Without this symmetry, it is not possible to demonstrate that the gapped bands around the charge neutrality point are topological \cite{all_magic_angles}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Moiré pattern}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Here we will review the Bistritzer-MacDonald (BM) model \cite{macdonald2011}. First of all, the moiré pattern can be interpreted by a beat effect. Define the functions $h_\ell(\r)$, for each layer $\ell = 1, 2$, that describe their periodicity
-\begin{equation} \label{eq:beat-functions}
-h_\ell(\r) = \sum_{k=1}^{3} \cos(\vb{G}_{\ell,k} \vdot \r),
-\end{equation}
-where the wave vectors $\vb{G}_{\ell,1} = \vb{b}_{\ell,1}$, $\vb{G}_{\ell,2} = \vb{b}_{\ell,2}$ and $\vb{G}_{\ell,3} = \vb{b}_{\ell,1} - \vb{b}_{\ell,2}$ give the directions for nearest neightbor hoppings in the hexagonal lattice. The moiré pattern will then be an interference between $h_1(\r)$ and $h_2(\r)$,
-\begin{equation} \label{eq:beat-effect}
-h_{\text{m}}(\r) = h_1(\r) + h_2(\r) =
-\sum_{k=1}^{3}
-\, 2 \cos(\frac{\vb{G}_{1,k}+\vb{G}_{2,k}}{2} \vdot \r) \cos(\frac{\vb{G}_{1,k}-\vb{G}_{2,k}}{2} \vdot \r).
+From Table \ref{tab:P6'2'2-ebrs}, we note that the representations of the two middle bands in Eq. \eqref{eq:matbg-irreps} cannot be expressed as a positive sum of EBRs. Instead, they can only be written as a difference of EBRs:
+\begin{equation} \label{eq:matbg-difference_of_ebrs}
+G_{2c}^{A_1} + G_{1a}^{A_2} - G_{1a}^{A_1}.
 \end{equation}
 
-The moiré pattern oscillates with $\vb{b}_k^{\text{m}} = \vb{G}_{1,k} - \vb{G}_{2,k}$, \cite{handbook2019}.
+This fact suggests the presence of \textit{at least fragile topology}. By analyzing the representation content, one might consider adding the ``negative'' band \( G_{1a}^{A_1} \) and coupling it with the middle two bands of MBM-1V. In this case, the three bands could be interpreted as a sum of EBRs, resulting in a trivial system. This scenario exemplifies fragile topology \cite{FragileTopology_Po2018}, where the topology can be trivialized by the addition of a trivial band. However, the system retains the key feature of not being representable by exponentially localized Wannier functions, reflecting a Wannier obstruction that defines its non-trivial topological nature.
 
-\n
-
-Working on a coordinate system where the layer 2 is rotated by $\theta/2$ and layer 1 by $-\theta/2$, we have
-\begin{equation} \label{eq:moire-bvecs}
-\vb{b}_1^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty( \frac{1}{2}, -\frac{\sqrt{3}}{2}), \quad
-\vb{b}_2^{\text{m}} = \sqrt{3} \abs{\Delta \K} \qty( \frac{1}{2},  \frac{\sqrt{3}}{2}),
-\end{equation}
-where $\abs{\Delta \K} = 2 \abs{\K} \sin(\theta/2)$ and $\abs{\K} = 4\pi/(3a)$.
-
-The area of the moiré lattice unit cell is
-\begin{equation} \label{eq:moire-unitcell}
-A_{\text{m.u.c.}} = \frac{(2\pi)^2}{\abs{\b_1^{\text{m}} \cross \b_2^{\text{m}}}} = \frac{\sqrt{3} a^2}{8 \sin[2](\theta/2)}.
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Hamiltonian}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Our starting point will be a tight-binding model $ H = H_1 + H_2 + H_{\perp} $, where $H_\ell$ is the hamiltonian of the layer $\ell$, and $H_\perp = V_{12} + V_{12}^\d$ describes the interlayer hybridization. Working with a tight-binding model, it is natural to write this hamiltonian in terms of Bloch waves
-\begin{equation} \label{eq:BM-blochwave}
-\ket{\psi_{\ell, \k, \alpha}} = \frac{1}{\sqrt{N_\ell}} \sum_{\R_\ell} e^{i \k \vdot (\R_\ell + \vtau_{\ell,\alpha})} \ket{\ell, R_\ell, \alpha},
-\end{equation}
-where $\ell$ labels the layer, $N_\ell$ is the number of unit cells, $\R_\ell$ are the positions of the underlying Bravais lattice, $\vtau_{\ell,\alpha}$ are the orbital centers (of sublattice $\alpha = A,B$) in the unit cell, and $\ket{\ell,\R_\ell,\alpha}$ are localized Wannier states. In this basis, considering only nearest-neighbor intralayer hopping the hamiltonian of each layer is analogous to equation \ref{eq:monolayer-tight-binding2}, given by
-\begin{equation} \label{eq:blg-eachlayer-hamil}
-H_\ell(\k) =
-\begin{pmatrix}
-0 & -t f_\ell(\k) \\
--t f_\ell(\k) & 0
-\end{pmatrix},
-\end{equation}
-with $f_\ell(\k) = \sum_{i=1}^{3} e^{i\k \vdot \vdelta_\ell}$.
-
-In order to describe low energy states, we expand $\k = \pm \K_\ell + \q$, where $\pm \K_\ell$ are the Dirac points of each layer. To first-order in $\q$, the low-energy hamiltonian becomes
-\begin{equation} \label{eq:blg-eachlayer-hamil-lowenergy}
-H^{\pm \K}(\q) = \hbar v_F \abs{\q}
-\begin{pmatrix}
-0 & e^{\mp i (\theta_\q - \theta_\ell)} \\
-e^{\pm i (\theta_\q - \theta_\ell)} & 0
-\end{pmatrix}.
-\end{equation}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Interlayer hamiltonian}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The tight-binding interlayer Hamiltonian in second quantization reads
-\begin{equation} \label{eq:interlayer-hopping}
-V_{12} = \sum_{\R_1,\alpha,\R_2,\beta} c_{1,\alpha}^\d t_{12}^{\alpha\beta}(\R_1,\R_2) c_{2,\beta}(\R_2), \quad
-t_{12}^{\alpha\beta}(\R_1,\R_2) =
-\mel{1,\R_1,\alpha}{V_{12}}{2,\R_2,\beta}.
-\end{equation}
-Performing the Fourier transformation
-\begin{equation} \label{eq:blg-fourier}
-c_{\ell,\alpha}^\d(\R_\ell) = \frac{1}{\sqrt{N_\ell}} \sum_{\k_\ell}
-e^{-i\k_\ell \vdot (\R_\ell + \vtau_{\ell,\alpha})} c_{\ell,\alpha}^\d(\k_\ell),
-\end{equation}
-with the sum of $\k_\ell$ over the BZ of layer $\ell$, we have
-\begin{equation} \label{eq:interlayer-hopping-kspace}
-V_{12} = \sum_{\k_1,\alpha,\k_2,\beta} c_{1,\alpha}^\d(\k_1) T_{12}^{\alpha\beta}(\k_1,\k_2) c_{2,\beta}(\k_2),
-\end{equation}
-where we define
-\begin{equation} \label{eq:interlayer-hopping-Tkspace}
-T_{12}^{\alpha\beta}(\k_1,\k_2) =
-\frac{1}{\sqrt{N_1 N_2}} \sum_{\R_1,\R_2} e^{-i\k_1\vdot(\R_1+\vtau_{1,\alpha})}
-t_{12}^{\alpha\beta}(\R_1,\R_2) e^{i\k_2\vdot(\R_2+\vtau_{2,\beta})}.
-\end{equation}
-
-Now we assume that the interlayer hopping $t_{12}^{\alpha\beta}(\R_1,\R_2)$ is only a function of the separation between the centers of the two orbitals, and we write its Fourier transform
-\begin{equation} \label{eq:interlayer-hopping-fourier}
-t_{12}^{\alpha\beta}(\R_1,\R_2) = t_{12}^{\alpha\beta}(\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta}) =
-\int \frac{\dd[2]{\p}}{(2\pi)^2} e^{i \p \vdot (\R_1+\vtau_{1,\alpha}-\R_2-\vtau_{2,\beta})} t_{12}^{\alpha\beta}(\p).
-\end{equation}
-
-Plugging equation \ref{eq:interlayer-hopping-fourier} in equation \ref{eq:interlayer-hopping-Tkspace}, we have
-$$
-T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{N_1 N_2}} \int \frac{\dd[2]{\p}}{(2\pi)^2}
-\sum_{\R_1} e^{-i(\k_1-\p)\vdot(\R_1+\vtau_{1,\alpha})} t_{12}^{\alpha\beta}(\p)
-\sum_{\R_2} e^{i(\k_2-\p)\vdot(\R_2+\vtau_{2,\beta})} =
-$$
-
-$$
-= \sqrt{N_1 N_2} \int \frac{\dd[2]{\p}}{(2\pi)^2}
-\sum_{\G_1, \G_2} e^{-i\G_1\vdot\vtau_{1,\alpha}} t_{12}^{\alpha\beta}(\p)
-e^{i\G_2\vdot\vtau_{2,\beta}} \delta_{\k_1-\p,\G_1} \delta_{\k_2-\p,\G_2},
-$$
-
-where we have used the relation $\sum_{\R_\ell} e^{i\k\vdot\R_\ell} = N_\ell \sum_{\G_\ell} \delta_{\k,\G_\ell}$. By elementary Dirac delta properties, \textcolor{red}{substituting $\G_\ell \to -\G_\ell$}, and remembering that $A = A_{u.c.1} N_1 = A_{u.c.2} N_2$, we obtain
-\begin{equation} \label{eq:interlayer-hopping-simplified}
-T_{12}^{\alpha\beta}(\k_1,\k_2) = \frac{1}{\sqrt{A_{u.c.1} A_{u.c.2}}}
-\sum_{\G_1, \G_2} \textcolor{red}{e^{i\G_1\vdot\vtau_{1,\alpha}}} t_{12}^{\alpha\beta}(\p)
-\textcolor{red}{e^{-i\G_2\vdot\vtau_{2,\beta}}} \delta_{\k_1+\G_1, \k_2+\G_2},
-\end{equation}
-where the momentum conservation $ \k_1 + \G_1 = \k_2 + \G_2 $ is known as generalized umklapp condition.
-
-\n
-
-\textcolor{red}{
-Now we try to guess the behavior of $t_{12}(\r)$. We often see in the literature the estimate in terms of Slater-Koster parameters $V_{pp\s}$ and $V_{pp\pi}$, where they are assumed to exponentially decay. Making some rough estimates, they conclude that $t_\perp(\p)$ is only a function of $\abs{\p}$ and decays very rapidly as $\abs{\p}$ increases.
-}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\linewidth]{fig/tperp.png}
-\caption{Fourier transform for the interlayer hopping in tBLG. The vertical dashed line marks the position
-of the Dirac point. Taken from \cite{handbook2019}.}
-\label{fig:tperp}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\textcolor{red}{Small rotation limit}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-When the rotation angle $\theta \lesssim 10^\circ$ is small enough, we can expand around the Dirac points of each layer $\k_\ell = \K_\ell + \q_\ell$ with $\abs{\q_\ell} \sim \abs{\Delta \K} \ll \abs{\K}$. Approximating $t_\perp(\K_1+\q_1+\G_1) \approx t_\perp(\K_1+\G_1)$, the interlayer coupling becomes
-$$
-T_{12}^{\alpha\beta}(\q_1,\q_2) = \frac{1}{A_{\text{u.c.}}} \sum_{\G_1,\G_2} e^{i\G_1\vdot\vtau_{1,\alpha}}
-t_{12}^{\alpha\beta}(\K_1+\G_1) e^{-i\G_2\vdot\vtau_{2,\beta}}
-\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2}.
-$$
-
-As $t_\perp(\p)$ decays rapidly with $\abs{\p}$, we truncate $t_\perp(\p) \approx 0$ for $\abs{\p} > \abs{\K}$. This leaves us only three options for $\G_1$, being $\g_{11} = \0$, $\g_{12} = \b_{12}$, $\g_{13} = -\b_{11}$. These three vectors correspond to the three $\K$ equivalent points on the monolayer BZ. Because of the indifference between layer 1 and 2, the same goes for $\G_2$. Notice that $\abs{\K_1+\g_{1n}} = \abs{\K}$, because they are equivalent $\K$ points. Thus, the only quantity that matters is $t_\perp(\abs{\K})$. We have the term
-$$
-\delta_{\K_1+\q_1+\G_1,\K_2+\q_2+\G_2} = \delta_{\q_2-\q_1,\K_1-\K_2+\G_1-\G_2}.
-$$
-We call $\Delta\K = \K_1-\K_2$. Due to $\abs{\q_\ell} \ll \abs{\K}$, we only have that $\q_2-\q_1 = \K_1-\K_2+\G_1-\G_2$ if $\G_1 = \g_{1n}$ and $\G_2 = \g_{2n}$ have the same index $n$. Therefore, we have three possibilities
-$$
-\q_\text{b} = \K_1 - \K_2 = \abs{\Delta \K} \qty(0, -1),
-$$
-$$
-\q_\text{tr} = (\K_1 - \K_2) + (\g_{12} - \g_{22}) = \abs{\Delta \K} \qty(\frac{\sqrt{3}}{2}, \frac{1}{2}),
-$$
-
-$$
-\q_\text{tl} = (\K_1 - \K_2) + (\g_{13} - \g_{23}) = \abs{\Delta \K} \qty(-\frac{\sqrt{3}}{2}, \frac{1}{2}),
-$$
-where $\abs{\Delta \K} = 2 \sin(\theta/2) \abs{\K}$.
-
-The interlayer coupling has only three terms
-$$
-T_{12}^{\alpha\beta}(\q_1,\q_2) =
-T^{\alpha\beta}_{\q_\text{b}} \delta_{\q_1-\q_2, \q_\text{b}} +
-T^{\alpha\beta}_{\q_\text{tr}} \delta_{\q_1-\q_2, -\q_\text{tr}} +
-T^{\alpha\beta}_{\q_\text{tl}} \delta_{\q_1-\q_2, -\q_\text{tl}},
-$$
-where $T^{\alpha\beta}_{\q_n} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{i \g_{1n} \vdot \bm{\tau}_{1\alpha}}
-e^{-i \g_{2n} \vdot \bm{\tau}_{2\beta}}$. Writing it in the $A, B$ basis we get
-$$
-T_{\q_\text{b}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}}
-\begin{pmatrix}
-1 & 1 \\
-1 & 1
-\end{pmatrix},
-$$
-$$
-\textcolor{red}{
-T_{\q_\text{tr}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{-i \g_{12} \vdot \vtau_0}
-\begin{pmatrix}
-e^{i\phi} & 1 \\
-e^{-i\phi} & e^{i\phi}
-\end{pmatrix},
-}
-$$
-$$
-\textcolor{red}{
-T_{\q_\text{tl}} = \frac{t_\perp(\abs{\K})}{A_{\text{u.c.}}} e^{-i \g_{13} \vdot \vtau_0}
-\begin{pmatrix}
-e^{-i\phi} & 1 \\
-e^{i\phi} & e^{-i\phi}
-\end{pmatrix},
-}
-$$
-with $\phi = 2\pi/3$.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{AB stacking}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The so-called Bernal or AB stacking of two layers of graphene is such that the atoms of sublattice $A$ from one layer are placed above the atoms of sublattice $B$ from the other layer.
-To model the bilayer system in this configuration, we use the monolayer tight-binding hamiltonian (with only the first
-nearest neighbors) as a basis and include an interlayer hopping. Indexing the layers with $\ell = 1, 2$, we write
-\begin{equation} \label{eq:ab-hamil}
-H = H_1 + H_2 + H_{\perp},
-\end{equation}
-\begin{equation} \label{eq:ab-slg-hamil}
-\begin{split}
-H_\ell &= -t \sum_{\R} c_{\ell,A}^\d(\R) [c_{\ell,B}(\R) + c_{\ell,B}(\R-\a_1) + c_{\ell,B}(\R-\a_2)] + \hc, \\
-H_\perp &= t_{\perp} \sum_{\R} c_{1,A}^\d(\R) c_{2,B}(\R) + \hc,
-\end{split}
-%\begin{split}
-%H_1 &= -t \sum_{\R} c_{1,A}^\d(\R) [c_{1,B}(\R) + c_{1,B}(\R-\a_1) + c_{1,B}(\R-\a_2)] + \hc, \\
-%H_2 &= -t \sum_{\R} c_{2,A}^\d(\R) [c_{2,B}(\R) + c_{2,B}(\R-\a_1) + c_{2,B}(\R-\a_2)] + \hc,
-%\end{split}
-\end{equation}
-where $c_{\ell,\alpha}(\R)^\d$ is the creation operator for an electron in a state $\ket{\ell,\R,\alpha}$. Using the discrete Fourier Transform of the creation operators
-\begin{equation} \label{eq:ft-creatio}
-c_{\ell,\alpha}^\d(\R) = \frac{1}{\sqrt{N}} \sum_{\k\in\text{1BZ}} e^{-i\k\vdot(\R+\bm{\tau}_{\ell,\alpha})} c_{\ell,\alpha}^\d(\k),
-\end{equation}
-we can rewrite $H = \sum_{\k} \Psi^\d(\k) H(\k) \Psi(\k)$, where $\Psi^\d(\k) = (c_{1,A}^\d(\k) \; c_{1,B}^\d(\k) \; c_{2,A}^\d(\k) \; c_{2,B}^\d(\k))$ and
-\begin{equation} \label{eq:ab-momentum_space}
-H(\k) =
-\begin{pmatrix}
-0 & -t f(\k) & 0 & t_\perp \\
--t f^*(\k) & 0 & 0 & 0 \\
-0 & 0 & 0 & -t f(\k) \\
-t_\perp & 0 & -t f^*(\k) & 0 \\
-\end{pmatrix}.
-\end{equation}
-
-Diagonalizing $H(\k)$ we obtain the four bands for the AB-stacked bilayer graphene
-\begin{equation} \label{eq:ab-four_bands}
-E_{\pm,\pm} = \pm t
-\sqrt{
-\qty(\frac{t_\perp}{2t})^2 +
-4 \cos(\frac{\sqrt{3}}{2} d \, k_x) \cos(\frac{3}{2} d \, k_y) + 2 \cos(\sqrt{3} d \, k_x) + 3
-}
-\; \pm \; \frac{t_\perp}{2}.
-\end{equation}
-
-
-
-
-
-
-As drawn in Figure \ref{fig:latvec}, we have
-\begin{align}
-\label{eq:scalarprods0}
-\abs{\a_i^{(j)}} &= a, \\
-\label{eq:scalarprods1}
-\vb{a}_1^{(j)} \vdot \vb{a}_2^{(j)} &= a^2 \cos(60^\circ) = a^2/2, \\
-\label{eq:scalarprods2}
-\vb{a}_1^{(1)} \vdot \vb{a}_1^{(2)} &= a^2 \cos\theta, \\
-\label{eq:scalarprods3}
-\vb{a}_1^{(1)} \vdot \vb{a}_2^{(2)} &= a^2 \cos(60^\circ + \theta), \\
-\label{eq:scalarprods4}
-\vb{a}_1^{(2)} \vdot \vb{a}_2^{(1)} &= a^2 \cos(60^\circ - \theta).
-\end{align}
-
-The superlattice vectors $\vb{L}_1$, $\vb{L}_2$ (when the angle is commensurate) are related by a $60^\circ$ rotation. In general, because $\vb{L}_1$ is a point that belongs to the lattices of both layers, it is written by integers $m,n,m',n'$ as
-\begin{equation} \label{eq:L1}
-\vb{L}_1 = m\vb{a}_1^{(1)} + n\vb{a}_2^{(1)} = m'\vb{a}_1^{(2)} + n'\vb{a}_2^{(2)}.
-\end{equation}
-
-Koshino \cite{koshino2012} argues that there is an appropriate choice of lattice vectors $\vb{a}_1^{(1)}, \vb{a}_2^{(1)}, \vb{a}_1^{(2)}, \vb{a}_2^{(2)}$ (satisfying equations \ref{eq:scalarprods0} to \ref{eq:scalarprods4}) such that the indices $(m',n')$ can be made equal to $(n,m)$. By taking the scalar products of equation \ref{eq:L1} with $\vb{a}_1^{(1)}$ and $\vb{a}_1^{(2)}$, we get
-$$
-\begin{cases}
-\; m + n/2 = n \cos\theta + m \cos(60^\circ + \theta); \\
-\; m/2 + n = m \cos\theta + n \cos(60^\circ - \theta).
-\end{cases}
-\Rightarrow
-\begin{cases}
-\; mn + n^2/2 = n^2 \cos\theta + mn \qty(\frac{\cos\theta}{2}
-- \frac{\sqrt{3} \sin\theta}{2}); \\
-\; m^2/2 + mn = m^2 \cos\theta + mn \qty(\frac{\cos\theta}{2}
-+ \frac{\sqrt{3} \sin\theta}{2}).
-\end{cases}
-$$
-
-Summing the two equations above gives us
-\begin{equation} \label{eq:costheta}
-\boxed{\cos\theta = \frac{1}{2} \cdot \frac{m^2 + n^2 + 4mn}{m^2 + n^2 + mn}.}
-\end{equation}
-
-
-
-\n
-
-\textbf{TEXTO ABAIXO FOI PLAGIADO DO ZOU2018}
-
-Theoretically at small twist angles, there is a well
-known “continuum theory” description which yields
-well-defined band structures for all twist angles in-
-cluding incommensurate ones [32, 33].
-The contin-
-uum theory reveals many universal features of the band
-structure, such as the existence of Dirac crossings be-
-tween valence and conduction bands within each val-
-ley of the underlying graphene layers. These features
-have been benchmarked against tight-binding calcula-
-tions on commensurate structures [34–37]. They are
-also nicely consistent with experiments at twist angles
-larger than the magic angles (where correlation effects
-are expected to be weaker, and band theory predic-
-tions can be reasonably compared with experiment).
-In particular, Cao et al showed that at a twist angle of
-about 1.8 degrees the Landau fan structure near charge
-neutrality is exactly what is expected from the Dirac
-points predicted by the continuum theory [38]. Despite
-its success for qualitative universal aspects, quantita-
-tively the continuum theory yields a very small value
-compared to experiments for the gap separating the
-nearly flat bands from other bands. This discrepancy is
-believed to be reduced once effects of lattice relaxation
-and electron interactions are included. Formally these
-additional effects can be included phenomenologically
-in the continuum model by modifying its parameters
-away from those estimated microscopically [6, 21].
-Apart from translational symmetry, the approxima-
-tions involved in the continuum theory build in a num-
-ber of other point group symmetries which are not fully
-present in any commensurate structure. These include
-a C6 rotation symmetry, and a valley Uv(1) associated
-with separate conservation of electrons associated with
-each valley.
-This symmetry structure of the contin-
-uum theory is essential in protecting the Dirac points
-of valley filtered bands. Specifically, on top of the val-
-ley Uv(1) (needed to define separate bands within each
-valley) a C2T = C3
-6T symmetry is able to protect the
-Dirac points from acquiring a gap.
-Even restricting
-to commensurate structures with translation symme-
-try, Uv(1), and maybe even C2T , are not both exact
-microscopic symmetries.
-
-In the older literature it was appreciated that at
-small twist angles the extra symmetries of the contin-
-uum theory are excellent approximations [34–36, 39].
-Furthermore it was understood that there is essentially
-no difference between incommensurate and commen-
-surate structures, or between distinct commensurate
-structures with different exact microscopic symmetries.
-These issues have re-emerged in recent discussions of
-TBG, and have led to some confusion. We therefore
-carefully review and collect together some pertinent
-facts about different commensurate structures, their
-relationship to the continuum theory, and the implica-
-tions for a description of small angle (possibly incom-
-mensurate) TBG.
-
-The most fundamental aspect of our previous dis-
-cussion of the band structure is the existence of an ob-
-struction to constructing well localized Wannier func-
-tions transforming naturally under all symmetry oper-
-ations. The obstruction relies strongly on the presence
-of symmetries that are not exact microscopic symme-
-tries.
-Why then should we worry about it?
-Let us
-therefore review the tight logic that forces us to con-
-front it. As reviewed above, it is a robust feature of
-both theory and experiment that to excellent accuracy
-there is a good valley Uv(1) symmetry and that within
-each valley there are Dirac band crossings (down to en-
-ergy scales currently accessible in experiments). The
-robustness of the Dirac crossings within each valley
-suggests that it is a symmetry protected feature of the
-band structure. The natural protecting symmetry then
-is C2T as is seen explicitly in the continuum theory.
-For a general small-angle, incommensurate TBG struc-
-ture, the C2 symmetry—like translations itself—is not
-an exact symmetry, but it must be excellent enough
-to give the Dirac cones. This then forces us to study
-systems which have translations, valley Uv(1), and C6
-as good symmetries. However the implementation of
-all these symmetries in the band structure leads to a
-Wannier obstruction.
-
-
-
+In conclusion, particle-hole symmetry in MBM-1V ensures the presence of non-trivial topology. Notably, the ``at least fragile topology,'' when PH symmetry is included, was actually demonstrated in \cite{bernevig_II_2021} to be a stable topology protected by the combined symmetry \( \mathcal{P} = P C_{2z}T \). They derived this result using the concept of Wilson loops, which is beyond the scope of this thesis. In the absence of PH symmetry, the topology remains fragile, being protected by the \( C_{2z}T \) symmetry \cite{faithful_fragile_topology_po2019}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

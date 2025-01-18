@@ -62,18 +62,18 @@ def ticks_positions(path):
     return ticks_pos
 
 # plot bands
-def plot_bands(bands, ticks_pos, n_line=100):
+def plot_bands(bands, ticks_pos, n_line=100, color_index=0):
     x = np.concatenate([np.linspace(ticks_pos[i], ticks_pos[i+1], n_line, endpoint=False) for i in range(len(ticks_pos)-1)], axis=None)
     bands_t = np.transpose(bands)
     for b in bands_t:
-        plt.plot(x, b, color=colors[0])
+        plt.plot(x, b, color=colors[color_index])
 
 # plot the bandstructure along path
-def plot_bandstructure(path, eigenval_func, ticks_fontsize=20, n_line=100):
+def plot_bandstructure(path, eigenval_func, ticks_fontsize=20, n_line=100, color_index=0):
     labels = [ kp.label for kp in path ]
     ticks_pos = ticks_positions(path)
     bands = gen_band(path, eigenval_func, n_line=n_line)
-    plot_bands(bands, ticks_pos, n_line=n_line)
+    plot_bands(bands, ticks_pos, n_line=n_line, color_index=color_index)
     #plt.axhline(y=0, ls='--', color='k')
     plt.xlim(ticks_pos[0], ticks_pos[-1])
     plt.xticks(ticks_pos, labels, fontsize=ticks_fontsize)
